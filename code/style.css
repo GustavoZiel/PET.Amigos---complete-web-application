@@ -1,0 +1,18 @@
+.rectangle {
+    height: 20px;
+    background-color: #3A0CA3;
+}
+
+.purple {
+    background-color: #3A0CA3;
+}
+
+.icon {
+    color: grey;
+}
+
+.inputNoBorder {
+    border: none;
+    outline: none;
+    width: 300px;
+}
