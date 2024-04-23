@@ -7,6 +7,10 @@
     background-color: #3A0CA3;
 }
 
+.light_purple {
+    background-color: rgba(67, 97, 238, 0.3);
+}
+
 .icon {
     color: grey;
 }
