@@ -3,11 +3,15 @@
     background-color: #3A0CA3;
 }
 
-.purple {
+.purpleBgColor {
     background-color: #3A0CA3;
 }
 
-.light_purple {
+.purpleColor {
+    color: #3A0CA3;
+}
+
+.lightPurpleBgColor {
     background-color: rgba(67, 97, 238, 0.3);
 }
 
@@ -41,4 +45,8 @@
 
 .teste3 {
     background-color: red;
+}
+
+#purpleFont {
+    color: #3A0CA3;
 }
