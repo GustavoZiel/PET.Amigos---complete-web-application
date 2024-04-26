@@ -3,6 +3,23 @@
   background-color: #3a0ca3;
 }
 
+.teste {
+    background-color: grey;
+}
+
+.teste2 {
+    background-color: greenyellow;
+}
+
+.purple {
+    background-color: hsl(258, 86%, 34%);
+}
+.border-purple {
+    border: 0.25em solid #3A0CA3;
+}
+.back-purple {
+    background-color:#3A0CA3;
+}
 .font_nav_brand {
   font-family: 'Poppins';
   font-size: 20px;
@@ -15,14 +32,17 @@
   color: black;
 }
 
+.light_blue{
+    background-color: rgba(67,97,238, 0.1);
+}
+.text_purple{
+    color: #3A0CA3;
+}
+.icon {
+    color: grey;
+}
 .purpleBgColor {
-  background-color: hsl(258, 86%, 34%);
-}
-.border-purple {
-    border: 0.25em solid #3A0CA3;
-}
-.back-purple {
-    background-color:#3a0ca3;
+  background-color: #3a0ca3;
 }
 
 .purpleColor {
@@ -33,14 +53,6 @@
   background-color: rgba(67, 97, 238, 0.3);
 }
 
-.light_blue{
-    background-color: rgba(67,97,238, 0.1);
-}
-.text_purple{
-    color: #3A0CA3;
-}
-.icon {
-    color: grey;
 .font_footer {
   font-family: 'Poppins';
   font-size: 16px;
@@ -67,6 +79,63 @@
   background-color: grey;
 }
 
+.headerA {
+    justify-content: end;
+}
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+  }
+.footer_rectangle {
+    height: 40px;
+    background-color: #0B090A;
+    width: 100%;
+}
+.background-img {
+    position: relative;
+    display: block;
+}  
+.coracao {
+    color: #FF0000;
+}
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+.headers_caract{
+    color: #808080;
+    font-size:medium;
+}
+.text_caract{
+    color: #000000;
+    font-size:larger;
+}
+.heart-img {
+    position: relative;
+    width: 100px;
+}
+
+.badge {
+    position: absolute;
+    top: 6px;
+    right: 0px;
+    border-radius: 10em;
+    border: 0.2em solid black;
+    font-size: 12px;
+    background-color: white;
+}
+@media (max-width: 576px) {
+    .heart-img {
+        width: 50px;
+    }
+}
 .teste2 {
   background-color: greenyellow;
 }
@@ -142,59 +211,4 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 color: #808080;
 
 
-}
-
-.poppins-regular {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-.poppins-medium {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
-.footer_rectangle {
-    height: 40px;
-    background-color: #0B090A;
-    width: 100%;
-}
-.background-img {
-    position: relative;
-    display: block;
-}  
-.coracao {
-    color: #FF0000;
-}
-.poppins-semibold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-  }
-.headers_caract{
-    color: #808080;
-    font-size:medium;
-}
-.text_caract{
-    color: #000000;
-    font-size:larger;
-}
-.heart-img {
-    position: relative;
-    width: 100px;
-}
-
-.badge {
-    position: absolute;
-    top: 6px;
-    right: 0px;
-    border-radius: 10em;
-    border: 0.2em solid black;
-    font-size: 12px;
-    background-color: white;
-}
-@media (max-width: 576px) {
-    .heart-img {
-        width: 50px;
-    }
 }
