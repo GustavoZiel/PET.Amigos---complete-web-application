@@ -139,7 +139,7 @@
       </nav>
     </header>
 
-    <main class="container">
+    <main class="container-fluid row">
       <h3 class="font-h3-homepage">PET É VIDA!</h3>
       <h1 class="font-h1-homepage">
         Encontre seu novo <br />
@@ -184,14 +184,36 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
-      <h3 class="font-h3-homepage pd-7">QUEM SOMOS?</h3>
-      <h1 class="font-h1-homepage">
-        Ajudando a conectar <br>
-        pessoas e animais de <br>
-        maneira responsável!
-      </h1>
-      <p class="font-p-homepage">Somos uma plataforma aberta e acessível para pessoas e instituições de proteção 
-        animal interessadas em encontrar lares responsáveis e amorosos!</p>
+      <div class="row">
+        <!-- First main div occupying 6 columns on all screen sizes -->
+        <div class="col-12 col-md-6">
+          <h3 class="font-h3-homepage pd-7">QUEM SOMOS?</h3>
+          <h1 class="font-h1-homepage">
+            Ajudando a conectar <br>
+            pessoas e animais de <br>
+            maneira responsável!
+          </h1>
+          <p class="font-p-homepage">Somos uma plataforma aberta e acessível para pessoas e instituições de proteção 
+            animal interessadas em encontrar lares responsáveis e amorosos!</p>
+        </div>
+        
+        <!-- Second main div occupying 6 columns on all screen sizes -->
+        <div class="col-12 col-md-6">
+          <div class="row align-items-center justify-content-center">
+            <!-- First image occupying 3 columns on all screen sizes -->
+            <div class="col-12 col-md-6">
+              <img src="https://plus.unsplash.com/premium_photo-1686090449483-89a9b794e7cf?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid py-3 rounded-3" alt="Image 1">
+            </div>
+            
+            <!-- Second and third images occupying 3 columns each, stacked on smaller screens -->
+            <div class="col-12 col-md-6">
+              <img src="https://media.istockphoto.com/id/1551607933/pt/foto/golden-retriever-dog-doing-trick.jpg?s=612x612&w=is&k=20&c=gkQzcd1Cw3WCQMuY1morzbMlCqVjAWNhcCJQCjBGjq0=" class="img-fluid py-3 rounded-3" alt="Image 2">
+              <img src="https://media.istockphoto.com/id/1333782261/pt/foto/playful-dog-sitting-looking-at-camera.jpg?s=612x612&w=is&k=20&c=EFa_sA5jVkED4RTly9xg3FEm0PfLw5NIWNsgZD5VPE4=" class="img-fluid py-3 rounded-3" alt="Image 3">
+            </div>
+          </div>
+        </div>
+      </div>
+      
     </main>
   </body>
 </html>
