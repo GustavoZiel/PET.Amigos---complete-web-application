@@ -3,22 +3,8 @@
   background-color: #3a0ca3;
 }
 
-.teste {
-    background-color: grey;
-}
-
-.teste2 {
-    background-color: greenyellow;
-}
-
-.purple {
-    background-color: hsl(258, 86%, 34%);
-}
 .border-purple {
     border: 0.25em solid #3A0CA3;
-}
-.back-purple {
-    background-color:#3A0CA3;
 }
 .font_nav_brand {
   font-family: 'Poppins';
@@ -35,9 +21,6 @@
 .light_blue{
     background-color: rgba(67,97,238, 0.1);
 }
-.text_purple{
-    color: #3A0CA3;
-}
 .icon {
     color: grey;
 }
@@ -45,7 +28,7 @@
   background-color: #3a0ca3;
 }
 
-.purpleColor {
+.textPurple {
   color: #3a0ca3;
 }
 
@@ -74,11 +57,9 @@
   justify-content: center;
   align-items: center;
 }
-
 .teste {
   background-color: grey;
 }
-
 .headerA {
     justify-content: end;
 }
@@ -121,31 +102,12 @@
     position: relative;
     width: 100px;
 }
-
-.badge {
-    position: absolute;
-    top: 6px;
-    right: 0px;
-    border-radius: 10em;
-    border: 0.2em solid black;
-    font-size: 12px;
-    background-color: white;
-}
-@media (max-width: 576px) {
-    .heart-img {
-        width: 50px;
-    }
-}
 .teste2 {
   background-color: greenyellow;
 }
 
 .teste3 {
   background-color: red;
-}
-
-#purpleFont {
-  color: #3a0ca3;
 }
 
 .font-h3-homepage {
@@ -209,6 +171,4 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 
 /* Text Colour 3 */
 color: #808080;
-
-
 }
