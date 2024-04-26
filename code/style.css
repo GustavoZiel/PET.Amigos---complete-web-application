@@ -1,52 +1,123 @@
 .rectangle {
-    height: 20px;
-    background-color: #3A0CA3;
+  height: 20px;
+  background-color: #3a0ca3;
 }
 
 .purpleBgColor {
-    background-color: #3A0CA3;
+  background-color: #3a0ca3;
 }
 
 .purpleColor {
-    color: #3A0CA3;
+  color: #3a0ca3;
 }
 
 .lightPurpleBgColor {
-    background-color: rgba(67, 97, 238, 0.3);
+  background-color: rgba(67, 97, 238, 0.3);
 }
 
 .icon {
-    color: grey;
+  color: grey;
 }
 
 .inputNoBorder {
-    border: none;
-    outline: none;
-    width: 300px;
+  border: none;
+  outline: none;
+  width: 300px;
 }
 
 .purpleCircle {
-    width: 50px;
-    height: 50px;
-    background-color: #3A0CA3;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 50px;
+  height: 50px;
+  background-color: #3a0ca3;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .teste {
-    background-color: grey;
+  background-color: grey;
 }
 
 .teste2 {
-    background-color: greenyellow;
+  background-color: greenyellow;
 }
 
 .teste3 {
-    background-color: red;
+  background-color: red;
 }
 
 #purpleFont {
-    color: #3A0CA3;
+  color: #3a0ca3;
+}
+
+.font-h3-homepage {
+
+  /* PET É VIDA! */
+
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 19.4px;
+line-height: 29px;
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+
+letter-spacing: 0.15em;
+
+/* Colour 1 */
+color: #4361EE;
+
+
+}
+
+.font-h1-homepage {
+  /* Encontre seu novo melhor amigo! */
+  /* H1 */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 57.3px;
+  line-height: 65px;
+  /* or 113% */
+  /* leading-trim and text-edge are draft CSS properties.
+
+    Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+    */
+
+  /* Text Colour 1 */
+  color: #0b090a;
+}
+
+.font-p-homepage{
+
+    /* Conheça nossos animais prontos para receberem um novo lar. Personalize suas preferências e encontre o PET ideal! */
+
+
+/* Paragraph - Regular */
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 26px;
+/* or 162% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+
+
+/* Text Colour 3 */
+color: #808080;
+
+
+}
+
+
+  .navbar-nav .nav-link:hover {
+    border-radius: 1.1rem; /* equivalent to Bootstrap's rounded-5 */
+    background-color: #d1d8ff; /* equivalent to Bootstrap's lightPurpleBgColor */
 }
