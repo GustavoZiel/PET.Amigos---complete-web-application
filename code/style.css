@@ -3,8 +3,15 @@
   background-color: #3a0ca3;
 }
 
-.font_navbar {
+.font_nav_brand {
   font-family: 'Poppins';
+  font-size: 20px;
+  color: black;
+}
+
+.font_nav_link {
+  font-family: 'Poppins';
+  font-size: 16px;
   color: black;
 }
 
@@ -20,8 +27,10 @@
   background-color: rgba(67, 97, 238, 0.3);
 }
 
-.icon {
-  color: grey;
+.font_footer {
+  font-family: 'Poppins';
+  font-size: 16px;
+  color: #AAAAAA;
 }
 
 .inputNoBorder {
