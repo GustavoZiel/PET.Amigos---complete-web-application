@@ -157,6 +157,21 @@ color: #808080;
   color: #0b090a;
 }
 
+@media (max-width: 576px) {
+  .font-h2-homepage {
+      font-size: 25px; /* Adjust the font size for smaller screens */
+  }
+
+  .font-h1-homepage {
+    font-size: 35px; /* Adjust the font size for smaller screens */
+  }
+
+  .font-h3-homepage {
+    font-size: 15px; /* Adjust the font size for smaller screens */
+  }
+
+}
+
 
 
 .shadow_box{

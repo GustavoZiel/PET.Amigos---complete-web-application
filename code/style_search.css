@@ -15,21 +15,52 @@
   color: black;
 }
 
+.font-h2-search {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1em, 1.4em + 2vw, 3em);
+  line-height: 40px;
+  color: black;
+}
+  
+.font-h1-search {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1em, 1.8em + 2vw, 4em);
+  line-height: 65px;
+  color: rgb(255, 255, 255);
+}
+  
+
 .font_name {
   font-family: 'Poppins';
-  font-size: 30px;
+  font-size: clamp(1.2em, 0.5em + 1.6vw, 2.5em);
   font-weight: 500;
   color: white;
 }
 
 .font_infos {
   font-family: 'Poppins';
-  font-size: 20px;
+  font-size: clamp(0.8em, 0.3em + 0.8vw, 2.5em);
   font-weight: 300;
   color: white;
 }
 
+.font_name_card {
+  font-family: 'Poppins';
+  font-size: clamp(1.2em, 0.5em + 1.6vw, 2.5em);
+  font-weight: 500;
+  color: white;
+}
 
+.font_infos_card {
+  font-family: 'Poppins';
+  font-size: clamp(0.8em, 0.3em + 0.8vw, 2.5em);
+  font-weight: 300;
+  color: white;
+}
 
 .font_buscas {
   font-family: 'Poppins';
@@ -82,22 +113,4 @@
 .button-pages:hover{
   background-color: #7e58d8;
   color: black;
-}
-
-.font-h2-search {
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 40px;
-line-height: 40px;
-color: black;
-}
-
-.font-h1-search {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: 57.3px;
-  line-height: 65px;
-  color: rgb(255, 255, 255);
 }
