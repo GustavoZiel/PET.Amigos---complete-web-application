@@ -106,3 +106,41 @@ color: #AAAAAA;
   
   
   }
+
+  .btn-light {
+    background-color:  #3a0ca3;
+    border-color:  #3a0ca3;
+    color: white; /* Define a cor do texto como branco */
+}
+
+.btn-light:hover {
+    background-color: white; /* Muda a cor de fundo para branco */
+    border-color:  #3a0ca3;
+    color:  #3a0ca3; /* Muda a cor do texto para roxo */
+}
+
+.font-h2-loginpage {
+  /* Encontre seu novo melhor amigo! */
+  /* H1 */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* or 113% */
+  /* leading-trim and text-edge are draft CSS properties.
+
+    Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+    */
+
+  /* Text Colour 1 */
+  color: #0b090a;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  color: #3a0ca3 !important; /* Mudando a cor para azul quando o mouse passar sobre o texto */
+}
