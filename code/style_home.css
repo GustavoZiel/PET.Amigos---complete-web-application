@@ -236,3 +236,99 @@ color: #808080;
 
 }
 
+.image-container {
+  max-height: 150px; /* Ensure the container takes up the full height */
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+
+  border-radius: 10px; /* Add rounded edges */
+  overflow: hidden;
+
+  display: block;
+   
+
+}
+
+.image-border{
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #4361EE;
+  border-radius: 20px;
+  border-color: #4361EE;
+}
+
+.title-banner{
+  /* Seja parceiro! */
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 600;
+font-size: 60px;
+line-height: 47px;
+/* or 78% */
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+
+/* White */
+color: #FFFFFF;
+
+
+}
+
+.banner-parceiro{
+  /* Group 139 */
+  /* Rectangle 39 */
+
+
+
+background: linear-gradient(180deg, #DED4F7 0%, #4361EE 100%);
+border-radius: 50px;
+
+
+}
+
+.text-banner{
+  /* Gostaria de fazer parte da plataforma? Cadastre sua instituição ou ONG agora mesmo! */
+
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 26px;
+/* or 130% */
+/* leading-trim and text-edge are draft CSS properties.
+
+
+/* White */
+color: #FFFFFF;
+
+
+}
+
+.btn-custom-font {
+  /* Rent */
+
+border-radius: 30px;
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 500;
+font-size: 35px;
+line-height: 60px;
+/* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+
+text-align: center;
+
+color: #4F6BEF;
+
+
+/* Inside auto layout */
+flex: none;
+order: 0;
+flex-grow: 0;
+max-height: fit-content;
+}
