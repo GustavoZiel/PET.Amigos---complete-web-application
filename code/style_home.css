@@ -130,6 +130,10 @@ color: #808080;
 
 }
 
+.body{
+  margin: 0;
+}
+
 #carouselExampleControls {
   max-width: 80%;
 }
