@@ -93,7 +93,12 @@
     </header>
 
     <section class="bg-light ps-5 pb-4 mb-5 mt-3">
-        <p class="Poppins ps-4 pt-3 pb-3"><i class="fa-solid fa-chevron-left pe-2"></i>RETORNAR À PÁGINA ANTERIOR</p>
+        <div class="d-flex container-fluid ps-4">
+            <div class="d-flex align-items-center almost-white-bg px-2 py-1 my-4 rounded font-return-page">
+                <i class="fa-solid fa-chevron-left pe-2"></i>
+                RETORNAR À PÁGINA ANTERIOR
+            </div>
+        </div>
         <div class="row px-5 mx-3 pt-3">
             <div class="col-lg-3 d-flex flex-column align-items-center">
                 <div class="d-lg-none">
@@ -102,9 +107,19 @@
                         <i class="fa-solid fa-mars textPurple"></i>
                     </h1>
                 </div>
-                <img src="./img/Gato.png" alt="Cachorro" class="rounded-5 img-fluid animal border-purple">
-                <i class="fa-solid fa-heart coracao fa-2x pt-3 pb-2"></i>
-                <button type="button" class="border-purple purpleBgColor poppins-semibold text-white rounded-pill p-3 text-nowrap">QUERO ADOTAR</button>
+                <div class="d-inline-flex position-relative">
+                    <div class="d-flex flex-column align-items-center">
+                        <img src="./img/Gato.png" alt="Cachorro" class="rounded-5 img-fluid animal border-purple">
+                        <span class="coracao">
+                            <img src="./img/red-heart-svgrepo-com.svg" alt="" class="img-fluid ">
+                        </span>
+                        <span class="likes">
+                            <p class=" bg-light text-sm border-purple textPurple poppins-medium rounded-pill">123</p>
+                        </span>
+                        <button type="button" class="container-fluid purpleBgColor adotar border-purple text-white poppins-semibold rounded-pill mt-3  text-nowrap">QUERO ADOTAR!</button>
+                    </div>
+                </div>
+
 
             </div>
             <div class="col-lg-9 row">
@@ -116,33 +131,29 @@
                 </div>
                 <div class="col-lg-6 row ps-5">
                     <div class="col-lg-6 pt-2">
-                        <h5 class=" poppins-medium headers_caract">Idade</h5>
+                        <h5 class=" poppins-medium headers_caract">IDADE</h5>
                         <p class="poppins-medium text_caract">2 anos e 10 meses</p>
-                        <h5 class=" poppins-medium headers_caract">Raça</h5>
+                        <h5 class=" poppins-medium headers_caract">RAÇA</h5>
                         <p class="poppins-medium text_caract">Sem raça definida</p>
-                        <h5 class=" poppins-medium headers_caract">Localização</h5>
+                        <h5 class=" poppins-medium headers_caract">LOCALIZAÇÃO</h5>
                         <p class="poppins-medium text_caract">Araraquara, SP</p>
                     </div>
                     <div class="col-lg-6">
-                        <h5 class=" poppins-medium headers_caract">Espécie</h5>
+                        <h5 class=" poppins-medium headers_caract">ESPÉCIE</h5>
                         <p class="poppins-medium text_caract">Cachorro</p>
-                        <h5 class=" poppins-medium headers_caract">Porte</h5>
+                        <h5 class=" poppins-medium headers_caract">PORTE</h5>
                         <p class="poppins-medium text_caract">Pequeno</p>
-                        <h5 class=" poppins-medium headers_caract">Localização</h5>
-                        <p class="poppins-medium text_caract">Araraquara, SP</p>
                     </div>
-                    <h5 class="poppins-medium headers_caract">Sobre</h5>
+                    <h5 class="poppins-medium headers_caract">SOBRE</h5>
                     <p class="poppins-medium text_caract">Cachorro dócil, manso e bem sociável. Resgatado em 2023 com outros dois irmãos. Castrado, vermifugado e possui microchip.</p>
                 </div>
-                <div class="col-lg-3 d-flex flex-column align-items-center">
+                <div class="col-lg-6 d-flex flex-column align-items-center">
                     <div>
-                        <h5 class="poppins-medium headers_caract">Institução protetora</h5>
+                        <h5 class="poppins-medium headers_caract">INSTITUIÇÃO PROTETORA</h5>
                     </div>
-                    <div>
+                    <div class="d-flex flex-column align-items-center">
                         <img src="./img/tuka.png" alt="Cachorro" class="mb-2 img-fluid rounded-5 border-purple">
-                    </div>
-                    <div>
-                        <button type="button" class="bg-light border-purple textPurple rounded-pill  px-4 text-nowrap">Saiba mais!</button>
+                        <button type="button" class="bg-light border-purple textPurple rounded-pill px-4 container-fluid text-nowrap">Saiba mais!</button>
                     </div>
                 </div>
             </div>

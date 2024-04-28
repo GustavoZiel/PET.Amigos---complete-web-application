@@ -19,6 +19,14 @@
 .lightPurpleBgColor {
   background-color: rgba(67, 97, 238, 0.3);
 }
+.adotar {
+  font-size:2vw;
+}
+@media (max-width: 600px) {
+  .adotar{
+    font-size:4vw;
+  }
+}
 
 .inputNoBorder {
   border: none;
@@ -53,6 +61,10 @@
 }  
 .coracao {
     color: #FF0000;
+    position: absolute;
+    top: 4%;
+    right: 7%;
+    left: 78%;
 }
 .poppins-semibold {
     font-family: "Poppins", sans-serif;
@@ -93,6 +105,32 @@ letter-spacing: 0.15em;
 color: #4361EE;
 
 
+}
+.likes {
+  color: #000000;
+  position: absolute;
+  top:3%;
+  right: 5%;
+  left: 89%;
+  min-width: 3em;
+  text-align: center
+}
+@media (min-width: 992px) {
+  .likes{
+    font-size:1vw;
+  }
+}
+@media (max-width: 600px) {
+  .likes{
+    font-size:2.5vw;
+  }
+}
+.almost-white-bg {
+  background-color: #EDF0FE;
+}
+.font-return-page {
+  font-family: "Poppins", sans-serif;
+  font-size: 19px;
 }
 
 .font-h1-homepage {
