@@ -86,6 +86,14 @@
             </div>
         </nav>
     </header>
+    <style>
+        .corazaum {
+            position: absolute;
+            top: 3%;
+            right: 2%;
+            left: 85%;
+        }
+    </style>
 
     <section class="bg-light ps-5 pb-4 mb-5 mt-3">
         <p class="Poppins ps-4 pt-3 pb-3"><i class="fa-solid fa-chevron-left pe-2"></i>RETORNAR À PÁGINA ANTERIOR</p>
@@ -97,10 +105,12 @@
                         <i class="fa-solid fa-mars textPurple"></i>
                     </h1>
                 </div>
-                <img src="./img/Gato.png" alt="Cachorro" class="rounded-5 img-fluid animal border-purple">
-                <i class="fa-solid fa-heart coracao fa-2x pt-3 pb-2"></i>
-                <button type="button" class="border-purple purpleBgColor poppins-semibold text-white rounded-pill p-3 text-nowrap">QUERO ADOTAR</button>
-
+                <div class="d-inline-flex position-relative">
+                    <img src="./img/Gato.png" alt="Cachorro" class="rounded-5 img-fluid animal border-purple">
+                    <span class="coracao">
+                        <img src="./img/red-heart-svgrepo-com.svg" alt="" class="img-fluid ">
+                    </span>
+                </div>
             </div>
             <div class="col-lg-9 row">
                 <div class=" d-none d-lg-block">
@@ -129,7 +139,7 @@
                     <h5 class="poppins-medium headers_caract">Sobre</h5>
                     <p class="poppins-medium text_caract">Cachorro dócil, manso e bem sociável. Resgatado em 2023 com outros dois irmãos. Castrado, vermifugado e possui microchip.</p>
                 </div>
-                <div class="col-lg-3 d-flex flex-column align-items-center">
+                <div class="col-lg-6 d-flex flex-column align-items-center">
                     <div>
                         <h5 class="poppins-medium headers_caract">Institução protetora</h5>
                     </div>

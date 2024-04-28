@@ -84,6 +84,10 @@
 }  
 .coracao {
     color: #FF0000;
+    position: absolute;
+    top: 4%;
+    right: 7%;
+    left: 78%;
 }
 .poppins-semibold {
     font-family: "Poppins", sans-serif;
