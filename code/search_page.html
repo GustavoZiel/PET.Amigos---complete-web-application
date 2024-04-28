@@ -6,13 +6,31 @@
 
     <link rel="stylesheet" href="./style_header_footer.css">
     <link rel="stylesheet" href="./style_search.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-    
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet"
+    />
+    <script
+        src="https://kit.fontawesome.com/ced5a00aa9.js"
+        crossorigin="anonymous"
+    ></script>
 
+  <!-- Bootstrap CSS -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  />
+
+  <!-- Bootstrap Bundle JS (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+        crossorigin="anonymous"
+    />
     <title>Search Page</title>
 </head>
 
@@ -89,32 +107,32 @@
     </header>
 
         
-    <!-- Conteudo para PC -->
-    <div class="d-none d-md-block purpleBgColor">
+    <!-- Sugestões do site -->
+    <div class="purpleBgColor">
         <div class="row rounded m-4 p-3 py-4" id="Sugestoes">
-            <h1 class="font-h1-search pt-3 pb-4">Opções para você!</h1>
+            <h1 class="font-h1-search pt-3 pb-md-4">Opções para você!</h1>
             <div class="container" id="img_grid">
 
                 <div class="row justify-content-center mt-3">
-                    <div class="col-md-3 px-5 margem-grid"> 
+                    <div class="col-md-3 col-sm-6 col-6 px-5 margem-grid"> 
                         <img class="img-fluid imagem rounded-5 border-white" src="imgs/Gup.png" alt="Gup">
-                        <div class="text-start pt-3 font_name">Gup</div>
+                        <div class="text-start pt-3 font_name font_name">Gup</div>
                         <div class="text-start font_infos">Pug</div>
                         <div class="text-start pb-3 font_infos">Araraquara, SP</div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid "> 
+                    <div class="col-md-3 col-sm-6 col-6 px-5 margem-grid "> 
                         <img class="img-fluid imagem rounded-5 border-white" src="imgs/Ney.png" alt="Ney">
-                        <div class="text-start pt-3 font_name">Ney</div>
+                        <div class="text-start pt-3 font_name font-size: 2.0em">Ney</div>
                         <div class="text-start font_infos">Chihuahua</div>
                         <div class="text-start pb-3 font_infos">Santos, SP</div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid "> 
+                    <div class="col-md-3 col-sm-6 px-5 col-6 margem-grid "> 
                         <img class="img-fluid imagem rounded-5 border-white" src="imgs/Monteiro.png" alt="Monteiro">
                         <div class="text-start pt-3 font_name">Monteiro</div>
                         <div class="text-start font_infos">Corgi</div>
                         <div class="text-start pb-3 font_infos">Belo Horizonte, MG</div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid "> 
+                    <div class="col-md-3 col-sm-6 col-6 px-5 margem-grid "> 
                         <img class="img-fluid imagem rounded-5 border-white" src="imgs/Pitstop.png" alt="Pitstop">
                         <div class="text-start pt-3 font_name">Pitstop</div>
                         <div class="text-start font_infos">Pitbull</div>
@@ -126,94 +144,96 @@
         </div>
     </div>
 
-    <!-- Conteudo para PC -->
-    <div class="background-color: white">
-        <div class="row rounded m-4 p-3 py-4" id="Resultados">
+    <!-- Conteudo para PC (disposicao em Grids)-->
+    <div class="d-none d-md-block background-color: white">
+        <div class="row rounded m-4 s-2 p-3 py-4" id="Grid_resultados">
+
             <h2 class="font-h2-search pt-3 pb-4">Pets encontrados!</h2>
             <div class="container" id="img_grid">
                 <div class="row justify-content-center mt-3">
-                    <div class="col-md-3 px-5 margem-grid"> 
+
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid"> 
                        <div class="card rounded-5">
                             <img src="imgs/Gup.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Gup</div>
-                                <div class="text-start pb-0 font_infos">Araraquara, SP</div>
+                                <div class="text-start font_name_card">Gup</div>
+                                <div class="text-start font_infos_card">Araraquara, SP</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid "> 
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid "> 
                         <div class="card rounded-5">
                             <img src="imgs/Ney.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Ney</div>
-                                <div class="text-start pb-0 font_infos">Santos, SP</div>
+                                <div class="text-start font_name_card">Ney</div>
+                                <div class="text-start font_infos_card">Santos, SP</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid ">
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid ">
                         <div class="card rounded-5">
                             <img src="imgs/Pitstop.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Pitstop</div>
-                                <div class="text-start pb-0 font_infos">Salvador, BA</div>
+                                <div class="text-start font_name_card">Pitstop</div>
+                                <div class="text-start font_infos_card">Salvador, BA</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <div class="col-md-3 px-5 margem-grid"> 
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid"> 
                        <div class="card rounded-5">
                             <img src="imgs/Gup.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Gup</div>
-                                <div class="text-start pb-0 font_infos">Araraquara, SP</div>
+                                <div class="text-start font_name_card">Gup</div>
+                                <div class="text-start font_infos_card">Araraquara, SP</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid "> 
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid "> 
                         <div class="card rounded-5">
                             <img src="imgs/Ney.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Ney</div>
-                                <div class="text-start pb-0 font_infos">Santos, SP</div>
+                                <div class="text-start font_name_card">Ney</div>
+                                <div class="text-start font_infos_card">Santos, SP</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid ">
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid ">
                         <div class="card rounded-5">
                             <img src="imgs/Pitstop.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Pitstop</div>
-                                <div class="text-start pb-0 font_infos">Salvador, BA</div>
+                                <div class="text-start font_name_card">Pitstop</div>
+                                <div class="text-start font_infos_card">Salvador, BA</div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row justify-content-center mt-3">
-                    <div class="col-md-3 px-5 margem-grid"> 
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid"> 
                        <div class="card rounded-5">
                             <img src="imgs/Gup.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Gup</div>
-                                <div class="text-start pb-0 font_infos">Araraquara, SP</div>
+                                <div class="text-start font_name_card">Gup</div>
+                                <div class="text-start font_infos_card">Araraquara, SP</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid "> 
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid "> 
                         <div class="card rounded-5">
                             <img src="imgs/Ney.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Ney</div>
-                                <div class="text-start pb-0 font_infos">Santos, SP</div>
+                                <div class="text-start font_name_card">Ney</div>
+                                <div class="text-start font_infos_card">Santos, SP</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-3 px-5 margem-grid ">
+                    <div class="col-md-4 col-sm-12 col-3 px-5 margem-grid ">
                         <div class="card rounded-5">
                             <img src="imgs/Pitstop.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
                             <div class="card-body purpleBgColor rounded-bottom-5">
-                                <div class="text-start pt-0 font_name">Pitstop</div>
-                                <div class="text-start pb-0 font_infos">Salvador, BA</div>
+                                <div class="text-start font_name_card">Pitstop</div>
+                                <div class="text-start font_infos_card">Salvador, BA</div>
                             </div>
                         </div>
                     </div>
@@ -226,6 +246,62 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
+
+    <!-- Conteudo para mobile (disposicao em carrossel)-->
+    <div class="d-block d-md-none py-5">
+        <h2 class="font-h2-search ps-5 pb-5">Pets encontrados!</h2>
+        <div class="container col-9" style="max-height: 70%">
+            <div id="Carrossel_buscas" class="carousel slide">
+                <div class="carousel-inner rounded-4">
+                    <a href="./pet_page.html" style="text-decoration: none">
+                        <div class="carousel-item active">
+                            <div class="card rounded-5">
+                                <img src="imgs/Nelso.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
+                                <div class="card-body purpleBgColor rounded-bottom-5">
+                                    <div class="text-start font_name_carrousel">Nelso</div>
+                                    <div class="text-start font_infos_carrousel">Não sei</div>
+                                    <div class="text-start font_infos_carrousel">Recife, PE</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./pet_page.html" style="text-decoration: none">
+                        <div class="carousel-item">
+                            <div class="card rounded-5">
+                                <img src="imgs/Juninho.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
+                                <div class="card-body purpleBgColor rounded-bottom-5">
+                                    <div class="text-start font_name_carrousel">Juninho</div>
+                                    <div class="text-start font_infos_carrousel">Pug</div>
+                                    <div class="text-start font_infos_carrousel">Maringá, PR</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="./pet_page.html" style="text-decoration: none">
+                        <div class="carousel-item">
+                            <div class="card rounded-5">
+                                <img src="imgs/Camembert.png" class="card-img-top img-fluid rounded-top-5 border-img-card" alt="Gup">
+                                <div class="card-body purpleBgColor rounded-bottom-5">
+                                    <div class="text-start font_name_carrousel">Camembert</div>
+                                    <div class="text-start font_infos_carrousel">Sem raça definida</div>
+                                    <div class="text-start font_infos_carrousel">Le Havre, Normandia</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#Carrossel_buscas" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#Carrossel_buscas" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+                </div>
+          </div>
         </div>
     </div>
 
