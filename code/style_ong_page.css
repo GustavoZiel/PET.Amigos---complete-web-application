@@ -20,7 +20,25 @@
 
 .font-return-page {
     font-family: "Poppins", sans-serif;
-    font-size: 19px;
+    font-size: 18px;
+}
+
+@media (max-width: 576px) {
+    .font-return-page {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) and (min-width: 576px) {
+    .font-return-page {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 992px) and (min-width: 768px) {
+    .font-return-page {
+        font-size: 16px;
+    }
 }
 
 .img-border {
