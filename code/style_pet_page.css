@@ -98,7 +98,25 @@ color: #4361EE;
 
 
 }
-
+.likes {
+  color: #000000;
+  position: absolute;
+  top:3%;
+  right: 5%;
+  left: 89%;
+  min-width: 3em;
+  text-align: center
+}
+@media (min-width: 992px) {
+  .likes{
+    font-size:1vw;
+  }
+}
+@media (max-width: 600px) {
+  .likes{
+    font-size:2.5vw;
+  }
+}
 .almost-white-bg {
   background-color: #EDF0FE;
 }
