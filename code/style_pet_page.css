@@ -99,6 +99,14 @@ color: #4361EE;
 
 }
 
+.almost-white-bg {
+  background-color: #EDF0FE;
+}
+.font-return-page {
+  font-family: "Poppins", sans-serif;
+  font-size: 19px;
+}
+
 .font-h1-homepage {
   /* Encontre seu novo melhor amigo! */
   /* H1 */
