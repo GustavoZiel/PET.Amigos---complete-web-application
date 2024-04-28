@@ -19,6 +19,14 @@
 .lightPurpleBgColor {
   background-color: rgba(67, 97, 238, 0.3);
 }
+.adotar {
+  font-size:2vw;
+}
+@media (max-width: 600px) {
+  .adotar{
+    font-size:4vw;
+  }
+}
 
 .inputNoBorder {
   border: none;
