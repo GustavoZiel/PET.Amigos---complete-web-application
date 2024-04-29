@@ -131,6 +131,10 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   overflow: hidden;
 }
 
+.esp-interno p {
+  margin-bottom: 1.5px; /* Adjust the value as needed */
+}
+
 .carousel-item img {
   height: auto; /* Ensure images maintain aspect ratio */
   max-height: 100%; /* Set the maximum height of images to fit within the carousel container */
@@ -155,31 +159,6 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   color: #0b090a;
 }
 
-@media (max-width: 576px) {
-  .font-h2-homepage {
-    font-size: 20px;
-    line-height: 1.1;
-
-    /* Adjust the font size for smaller screens */
-  }
-
-  .font-h1-homepage {
-    font-size: 30px; /* Adjust the font size for smaller screens */
-    line-height: 1;
-  }
-
-  .font-h3-homepage {
-    font-size: 15px;
-    line-height: 1; /* Adjust the font size for smaller screens */
-  }
-  #carouselExampleControls {
-    max-width: 110%;
-  }
-
-  .font-p-homepage {
-    font-size: 14px;
-  }
-}
 
 .shadow_box {
   max-height: min-content;
@@ -321,4 +300,74 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   order: 0;
   flex-grow: 0;
   max-height: fit-content;
+}
+
+
+
+@media (max-width: 576px) {
+  .font-h2-homepage {
+    font-size: 20px;
+    line-height: 1.1;
+
+    /* Adjust the font size for smaller screens */
+  }
+
+  .font-h1-homepage {
+    font-size: 30px; /* Adjust the font size for smaller screens */
+    line-height: 1;
+  }
+
+  .font-h3-homepage {
+    font-size: 15px;
+    line-height: 1; /* Adjust the font size for smaller screens */
+  }
+  #carouselExampleControls {
+    max-width: 110%;
+  }
+
+  .font-p-homepage {
+    font-size: 14px;
+  }
+  .title-banner{
+    font-size: 35px;
+    text-align: center;
+  }
+  .text-banner{
+    font-size: 15px;
+    margin-bottom: 2px;
+  }
+
+  .btn-custom-font {
+    /* Rent */
+  
+    border-radius: 15px;
+    font-family: "Poppins";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 50px;
+    /* leading-trim and text-edge are draft CSS properties.
+  
+  Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+  */
+  
+    text-align: center;
+  
+    color: #4f6bef;
+  
+    /* Inside auto layout */;
+    order: 0;
+    flex-grow: 0;
+    max-height: fit-content;
+
+    margin-top: 0;
+  }
+
+  .banner-parceiro {
+    /* Group 139 */
+    /* Rectangle 39 */
+  
+    background: linear-gradient(180deg, #ded4f7 0%, #4361ee 100%);
+    border-radius: 40px;
+  }
 }

@@ -91,8 +91,8 @@
     <!-- Informações importantes da ONG -->
     <section>
         <!-- Botão de retornar à página anterior -->
-        <div class="d-flex container-fluid ps-4">
-            <div class="d-flex align-items-center almost-white-bg px-2 py-1 my-4 rounded font-return-page">
+        <div class="d-flex container-fluid ps-md-4">
+            <div class="d-flex align-items-center almost-white-bg px-2 py-1 mt-4 mb-3 rounded font-return-page">
                 <i class="fa-solid fa-chevron-left pe-2"></i>
                 RETORNAR À PÁGINA ANTERIOR
             </div>
@@ -100,18 +100,74 @@
 
         <!-- Foto e informações da ONG -->
         <div class="container-fluid row">
+            <!-- Informações (Mobile) -->
+            <div class="col-12">
+                <!-- Nome da ONG -->
+                <div class="font-ong-name d-flex d-md-none justify-content-center">Acãochego da Tuka</div>
+
+                <!-- Dados -->
+                <div class="container-fluid d-sm-flex justify-content-start pt-4">
+                    <!-- Localização -->
+                    <div class="d-md-none pb-2 pe-5 pb-sm-0">
+                        <div class="font-type-info">LOCALIZAÇÃO</div>
+                        <div class="font-info">ARARAQUARA, SP</div>
+                    </div>
+
+                    <!-- Desde -->
+                    <div class="d-md-none pb-2 pe-5 pb-sm-0">
+                        <div class="font-type-info">DESDE</div>
+                        <div class="font-info">2018</div>
+                    </div>
+
+                    <!-- Animais -->
+                    <div class="d-md-none pb-sm-0">
+                        <div class="font-type-info">ANIMAIS</div>
+                        <div class="font-info">CACHORRO, GATO</div>
+                    </div>
+                </div>
+
+                <!-- Sobre -->
+                <div class="container-fluid d-block d-md-none py-2">
+                    <div class="font-type-info">SOBRE</div>
+                    <div class="font-info">Um espaço aconchegante para anjos que já sofreram na rua e esperam por um lar.</div>
+                </div>
+
+                <!-- Contato -->
+                <div class="container-fluid font-contact d-block d-md-none">
+                    <div class="font-type-info">CONTATO</div>
+
+                    <div class="d-flex justify-content-start pt-1">
+                        <!-- Instagram -->
+                        <div class="link-border rounded-pill">
+                            <a href="https://www.instagram.com/acaochegodatuka/" class="font-contact">
+                                <i class="fa-brands fa-instagram"></i>
+                                Instagram
+                            </a>
+                        </div>
+
+                        <!-- Facebook -->
+                        <div class="link-border rounded-pill ms-2">
+                            <a href="https://www.facebook.com/acaochegodatuka/about" class="font-contact">
+                            <i class="fa-brands fa-facebook-f"></i>
+                                Facebook
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Foto -->
-            <div class="col-5 d-flex justify-content-center">
+            <div class="col-12 col-md-5 d-flex justify-content-center py-4 pt-md-0">
                 <img src="/code/img/tuka.png" alt="Foto da ONG" class="h-100 rounded-4 img-border img-fluid">
             </div>
 
-            <!-- Informações -->
-            <div class="col-7 mb-5">
-                <!-- Título -->
-                <div class="font-ong-name">Acãochego da Tuka</div>
+            <!-- Informações (Desktop) -->
+            <div class="col-7 mb-md-5">
+                <!-- Nome da ONG -->
+                <div class="font-ong-name d-none d-md-flex">Acãochego da Tuka</div>
 
                 <!-- Dados -->
-                <div class="d-flex pt-2 justify-content-start">
+                <div class="d-none d-md-flex pt-2 justify-content-start">
                     <!-- Localização -->
                     <div class="me-3">
                         <div class="font-type-info">LOCALIZAÇÃO</div>
@@ -132,13 +188,13 @@
                 </div>
 
                 <!-- Sobre -->
-                <div class="py-3">
+                <div class="d-none d-md-block py-3">
                     <div class="font-type-info">SOBRE</div>
                     <div class="font-info">Um espaço aconchegante para anjos que já sofreram na rua e esperam por um lar.</div>
                 </div>
 
                 <!-- Contato -->
-                <div class="font-contact">
+                <div class="font-contact d-none d-md-block">
                     <div class="font-type-info">CONTATO</div>
 
                     <div class="d-flex justify-content-start pt-1">
@@ -164,7 +220,7 @@
     </section>
 
     <!-- Animais da ONG -->
-    <section class="container-fluid mt-5 px-5">
+    <section class="container-fluid mt-md-5 mt-4 px-5">
         <!-- Título -->
         <div class="ong-pets-title">
             Animais esperando por um lar!
@@ -172,7 +228,7 @@
 
         <!-- Fotos dos animais -->
         <div class="row pt-4">
-            <div class="col-3 pb-4">
+            <div class="col-xl-3 col-sm-6 pb-4">
                 <div class="card rounded-5">
                     <img src="imgs/Pitstop.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
                     <div class="card-body purple-bg rounded-bottom-5">
@@ -182,7 +238,7 @@
                 </div>
             </div>
 
-            <div class="col-3 pb-4">
+            <div class="col-xl-3 col-sm-6 pb-4">
                 <div class="card rounded-5">
                     <img src="imgs/Gup.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Gup">
                     <div class="card-body purple-bg rounded-bottom-5">
@@ -192,7 +248,7 @@
                 </div>
             </div>
 
-            <div class="col-3 pb-4">
+            <div class="col-xl-3 col-sm-6 pb-4">
                 <div class="card rounded-5">
                     <img src="imgs/Ney.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Ney">
                     <div class="card-body purple-bg rounded-bottom-5">
@@ -202,17 +258,17 @@
                 </div>
             </div>
 
-            <div class="col-3 pb-4">
+            <div class="col-xl-3 col-sm-6 pb-4">
                 <div class="card rounded-5">
                     <img src="imgs/Monteiro.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Monteiro">
                     <div class="card-body purple-bg rounded-bottom-5">
                         <div class="card-font-name">Monteiro</div>
-                        <div class="card-font-info">Rio de Janeiro, RJ</div>
+                        <div class="card-font-info">Belo Horizonte, MG</div>
                     </div>
                 </div>
             </div>
 
-            <div class="col-3 pb-4">
+            <div class="col-xl-3 col-sm-6 pb-4">
                 <div class="card rounded-5">
                     <img src="imgs/Nelso.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Nelso">
                     <div class="card-body purple-bg rounded-bottom-5">
@@ -222,7 +278,7 @@
                 </div>
             </div>
 
-            <div class="col-3 pb-4">
+            <div class="col-xl-3 col-sm-6 pb-4">
                 <div class="card rounded-5">
                     <img src="imgs/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Juninho">
                     <div class="card-body purple-bg rounded-bottom-5">

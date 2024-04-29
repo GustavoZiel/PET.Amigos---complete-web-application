@@ -148,7 +148,7 @@
           </p>
         </div>
 
-        <div class="container col-12 col-md-9" style="max-height: 70%">
+        <div class="container d-none d-sm-block col-12 col-md-9" style="max-height: 70%">
           <div id="meuCarrossel" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">
               <button
@@ -223,12 +223,18 @@
         </div>
       </div>
 
+      <div class = "d-sm-none col-12">
+        <img src="https://img.freepik.com/free-photo/vertical-shot-cute-cat-background-field_181624-56606.jpg?t=st=1714248228~exp=1714251828~hmac=abf7ab018e76ce46da152fce885e4277451a91743882995f06cafca1c9944a6b&w=360" 
+              alt="gato na natureza"
+              class="img-fluid">
+      </div>
+
       <div class="row align-items-center justify-content-center py-4">
         <!-- First main div occupying 6 columns on all screen sizes -->
         <div class="col-12 col-md-6 align-items-center flex-column">
           <h3 class="font-h3-homepage pd-7">QUEM SOMOS?</h3>
           <h2 class="font-h2-homepage">
-            Ajudando a conectar pessoas e animais de maneira responsável!
+            Ajudando na adoção responsável!
           </h2>
           <p class="font-p-homepage">
             Somos uma plataforma aberta e acessível para pessoas e instituições
@@ -241,7 +247,7 @@
             <div class="shadow-sm p-3 mb-5 bg-white rounded col-6 shadow_box">
               <div class="row align-items-center">
                 <div class="col-auto">
-                  <i class="fa-solid fa-user fa-2xl" style="color: #4361ee"></i>
+                  <i class="fa-solid fa-user fa-2xl d-sm-block d-none" style="color: #4361ee"></i>
                 </div>
                 <div class="col">
                   <h3 class="font-h3-homepage">Cadastro Simples</h3>
@@ -258,7 +264,7 @@
             <div class="shadow-sm p-3 mb-5 bg-white rounded col-6 shadow_box">
               <div class="row align-items-center">
                 <div class="col-auto">
-                  <i class="fa-solid fa-paw fa-2xl" style="color: #4361ee"></i>
+                  <i class="fa-solid fa-paw fa-2xl d-sm-block d-none" style="color: #4361ee"></i>
                 </div>
                 <div class="col">
                   <h3 class="font-h3-homepage">Combinação ideal</h3>
@@ -276,7 +282,7 @@
         <div class="col-12 col-md-6">
           <div class="row align-items-center justify-content-center">
             <!-- First image occupying 3 columns on all screen sizes -->
-            <div class="col-12 col-md-6">
+            <div class="col-12 col-sm-6">
               <img
                 src="https://plus.unsplash.com/premium_photo-1686090449483-89a9b794e7cf?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                 class="img-fluid py-3 rounded-3"
@@ -285,7 +291,7 @@
             </div>
 
             <!-- Second and third images occupying 3 columns each, stacked on smaller screens -->
-            <div class="d-none d-md-block col-md-6">
+            <div class="d-none d-sm-block col-sm-6">
               <img
                 src="https://media.istockphoto.com/id/1551607933/pt/foto/golden-retriever-dog-doing-trick.jpg?s=612x612&w=is&k=20&c=gkQzcd1Cw3WCQMuY1morzbMlCqVjAWNhcCJQCjBGjq0="
                 class="img-fluid py-3 rounded-3"
@@ -312,9 +318,9 @@
           <!--Varios animais-->
           <div class="row align-content-center align-items-center">
             <!--Um animal-->
-            <div class="col-12 col-md-6 col-lg-3 py-3">
+            <div class="col-12 col-sm-6 col-lg-3 py-3">
               <img src="./imgs/Monteiro.png" class="img-fluid rounded-5" />
-              <div class = "py-3">
+              <div class = "esp-interno my-3">
                 <p class="nome_pets">Monteiro</p>
                 <p class="raca_pets">Corgi</p>
                 <p class="cidade_pets">São Carlos - SP</p>
@@ -330,9 +336,9 @@
                 </div>
               </div>
             </div>
-            <div class="d-none d-md-block col-md-6 col-lg-3 py-3">
+            <div class="d-none d-sm-block col-sm-6 col-lg-3 py-3">
               <img src="./imgs/Gup.png" class="img-fluid rounded-5" />
-              <div class = "py-3">
+              <div class = "esp-interno my-3">
                 <p class="nome_pets">Gup</p>
                 <p class="raca_pets">Pug</p>
                 <p class="cidade_pets">Araraquara - SP</p>
@@ -350,7 +356,7 @@
             </div>
             <div class="d-none d-md-block col-md-6 col-lg-3 py-3">
               <img src="./imgs/Ney.png" class="img-fluid rounded-5" />
-              <div class = "py-3">
+              <div class = "esp-interno my-3">
                 <p class="nome_pets">Ney</p>
                 <p class="raca_pets">Chihuahua</p>
                 <p class="cidade_pets">Ibaté - SP</p>
@@ -368,7 +374,7 @@
             </div>
             <div class="d-none d-md-block col-md-6 col-lg-3 py-3">
               <img src="./imgs/Pitstop.png" class="img-fluid rounded-5" />
-              <div class = "py-3">
+              <div class = "esp-interno my-3">
                 <p class="nome_pets">PitStop</p>
                 <p class="raca_pets">Pit Bull</p>
                 <p class="cidade_pets">Araraquara - SP</p>
@@ -404,8 +410,9 @@
               />
             </div>
             <div class="col-12 col-md-5 col-lg-4 image-border d-flex m-4">
-              <img  class = "image-container"
-                    src="./img/tuka.png" />
+              <a href="ong_page.html">
+                <img class="image-container" src="./img/tuka.png"/>
+              </a>
             </div>
           </div>
           <div class="row align-content-center justify-content-center">
@@ -423,15 +430,15 @@
         </div>
       </div>
       <div class="banner-parceiro row justify-content-center m-4 col-12 col-md-10">
-        <div class="px-5 py-3 col-12 md-p-5 col-md-6 col-lg-8 order-0 order-md-0">
+        <div class="col-12 p-md-5 col-md-6 col-lg-8 order-0 order-md-0">
             <h1 class="title-banner py-4">Seja parceiro!</h1>
-            <p class="text-banner py-3">Gostaria de fazer parte da plataforma? 
+            <p class="text-banner py-2 py-md-3">Gostaria de fazer parte da plataforma? 
                 Cadastre sua instituição ou ONG agora mesmo!</p>
         </div>
         <div class="col-12 col-md-6 col-lg-4 px-5 py-4 md-p-5 d-flex align-items-center justify-content-center order-1 order-md-1">
-            <button type="button" class="btn btn-light btn-custom-font">
-                Faça parte!
-            </button>
+            <a href="signup_page.html" class="btn btn-light btn-custom-font">
+              Faça parte!
+            </a>
         </div>
     </div>
     
