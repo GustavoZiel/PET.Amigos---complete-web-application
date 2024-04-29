@@ -103,7 +103,7 @@
         }
 
         .font-btn-filter {
-            font-size: x-large;
+            font-size: clamp(0.3em, 1.5em + 2vw, 1.25em);
             color: #3A0CA3;
             font-family: 'Poppins';
             }
@@ -174,54 +174,70 @@
 
         <!-- Sugestões do site (display para desktop) -->
         <div class="row">
-            <div class="d-none d-md-block col purpleBgColor">
+            <div class="d-none d-md-block col lilacBgColor">
                 <div class="container text-start">
                     <h1 class="py-3 font_h1_search">Opções para você!</h1>
                     <div class="d-flex justify-content-center flex-wrap">
                         <div class="pb-4">
                             <a href="./pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 mx-4" style="width: 15rem">
+                                <div class="card rounded-5 mx-4" style="width: 12rem">
                                     <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                     <div class="card-body purpleBgColor rounded-bottom-5">
                                         <div class="text-start font_name_white">Gup</div>
                                         <div class="text-start font_infos_white">Pug</div>
                                         <div class="text-start font_infos_white">Araraquara, SP</div>
+                                        <div class="row_icon">
+                                            <i class="fa-solid fa-heart fa-lg" style="color: white"></i>
+                                            <p class="text font_icons">Dócil</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="pb-4">
                             <a href="./pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 mx-4" style="width: 15rem">
+                                <div class="card rounded-5 mx-4" style="width: 12rem">
                                     <img src="imgs/Ney.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                     <div class="card-body purpleBgColor rounded-bottom-5">
                                         <div class="text-start font_name_white">Ney</div>
                                         <div class="text-start font_infos_white">Chihuahua</div>
                                         <div class="text-start font_infos_white">Santos, SP</div>
+                                        <div class="row_icon">
+                                            <i class="fa-solid fa-heart fa-lg" style="color: white"></i>
+                                            <p class="text font_icons">Dócil</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="pb-4">
                             <a href="./pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 mx-4" style="width: 15rem">
+                                <div class="card rounded-5 mx-4" style="width: 12rem">
                                     <img src="imgs/Monteiro.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                     <div class="card-body purpleBgColor rounded-bottom-5">
                                         <div class="text-start font_name_white">Monteiro</div>
                                         <div class="text-start font_infos_white">Corgi</div>
                                         <div class="text-start font_infos_white">Uberaba, MG</div>
+                                        <div class="row_icon">
+                                            <i class="fa-solid fa-heart fa-lg" style="color: white"></i>
+                                            <p class="text font_icons">Dócil</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
                         </div>
                         <div class="pb-4">
                             <a href="./pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 mx-4" style="width: 15rem">
+                                <div class="card rounded-5 mx-4" style="width: 12rem">
                                     <img src="imgs/Pitstop.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                     <div class="card-body purpleBgColor rounded-bottom-5">
                                         <div class="text-start font_name_white">Pitstop</div>
                                         <div class="text-start font_infos_white">Pitbull</div>
                                         <div class="text-start font_infos_white">Salvador, BA</div>
+                                        <div class="row_icon">
+                                            <i class="fa-solid fa-heart fa-lg" style="color: white"></i>
+                                            <p class="text font_icons">Dócil</p>
+                                        </div>
                                     </div>
                                 </div>
                             </a>
@@ -232,16 +248,16 @@
         </div>
 
         <!-- Sugestões do site (display para mobile) -->
-        <div class="d-block d-md-none pt-2 pb-5 purpleBgColor">
+        <div class="d-block d-md-none pt-2 pb-5 lilacBgColor">
             <div class="container text-center">
-                <h1 class="py-3 text-light">Opções para você!</h1>
+                <h1 class="py-3 font_h1_search">Opções para você!</h1>
                     <div id="Carrossel_buscas" class="carousel slide">
                         <div class="carousel-inner rounded-4">
                             <a href="./pet_page.html" style="text-decoration: none">
                                 <div class="carousel-item active">
                                     <div class="card rounded-5 mx-auto" style="width: 15rem">
                                         <img src="imgs/Juninho.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body purpleBgColor rounded-bottom-5">
+                                        <div class="card-body purpleBgColor rounded-bottom-5 border-card">
                                             <div class="text-start font_name_white">Juninho</div>
                                             <div class="text-start font_infos_white">Pug</div>
                                             <div class="text-start font_infos_white">Maringá, PA</div>
@@ -408,27 +424,27 @@
                             <div class="d-flex align-items-center">
                                 <button type="button" class="p-0 mx-1 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
                                     <span class="font-btn-filter">
-                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Close
+                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Cachorro
                                     </span>
                                 </button>
                                 <button type="button" class="p-0 mx-1 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
                                     <span class="font-btn-filter">
-                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Close
+                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Macho
                                     </span>
                                 </button>
                                 <button type="button" class="p-0 mx-1 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
                                     <span class="font-btn-filter">
-                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Close
+                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Filhote
                                     </span>
                                 </button>
                                 <button type="button" class="p-0 mx-1 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
                                     <span class="font-btn-filter">
-                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Close
+                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Até X km
                                     </span>
                                 </button>
                                 <button type="button" class="p-0 mx-1 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
                                     <span class="font-btn-filter">
-                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Close
+                                        <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Outros
                                     </span>
                                 </button>
                             </div>
@@ -438,7 +454,7 @@
 
                 <div class="row">
                     <div class="col ms-4 my-3">
-                        <h1 class="font_h2_search">Pets encontrados!</h1>
+                        <h1 class="font_h1_search">8 Pets encontrados!</h1>
                     </div>
                     <div class="col text-end">
                         <div class="dropdown">
@@ -531,14 +547,17 @@
                             </a>
                         </div>
                         <div class="col m-3 text-center">
-                            <a  href="search_page.html">
-                                <button type="button" class="button-pages rounded-circle mx-1">&lt</button>
+                            <a  href="search_page.html" style="text-decoration: none">
+                                <button type="button" class="button-pages mx-1">&lt</button>
                             </a>
-                            <a href="search_page.html">
-                                <button type="button" class="button-pages rounded-circle mx-1">1</button>
+                            <a  href="search_page.html" style="text-decoration: none">
+                                <button type="button" class="button-pages mx-1">1</button>
                             </a>
-                            <a href="search_page.html">
-                                <button type="button" class="button-pages rounded-circle mx-1">&gt</button>
+                            <a href="search_page.html" style="text-decoration: none">
+                                <button type="button" class="button-pages mx-1">2</button>
+                            </a>
+                            <a href="search_page.html" style="text-decoration: none">
+                                <button type="button" class="button-pages mx-1">&gt</button>
                             </a>
                         </div>
                     </div>
