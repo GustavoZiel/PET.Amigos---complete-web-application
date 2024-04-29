@@ -3,19 +3,7 @@
   background-color: #3a0ca3;
 }
 
-.font_nav_brand {
-  font-family: 'Poppins';
-  font-size: 20px;
-  color: black;
-}
-
-.font_nav_link {
-  font-family: 'Poppins';
-  font-size: 16px;
-  color: black;
-}
-
-.font-h2-search {
+.font_h2_search {
   font-family: 'Poppins';
   font-style: normal;
   font-weight: 500;
@@ -24,61 +12,39 @@
   color: black;
 }
   
-.font-h1-search {
+.font_h1_search {
   font-family: "Poppins";
   font-style: normal;
   font-weight: 600;
-  font-size: clamp(1em, 1.5em + 3vw, 4em);
+  font-size: clamp(1em, 1.5em + 2vw, 3em);
   line-height: 65px;
   color: rgb(255, 255, 255);
 }
-  
 
-.font_name {
+.font_name_white {
   font-family: 'Poppins';
-  font-size: clamp(1.2em, 0.5em + 1.6vw, 2.5em);
+  font-size: clamp(1.5em, 0.5em + 1.5vw, 2.2em);
   font-weight: 500;
   color: white;
 }
 
-.font_infos {
+.font_infos_white {
   font-family: 'Poppins';
-  font-size: clamp(0.8em, 0.3em + 0.8vw, 2.5em);
+  font-size: clamp(1.2em, 0.3em + 1vw, 1.8em);
   font-weight: 300;
   color: white;
 }
 
-.font_name_card {
+.font_name_black {
   font-family: 'Poppins';
-  font-size: clamp(1.2em, 0.5em + 1.6vw, 2.5em);
+  font-size: clamp(1.5em, 0.5em + 1.5vw, 2.2em);
   font-weight: 500;
-  color: white;
+  color: black;
 }
 
-.font_infos_card {
+.font_infos_black {
   font-family: 'Poppins';
-  font-size: clamp(0.8em, 0.3em + 0.8vw, 2.5em);
-  font-weight: 300;
-  color: white;
-}
-
-.font_name_carrousel {
-  font-family: 'Poppins';
-  font-size: 30px;
-  font-weight: 500;
-  color: white;
-}
-
-.font_infos_carrousel {
-  font-family: 'Poppins';
-  font-size: 20px;
-  font-weight: 300;
-  color: white;
-}
-
-.font_buscas {
-  font-family: 'Poppins';
-  font-size: 20px;
+  font-size: clamp(1.2em, 0.3em + 1vw, 1.8em);
   font-weight: 300;
   color: black;
 }
@@ -87,34 +53,16 @@
   background-color: #3a0ca3;
 }
 
-.purpleColor {
-  color: #3a0ca3;
-}
-
-.lightPurpleBgColor {
-  background-color: rgba(67, 97, 238, 0.3);
-}
-
-.font_footer {
-  font-family: 'Poppins';
-  font-size: 16px;
-  color: #AAAAAA;
-}
-
-.inputNoBorder {
-  border: none;
-  outline: none;
-  width: 300px;
-}
-
-.border-white{
-  border: 0.15em solid white;
+.border-card {
+  border-bottom: 0.15em solid #3a0ca3;
+  border-left: 0.15em solid #3a0ca3;
+  border-right: 0.15em solid #3a0ca3;
+  border-top: none; 
 }
 
 .border-img-card {
   border: 0.15em solid #3a0ca3;
 }
-
 
 .button-pages {
   background-color: #3a0ca3;
@@ -131,6 +79,103 @@
 }
 
 .card:hover {
-  border: 0.25em solid  #7e58d8;
   background-color: #7e58d8;
+  text-decoration: none;
+}
+
+.btn-toggle {
+  padding: .25rem .5rem;
+  font-weight: 500;
+  color: #3A0CA3;
+  background-color: #FFF;
+  font-size: x-large;
+}
+
+.btn-toggle:hover {
+  color: #3A0CA3;
+  background-color: transparent;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%233a0ca3' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle-item {
+  width: 80%;
+  padding: 1px;
+  padding-left: 25px;
+  margin: 5px;
+  display: inline-flex;
+  background-color: #FFF;
+  font-weight: 400;
+  font-size: large;
+}
+
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-outline-purple {
+  color: #3A0CA3;
+  border-color: #3A0CA3;
+}
+
+.btn-outline-purple:hover {
+  color: #fff;
+  background-color: #3A0CA3;
+  border-color: #3A0CA3;
+}
+
+.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3A0CA3;
+  cursor: pointer;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3A0CA3;
+  cursor: pointer;
+}
+
+.form-range::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3A0CA3;
+  cursor: pointer;
+}
+
+.distancia-texto {
+  color: #3A0CA3;
+  font-size: small;
+}
+
+.img-search {
+  width: 18em;
+}
+
+.btn-filter {
+  border-color: #3A0CA3;
+}
+
+.font-btn-filter {
+  font-size: x-large;
+  color: #3A0CA3;
+  font-family: 'Poppins';
+}
+
+.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
 }
