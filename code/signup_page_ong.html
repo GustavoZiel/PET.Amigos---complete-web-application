@@ -35,14 +35,14 @@
     <link rel="stylesheet" href="./style_login_page.css" />
     <link rel="stylesheet" href="./style_header_footer.css" />
 
-    <title>Login Page</title>
+    <title>Sign Up Page</title>
   </head>
+
   <body>
     <header>
       <!-- Linha roxa no topo do site -->
       <div class="rectangle"></div>
     </header>
-
     <main
       class="container-fluid d-flex justify-content-center align-items-center"
     >
@@ -67,40 +67,84 @@
                 </g>
               </svg>
             </div>
-            <div class="font-nav-brand d-flex">PET.Amigos</div>
+            <div class="font-nav-brand d-flex">PET.Amigos</div><!--  -->
           </div>
         </a>
+        <div
+          class="row with-border-gray justify-content-center col-sm-6 my-3 py-3 mx-auto"
+        >
+          <a href="./signup_page_adotar.html" class="col-4 col-md-4 col-lg-3 text-title-login">
+            Quero adotar
+          </a>
+          <a href="#" class="col-6 col-md-5 col-lg-4 text-title-login active">
+            Quero ser parceiro
+          </a>
+        </div>
+        <form
+          class="col-sm-6 col-md-10 col-lg-6 justify-content-center py-3 mx-auto"
+        >
+          <h2 class="font-h2-login-page">Cadastrar</h2>
 
-        <form class="col-sm-6 justify-content-center py-3 mx-auto">
-          <h2 class="font-h2-login">Entrar</h2>
-          <div class="form-group">
+          <h3 class="my-4">Dados pessoais</h3>
+          <!-- Forms para adotar -->
+          <div class="form-group align-content-center">
             <input
               type="email"
+              id="emailHelp"
               class="form-control form-shape form-font"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="E-mail"
+              placeholder="Insira seu e-mail*"
             />
-          </div>
-          <div class="form-group py-2">
             <input
               type="password"
-              class="form-control form-shape form-font"
-              id="exampleInputPassword1"
-              placeholder="Senha"
+              class="form-control form-shape form-font mt-3"
+              placeholder="Insira sua senha*"
             />
-            <small
-              id="emailHelp"
-              class="form-text text-muted clickable mx-2 my-1"
-              >Esqueceu sua senha?</small
+            <small class="form-text text-muted ps-2 p"
+              >*A senha deve conter, no mínimo, 8 caracteres.</small
             >
-          </div>
-          <div class="form-group text-center">
+            <input
+              type="passwordConfirm"
+              class="form-control form-shape form-font mt-3"
+              placeholder="Confirmar senha"
+            />
+
+            <h3 class="my-4">Sobre você</h3>
+            <select class="form-select form-shape form-font mt-3" id="estado">
+              <option value="none form-font">Selecione seu estado...</option>
+              <option value="minasgerais">MG</option>
+              <option value="saopaulo">SP</option>
+            </select>
+            <select class="form-select form-shape form-font mt-3" id="cidade">
+              <option value="none">Selecione sua cidade...</option>
+              <option value="araraquara">Araraquara</option>
+              <option value="saocarlos">São Carlos</option>
+              <option value="saopauloc">São Paulo</option>
+            </select>
+            <select class="form-select form-shape form-font mt-3" id="moradia">
+              <option value="none">Selecione os tipos de animal...</option>
+              <option value="casae">Cachorro</option>
+              <option value="casa">Gato</option>
+              <option value="apto">Roedores</option>
+              <option value="fazenda">Pássaros</option>
+            </select>
+            <input
+              type="year"
+              id="edatainicio"
+              class="form-control form-shape form-font mt-3"
+              placeholder="Quando iniciou"
+            />
+            <input
+              type="year"
+              id="edatainicio"
+              class="form-control form-shape form-font mt-3"
+              placeholder="Nome da ONG"
+            />
+
             <button
               type="submit"
-              class="col-6 mx-auto btn btn-light form-button form-button-font"
+              class="col-12 mx-auto btn btn-light form-button form-button-font text-center my-4"
             >
-              Entrar
+              Finalizar cadastro
             </button>
           </div>
         </form>
