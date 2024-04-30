@@ -4,317 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="./style_header_footer.css">
-    <link rel="stylesheet" href="./style_pet_page.css">
-
+    
+    <!-- Bootstrap related -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+    
+    <!-- Nossos css -->
+    <link rel="stylesheet" href="./style_header_footer.css">
+    <link rel="stylesheet" href="./style_pet_page.css">
+    <link rel="stylesheet" href="./style_search.css">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
-
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
 
     <title>Search Page</title>
-    <style>
-        .rectangle {
-            height: 20px;
-            background-color: #3a0ca3;
-        }
-
-        .font_h2_search {
-            font-family: 'Poppins';
-            font-style: normal;
-            font-weight: 500;
-            font-size: clamp(1em, 1.5em + 2vw, 3em);
-            line-height: 50px;
-            color: black;
-        }
-
-        .font_h1_search {
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 600;
-            font-size: clamp(1em, 1.5em + 2vw, 3em);
-            line-height: 65px;
-            color: rgb(0, 0, 0);
-        }
-
-        .font_prefs {
-            font-family: "Poppins";
-            font-style: normal;
-            font-weight: 600;
-            font-size: clamp(1em, 1.4em + 1vw, 3em);
-            line-height: 65px;
-            color: rgb(44, 44, 44);
-        }
-
-        .font_name_white {
-            font-family: 'Poppins';
-            font-size: clamp(1.5em, 0.5em + 1.2vw, 2.2em);
-            font-weight: 500;
-            color: white;
-        }
-
-        .font_infos_white {
-            font-family: 'Poppins';
-            font-size: clamp(1.2em, 0.3em + 0.8vw, 1.8em);
-            font-weight: 300;
-            color: white;
-        }
-
-        .font_name_black {
-            font-family: 'Poppins';
-            font-size: clamp(1.5em, 0.5em + 1.2vw, 2.2em);
-            font-weight: 500;
-            color: black;
-        }
-
-        .font_infos_black {
-            font-family: 'Poppins';
-            font-size: clamp(1.2em, 0.3em + 0.8vw, 1.8em);
-            font-weight: 300;
-            color: black;
-        }
-
-        .font_icons {
-            font-family: 'Poppins';
-            font-size: clamp(1em, 0.2em + 0.7vw, 1em);
-            font-weight: 300;
-            color: white;
-        }
-
-        .purpleBgColor {
-            background-color: #3a0ca3;
-        }
-
-        .lilacBgColor {
-            background-color: #67549467;
-        }
-
-        .greyBgColor {
-            background-color: grey;
-        }
-
-        .border-card {
-            border-bottom: 0.15em solid #3a0ca3;
-            border-left: 0.15em solid #3a0ca3;
-            border-right: 0.15em solid #3a0ca3;
-            border-top: none;
-        }
-
-        .border-img-card {
-            border: 0.15em solid #3a0ca3;
-        }
-
-        .button-pages {
-            background-color: #3a0ca3;
-            color: white;
-            border: solid white;
-            border-radius: 50%;
-            padding: 7px 14px;
-            text-align: center;
-            font-size: 20px;
-        }
-
-        .button-pages:hover {
-            background-color: #7e58d8;
-            color: black;
-        }
-
-        .card:hover {
-            background-color: #7e58d8;
-            text-decoration: none;
-        }
-
-        .btn-toggle {
-            padding: .25rem .5rem;
-            font-weight: 500;
-            color: #3A0CA3;
-            background-color: #FFF;
-            font-size: x-large;
-        }
-
-        .btn-toggle:hover {
-            color: #3A0CA3;
-            background-color: transparent;
-        }
-
-        .btn-toggle::before {
-            width: 1.25em;
-            line-height: 0;
-            content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%233a0ca3' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
-            transition: transform .35s ease;
-            transform-origin: .5em 50%;
-        }
-
-        .btn-toggle-item {
-            width: 80%;
-            padding: 1px;
-            padding-left: 25px;
-            margin: 5px;
-            display: inline-flex;
-            background-color: #FFF;
-            font-weight: 400;
-            font-size: large;
-        }
-
-        .btn-toggle[aria-expanded="true"]::before {
-            transform: rotate(90deg);
-        }
-
-        .btn-outline-purple {
-            color: #3A0CA3;
-            border-color: #3A0CA3;
-        }
-
-        .btn-outline-purple:hover {
-            color: #fff;
-            background-color: #3A0CA3;
-            border-color: #3A0CA3;
-        }
-
-        .form-range::-webkit-slider-thumb {
-            -webkit-appearance: none;
-            appearance: none;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #3A0CA3;
-            cursor: pointer;
-        }
-
-        .form-range::-moz-range-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #3A0CA3;
-            cursor: pointer;
-        }
-
-        .form-range::-ms-thumb {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            background-color: #3A0CA3;
-            cursor: pointer;
-        }
-
-        .distancia-texto {
-            color: #3A0CA3;
-            font-size: small;
-        }
-
-        .img-search {
-            width: 18em;
-        }
-
-        .btn-filter {
-            border-color: #3A0CA3;
-        }
-
-        .font-btn-filter {
-            font-size: x-large;
-            color: #3A0CA3;
-            font-family: 'Poppins';
-        }
-
-        .scrollmenu {
-            overflow: auto;
-            white-space: nowrap;
-        }
-
-        .bg-jesus {
-            background-color: #F3F3F3 !important;
-        }
-    </style>
-
+    
 </head>
 
 <body>
 
-    <div class="container-fluid p-0">
+    <header>
+        <div class="col bg-primary">
+            <!-- Linha roxa no topo do site -->
+            <div class="rectangle"></div>
 
-        <div class="row">
-            <div class="col bg-primary">
-                <header>
-                    <!-- Linha roxa no topo do site -->
-                    <div class="rectangle"></div>
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand bg-body d-flex justify-content-center">
+                <div class="container d-flex justify-content-between">
 
-                    <!-- Navbar -->
-                    <nav class="navbar navbar-expand bg-body pt-4 pb-2 d-flex justify-content-center">
-                        <div class="container d-flex justify-content-between">
+                    <!-- Logo + nome (PET.Amigos) -->
+                    <a class="navbar-brand" href="./home_page.html">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="purple-circle me-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="50%">
+                                    <title>14-House</title>
+                                    <g id="_14-House" data-name="14-House">
+                                        <path d="M31.62,12.22l-15-12a1,1,0,0,0-1.25,0l-15,12A1,1,0,0,0,1,14H3V31a1,1,0,0,0,1,1H24V30H20V21a1,1,0,0,0-1-1H13a1,1,0,0,0-1,1v9H5V14H22V12H3.85L16,2.28,28.15,12H28a1,1,0,0,0-1,1v6h2V14h2a1,1,0,0,0,.62-1.78ZM14,22h4v8H14Z" />
+                                        <path d="M25,26.59l-1.29-1.29-1.41,1.41,2,2a1,1,0,0,0,1.41,0l6-6-1.41-1.41Z" />
+                                    </g>
+                                </svg>
+                            </div>
+                            <div class="font-nav-brand d-flex">
+                                PET.Amigos
+                            </div>
+                        </div>
+                    </a>
 
-                            <!-- Logo + nome (PET.Amigos) -->
-                            <a class="navbar-brand" href="./home_page.html">
-                                <div class="d-flex align-items-center justify-content-center">
-                                    <div class="purple-circle me-1">
-                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="50%">
-                                            <title>14-House</title>
-                                            <g id="_14-House" data-name="14-House">
-                                                <path d="M31.62,12.22l-15-12a1,1,0,0,0-1.25,0l-15,12A1,1,0,0,0,1,14H3V31a1,1,0,0,0,1,1H24V30H20V21a1,1,0,0,0-1-1H13a1,1,0,0,0-1,1v9H5V14H22V12H3.85L16,2.28,28.15,12H28a1,1,0,0,0-1,1v6h2V14h2a1,1,0,0,0,.62-1.78ZM14,22h4v8H14Z" />
-                                                <path d="M25,26.59l-1.29-1.29-1.41,1.41,2,2a1,1,0,0,0,1.41,0l6-6-1.41-1.41Z" />
-                                            </g>
+                    <!-- Botões para outras páginas -->
+                    <ul class="navbar-nav">
+                        <!-- PET Search Page -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="search_page.html">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-1  d-flex align-items-center">
+                                        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="30px">
+                                            <path d="M52.475 36.916a3.993 3.993 0 1 0 3.993 3.993 4 4 0 0 0-3.993-3.993zm0 4.485a.493.493 0 1 1 .493-.492.493.493 0 0 1-.493.491zM75.527 36.916a3.993 3.993 0 1 0 3.994 3.993 4 4 0 0 0-3.994-3.993zm0 4.485a.493.493 0 1 1 .494-.492.493.493 0 0 1-.494.491zM79.608 104.574A15.508 15.508 0 0 0 64.31 91.25h-.617a15.508 15.508 0 0 0-15.3 13.324l-1.254 9.039a1.75 1.75 0 1 0 3.466.481l1.254-9.04a12 12 0 0 1 11.832-10.3h.617a12 12 0 0 1 11.832 10.3l1.254 9.04a1.75 1.75 0 0 0 1.731 1.51 1.8 1.8 0 0 0 .242-.017 1.75 1.75 0 0 0 1.493-1.974z" />
+                                            <path d="M110.84 54.341c-4.368-5.1-4.458-12.1-4.546-18.881-.1-7.768-.2-15.8-7.194-20.134-3.912-2.424-7.694-3.118-11.236-2.062-4.6 1.367-7.4 5.308-8.51 7.2a20.906 20.906 0 0 0-15.28-8.033h-.148a20.906 20.906 0 0 0-15.28 8.033c-1.115-1.888-3.914-5.829-8.51-7.2-3.545-1.056-7.325-.362-11.236 2.062-6.991 4.332-7.094 12.366-7.194 20.134-.088 6.777-.178 13.785-4.546 18.881-4.306 5.025-6.671 13.06-1.683 18.828a10.707 10.707 0 0 0 8.123 3.656 13.571 13.571 0 0 0 7.178-2.217 26.936 26.936 0 0 0 7.866 7.119 30.151 30.151 0 0 0-5.154 13.137l-2.6 18.749a1.75 1.75 0 0 0 1.493 1.974 1.8 1.8 0 0 0 .242.017 1.75 1.75 0 0 0 1.731-1.51l2.6-18.749a26.632 26.632 0 0 1 4.853-12.008 25.977 25.977 0 0 0 5.631 1.7h.008l.038.007c.8.144 1.52.243 2.19.3A26.725 26.725 0 0 0 64 82.7a26.609 26.609 0 0 0 11.829 2.757q1.237 0 2.483-.114c.677-.058 1.4-.157 2.194-.3l.038-.008h.02a26.01 26.01 0 0 0 5.624-1.7 26.622 26.622 0 0 1 4.854 12.009l2.6 18.749a1.75 1.75 0 0 0 1.731 1.51 1.8 1.8 0 0 0 .242-.017 1.75 1.75 0 0 0 1.493-1.974l-2.6-18.748a30.141 30.141 0 0 0-5.156-13.138 26.96 26.96 0 0 0 7.865-7.119 13.569 13.569 0 0 0 7.178 2.217 10.71 10.71 0 0 0 8.127-3.656c4.989-5.768 2.624-13.802-1.682-18.827zM29.026 71.583c-4.046 2.557-8.324 2.278-10.9-.7-2.634-3.047-3.126-8.637 1.692-14.264 5.194-6.06 5.3-14.057 5.387-21.114.1-7.449.179-13.882 5.539-17.205a11.772 11.772 0 0 1 6.138-2.008 7.868 7.868 0 0 1 2.235.32c4.147 1.222 6.521 5.586 6.872 6.272.254.851 1.919 7.088-2.5 10.944a26.232 26.232 0 0 0-9.283 18.642c-.619 14.173-3.512 18.058-5.18 19.113zm20.966 10.274c-.14-.012-.294-.034-.44-.05V65.13a14.435 14.435 0 0 1 5.893-11.647c0 .061-.007.124-.007.184a8.577 8.577 0 0 0 6.813 8.382v17.593a23.247 23.247 0 0 1-12.259 2.215zm11.392-30.935c.017 0 .032-.011.049-.014a14.443 14.443 0 0 1 5.14 0c.016 0 .03.01.046.013.12.022.234.056.353.08 2.088.585 2.091 1.833 2.091 2.665a5.063 5.063 0 1 1-10.125 0c0-.832 0-2.079 2.09-2.664.119-.024.235-.058.356-.08zM78 81.857a23.229 23.229 0 0 1-12.25-2.214V62.049a8.576 8.576 0 0 0 6.812-8.382c0-.061 0-.123-.006-.185a14.435 14.435 0 0 1 5.895 11.648v16.676c-.151.017-.306.039-.451.051zm3.95-.731v-16a17.913 17.913 0 0 0-14.706-17.647c-.042-.008-.083-.006-.125-.011a16.907 16.907 0 0 0-6.236 0c-.042 0-.082 0-.124.011A17.913 17.913 0 0 0 46.052 65.13v16a23.315 23.315 0 0 1-12.736-8.986c2.526-3.6 3.972-10.031 4.386-19.519a22.772 22.772 0 0 1 8.092-16.158c4.276-3.733 4.469-8.826 4.077-11.962a1.742 1.742 0 0 0 .433-.432c3.38-4.926 8.369-7.891 13.7-8.143 5.327.252 10.316 3.217 13.7 8.143a1.733 1.733 0 0 0 .434.425c-.394 3.134-.2 8.233 4.076 11.969A22.772 22.772 0 0 1 90.3 52.622c.414 9.488 1.86 15.921 4.386 19.519a23.313 23.313 0 0 1-12.735 8.985zm27.926-10.246c-2.578 2.984-6.856 3.261-10.9.7-1.668-1.055-4.561-4.94-5.18-19.113a26.232 26.232 0 0 0-9.285-18.642c-4.43-3.868-2.773-10.037-2.5-10.942.348-.683 2.723-5.051 6.873-6.274 2.536-.749 5.356-.181 8.373 1.688 5.36 3.323 5.443 9.756 5.539 17.205.091 7.057.193 15.054 5.387 21.114 4.822 5.63 4.325 11.22 1.693 14.264z" />
                                         </svg>
                                     </div>
-                                    <div class="font-nav-brand d-flex">
-                                        PET.Amigos
+                                    <div class="font-nav-link d-none d-xs-none d-sm-flex">
+                                        Pets
                                     </div>
                                 </div>
                             </a>
+                        </li>
 
-                            <!-- Botões para outras páginas -->
-                            <ul class="navbar-nav">
+                        <!-- Meu perfil -->
+                        <li class="nav-item ms-3 d-flex align-items-center">
+                            <a class="nav-link" href="profile_page.html">
+                                <div class="d-flex align-items-center">
+                                    <div class="me-1 d-flex align-items-center">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25px">
+                                            <title>60.User</title>
+                                            <g id="_60.User" data-name="60.User">
+                                                <path d="M12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,6Z" />
+                                                <path d="M18.9,21.166l-1.972-.332a5,5,0,1,0-9.862,0L5.1,21.166a7,7,0,1,1,13.806,0Z" />
+                                                <path d="M12,24A12,12,0,1,1,24,12,12.013,12.013,0,0,1,12,24ZM12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Z" />
+                                            </g>
+                                        </svg>
+                                    </div>
+                                    <div class="font-nav-link d-none d-xs-none d-sm-flex">
+                                        Meu perfil
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
 
-                                <!-- PET Search Page -->
-                                <li class="nav-item">
-                                    <a class="nav-link" href="search_page.html">
-                                        <div class="d-flex align-items-center">
-                                            <div class="me-1  d-flex align-items-center">
-                                                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="30px">
-                                                    <path d="M52.475 36.916a3.993 3.993 0 1 0 3.993 3.993 4 4 0 0 0-3.993-3.993zm0 4.485a.493.493 0 1 1 .493-.492.493.493 0 0 1-.493.491zM75.527 36.916a3.993 3.993 0 1 0 3.994 3.993 4 4 0 0 0-3.994-3.993zm0 4.485a.493.493 0 1 1 .494-.492.493.493 0 0 1-.494.491zM79.608 104.574A15.508 15.508 0 0 0 64.31 91.25h-.617a15.508 15.508 0 0 0-15.3 13.324l-1.254 9.039a1.75 1.75 0 1 0 3.466.481l1.254-9.04a12 12 0 0 1 11.832-10.3h.617a12 12 0 0 1 11.832 10.3l1.254 9.04a1.75 1.75 0 0 0 1.731 1.51 1.8 1.8 0 0 0 .242-.017 1.75 1.75 0 0 0 1.493-1.974z" />
-                                                    <path d="M110.84 54.341c-4.368-5.1-4.458-12.1-4.546-18.881-.1-7.768-.2-15.8-7.194-20.134-3.912-2.424-7.694-3.118-11.236-2.062-4.6 1.367-7.4 5.308-8.51 7.2a20.906 20.906 0 0 0-15.28-8.033h-.148a20.906 20.906 0 0 0-15.28 8.033c-1.115-1.888-3.914-5.829-8.51-7.2-3.545-1.056-7.325-.362-11.236 2.062-6.991 4.332-7.094 12.366-7.194 20.134-.088 6.777-.178 13.785-4.546 18.881-4.306 5.025-6.671 13.06-1.683 18.828a10.707 10.707 0 0 0 8.123 3.656 13.571 13.571 0 0 0 7.178-2.217 26.936 26.936 0 0 0 7.866 7.119 30.151 30.151 0 0 0-5.154 13.137l-2.6 18.749a1.75 1.75 0 0 0 1.493 1.974 1.8 1.8 0 0 0 .242.017 1.75 1.75 0 0 0 1.731-1.51l2.6-18.749a26.632 26.632 0 0 1 4.853-12.008 25.977 25.977 0 0 0 5.631 1.7h.008l.038.007c.8.144 1.52.243 2.19.3A26.725 26.725 0 0 0 64 82.7a26.609 26.609 0 0 0 11.829 2.757q1.237 0 2.483-.114c.677-.058 1.4-.157 2.194-.3l.038-.008h.02a26.01 26.01 0 0 0 5.624-1.7 26.622 26.622 0 0 1 4.854 12.009l2.6 18.749a1.75 1.75 0 0 0 1.731 1.51 1.8 1.8 0 0 0 .242-.017 1.75 1.75 0 0 0 1.493-1.974l-2.6-18.748a30.141 30.141 0 0 0-5.156-13.138 26.96 26.96 0 0 0 7.865-7.119 13.569 13.569 0 0 0 7.178 2.217 10.71 10.71 0 0 0 8.127-3.656c4.989-5.768 2.624-13.802-1.682-18.827zM29.026 71.583c-4.046 2.557-8.324 2.278-10.9-.7-2.634-3.047-3.126-8.637 1.692-14.264 5.194-6.06 5.3-14.057 5.387-21.114.1-7.449.179-13.882 5.539-17.205a11.772 11.772 0 0 1 6.138-2.008 7.868 7.868 0 0 1 2.235.32c4.147 1.222 6.521 5.586 6.872 6.272.254.851 1.919 7.088-2.5 10.944a26.232 26.232 0 0 0-9.283 18.642c-.619 14.173-3.512 18.058-5.18 19.113zm20.966 10.274c-.14-.012-.294-.034-.44-.05V65.13a14.435 14.435 0 0 1 5.893-11.647c0 .061-.007.124-.007.184a8.577 8.577 0 0 0 6.813 8.382v17.593a23.247 23.247 0 0 1-12.259 2.215zm11.392-30.935c.017 0 .032-.011.049-.014a14.443 14.443 0 0 1 5.14 0c.016 0 .03.01.046.013.12.022.234.056.353.08 2.088.585 2.091 1.833 2.091 2.665a5.063 5.063 0 1 1-10.125 0c0-.832 0-2.079 2.09-2.664.119-.024.235-.058.356-.08zM78 81.857a23.229 23.229 0 0 1-12.25-2.214V62.049a8.576 8.576 0 0 0 6.812-8.382c0-.061 0-.123-.006-.185a14.435 14.435 0 0 1 5.895 11.648v16.676c-.151.017-.306.039-.451.051zm3.95-.731v-16a17.913 17.913 0 0 0-14.706-17.647c-.042-.008-.083-.006-.125-.011a16.907 16.907 0 0 0-6.236 0c-.042 0-.082 0-.124.011A17.913 17.913 0 0 0 46.052 65.13v16a23.315 23.315 0 0 1-12.736-8.986c2.526-3.6 3.972-10.031 4.386-19.519a22.772 22.772 0 0 1 8.092-16.158c4.276-3.733 4.469-8.826 4.077-11.962a1.742 1.742 0 0 0 .433-.432c3.38-4.926 8.369-7.891 13.7-8.143 5.327.252 10.316 3.217 13.7 8.143a1.733 1.733 0 0 0 .434.425c-.394 3.134-.2 8.233 4.076 11.969A22.772 22.772 0 0 1 90.3 52.622c.414 9.488 1.86 15.921 4.386 19.519a23.313 23.313 0 0 1-12.735 8.985zm27.926-10.246c-2.578 2.984-6.856 3.261-10.9.7-1.668-1.055-4.561-4.94-5.18-19.113a26.232 26.232 0 0 0-9.285-18.642c-4.43-3.868-2.773-10.037-2.5-10.942.348-.683 2.723-5.051 6.873-6.274 2.536-.749 5.356-.181 8.373 1.688 5.36 3.323 5.443 9.756 5.539 17.205.091 7.057.193 15.054 5.387 21.114 4.822 5.63 4.325 11.22 1.693 14.264z" />
-                                                </svg>
-                                            </div>
-                                            <div class="font-nav-link d-none d-xs-none d-sm-flex">
-                                                Pets
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                                <!-- Meu perfil -->
-                                <li class="nav-item ms-3 d-flex align-items-center">
-                                    <a class="nav-link" href="profile_page.html">
-                                        <div class="d-flex align-items-center">
-                                            <div class="me-1 d-flex align-items-center">
-                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25px">
-                                                    <title>60.User</title>
-                                                    <g id="_60.User" data-name="60.User">
-                                                        <path d="M12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,6Z" />
-                                                        <path d="M18.9,21.166l-1.972-.332a5,5,0,1,0-9.862,0L5.1,21.166a7,7,0,1,1,13.806,0Z" />
-                                                        <path d="M12,24A12,12,0,1,1,24,12,12.013,12.013,0,0,1,12,24ZM12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Z" />
-                                                    </g>
-                                                </svg>
-                                            </div>
-                                            <div class="font-nav-link d-none d-xs-none d-sm-flex">
-                                                Meu perfil
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </nav>
-                </header>
-            </div>
+                    </ul>
+                    
+                </div>
+            </nav>
         </div>
+    </header>
+
+    <main class="container-fluid">
         <div class="row">
             <div class="col d-none d-md-block lilacBgColor">
                 <div class="container text-start">
@@ -453,271 +241,269 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row">
-        <div class="col bg-jesus offcanvas-md offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="max-width: fit-content; min-width: fit-content;">
-            <div class="offcanvas-header">
-                <h2 class="offcanvas-title font_prefs" id="offcanvasResponsiveLabel">PREFERÊNCIAS</h2>
-                <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
-            </div>
-            <div class="offcanvas-body overflow-y-auto">
-                <ul class="d-flex flex-column list-unstyled px-4">
-                    <p class="d-md-block d-none pt-3 text-center font_prefs">PREFERÊNCIAS</p>
-                    <li class="mb-3">
-                        <div class="d-flex flex-column text-center">
-                            <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#especie-filtro" aria-expanded="true">
-                                ESPÉCIE
-                            </button>
-                            <div class="rounded-4 show" id="especie-filtro" style="background-color: #E4E4E4;">
-                                <ul class="list-unstyled my-3">
-                                    <li>
-                                        <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Cachorro</button>
-                                    </li>
-                                    <li>
-                                        <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Gato</button>
-                                    </li>
-                                    <li>
-                                        <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Roedores</button>
-                                    </li>
-                                    <li>
-                                        <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Outros</button>
-                                    </li>
-                                </ul>
+        <div class="row">
+            <div class="col bg-jesus offcanvas-md offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="max-width: fit-content; min-width: fit-content;">
+                <div class="offcanvas-header">
+                    <h2 class="offcanvas-title font_prefs" id="offcanvasResponsiveLabel">PREFERÊNCIAS</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body overflow-y-auto">
+                    <ul class="d-flex flex-column list-unstyled px-4">
+                        <p class="d-md-block d-none pt-3 text-center font_prefs">PREFERÊNCIAS</p>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#especie-filtro" aria-expanded="true">
+                                    ESPÉCIE
+                                </button>
+                                <div class="rounded-4 show" id="especie-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Cachorro</button>
+                                        </li>
+                                        <li>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Gato</button>
+                                        </li>
+                                        <li>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Roedores</button>
+                                        </li>
+                                        <li>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Outros</button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="mb-3">
-                        <div class="d-flex flex-column text-center">
-                            <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#sexo-filtro" aria-expanded="true">
-                                SEXO
-                            </button>
-                            <div class="rounded-4 show" id="sexo-filtro" style="background-color: #E4E4E4;">
-                                <ul class="list-unstyled my-3">
-                                    <li>
-                                        <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Macho</button>
-                                    </li>
-                                    <li>
-                                        <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Fêmea</button>
-                                    </li>
-                                </ul>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#sexo-filtro" aria-expanded="true">
+                                    SEXO
+                                </button>
+                                <div class="rounded-4 show" id="sexo-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Macho</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Fêmea</button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="mb-3">
-                        <div class="d-flex flex-column text-center">
-                            <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#vacina-filtro" aria-expanded="true">
-                                VACINAÇÃO
-                            </button>
-                            <div class="rounded-4 show" id="vacina-filtro" style="background-color: #E4E4E4;">
-                                <ul class="list-unstyled my-3">
-                                    <li>
-                                        <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Adicionar</button>
-                                    </li>
-                                </ul>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#vacina-filtro" aria-expanded="true">
+                                    VACINAÇÃO
+                                </button>
+                                <div class="rounded-4 show" id="vacina-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Adicionar</button>
+                                        </li>
+                                    </ul>
+                                </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="mb-3">
-                        <div class="d-flex flex-column">
-                            <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#distancia-filtro" aria-expanded="true">
-                                DISTÂNCIA
-                            </button>
-                            <div class="rounded-4 show" id="distancia-filtro" style="background-color: #E4E4E4;">
-                                <div class="container my-2">
-                                    <div class="row">
-                                        <div class="col">
-                                            <input type="range" class="form-range" min="0" max="500" value="0" step="5" id="rangeSlider">
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#distancia-filtro" aria-expanded="true">
+                                    DISTÂNCIA
+                                </button>
+                                <div class="rounded-4 show" id="distancia-filtro" style="background-color: #E4E4E4;">
+                                    <div class="container my-2">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="range" class="form-range" min="0" max="500" value="0" step="5" id="rangeSlider">
+                                            </div>
+                                        </div>
+                                        <div class="row distancia-texto">
+                                            <div class="col-4">0 km</div>
+                                            <div class="col-4 text-center" id="selectedValue">0 km</div>
+                                            <div class="col-4 text-end">500 km</div>
                                         </div>
                                     </div>
-                                    <div class="row distancia-texto">
-                                        <div class="col-4">0 km</div>
-                                        <div class="col-4 text-center" id="selectedValue">0 km</div>
-                                        <div class="col-4 text-end">500 km</div>
-                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li class="mb-3">
-                        <div class="d-flex flex-column text-center">
-                            <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#idade-filtro" aria-expanded="true">
-                                TEMPERAMENTO
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#idade-filtro" aria-expanded="true">
+                                    TEMPERAMENTO
+                                </button>
+                                <div class="rounded-4 show" id="idade-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Adicionar</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-md-none d-flex justify-content-evenly align-items-center mt-4">
+                            <button class="btn font-btn-filter d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
+                                <i class="bi bi-filter"></i>
+                                Filtros
                             </button>
-                            <div class="rounded-4 show" id="idade-filtro" style="background-color: #E4E4E4;">
-                                <ul class="list-unstyled my-3">
-                                    <li>
-                                        <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Adicionar</button>
-                                    </li>
+                            <button class="mx-3 btn font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                <i class="bi bi-arrow-down-up"></i>
+                                Ordenar
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Distância</a></li>
+                                <li><a class="dropdown-item" href="#">Idade</a></li>
+                            </ul>
+                        </div>
+                        <div class="d-md-flex d-none flex-wrap text-nowrap my-5 ms-3">
+                            <span class="font-btn-filter">
+                                <i class="bi bi-filter"></i>
+                                Filtros ativos:
+                            </span>
+                            <button type="button" class="p-0 mx-4 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
+                                <span class="font-btn-filter">
+                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Close
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="d-lg-flex d-none mx-5 align-items-center justify-content-between">
+                            <h2 class="font_h2_search">8 Pets encontrados!</h2>
+                            <div class="dropdown">
+                                <button class="mx-3 btn btn-filter font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <i class="bi bi-arrow-down-up"></i>
+                                    Ordenar
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Distância</a></li>
+                                    <li><a class="dropdown-item" href="#">Idade</a></li>
                                 </ul>
                             </div>
                         </div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="col">
-            <div class="row">
-                <div class="col">
-                    <div class="d-md-none d-flex justify-content-evenly align-items-center mt-4">
-                        <button class="btn font-btn-filter d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
-                            <i class="bi bi-filter"></i>
-                            Filtros
-                        </button>
-                        <button class="mx-3 btn font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
-                            <i class="bi bi-arrow-down-up"></i>
-                            Ordenar
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Distância</a></li>
-                            <li><a class="dropdown-item" href="#">Idade</a></li>
-                        </ul>
-                    </div>
-                    <div class="d-md-flex d-none flex-wrap text-nowrap my-5 ms-3">
-                        <span class="font-btn-filter">
-                            <i class="bi bi-filter"></i>
-                            Filtros ativos:
-                        </span>
-                        <button type="button" class="p-0 mx-4 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
-                            <span class="font-btn-filter">
-                                <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Close
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col">
-                    <div class="d-lg-flex d-none mx-5 align-items-center justify-content-between">
-                        <h2 class="font_h2_search">8 Pets encontrados!</h2>
-                        <div class="dropdown">
-                            <button class="mx-3 btn btn-filter font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
-                                <i class="bi bi-arrow-down-up"></i>
-                                Ordenar
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Distância</a></li>
-                                <li><a class="dropdown-item" href="#">Idade</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="d-lg-none d-md-flex d-none mx-5 align-items-center justify-content-center">
-                        <div class="dropdown">
-                            <button class="mx-3 btn btn-filter font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
-                                <i class="bi bi-arrow-down-up"></i>
-                                Ordenar
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Distância</a></li>
-                                <li><a class="dropdown-item" href="#">Idade</a></li>
-                            </ul>
+                        <div class="d-lg-none d-md-flex d-none mx-5 align-items-center justify-content-center">
+                            <div class="dropdown">
+                                <button class="mx-3 btn btn-filter font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <i class="bi bi-arrow-down-up"></i>
+                                    Ordenar
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Distância</a></li>
+                                    <li><a class="dropdown-item" href="#">Idade</a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="d-inline-flex flex-column mt-3">
-                        <div class="d-flex justify-content-center flex-wrap">
-                            <a href="pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 m-3 img-search   ">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                    <div class="card-body rounded-bottom-5 border-card">
-                                        <h5 class="card-title font_name_black">Gup</h5>
-                                        <p class="card-text font_infos_black">Araraquara, SP</p>
+                <div class="row">
+                    <div class="col">
+                        <div class="d-inline-flex flex-column mt-3">
+                            <div class="d-flex justify-content-center flex-wrap">
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 m-3 img-search   ">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                    <div class="card-body rounded-bottom-5 border-card">
-                                        <h5 class="card-title font_name_black">Gup</h5>
-                                        <p class="card-text font_infos_black">Araraquara, SP</p>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 m-3 img-search   ">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                    <div class="card-body rounded-bottom-5 border-card">
-                                        <h5 class="card-title font_name_black">Gup</h5>
-                                        <p class="card-text font_infos_black">Araraquara, SP</p>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 m-3 img-search   ">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                    <div class="card-body rounded-bottom-5 border-card">
-                                        <h5 class="card-title font_name_black">Gup</h5>
-                                        <p class="card-text font_infos_black">Araraquara, SP</p>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 m-3 img-search   ">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                    <div class="card-body rounded-bottom-5 border-card">
-                                        <h5 class="card-title font_name_black">Gup</h5>
-                                        <p class="card-text font_infos_black">Araraquara, SP</p>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 m-3 img-search   ">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                    <div class="card-body rounded-bottom-5 border-card">
-                                        <h5 class="card-title font_name_black">Gup</h5>
-                                        <p class="card-text font_infos_black">Araraquara, SP</p>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 m-3 img-search   ">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                    <div class="card-body rounded-bottom-5 border-card">
-                                        <h5 class="card-title font_name_black">Gup</h5>
-                                        <p class="card-text font_infos_black">Araraquara, SP</p>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                            <a href="pet_page.html" style="text-decoration: none">
-                                <div class="card rounded-5 m-3 img-search   ">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                    <div class="card-body rounded-bottom-5 border-card">
-                                        <h5 class="card-title font_name_black">Gup</h5>
-                                        <p class="card-text font_infos_black">Araraquara, SP</p>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
                                     </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="my-3 mx-5 text-end">
-                            <a href="search_page.html" style="text-decoration: none">
-                                <button type="button" class="button-pages mx-1">&lt</button>
-                            </a>
-                            <a href="search_page.html" style="text-decoration: none">
-                                <button type="button" class="button-pages mx-1">1</button>
-                            </a>
-                            <a href="search_page.html" style="text-decoration: none">
-                                <button type="button" class="button-pages mx-1">2</button>
-                            </a>
-                            <a href="search_page.html" style="text-decoration: none">
-                                <button type="button" class="button-pages mx-1">&gt</button>
-                            </a>
+                                </a>
+                            </div>
+                            <div class="my-3 mx-5 text-end">
+                                <a href="search_page.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">&lt</button>
+                                </a>
+                                <a href="search_page.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">1</button>
+                                </a>
+                                <a href="search_page.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">2</button>
+                                </a>
+                                <a href="search_page.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">&gt</button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
+    </main>
 
-    <div class="row">
-        <div class="col">
-            <footer class="container-fluid bg-black">
+    <footer class="container-fluid">
+        <div class="row">
+            <div class="col bg-black">
                 <div class="container justify-content-between text-light d-md-flex py-2">
                     <p>© PET.Amigos (Todos os direitos reservados)</p>
                     <div class="d-lg-flex d-xs-block">
@@ -726,9 +512,9 @@
                         <p>Disclaimer</p>
                     </div>
                 </div>
-            </footer>
+            </div>
         </div>
-    </div>
+    </footer>
 
     <script>
         var rangeSlider = document.getElementById('rangeSlider');
@@ -739,10 +525,9 @@
         }
     </script>
 
-
-
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
 </body>
 
 </html>

@@ -1,6 +1,10 @@
-.rectangle {
-  height: 20px;
-  background-color: #3a0ca3;
+.font_h1_search {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1em, 1.5em + 2vw, 3em);
+  line-height: 65px;
+  color: rgb(0, 0, 0);
 }
 
 .font_h2_search {
@@ -10,15 +14,6 @@
   font-size: clamp(1em, 1.5em + 2vw, 3em);
   line-height: 50px;
   color: black;
-}
-
-.font_h1_search {
-  font-family: "Poppins";
-  font-style: normal;
-  font-weight: 600;
-  font-size: clamp(1em, 1.5em + 2vw, 3em);
-  line-height: 65px;
-  color: rgb(0, 0, 0);
 }
 
 .font_prefs {
@@ -81,7 +76,7 @@
   border-bottom: 0.15em solid #3a0ca3;
   border-left: 0.15em solid #3a0ca3;
   border-right: 0.15em solid #3a0ca3;
-  border-top: none; 
+  border-top: none;
 }
 
 .border-img-card {
@@ -129,6 +124,10 @@
   transform-origin: .5em 50%;
 }
 
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
 .btn-toggle-item {
   width: 80%;
   padding: 1px;
@@ -138,10 +137,6 @@
   background-color: #FFF;
   font-weight: 400;
   font-size: large;
-}
-
-.btn-toggle[aria-expanded="true"]::before {
-  transform: rotate(90deg);
 }
 
 .btn-outline-purple {
@@ -186,7 +181,7 @@
   font-size: small;
 }
 
-.img-search {
+.img-size {
   width: 18em;
 }
 
