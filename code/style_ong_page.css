@@ -50,6 +50,17 @@
     border-width: 3px;
 }
 
+.card-border {
+    border: solid;
+    border-top: none;
+    border-color: #3A0CA3;
+    border-width: 3px;
+}
+
+.card:hover {
+    background-color: #7e58d8;
+}
+
 .font-ong-name {
     font-family: "Poppins", sans-serif;
     font-size: 35px;
@@ -93,14 +104,14 @@
     font-family: 'Poppins';
     font-size: 30px;
     font-weight: 500;
-    color: white;
+    color: black;
 }
 
 .card-font-info {
     font-family: 'Poppins';
     font-size: 20px;
     font-weight: 300;
-    color: white;
+    color: black;
 }
 
 .button-pages-purple {
