@@ -17,6 +17,9 @@
 .almost-white-bg {
     background-color: #EDF0FE;
 }
+#foto{
+    width: 20em;
+}
 
 .font-return-page {
     font-family: "Poppins", sans-serif;
