@@ -11,7 +11,7 @@
   line-height: 50px;
   color: black;
 }
-  
+
 .font_h1_search {
   font-family: "Poppins";
   font-style: normal;
@@ -19,6 +19,15 @@
   font-size: clamp(1em, 1.5em + 2vw, 3em);
   line-height: 65px;
   color: rgb(0, 0, 0);
+}
+
+.font_prefs {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1em, 1.4em + 1vw, 3em);
+  line-height: 65px;
+  color: rgb(44, 44, 44);
 }
 
 .font_name_white {
@@ -51,7 +60,7 @@
 
 .font_icons {
   font-family: 'Poppins';
-  font-size: clamp(0.5em, 0.2em + 0.7vw, 1em);
+  font-size: clamp(1em, 0.2em + 0.7vw, 1em);
   font-weight: 300;
   color: white;
 }
@@ -194,4 +203,8 @@
 .scrollmenu {
   overflow: auto;
   white-space: nowrap;
+}
+
+.bg-jesus {
+  background-color: #F3F3F3 !important;
 }
