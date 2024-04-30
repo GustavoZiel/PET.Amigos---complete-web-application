@@ -22,7 +22,6 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 
 .active {
   border-bottom: 2px solid #3a0ca3; /* Gray line at the bottom */
-  padding-top: 10px; /* Optional: Add some padding at the bottom */
 }
 
 .with-border-gray {
@@ -54,12 +53,13 @@ font-style: normal;
 font-weight: 400;
 font-size: 16px;
 line-height: 26px;
+
 /* or 162% */
 /* leading-trim and text-edge are draft CSS properties.
 
 
 /* Text Colour 4 */
-color: #AAAAAA;
+color: gray;
 
 
 }
@@ -102,7 +102,7 @@ color: #AAAAAA;
   letter-spacing: 0.1em;
   
   /* Colour 1 */
-  color: #4361EE;
+  color: #3a0ca3;
   
   
   }
@@ -143,4 +143,16 @@ color: #AAAAAA;
 
 .clickable:hover {
   color: #3a0ca3 !important; /* Mudando a cor para azul quando o mouse passar sobre o texto */
+}
+
+
+.form-select, .form-control, .form-control::placeholder {
+/* Paragraph - Regular */
+font-family: 'Poppins';
+font-style: normal;
+font-weight: 400;
+font-size: 16px;
+line-height: 26px;
+/* Text Colour 4 */
+color: #8e8e8e;
 }

@@ -371,3 +371,78 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
     border-radius: 40px;
   }
 }
+
+
+.card:hover {
+  background-color: #7e58d8;
+  text-decoration: none;
+}
+
+.border-card {
+  border-bottom: 0.15em solid #3a0ca3;
+  border-left: 0.15em solid #3a0ca3;
+  border-right: 0.15em solid #3a0ca3;
+  border-top: none; 
+}
+
+.border-img-card {
+  border: 0.15em solid #3a0ca3;
+}
+
+.font_name_white {
+  font-family: 'Poppins';
+  font-size: clamp(1.5em, 0.5em + 1.2vw, 2.2em);
+  font-weight: 500;
+  color: white;
+}
+
+.font_infos_white {
+  font-family: 'Poppins';
+  font-size: clamp(1.2em, 0.3em + 0.8vw, 1.8em);
+  font-weight: 300;
+  color: white;
+}
+
+.font_icons {
+  font-family: 'Poppins';
+  font-size: clamp(0.5em, 0.2em + 0.7vw, 1em);
+  font-weight: 300;
+  color: white;
+}
+
+
+.background-home-1{
+  
+  background: radial-gradient(circle, rgba(88,92,216,0.15028009494813555) 0%, rgba(255,255,255,0) 100%);
+}
+
+.background-home-2{
+  
+  background: radial-gradient(circle at bottom, rgba(88,92,216,0.15028009494813555) 0%, rgba(255,255,255,0) 100%);
+}
+
+.background-home-3{
+  
+  background: radial-gradient(circle at top, rgba(88,92,216,0.15028009494813555) 0%, rgba(255,255,255,0) 100%);
+}
+
+.background-ongs{
+  background-color: white;
+}
+
+.background-home-4{
+  background: radial-gradient(circle at top, rgba(88,92,216,0.15028009494813555) 10%, rgba(255,255,255,0) 100%);
+
+}
+
+.image-carousel{
+  width: 300;
+  height:250;
+  overflow: hidden;
+}
+
+
+.background-home{
+  background: linear-gradient(rgba(88,92,216,0.15028009494813555), rgba(255,255,255,0), rgba(88,92,216,0.15028009494813555), rgba(255,255,255,0), rgba(88,92,216,0.15028009494813555));
+}
+
