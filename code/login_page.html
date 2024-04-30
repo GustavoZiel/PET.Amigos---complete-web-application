@@ -1,126 +1,84 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <!-- FONTE UTILIZADA-->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/ced5a00aa9.js"
-      crossorigin="anonymous"
-    ></script>
 
-    <!-- Bootstrap CSS -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- FONTE UTILIZADA-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
 
-    <!-- Bootstrap Bundle JS (includes Popper) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-      crossorigin="anonymous"
-    />
+  <!-- Bootstrap Bundle JS (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!--css-->
-    <link rel="stylesheet" href="./style_login_page.css" />
-    <link rel="stylesheet" href="./style_header_footer.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
 
-    <title>Login Page</title>
-  </head>
-  <body>
-    <header>
-      <!-- Linha roxa no topo do site -->
-      <div class="rectangle"></div>
-    </header>
+  <!--css-->
+  <link rel="stylesheet" href="./style_login_page.css" />
+  <link rel="stylesheet" href="./style_header_footer.css" />
 
-    <main
-      class="container-fluid d-flex justify-content-center align-items-center"
-    >
-      <div class="container justify-content-center align-items-center">
-        <a class="navbar-brand" href="./home_page.html">
-          <div class="d-flex align-items-center justify-content-center my-3">
-            <div class="purple-circle me-1">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 32 32"
-                fill="white"
-                width="50%"
-              >
-                <title>14-House</title>
-                <g id="_14-House" data-name="14-House">
-                  <path
-                    d="M31.62,12.22l-15-12a1,1,0,0,0-1.25,0l-15,12A1,1,0,0,0,1,14H3V31a1,1,0,0,0,1,1H24V30H20V21a1,1,0,0,0-1-1H13a1,1,0,0,0-1,1v9H5V14H22V12H3.85L16,2.28,28.15,12H28a1,1,0,0,0-1,1v6h2V14h2a1,1,0,0,0,.62-1.78ZM14,22h4v8H14Z"
-                  />
-                  <path
-                    d="M25,26.59l-1.29-1.29-1.41,1.41,2,2a1,1,0,0,0,1.41,0l6-6-1.41-1.41Z"
-                  />
-                </g>
-              </svg>
-            </div>
-            <div class="font-nav-brand d-flex">PET.Amigos</div>
+  <title>Login Page</title>
+</head>
+
+<body>
+  <header>
+    <!-- Linha roxa no topo do site -->
+    <div class="rectangle"></div>
+  </header>
+
+  <main class="container-fluid d-flex justify-content-center align-items-center">
+    <div class="container justify-content-center align-items-center">
+      <a class="navbar-brand" href="./home_page.html">
+        <div class="d-flex align-items-center justify-content-center my-3">
+          <div class="purple-circle me-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="50%">
+              <title>14-House</title>
+              <g id="_14-House" data-name="14-House">
+                <path d="M31.62,12.22l-15-12a1,1,0,0,0-1.25,0l-15,12A1,1,0,0,0,1,14H3V31a1,1,0,0,0,1,1H24V30H20V21a1,1,0,0,0-1-1H13a1,1,0,0,0-1,1v9H5V14H22V12H3.85L16,2.28,28.15,12H28a1,1,0,0,0-1,1v6h2V14h2a1,1,0,0,0,.62-1.78ZM14,22h4v8H14Z" />
+                <path d="M25,26.59l-1.29-1.29-1.41,1.41,2,2a1,1,0,0,0,1.41,0l6-6-1.41-1.41Z" />
+              </g>
+            </svg>
           </div>
-        </a>
+          <div class="font-nav-brand d-flex">PET.Amigos</div>
+        </div>
+      </a>
 
-        <form class="col-sm-6 justify-content-center py-3 mx-auto">
-          <h2 class="font-h2-login">Entrar</h2>
-          <div class="form-group">
-            <input
-              type="email"
-              class="form-control form-shape form-font"
-              id="exampleInputEmail1"
-              aria-describedby="emailHelp"
-              placeholder="E-mail"
-            />
-          </div>
-          <div class="form-group py-2">
-            <input
-              type="password"
-              class="form-control form-shape form-font"
-              id="exampleInputPassword1"
-              placeholder="Senha"
-            />
-            <small
-              id="emailHelp"
-              class="form-text text-muted clickable mx-2 my-1"
-              >Esqueceu sua senha?</small
-            >
-          </div>
-          <div class="form-group text-center">
-            <button
-              type="submit"
-              class="col-6 mx-auto btn btn-light form-button form-button-font"
-            >
-              Entrar
-            </button>
-          </div>
-        </form>
-      </div>
-    </main>
-    <footer class="container-fluid bg-black">
-      <div class="pt-2">
-        <div
-          class="container justify-content-between font-footer d-xs-block d-md-flex py-3"
-        >
-          <div>
-            <p>© PET.Amigos (Todos os direitos reservados)</p>
-          </div>
-          <div class="d-lg-flex d-xs-block pt-3 pt-md-0">
-            <p>Termos e condições</p>
-            <p class="px-lg-4">Política de Privacidade</p>
-            <p>Disclaimer</p>
-          </div>
+      <form class="col-sm-6 justify-content-center py-3 mx-auto">
+        <h2 class="font-h2-login">Entrar</h2>
+        <div class="form-group">
+          <input type="email" class="form-control form-shape form-font" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="E-mail" />
+        </div>
+        <div class="form-group py-2">
+          <input type="password" class="form-control form-shape form-font" id="exampleInputPassword1" placeholder="Senha" />
+          <small id="emailHelp" class="form-text text-muted clickable mx-2 my-1">Esqueceu sua senha?</small>
+        </div>
+        <div class="form-group text-center">
+          <button type="submit" class="col-6 mx-auto btn btn-light form-button form-button-font">
+            Entrar
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+  <footer class="container-fluid bg-black">
+    <div class="pt-2">
+      <div class="container justify-content-between font-footer d-xs-block d-md-flex py-3">
+        <div>
+          <p>© PET.Amigos (Todos os direitos reservados)</p>
+        </div>
+        <div class="d-lg-flex d-xs-block pt-3 pt-md-0">
+          <p>Termos e condições</p>
+          <p class="px-lg-4">Política de Privacidade</p>
+          <p>Disclaimer</p>
         </div>
       </div>
-    </footer>
-  </body>
+    </div>
+  </footer>
+</body>
+
 </html>

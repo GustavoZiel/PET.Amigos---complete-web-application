@@ -17,7 +17,8 @@
 .almost-white-bg {
     background-color: #EDF0FE;
 }
-#foto{
+
+#foto {
     width: 20em;
 }
 
@@ -134,14 +135,14 @@
     padding: 7px 14px;
     text-align: center;
     font-size: 20px;
-  }
-  
-.button-pages-purple:hover{
+}
+
+.button-pages-purple:hover {
     background-color: #7e58d8;
     color: black;
 }
 
-.button-pages-white:hover{
+.button-pages-white:hover {
     background-color: #7e58d8;
     color: black;
 }

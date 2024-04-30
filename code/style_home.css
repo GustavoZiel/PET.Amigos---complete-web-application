@@ -132,13 +132,17 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 }
 
 .esp-interno p {
-  margin-bottom: 1.5px; /* Adjust the value as needed */
+  margin-bottom: 1.5px;
+  /* Adjust the value as needed */
 }
 
 .carousel-item img {
-  height: auto; /* Ensure images maintain aspect ratio */
-  max-height: 100%; /* Set the maximum height of images to fit within the carousel container */
-  width: 100%; /* Ensure images fill the entire width of the carousel */
+  height: auto;
+  /* Ensure images maintain aspect ratio */
+  max-height: 100%;
+  /* Set the maximum height of images to fit within the carousel container */
+  width: 100%;
+  /* Ensure images fill the entire width of the carousel */
 }
 
 .font-h2-homepage {
@@ -166,18 +170,24 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 }
 
 .row_icon {
-  display: flex; /* Use flexbox to align items in a row */
-  align-items: center; /* Vertical alignment */
-  gap: 10px; /* Space between the icon and the text */
+  display: flex;
+  /* Use flexbox to align items in a row */
+  align-items: center;
+  /* Vertical alignment */
+  gap: 10px;
+  /* Space between the icon and the text */
 }
 
 .icon {
-  width: 24px; /* Set icon width */
-  height: 24px; /* Set icon height */
+  width: 24px;
+  /* Set icon width */
+  height: 24px;
+  /* Set icon height */
 }
 
 .text {
-  margin: 0; /* Remove default margin from paragraph */
+  margin: 0;
+  /* Remove default margin from paragraph */
 }
 
 .nome_pets {
@@ -217,12 +227,17 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 }
 
 .image-container {
-  max-height: 150px; /* Ensure the container takes up the full height */
-  display: flex; /* Use flexbox to align items */
-  align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
+  max-height: 150px;
+  /* Ensure the container takes up the full height */
+  display: flex;
+  /* Use flexbox to align items */
+  align-items: center;
+  /* Center items vertically */
+  justify-content: center;
+  /* Center items horizontally */
 
-  border-radius: 10px; /* Add rounded edges */
+  border-radius: 10px;
+  /* Add rounded edges */
   overflow: hidden;
 
   display: block;
@@ -316,7 +331,7 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   border-bottom: 0.15em solid #3a0ca3;
   border-left: 0.15em solid #3a0ca3;
   border-right: 0.15em solid #3a0ca3;
-  border-top: none; 
+  border-top: none;
 }
 
 .border-img-card {
@@ -345,39 +360,39 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 }
 
 
-.background-home-1{
-  
-  background: radial-gradient(circle, rgba(88,92,216,0.15028009494813555) 0%, rgba(255,255,255,0) 100%);
+.background-home-1 {
+
+  background: radial-gradient(circle, rgba(88, 92, 216, 0.15028009494813555) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-.background-home-2{
-  
-  background: radial-gradient(circle at bottom, rgba(88,92,216,0.15028009494813555) 0%, rgba(255,255,255,0) 100%);
+.background-home-2 {
+
+  background: radial-gradient(circle at bottom, rgba(88, 92, 216, 0.15028009494813555) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-.background-home-3{
-  
-  background: radial-gradient(circle at top, rgba(88,92,216,0.15028009494813555) 0%, rgba(255,255,255,0) 100%);
+.background-home-3 {
+
+  background: radial-gradient(circle at top, rgba(88, 92, 216, 0.15028009494813555) 0%, rgba(255, 255, 255, 0) 100%);
 }
 
-.background-ongs{
+.background-ongs {
   background-color: white;
 }
 
-.background-home-4{
-  background: radial-gradient(circle at top, rgba(88,92,216,0.15028009494813555) 10%, rgba(255,255,255,0) 100%);
+.background-home-4 {
+  background: radial-gradient(circle at top, rgba(88, 92, 216, 0.15028009494813555) 10%, rgba(255, 255, 255, 0) 100%);
 
 }
 
-.image-carousel{
+.image-carousel {
   width: 300;
-  height:250;
+  height: 250;
   overflow: hidden;
 }
 
 
-.background-home{
-  background: linear-gradient(rgba(88,92,216,0.15028009494813555), rgba(255,255,255,0), rgba(88,92,216,0.15028009494813555), rgba(255,255,255,0), rgba(88,92,216,0.15028009494813555));
+.background-home {
+  background: linear-gradient(rgba(88, 92, 216, 0.15028009494813555), rgba(255, 255, 255, 0), rgba(88, 92, 216, 0.15028009494813555), rgba(255, 255, 255, 0), rgba(88, 92, 216, 0.15028009494813555));
 }
 
 @media (max-width: 576px) {
@@ -389,14 +404,17 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   }
 
   .font-h1-homepage {
-    font-size: 30px; /* Adjust the font size for smaller screens */
+    font-size: 30px;
+    /* Adjust the font size for smaller screens */
     line-height: 1;
   }
 
   .font-h3-homepage {
     font-size: 15px;
-    line-height: 1; /* Adjust the font size for smaller screens */
+    line-height: 1;
+    /* Adjust the font size for smaller screens */
   }
+
   #carouselExampleControls {
     max-width: 110%;
   }
@@ -404,18 +422,20 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   .font-p-homepage {
     font-size: 14px;
   }
-  .title-banner{
+
+  .title-banner {
     font-size: 35px;
     text-align: center;
   }
-  .text-banner{
+
+  .text-banner {
     font-size: 15px;
     margin-bottom: 2px;
   }
 
   .btn-custom-font {
     /* Rent */
-  
+
     border-radius: 15px;
     font-family: "Poppins";
     font-style: normal;
@@ -426,12 +446,13 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   
   Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   */
-  
+
     text-align: center;
-  
+
     color: #4f6bef;
-  
-    /* Inside auto layout */;
+
+    /* Inside auto layout */
+    ;
     order: 0;
     flex-grow: 0;
     max-height: fit-content;
@@ -442,7 +463,7 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   .banner-parceiro {
     /* Group 139 */
     /* Rectangle 39 */
-  
+
     background: linear-gradient(180deg, #ded4f7 0%, #4361ee 100%);
     border-radius: 40px;
   }
@@ -452,4 +473,3 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
     font-size: 15px;
   }
 }
-

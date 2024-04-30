@@ -1,13 +1,15 @@
 .border-purple {
-    border: 0.25em solid #3A0CA3;
+  border: 0.25em solid #3A0CA3;
 }
 
-.light_blue{
-    background-color: rgba(67,97,238, 0.1);
+.light_blue {
+  background-color: rgba(67, 97, 238, 0.1);
 }
+
 .icon {
-    color: grey;
+  color: grey;
 }
+
 .purpleBgColor {
   background-color: #3a0ca3;
 }
@@ -19,12 +21,14 @@
 .lightPurpleBgColor {
   background-color: rgba(67, 97, 238, 0.3);
 }
+
 .adotar {
-  font-size:2vw;
+  font-size: 2vw;
 }
+
 @media (max-width: 600px) {
-  .adotar{
-    font-size:4vw;
+  .adotar {
+    font-size: 4vw;
   }
 }
 
@@ -37,51 +41,61 @@
 .teste {
   background-color: grey;
 }
+
 .headerA {
-    justify-content: end;
+  justify-content: end;
 }
+
 .poppins-regular {
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
+
 .poppins-medium {
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    font-style: normal;
-  }
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  font-style: normal;
+}
+
 .footer_rectangle {
-    height: 40px;
-    background-color: #0B090A;
-    width: 100%;
+  height: 40px;
+  background-color: #0B090A;
+  width: 100%;
 }
+
 .background-img {
-    position: relative;
-    display: block;
-}  
+  position: relative;
+  display: block;
+}
+
 .coracao {
-    color: #FF0000;
-    position: absolute;
-    top: 4%;
-    right: 7%;
-    left: 78%;
+  color: #FF0000;
+  position: absolute;
+  top: 4%;
+  right: 7%;
+  left: 78%;
 }
+
 .poppins-semibold {
-    font-family: "Poppins", sans-serif;
-    font-weight: 600;
-    font-style: normal;
-  }
-.headers_caract{
-    color: #808080;
-    font-size:medium;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-style: normal;
 }
-.text_caract{
-    color: #000000;
-    font-size:larger;
+
+.headers_caract {
+  color: #808080;
+  font-size: medium;
 }
+
+.text_caract {
+  color: #000000;
+  font-size: larger;
+}
+
 .heart-img {
-    position: relative;
-    width: 100px;
+  position: relative;
+  width: 100px;
 }
 
 .font-h3-homepage {
@@ -89,45 +103,50 @@
   /* PET É VIDA! */
 
 
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 500;
-font-size: 19.4px;
-line-height: 29px;
-/* leading-trim and text-edge are draft CSS properties.
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 19.4px;
+  line-height: 29px;
+  /* leading-trim and text-edge are draft CSS properties.
 
 Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 */
 
-letter-spacing: 0.15em;
+  letter-spacing: 0.15em;
 
-/* Colour 1 */
-color: #4361EE;
+  /* Colour 1 */
+  color: #4361EE;
 
 
 }
+
 .likes {
   color: #000000;
   position: absolute;
-  top:3%;
+  top: 3%;
   right: 5%;
   left: 89%;
   min-width: 3em;
   text-align: center
 }
+
 @media (min-width: 992px) {
-  .likes{
-    font-size:1vw;
+  .likes {
+    font-size: 1vw;
   }
 }
+
 @media (max-width: 600px) {
-  .likes{
-    font-size:2.5vw;
+  .likes {
+    font-size: 2.5vw;
   }
 }
+
 .almost-white-bg {
   background-color: #EDF0FE;
 }
+
 .font-return-page {
   font-family: "Poppins", sans-serif;
   font-size: 19px;
@@ -151,25 +170,24 @@ color: #4361EE;
   color: #0b090a;
 }
 
-.font-p-homepage{
+.font-p-homepage {
 
-    /* Conheça nossos animais prontos para receberem um novo lar. Personalize suas preferências e encontre o PET ideal! */
+  /* Conheça nossos animais prontos para receberem um novo lar. Personalize suas preferências e encontre o PET ideal! */
 
 
-/* Paragraph - Regular */
-font-family: 'Poppins';
-font-style: normal;
-font-weight: 400;
-font-size: 16px;
-line-height: 26px;
-/* or 162% */
-/* leading-trim and text-edge are draft CSS properties.
+  /* Paragraph - Regular */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  /* or 162% */
+  /* leading-trim and text-edge are draft CSS properties.
 
 Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 */
 
 
-/* Text Colour 3 */
-color: #808080;
+  /* Text Colour 3 */
+  color: #808080;
 }
-  
