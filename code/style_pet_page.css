@@ -37,7 +37,14 @@
   outline: none;
   width: 300px;
 }
-
+body{
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+footer{
+  margin-top: auto;
+}
 .teste {
   background-color: grey;
 }
