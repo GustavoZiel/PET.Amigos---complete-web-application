@@ -1,3 +1,13 @@
+body {
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+
+footer {
+  margin-top: auto;
+}
+
 .font_h1_search {
   font-family: "Poppins";
   font-style: normal;

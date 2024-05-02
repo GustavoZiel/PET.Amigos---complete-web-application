@@ -291,20 +291,6 @@
                             </div>
                         </li>
                         <li class="mb-3">
-                            <div class="d-flex flex-column text-center">
-                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#vacina-filtro" aria-expanded="true">
-                                    VACINAÇÃO
-                                </button>
-                                <div class="rounded-4 show" id="vacina-filtro" style="background-color: #E4E4E4;">
-                                    <ul class="list-unstyled my-3">
-                                        <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Adicionar</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="mb-3">
                             <div class="d-flex flex-column">
                                 <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#distancia-filtro" aria-expanded="true">
                                     DISTÂNCIA
@@ -327,13 +313,65 @@
                         </li>
                         <li class="mb-3">
                             <div class="d-flex flex-column text-center">
-                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#idade-filtro" aria-expanded="true">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#temperamento-filtro" aria-expanded="true">
                                     TEMPERAMENTO
+                                </button>
+                                <div class="rounded-4 show" id="temperamento-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Agitado</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Brincalhão</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Tímido</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Calmo</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#idade-filtro" aria-expanded="true">
+                                    IDADE
                                 </button>
                                 <div class="rounded-4 show" id="idade-filtro" style="background-color: #E4E4E4;">
                                     <ul class="list-unstyled my-3">
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Adicionar</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Filhote</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">1 - 3 anos </button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">4 - 6 anos</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">7 - 10 anos</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">11 + anos</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#outros-filtro" aria-expanded="true">
+                                    OUTROS
+                                </button>
+                                <div class="rounded-4 show" id="outros-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Vacinado</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Castrado</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -360,14 +398,29 @@
                                 <li><a class="dropdown-item" href="#">Idade</a></li>
                             </ul>
                         </div>
-                        <div class="d-md-flex d-none flex-wrap text-nowrap my-5 ms-3">
-                            <span class="font-btn-filter">
+                        <div class="d-md-flex d-none flex-wrap text-nowrap mt-5 mb-lg-5 mb-2 ms-5">
+                            <span class="font-btn-filter me-5 mb-2">
                                 <i class="bi bi-filter"></i>
                                 Filtros ativos:
                             </span>
-                            <button type="button" class="p-0 mx-4 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
+                            <button type="button" class="p-0 me-4 mb-lg-0 mb-3 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
                                 <span class="font-btn-filter">
-                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Close
+                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Cachorro
+                                </span>
+                            </button>
+                            <button type="button" class="p-0 me-4 mb-lg-0 mb-3 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
+                                <span class="font-btn-filter">
+                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Agitado
+                                </span>
+                            </button>
+                            <button type="button" class="p-0 me-4 mb-lg-0 mb-3 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
+                                <span class="font-btn-filter">
+                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> 1 - 5 Anos
+                                </span>
+                            </button>
+                            <button type="button" class="p-0 me-4 mb-lg-0 mb-3 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
+                                <span class="font-btn-filter">
+                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Macho
                                 </span>
                             </button>
                         </div>
@@ -403,8 +456,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col">
+
+                <div class="row d-flex">
+                    <div class="col d-flex">
                         <div class="d-inline-flex flex-column mt-3">
                             <div class="d-flex justify-content-center flex-wrap">
                                 <a href="pet_page.html" style="text-decoration: none">
@@ -497,6 +551,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </main>
