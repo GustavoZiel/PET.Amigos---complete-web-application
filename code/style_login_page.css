@@ -167,3 +167,15 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   /* Text Colour 4 */
   color: #8e8e8e;
 }
+
+#grid-container {
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  grid-template-columns:100%;
+
+  /* fallback height */
+  min-height:100vh;
+
+  /* new small viewport height for modern browsers */
+  min-height:100svh;
+}
