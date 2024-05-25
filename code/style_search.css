@@ -138,6 +138,12 @@ footer {
   transform: rotate(90deg);
 }
 
+.btn-selectd {
+  background-color: #3A0CA3;
+  color: white;
+  border-color: #3A0CA3;
+}
+
 .btn-toggle-item {
   width: 80%;
   padding: 1px;
@@ -156,6 +162,12 @@ footer {
 
 .btn-outline-purple:hover {
   color: #fff;
+  background-color: #3A0CA3;
+  border-color: #3A0CA3;
+}
+
+.btn-outline-purple.active {
+  color: white;
   background-color: #3A0CA3;
   border-color: #3A0CA3;
 }
@@ -196,8 +208,17 @@ footer {
 }
 
 .btn-filter {
+  font-size: x-large;
+  color: #3A0CA3;
+  border-color: #3A0CA3;
+  font-family: 'Poppins';
+}
+
+.btn-filter:hover {
+  color: white;
   border-color: #3A0CA3;
 }
+
 
 .font-btn-filter {
   font-size: x-large;

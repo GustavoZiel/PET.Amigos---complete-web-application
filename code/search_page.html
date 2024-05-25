@@ -270,16 +270,16 @@
                                             <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Filhote</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">1 - 3 anos </button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">1-3 anos </button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">4 - 6 anos</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">4-6 anos</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">7 - 10 anos</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">7-10 anos</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">11 + anos</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">11+ anos</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -323,31 +323,11 @@
                                 <li><a class="dropdown-item" href="#">Idade</a></li>
                             </ul>
                         </div>
-                        <div class="d-md-flex d-none flex-wrap text-nowrap mt-5 mb-lg-5 mb-2 ms-5">
+                        <div id="activeFilters" class="d-md-flex d-none flex-wrap text-nowrap mt-5 mb-lg-5 mb-2 ms-5">
                             <span class="font-btn-filter me-5 mb-2">
                                 <i class="bi bi-filter"></i>
                                 Filtros ativos:
                             </span>
-                            <button type="button" class="p-0 me-4 mb-lg-0 mb-3 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
-                                <span class="font-btn-filter">
-                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Cachorro
-                                </span>
-                            </button>
-                            <button type="button" class="p-0 me-4 mb-lg-0 mb-3 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
-                                <span class="font-btn-filter">
-                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Agitado
-                                </span>
-                            </button>
-                            <button type="button" class="p-0 me-4 mb-lg-0 mb-3 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
-                                <span class="font-btn-filter">
-                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> 1 - 5 Anos
-                                </span>
-                            </button>
-                            <button type="button" class="p-0 me-4 mb-lg-0 mb-3 px-2 btn btn-outline-primary btn-filter rounded-pill" id="closeButton">
-                                <span class="font-btn-filter">
-                                    <i class="bi bi-x font-btn-filter" onclick="handleButtonClick(this)"></i> Macho
-                                </span>
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -489,6 +469,66 @@
 
         rangeSlider.oninput = function () {
             selectedValue.innerHTML = this.value + ' km';
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => 
+        {
+            document.querySelectorAll(".btn-outline-purple").forEach(btn_filter => 
+            {
+                btn_filter.addEventListener("click", function () 
+                {
+                    this.classList.toggle("active");
+
+                    if (this.classList.contains("active")) 
+                        addFilterItem(this);
+                    else
+                        removeFilterItem(this);
+                });
+            });
+        });
+
+        function addFilterItem(button) 
+        {
+            const filterText = button.textContent.trim();
+            const activeFiltersContainer = document.getElementById('activeFilters');
+
+            const filterButton = document.createElement('button');
+            filterButton.type = 'button';
+            filterButton.className = 'p-0 me-4 mb-lg-0 mb-3 px-2 my-2 btn btn-filter rounded-pill';
+            filterButton.innerHTML = `
+                <span class="font-btn-filter">
+                    <i class="bi bi-x font-btn-filter" onclick="removeActiveFilter(this)"></i> ${filterText}
+                </span>`;
+            activeFiltersContainer.appendChild(filterButton);
+        }
+
+        function removeFilterItem(button) 
+        {
+            const filterText = button.textContent.trim();
+            const activeFiltersContainer = document.getElementById('activeFilters');
+            const activeFilterButtons = activeFiltersContainer.querySelectorAll('.btn-filter');
+
+            activeFilterButtons.forEach(activeButton => 
+            {
+                if (activeButton.textContent.trim().includes(filterText))
+                    activeFiltersContainer.removeChild(activeButton);
+            });
+        }
+
+        function removeActiveFilter(iconElement) 
+        {
+            const button = iconElement.closest('.btn-filter');
+            const filterText = button.textContent.trim();
+
+            const filterButtons = document.querySelectorAll('.btn-outline-purple');
+            filterButtons.forEach(filterButton => 
+            {
+                if (filterButton.textContent.trim() === filterText)
+                    filterButton.classList.remove('active');
+            });
+            button.parentElement.removeChild(button);
         }
     </script>
 
