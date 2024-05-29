@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap related -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.7.2/font/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Nossos css -->
+    <link rel="stylesheet" href="./style_header_footer.css">
+    <link rel="stylesheet" href="./style_pet_page.css">
+    <link rel="stylesheet" href="./style_search.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
+
+    <title>Search Page</title>
+
+</head>
+
+<body>
+    <main class="container-fluid">
+        <div class="row">
+            <div class="col d-none d-md-block lilacBgColor">
+                <div class="container text-start">
+                    <h1 class="py-3 font_h1_search">Opções para você!</h1>
+                    <div class="d-flex justify-content-center flex-wrap">
+                        <div class="pb-4">
+                            <a href="./pet_page.html" style="text-decoration: none">
+                                <div class="card rounded-5 mx-4" style="width: 14rem">
+                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                    <div class="card-body purpleBgColor rounded-bottom-5">
+                                        <div class="text-start font_name_white">Gup</div>
+                                        <div class="text-start font_infos_white">Pug</div>
+                                        <div class="text-start font_infos_white">Araraquara, SP</div>
+                                        <div class="row_icon">
+                                            <i class="fa-solid fa-heart fa-lg" style="color: white; display: inline-block;"></i>
+                                            <p class="text font_icons" style="display: inline-block;">Dócil</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="pb-4">
+                            <a href="./pet_page.html" style="text-decoration: none">
+                                <div class="card rounded-5 mx-4" style="width: 14rem">
+                                    <img src="imgs/Ney.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                    <div class="card-body purpleBgColor rounded-bottom-5">
+                                        <div class="text-start font_name_white">Ney</div>
+                                        <div class="text-start font_infos_white">Chihuahua</div>
+                                        <div class="text-start font_infos_white">Santos, SP</div>
+                                        <div class="row_icon">
+                                            <i class="fa-solid fa-heart fa-lg" style="color: white; display: inline-block;"></i>
+                                            <p class="text font_icons" style="display: inline-block;">Dócil</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="pb-4">
+                            <a href="./pet_page.html" style="text-decoration: none">
+                                <div class="card rounded-5 mx-4" style="width: 14rem">
+                                    <img src="imgs/Monteiro.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                    <div class="card-body purpleBgColor rounded-bottom-5">
+                                        <div class="text-start font_name_white">Monteiro</div>
+                                        <div class="text-start font_infos_white">Corgi</div>
+                                        <div class="text-start font_infos_white">Uberaba, MG</div>
+                                        <div class="row_icon">
+                                            <i class="fa-solid fa-heart fa-lg" style="color: white; display: inline-block;"></i>
+                                            <p class="text font_icons" style="display: inline-block;">Dócil</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="pb-4">
+                            <a href="./pet_page.html" style="text-decoration: none">
+                                <div class="card rounded-5 mx-4" style="width: 14rem">
+                                    <img src="imgs/Pitstop.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                    <div class="card-body purpleBgColor rounded-bottom-5">
+                                        <div class="text-start font_name_white">Pitstop</div>
+                                        <div class="text-start font_infos_white">Pitbull</div>
+                                        <div class="text-start font_infos_white">Salvador, BA</div>
+                                        <div class="row_icon">
+                                            <i class="fa-solid fa-heart fa-lg" style="color: white; display: inline-block;"></i>
+                                            <p class="text font_icons" style="display: inline-block;">Dócil</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-block d-md-none pt-2 pb-5 lilacBgColor">
+                <div class="container">
+                    <h1 class="py-3 font_h1_search">Opções para você!</h1>
+                    <div id="Carrossel_buscas" class="carousel slide">
+                        <div class="carousel-inner rounded-4">
+                            <a href="./pet_page.html" style="text-decoration: none">
+                                <div class="carousel-item active">
+                                    <div class="card rounded-5 mx-auto" style="width: 16rem">
+                                        <img src="imgs/Juninho.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body purpleBgColor rounded-bottom-5 border-card">
+                                            <div class="text-start font_name_white">Juninho</div>
+                                            <div class="text-start font_infos_white">Pug</div>
+                                            <div class="text-start font_infos_white">Maringá, PA</div>
+                                            <div class="row_icon">
+                                                <i class="fa-solid fa-heart fa-lg" style="color: white; display: inline-block;"></i>
+                                                <p class="text font_icons" style="display: inline-block;">Dócil</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="./pet_page.html" style="text-decoration: none">
+                                <div class="carousel-item">
+                                    <div class="card rounded-5 mx-auto" style="width: 16rem">
+                                        <img src="imgs/Nelso.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body purpleBgColor rounded-bottom-5">
+                                            <div class="text-start font_name_white">Nelso</div>
+                                            <div class="text-start font_infos_white">Não sei</div>
+                                            <div class="text-start font_infos_white">Natal, RN</div>
+                                            <div class="row_icon">
+                                                <i class="fa-solid fa-heart fa-lg" style="color: white; display: inline-block;"></i>
+                                                <p class="text font_icons" style="display: inline-block;">Dócil</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="./pet_page.html" style="text-decoration: none">
+                                <div class="carousel-item">
+                                    <div class="card rounded-5 mx-auto" style="width: 16rem">
+                                        <img src="imgs/Pitstop.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body purpleBgColor rounded-bottom-5">
+                                            <div class="text-start font_name_white">Pitstop</div>
+                                            <div class="text-start font_infos_white">Araraquara, SP</div>
+                                            <div class="text-start font_infos_white">Salvador, BA</div>
+                                            <div class="row_icon">
+                                                <i class="fa-solid fa-heart fa-lg" style="color: white; display: inline-block;"></i>
+                                                <p class="text font_icons" style="display: inline-block;">Dócil</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#Carrossel_buscas" data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#Carrossel_buscas" data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col bg-jesus offcanvas-md offcanvas-start" tabindex="-1" id="offcanvasResponsive" aria-labelledby="offcanvasResponsiveLabel" style="max-width: fit-content; min-width: fit-content;">
+                <div class="offcanvas-header">
+                    <h2 class="offcanvas-title font_prefs" id="offcanvasResponsiveLabel">PREFERÊNCIAS</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#offcanvasResponsive" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body overflow-y-auto">
+                    <ul class="d-flex flex-column list-unstyled px-4">
+                        <p class="d-md-block d-none pt-3 text-center font_prefs">PREFERÊNCIAS</p>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#especie-filtro" aria-expanded="true">
+                                    ESPÉCIE
+                                </button>
+                                <div class="rounded-4 show" id="especie-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Cachorro</button>
+                                        </li>
+                                        <li>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Gato</button>
+                                        </li>
+                                        <li>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Roedores</button>
+                                        </li>
+                                        <li>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Outros</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#sexo-filtro" aria-expanded="true">
+                                    SEXO
+                                </button>
+                                <div class="rounded-4 show" id="sexo-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Macho</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Fêmea</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#distancia-filtro" aria-expanded="true">
+                                    DISTÂNCIA
+                                </button>
+                                <div class="rounded-4 show" id="distancia-filtro" style="background-color: #E4E4E4;">
+                                    <div class="container my-2">
+                                        <div class="row">
+                                            <div class="col">
+                                                <input type="range" class="form-range" min="0" max="500" value="0" step="5" id="rangeSlider">
+                                            </div>
+                                        </div>
+                                        <div class="row distancia-texto">
+                                            <div class="col-4">0 km</div>
+                                            <div class="col-4 text-center" id="selectedValue">0 km</div>
+                                            <div class="col-4 text-end">500 km</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#temperamento-filtro" aria-expanded="true">
+                                    TEMPERAMENTO
+                                </button>
+                                <div class="rounded-4 show" id="temperamento-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Agitado</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Brincalhão</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Tímido</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Calmo</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#idade-filtro" aria-expanded="true">
+                                    IDADE
+                                </button>
+                                <div class="rounded-4 show" id="idade-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Filhote</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">1-3 anos </button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">4-6 anos</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">7-10 anos</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">11+ anos</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="mb-3">
+                            <div class="d-flex flex-column text-center">
+                                <button class="shadow btn btn-toggle d-inline-flex align-items-center rounded-pill collapsed" data-bs-toggle="collapse" data-bs-target="#outros-filtro" aria-expanded="true">
+                                    OUTROS
+                                </button>
+                                <div class="rounded-4 show" id="outros-filtro" style="background-color: #E4E4E4;">
+                                    <ul class="list-unstyled my-3">
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Vacinado</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Castrado</button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="d-md-none d-flex justify-content-evenly align-items-center mt-4">
+                            <button class="btn font-btn-filter d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasResponsive" aria-controls="offcanvasResponsive">
+                                <i class="bi bi-filter"></i>
+                                Filtros
+                            </button>
+                            <button class="mx-3 btn font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                <i class="bi bi-arrow-down-up"></i>
+                                Ordenar
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="#">Distância</a></li>
+                                <li><a class="dropdown-item" href="#">Idade</a></li>
+                            </ul>
+                        </div>
+                        <div id="activeFilters" class="d-md-flex d-none flex-wrap text-nowrap mt-5 mb-lg-5 mb-2 ms-5">
+                            <span class="font-btn-filter me-5 mb-2">
+                                <i class="bi bi-filter"></i>
+                                Filtros ativos:
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <div class="d-lg-flex d-none mx-5 align-items-center justify-content-between">
+                            <h2 class="font_h2_search">8 Pets encontrados!</h2>
+                            <div class="dropdown">
+                                <button class="mx-3 btn btn-filter font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <i class="bi bi-arrow-down-up"></i>
+                                    Ordenar
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Distância</a></li>
+                                    <li><a class="dropdown-item" href="#">Idade</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="d-lg-none d-md-flex d-none mx-5 align-items-center justify-content-center">
+                            <div class="dropdown">
+                                <button class="mx-3 btn btn-filter font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
+                                    <i class="bi bi-arrow-down-up"></i>
+                                    Ordenar
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">Distância</a></li>
+                                    <li><a class="dropdown-item" href="#">Idade</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row d-flex">
+                    <div class="col d-flex">
+                        <div class="d-inline-flex flex-column mt-3">
+                            <div class="d-flex justify-content-center flex-wrap">
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="pet_page.html" style="text-decoration: none">
+                                    <div class="card rounded-5 m-3 img-size   ">
+                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <div class="card-body rounded-bottom-5 border-card">
+                                            <h5 class="card-title font_name_black">Gup</h5>
+                                            <p class="card-text font_infos_black">Araraquara, SP</p>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="my-3 mx-5 text-end">
+                                <a href="search_page.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">&lt</button>
+                                </a>
+                                <a href="search_page.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">1</button>
+                                </a>
+                                <a href="search_page.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">2</button>
+                                </a>
+                                <a href="search_page.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">&gt</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </main>  
+
+    <script src="header.js"></script>
+    <script src="footer.js"></script>
+    <script>
+        var rangeSlider = document.getElementById('rangeSlider');
+        var selectedValue = document.getElementById('selectedValue');
+
+        rangeSlider.oninput = function () {
+            selectedValue.innerHTML = this.value + ' km';
+        }
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => 
+        {
+            document.querySelectorAll(".btn-outline-purple").forEach(btn_filter => 
+            {
+                btn_filter.addEventListener("click", function () 
+                {
+                    this.classList.toggle("active");
+
+                    if (this.classList.contains("active")) 
+                        addFilterItem(this);
+                    else
+                        removeFilterItem(this);
+                });
+            });
+        });
+
+        function addFilterItem(button) 
+        {
+            const filterText = button.textContent.trim();
+            const activeFiltersContainer = document.getElementById('activeFilters');
+
+            const filterButton = document.createElement('button');
+            filterButton.type = 'button';
+            filterButton.className = 'p-0 me-4 mb-lg-0 mb-3 px-2 my-2 btn btn-filter rounded-pill';
+            filterButton.innerHTML = `
+                <span class="font-btn-filter">
+                    <i class="bi bi-x font-btn-filter" onclick="removeActiveFilter(this)"></i> ${filterText}
+                </span>`;
+            activeFiltersContainer.appendChild(filterButton);
+        }
+
+        function removeFilterItem(button) 
+        {
+            const filterText = button.textContent.trim();
+            const activeFiltersContainer = document.getElementById('activeFilters');
+            const activeFilterButtons = activeFiltersContainer.querySelectorAll('.btn-filter');
+
+            activeFilterButtons.forEach(activeButton => 
+            {
+                if (activeButton.textContent.trim().includes(filterText))
+                    activeFiltersContainer.removeChild(activeButton);
+            });
+        }
+
+        function removeActiveFilter(iconElement) 
+        {
+            const button = iconElement.closest('.btn-filter');
+            const filterText = button.textContent.trim();
+
+            const filterButtons = document.querySelectorAll('.btn-outline-purple');
+            filterButtons.forEach(filterButton => 
+            {
+                if (filterButton.textContent.trim() === filterText)
+                    filterButton.classList.remove('active');
+            });
+            button.parentElement.removeChild(button);
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
