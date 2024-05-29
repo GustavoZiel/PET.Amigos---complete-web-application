@@ -1,6 +1,7 @@
 # Projeto-Desenvolvimento-Web
+Este repositório é dedicado ao desenvolvimento e versionamento do projeto da disciplina de Engenharia de Software 2024 (SSC130). No diretório 'docs/', há o controle da documentação do projeto (plano de projeto, protótipos, etc); no diretório 'code/', há o código do site em desenvolvimento, que consiste em uma plataforma de adoção de animais. 
 
-## Links
+## Links úteis
 - [Pasta no Drive](https://drive.google.com/drive/folders/1oEhYCcNuu0_TfsNUXb35vzY4aYvZH-lx?usp=drive_link)
 - [Quadro no Trello](https://trello.com/b/Jy282Tri/projeto-desenvolvimento-web)
 - [Protótipo do Site - Figma](https://www.figma.com/file/kVPAEixF5v37GqPGSb2AkW/Projeto-Site?type=design&node-id=0-1&mode=design&t=ip824XabKOCrZ9v7-0)
