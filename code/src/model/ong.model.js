@@ -1,5 +1,7 @@
 import { Model, DataTypes } from 'sequelize'
 import sequelize from '../config/db.js'
+import Contato from './contatos.model.js'
+import Pet from './pet.model.js'
 
 class ONG extends Model { }
 ONG.init({
@@ -15,5 +17,11 @@ ONG.init({
     Sobre:{ type: DataTypes.STRING, allowNull: true },
     Foto:{ type: DataTypes.STRING, allowNull: false },
 }, { sequelize: sequelize, timestamps: false })
+
+ONG.hasOne(Contato)
+Contato.belongsTo(ONG)
+
+ONG.hasMany(Pet)
+Pet.belongsTo(ONG)
 
 export default ONG

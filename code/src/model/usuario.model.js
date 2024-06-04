@@ -1,5 +1,7 @@
 import { Model, DataTypes } from 'sequelize'
 import sequelize from '../config/db.js'
+import Contato from './contatos.model.js'
+import Pet from './pet.model.js'
 
 class Usuario extends Model { }
 Usuario.init({
@@ -14,5 +16,11 @@ Usuario.init({
     Sobre:{ type: DataTypes.STRING, allowNull: true },
     Foto:{ type: DataTypes.STRING, allowNull: false },
 }, { sequelize: sequelize, timestamps: false })
+
+Usuario.hasOne(Contato)
+Contato.belongsTo(Usuario)
+
+Usuario.belongsToMany(Pet)
+Pet.belongsToMany(Usuario)
 
 export default Usuario
