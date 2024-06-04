@@ -23,9 +23,6 @@ Usuario.init({
     Whatsapp: { type: DataTypes.STRING, allowNull: true }
 }, { sequelize: sequelize, timestamps: false })
 
-Usuario.hasOne(Contato)
-Contato.belongsTo(Usuario)
-
 Usuario.belongsToMany(Pet)
 Pet.belongsToMany(Usuario)
 

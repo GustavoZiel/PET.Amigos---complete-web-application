@@ -24,9 +24,6 @@ ONG.init({
     Whatsapp: { type: DataTypes.STRING, allowNull: true },
 }, { sequelize: sequelize, timestamps: false })
 
-ONG.hasOne(Contato)
-Contato.belongsTo(ONG)
-
 ONG.hasMany(Pet)
 Pet.belongsTo(ONG)
 
