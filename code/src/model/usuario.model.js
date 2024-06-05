@@ -1,6 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../config/db.js'
-import Contato from './contatos.model.js'
+import sequelize from '../base_dados/db.js'
 import Pet from './pet.model.js'
 
 class Usuario extends Model { }
@@ -23,7 +22,7 @@ Usuario.init({
     Whatsapp: { type: DataTypes.STRING, allowNull: true }
 }, { sequelize: sequelize, timestamps: false })
 
-Usuario.belongsToMany(Pet)
-Pet.belongsToMany(Usuario)
+Usuario.hasMany(Pet)
+Pet.hasMany(Usuario)
 
 export default Usuario

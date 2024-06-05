@@ -1,6 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../config/db.js'
-import Contato from './contatos.model.js'
+import sequelize from '../base_dados/db.js'
 import Pet from './pet.model.js'
 
 class ONG extends Model { }

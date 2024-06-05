@@ -14,7 +14,6 @@ sequelize.authenticate()
     console.log('Conexão com o banco de dados foi bem-sucedida.');
 })
 .catch(err => {
-    console.log('aaa')
     console.error('Não foi possível conectar ao banco de dados: aaaaaaaaaaaaaaaaaaaaaa', err);
 });
 

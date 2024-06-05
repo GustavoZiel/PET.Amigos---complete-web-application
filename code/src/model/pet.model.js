@@ -1,5 +1,5 @@
 import { Model, DataTypes } from "sequelize"
-import sequelize from '../config/db.js'
+import sequelize from '../base_dados/db.js'
 
 class Pet extends Model { }
 
