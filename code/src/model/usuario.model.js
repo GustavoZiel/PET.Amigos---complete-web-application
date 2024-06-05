@@ -22,7 +22,7 @@ Usuario.init({
     Whatsapp: { type: DataTypes.STRING, allowNull: true }
 }, { sequelize: sequelize, timestamps: false })
 
-Usuario.hasMany(Pet)
-Pet.hasMany(Usuario)
+Usuario.belongsToMany(Pet, { through: 'UsuarioPet' });
+Pet.belongsToMany(Usuario, { through: 'UsuarioPet' });
 
 export default Usuario
