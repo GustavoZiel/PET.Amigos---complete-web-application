@@ -5,9 +5,15 @@ import ongController from "../controllers/ong.controller.js";
 
 const router = express.Router();
 
-router.get("/pets", petController.getAll);
-router.get("/pets/:id", petController.getById);
-router.post("/pets", petController.create);
+router.get('/', function (req, res) {
+    res.redirect('/home_page.html');
+});
+router.get("/pets", petController.findAll);
+router.get("/pets/:id", petController.findById);
+router.post("/pets", petController.createInstance);
+router.delete("/pets/:id", petController.deleteByPk);
+router.put("/pets/:id", petController.update);
+
 router.get("/usuarios", usuarioController.getAll);
 router.get("/usuarios/:id", usuarioController.getById);
 router.post("/usuarios", usuarioController.create);

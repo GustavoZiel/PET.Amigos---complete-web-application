@@ -1,5 +1,5 @@
 import { Model, DataTypes } from 'sequelize'
-import sequelize from '../base_dados/db.js'
+import sequelize from '../db/db.js'
 import Pet from './pet.model.js'
 
 class Usuario extends Model { }

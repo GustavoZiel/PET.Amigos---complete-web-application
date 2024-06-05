@@ -219,6 +219,9 @@ footer {
   border-color: #3A0CA3;
 }
 
+.btn-filter-close:hover {
+  color: red;
+}
 
 .font-btn-filter {
   font-size: x-large;

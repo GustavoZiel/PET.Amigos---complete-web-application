@@ -323,8 +323,8 @@
                                 <li><a class="dropdown-item" href="#">Idade</a></li>
                             </ul>
                         </div>
-                        <div id="activeFilters" class="d-md-flex d-none flex-wrap text-nowrap mt-5 mb-lg-5 mb-2 ms-5">
-                            <span class="font-btn-filter me-5 mb-2">
+                        <div id="activeFilters" class="align-items-center d-md-flex d-none flex-wrap text-nowrap my-5 ms-5">
+                            <span class="font-btn-filter me-4">
                                 <i class="bi bi-filter"></i>
                                 Filtros ativos:
                             </span>
@@ -456,79 +456,20 @@
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
-    </main>  
+    </main>
 
-    <script src="header.js"></script>
-    <script src="footer.js"></script>
+    <script src="../src/scripts/header.js"></script>
+    <script src="../src/scripts/footer.js"></script>
+    <script src="../src/scripts/filters.js"></script>
     <script>
         var rangeSlider = document.getElementById('rangeSlider');
         var selectedValue = document.getElementById('selectedValue');
 
         rangeSlider.oninput = function () {
             selectedValue.innerHTML = this.value + ' km';
-        }
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", () => 
-        {
-            document.querySelectorAll(".btn-outline-purple").forEach(btn_filter => 
-            {
-                btn_filter.addEventListener("click", function () 
-                {
-                    this.classList.toggle("active");
-
-                    if (this.classList.contains("active")) 
-                        addFilterItem(this);
-                    else
-                        removeFilterItem(this);
-                });
-            });
-        });
-
-        function addFilterItem(button) 
-        {
-            const filterText = button.textContent.trim();
-            const activeFiltersContainer = document.getElementById('activeFilters');
-
-            const filterButton = document.createElement('button');
-            filterButton.type = 'button';
-            filterButton.className = 'p-0 me-4 mb-lg-0 mb-3 px-2 my-2 btn btn-filter rounded-pill';
-            filterButton.innerHTML = `
-                <span class="font-btn-filter">
-                    <i class="bi bi-x font-btn-filter" onclick="removeActiveFilter(this)"></i> ${filterText}
-                </span>`;
-            activeFiltersContainer.appendChild(filterButton);
-        }
-
-        function removeFilterItem(button) 
-        {
-            const filterText = button.textContent.trim();
-            const activeFiltersContainer = document.getElementById('activeFilters');
-            const activeFilterButtons = activeFiltersContainer.querySelectorAll('.btn-filter');
-
-            activeFilterButtons.forEach(activeButton => 
-            {
-                if (activeButton.textContent.trim().includes(filterText))
-                    activeFiltersContainer.removeChild(activeButton);
-            });
-        }
-
-        function removeActiveFilter(iconElement) 
-        {
-            const button = iconElement.closest('.btn-filter');
-            const filterText = button.textContent.trim();
-
-            const filterButtons = document.querySelectorAll('.btn-outline-purple');
-            filterButtons.forEach(filterButton => 
-            {
-                if (filterButton.textContent.trim() === filterText)
-                    filterButton.classList.remove('active');
-            });
-            button.parentElement.removeChild(button);
         }
     </script>
 

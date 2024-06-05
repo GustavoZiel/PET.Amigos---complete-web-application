@@ -1,20 +1,25 @@
 import { Model, DataTypes } from "sequelize"
-import sequelize from '../base_dados/db.js'
+import sequelize from '../db/db.js'
 
-class Pet extends Model { }
+class Pet extends Model {}
+Pet.init(
+  {
+    id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
+    name: { type: DataTypes.STRING, allowNull: true },
+    birth: { type: DataTypes.STRING, allowNull: true  },
+    city: {type: DataTypes.STRING, allowNull: true},
+    state: {type: DataTypes.STRING, allowNull: true},
+    type: { type: DataTypes.STRING, allowNull: true },
+    breed: { type: DataTypes.STRING, allowNull: true  },
+    sex: {type: DataTypes.STRING, allowNull: true},
+    size: {type: DataTypes.STRING, allowNull: true},
+    // Faltando foto
+    comment: { type: DataTypes.STRING, allowNull: true  },
+    // Faltando temperamento (vetor)
+    vacinated: {type: DataTypes.BOOLEAN, allowNull: true},
+    adopted: {type: DataTypes.BOOLEAN, allowNull: true}
+  },
+  { sequelize: sequelize, timestamps: false },
+);
 
-Pet.init({
-    Id_pet: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    Nome_pet: { type: DataTypes.STRING, allowNull: false },
-    Status_adoção: { type: DataTypes.BOOLEAN, allowNull: false}.allowNull,
-    Nascimento: { type: DataTypes.DATE, allowNull: true },
-    Cidade: { type: DataTypes.STRING, allowNull: false },
-    Estado: { type: DataTypes.STRING, allowNull: false },
-    Espécie:{ type: DataTypes.STRING, allowNull: false },
-    Raça:{ type: DataTypes.STRING, allowNull: true },
-    Porte:{ type: DataTypes.STRING, allowNull: true },
-    Sobre:{ type: DataTypes.STRING, allowNull: true },
-    Foto:{ type: DataTypes.STRING, allowNull: false },
-}, { sequelize: sequelize, timestamps: false })
-
-export default Pet 
+export default Pet;

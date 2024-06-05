@@ -153,8 +153,192 @@
     <!-- Animais da ONG -->
     <section class="container-fluid mt-4 px-5">
         <!-- Título -->
-        <div class="ong-pets-title">
-            Animais esperando por um lar!
+        <div class="row align-items-center">
+            <div class="col ong-pets-title">
+                Animais esperando por um lar!
+            </div>
+            <!-- Botão adicionar pet -->
+            <div class="col text-end">
+                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#petModal">
+                    Adicionar um PET
+                </button>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="petModalLabel">Adicionar um PET</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="/pets">
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nome">
+                                        <label for="name" class="form-label">Nome</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <input type="date" class="form-control" id="birth" name="birth">
+                                        <label for="birth">Data de Nascimento</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="inputCity" name="city" placeholder="Cidade">
+                                        <label for="inputCity" class="form-label">Cidade</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="cidade" name="state">
+                                            <option value="sp">São Paulo</option>
+                                            <option value="mg">Minas Gerais</option>
+                                            <option value="ba">Bahia</option>
+                                        </select>
+                                        <label for="cidade">Estado</label>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="type" name="type">
+                                            <option value="cachorro">Cachorro</option>
+                                            <option value="gato">Gato</option>
+                                            <option value="passaro">Passaro</option>
+                                        </select>
+                                        <label for="type">Espécie</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <input class="form-control" list="datalistOptions" id="breed" name="breed" placeholder="Raça">
+                                        <datalist id="datalistOptions">
+                                            <option value="Rusky">
+                                            <option value="Vila Brasileiro">
+                                            <option value="Poodle">
+                                            <option value="Pastor alemão">
+                                        </datalist>
+                                        <label for="breed" class="form-label">Raça</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="sex" name="sex">
+                                            <option value="macho">Macho</option>
+                                            <option value="femea">Fêmea</option>
+                                        </select>
+                                        <label for="sex">Sexo</label>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <select class="form-select" id="porte" name="size">
+                                            <option value="small">Pequeno</option>
+                                            <option value="medium">Médio</option>
+                                            <option value="large">Grande</option>
+                                        </select>
+                                        <label for="porte">Porte</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <label for="formFileMultiple" class="form-label">Fotos</label>
+                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                </div>
+                            </div>
+
+                            <div class="row my-4">
+                                <div class="col">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Leave a comment here" id="comment" name="comment" style="height: 100px"></textarea>
+                                        <label for="comment">Descrição</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3 align-items-end">
+                                <div class="col-3">
+                                    <span>Temperamento: </span>
+                                </div>
+                                <div class="col-auto">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                        <label class="form-check-label" for="inlineCheckbox1">Dócil</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                        <label class="form-check-label" for="inlineCheckbox2">Brincalhão</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                        <label class="form-check-label" for="inlineCheckbox3">Tímido</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                        <label class="form-check-label" for="inlineCheckbox3">Agitado</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                        <label class="form-check-label" for="inlineCheckbox3">Carinhoso</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col-2 d-inline">
+                                    <span>Vacinado: </span>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="vacinatedYes" name="vacinated" value="1">
+                                        <label class="form-check-label" for="vacinatedYes">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="vacinatedNo" name="vacinated" value="0">
+                                        <label class="form-check-label" for="vacinatedNo">Não</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-2">
+                                    <span>Adotado: </span>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="adoptedYes" name="adopted" value=1>
+                                        <label class="form-check-label" for="adoptedYes">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value=0>
+                                        <label class="form-check-label" for="adoptedNo">Não</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col">
+                                    <button class="btn btn-primary" type="submit">Adicionar</button>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
         </div>
 
         <!-- Fotos dos animais -->
@@ -257,8 +441,13 @@
         </div>
     </section>
 
-    <script src="header.js"></script>
-    <script src="footer.js"></script>
+    <script src="../src/scripts/header.js"></script>
+    <script src="../src/scripts/footer.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+
+
 </body>
 
 </html>
