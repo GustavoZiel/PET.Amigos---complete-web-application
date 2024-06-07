@@ -48,8 +48,7 @@ async function createInstance(request, response) {
           comment,
           vacinated,
           adopted,
-          photos: uploadedPhotos,
-          ONGNomeConta: 1
+          photos: uploadedPhotos
       };
 
       const res = await model.create(pet);
