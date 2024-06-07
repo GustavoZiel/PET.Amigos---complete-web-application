@@ -2,6 +2,10 @@
   border: 0.25em solid #3A0CA3;
 }
 
+.border-red {
+  border: 0.25em solid #dc3545;
+}
+
 .light_blue {
   background-color: rgba(67, 97, 238, 0.1);
 }
@@ -16,6 +20,11 @@
 
 .textPurple {
   color: #3a0ca3;
+}
+
+.textOngNumber {
+  color: black;
+  font-size: 4vh;
 }
 
 .lightPurpleBgColor {

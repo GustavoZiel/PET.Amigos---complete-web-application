@@ -27,6 +27,12 @@
     font-size: 18px;
 }
 
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
 @media (max-width: 576px) {
     .font-return-page {
         font-size: 14px;
@@ -145,4 +151,12 @@
 .button-pages-white:hover {
     background-color: #7e58d8;
     color: black;
+}
+
+.border-green {
+    border: 0.25em solid #28A745;
+}
+
+.bg-green {
+    background-color: #28A745;
 }
