@@ -17,5 +17,6 @@ const sequelize = new Sequelize(PGDATABASE, PGUSER, PGPASSWORD, {
         }
     }
 });
+sequelize.sync()
 
 export default sequelize;

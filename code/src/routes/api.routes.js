@@ -2,6 +2,7 @@ import express from "express";
 import petController from "../controllers/pet.controller.js";
 import usuarioController from "../controllers/usuario.controller.js";
 import ongController from "../controllers/ong.controller.js";
+import upload from '../upload/upload_img.js';
 
 const router = express.Router();
 
@@ -10,7 +11,7 @@ router.get('/', function (req, res) {
 });
 router.get("/pets", petController.findAll);
 router.get("/pets/:id", petController.findById);
-router.post("/pets", petController.createInstance);
+router.post("/pets", upload.uploadFile.array('photos', 5), petController.createInstance);
 router.delete("/pets/:id", petController.deleteByPk);
 router.put("/pets/:id", petController.update);
 

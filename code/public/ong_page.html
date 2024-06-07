@@ -174,7 +174,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="/pets">
+                        <form method="POST" action="/pets" enctype="multipart/form-data">
                             <div class="row mb-3">
                                 <div class="col">
                                     <div class="form-floating">
@@ -257,7 +257,7 @@
                             <div class="row mb-3">
                                 <div class="col">
                                     <label for="formFileMultiple" class="form-label">Fotos</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                    <input class="form-control" type="file" id="formFileMultiple" name="photos" multiple>
                                 </div>
                             </div>
 

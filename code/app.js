@@ -22,7 +22,7 @@ sequelize.authenticate()
   console.error('Não foi possível conectar ao banco de dados: aaaaaaaaaaaaaaaaaaaaaa', err);
 });
 
-const port = 3000;
+const port = 3002;
 app.listen(port, function () {
   console.log("Serviço executanto na porta " + port);
 });
