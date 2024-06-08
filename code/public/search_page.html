@@ -22,6 +22,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
     <title>Search Page</title>
 
 </head>
@@ -365,79 +368,8 @@
                 <div class="row d-flex">
                     <div class="col d-flex">
                         <div class="d-inline-flex flex-column mt-3">
-                            <div class="d-flex justify-content-center flex-wrap">
-                                <a href="pet_page.html" style="text-decoration: none">
-                                    <div class="card rounded-5 m-3 img-size   ">
-                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body rounded-bottom-5 border-card">
-                                            <h5 class="card-title font_name_black">Gup</h5>
-                                            <p class="card-text font_infos_black">Araraquara, SP</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="pet_page.html" style="text-decoration: none">
-                                    <div class="card rounded-5 m-3 img-size   ">
-                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body rounded-bottom-5 border-card">
-                                            <h5 class="card-title font_name_black">Gup</h5>
-                                            <p class="card-text font_infos_black">Araraquara, SP</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="pet_page.html" style="text-decoration: none">
-                                    <div class="card rounded-5 m-3 img-size   ">
-                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body rounded-bottom-5 border-card">
-                                            <h5 class="card-title font_name_black">Gup</h5>
-                                            <p class="card-text font_infos_black">Araraquara, SP</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="pet_page.html" style="text-decoration: none">
-                                    <div class="card rounded-5 m-3 img-size   ">
-                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body rounded-bottom-5 border-card">
-                                            <h5 class="card-title font_name_black">Gup</h5>
-                                            <p class="card-text font_infos_black">Araraquara, SP</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="pet_page.html" style="text-decoration: none">
-                                    <div class="card rounded-5 m-3 img-size   ">
-                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body rounded-bottom-5 border-card">
-                                            <h5 class="card-title font_name_black">Gup</h5>
-                                            <p class="card-text font_infos_black">Araraquara, SP</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="pet_page.html" style="text-decoration: none">
-                                    <div class="card rounded-5 m-3 img-size   ">
-                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body rounded-bottom-5 border-card">
-                                            <h5 class="card-title font_name_black">Gup</h5>
-                                            <p class="card-text font_infos_black">Araraquara, SP</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="pet_page.html" style="text-decoration: none">
-                                    <div class="card rounded-5 m-3 img-size   ">
-                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body rounded-bottom-5 border-card">
-                                            <h5 class="card-title font_name_black">Gup</h5>
-                                            <p class="card-text font_infos_black">Araraquara, SP</p>
-                                        </div>
-                                    </div>
-                                </a>
-                                <a href="pet_page.html" style="text-decoration: none">
-                                    <div class="card rounded-5 m-3 img-size   ">
-                                        <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
-                                        <div class="card-body rounded-bottom-5 border-card">
-                                            <h5 class="card-title font_name_black">Gup</h5>
-                                            <p class="card-text font_infos_black">Araraquara, SP</p>
-                                        </div>
-                                    </div>
-                                </a>
+                            <div id="GridPets" class="d-flex justify-content-center flex-wrap">
+                                
                             </div>
                             <div class="my-3 mx-5 text-end">
                                 <a href="search_page.html" style="text-decoration: none">
@@ -464,6 +396,37 @@
     <script src="./header.js"></script>
     <script src="./footer.js"></script>
     <script src="./filters.js"></script>
+    <script>
+        async function fetchAndDisplayAnimals() {
+            try {
+                const response = await fetch(`pets/`);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                const data = await response.json();
+                animals = Array.isArray(data) ? data : [data];
+                
+                const container = document.getElementById('GridPets');
+                animals.forEach(animal => {
+                    const card = `
+                        <a href="pet_page.html" style="text-decoration: none">
+                            <div class="card rounded-5 m-3 img-size">
+                                <img src="${animal.image}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
+                                <div class="card-body rounded-bottom-5 border-card">
+                                    <h5 class="card-title font_name_black">${animal.name}</h5>
+                                    <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    container.innerHTML += card;
+                });
+            } catch (error) {
+                console.error('Erro ao buscar Pets', error);
+            }
+        }
+        document.addEventListener('DOMContentLoaded', fetchAndDisplayAnimals());
+    </script>
     <script>
         var rangeSlider = document.getElementById('rangeSlider');
         var selectedValue = document.getElementById('selectedValue');

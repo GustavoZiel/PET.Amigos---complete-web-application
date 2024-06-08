@@ -1,5 +1,6 @@
 import model from "../model/pet.model.js";
 import upload from '../upload/upload_img.js';
+import { Op } from 'sequelize';
 
 function findAll(request, response) {
   model
@@ -22,6 +23,42 @@ function findById(request, response) {
       response.json(err).status(500);
     });
 }
+
+async function searchBy(req, res) {
+  try {
+      const {birthstart, birthend, city, state, type, sex, vacinated, adopted} = req.query;
+      console.log(typeof birthend);
+      const searchParams = {
+        where: {}
+      };
+
+      if (birthstart !== null && birthend !== null)
+          searchParams.where.birth = { [Op.between] : [birthstart, birthend] };
+      else if (birthstart === null && birthend === null)
+          delete searchParams.where.birth;
+      if (city)
+          searchParams.where.city = city;
+      if (state)
+          searchParams.where.state = state;
+      if (type)
+          searchParams.where.type = type;
+      if (sex) 
+          searchParams.where.sex = sex;
+      if (vacinated) 
+          searchParams.where.vacinated = vacinated;
+      if (adopted)
+          searchParams.where.adopted = adopted;
+
+      // Buscar os pets com base nos parâmetros
+      const pets = await model.findAll(searchParams);
+
+      res.status(200).json(pets);
+  } catch (err) {
+      console.error('Error searching for pets:', err);
+      res.status(500).json({ error: 'Failed to search for pets' });
+  }
+}
+
 async function createInstance(request, response) {
   const { name, birth, city, state, type, breed, sex, size, comment, vacinated, adopted } = request.body;
   const photos = request.files;
@@ -98,6 +135,7 @@ function deleteByPk(request, response) {
 export default {
   findAll,
   findById,
+  searchBy,
   createInstance,
   deleteByPk,
   update,

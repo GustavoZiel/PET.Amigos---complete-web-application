@@ -10,6 +10,7 @@ router.get('/', function (req, res) {
     res.redirect('/home_page.html');
 });
 router.get("/pets", petController.findAll);
+router.get("/pets/search", petController.searchBy);
 router.get("/pets/:id", petController.findById);
 router.post("/pets", upload.uploadFile.array('photos', 5), petController.createInstance);
 router.delete("/pets/:id", petController.deleteByPk);
