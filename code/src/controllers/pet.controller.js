@@ -22,55 +22,55 @@ function findById(request, response) {
       response.json(err).status(500);
     });
 }
-async function createInstance(request, response) {
+async function create(request, response) {
   const { name, birth, city, state, type, breed, sex, size, comment, vacinated, adopted } = request.body;
   const photos = request.files;
 
   try {
-      const uploadedPhotos = await Promise.all(
-          photos.map(async (file) => {
-              const fileUrl = await upload.getFileUrl(file.key);
-              console.log(fileUrl);
-              return fileUrl;
-          })
-      );
-      console.log(uploadedPhotos);
-      console.log(typeof uploadedPhotos);
-      const pet = {
-          name,
-          birth,
-          city,
-          state,
-          type,
-          breed,
-          sex,
-          size,
-          comment,
-          vacinated,
-          adopted,
-          photos: uploadedPhotos
-      };
+    const uploadedPhotos = await Promise.all(
+      photos.map(async (file) => {
+        const fileUrl = await upload.getFileUrl(file.key);
+        console.log(fileUrl);
+        return fileUrl;
+      })
+    );
+    console.log(uploadedPhotos);
+    console.log(typeof uploadedPhotos);
+    const pet = {
+      name,
+      birth,
+      city,
+      state,
+      type,
+      breed,
+      sex,
+      size,
+      comment,
+      vacinated,
+      adopted,
+      photos: uploadedPhotos
+    };
 
-      const res = await model.create(pet);
-      response.status(200).json(res);
+    const res = await model.create(pet);
+    response.status(200).json(res);
   } catch (error) {
-      response.status(500).json({ message: 'Erro ao adicionar pet.', error });
+    response.status(500).json({ message: 'Erro ao adicionar pet.', error });
   }
 }
 
 function deleteByPk(request, response) {
   model
-  .destroy({ where: { id: request.params.id } })
-  .then(function (res) {
-    response.status(200).send();
+    .destroy({ where: { id: request.params.id } })
+    .then(function (res) {
+      response.status(200).send();
     })
     .catch(function (err) {
       response.json(err).status(500);
     });
-  }
-  
-  function update(request, response) {
-    model
+}
+
+function update(request, response) {
+  model
     .update(
       {
         name: request.body.name,
@@ -98,7 +98,7 @@ function deleteByPk(request, response) {
 export default {
   findAll,
   findById,
-  createInstance,
+  create,
   deleteByPk,
   update,
 };
