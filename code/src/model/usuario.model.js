@@ -4,25 +4,26 @@ import Pet from './pet.model.js'
 
 class Usuario extends Model { }
 Usuario.init({
-    Nome_Conta: { type: DataTypes.STRING, primaryKey: true },
-    Senha:{ type: DataTypes.STRING, allowNull: false },
-    Nome_usuario: { type: DataTypes.STRING, allowNull: false },
-    Data_nascimento: { type: DataTypes.DATE, allowNull: false },
-    Cidade: { type: DataTypes.STRING, allowNull: false },
-    Estado: { type: DataTypes.STRING, allowNull: false },
-    Endereço: { type: DataTypes.STRING, allowNull: false },
-    Preferências: { type: DataTypes.STRING, allowNull: false },
-    Sobre: { type: DataTypes.STRING, allowNull: true },
-    Foto: { type: DataTypes.STRING, allowNull: false },
-    Num_tel: { type: DataTypes.STRING, allowNull: false },
-    Site: { type: DataTypes.STRING, allowNull: true},
-    Instagram: { type: DataTypes.STRING, allowNull: true },
-    Facebook: { type: DataTypes.STRING, allowNull: true },
-    Twitter: { type: DataTypes.STRING, allowNull: true },
-    Whatsapp: { type: DataTypes.STRING, allowNull: true }
-}, { sequelize: sequelize, timestamps: false })
+    id: { type: DataTypes.INTEGER, autoIncrement: true },
+    accountName: { type: DataTypes.STRING, primaryKey: true },
+    password: { type: DataTypes.STRING, allowNull: false },
+    userName: { type: DataTypes.STRING, allowNull: false },
+    birthDate: { type: DataTypes.DATE, allowNull: false },
+    city: { type: DataTypes.STRING, allowNull: false },
+    state: { type: DataTypes.STRING, allowNull: false },
+    address: { type: DataTypes.STRING, allowNull: false },
+    preferences: { type: DataTypes.STRING, allowNull: false },
+    about: { type: DataTypes.STRING, allowNull: true },
+    photo: { type: DataTypes.STRING, allowNull: false },
+    phoneNumber: { type: DataTypes.STRING, allowNull: false },
+    website: { type: DataTypes.STRING, allowNull: true },
+    instagram: { type: DataTypes.STRING, allowNull: true },
+    facebook: { type: DataTypes.STRING, allowNull: true },
+    twitter: { type: DataTypes.STRING, allowNull: true },
+    whatsapp: { type: DataTypes.STRING, allowNull: true }
+}, { sequelize: sequelize, timestamps: false });
 
 Usuario.belongsToMany(Pet, { through: 'UsuarioPet' });
 Pet.belongsToMany(Usuario, { through: 'UsuarioPet' });
 
-export default Usuario
+export default Usuario;
