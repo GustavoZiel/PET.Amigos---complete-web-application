@@ -13,7 +13,7 @@ Pet.init(
     breed: { type: DataTypes.STRING, allowNull: true  },
     sex: {type: DataTypes.STRING, allowNull: true},
     size: {type: DataTypes.STRING, allowNull: true},
-    photos: { type: DataTypes.ARRAY(DataTypes.STRING), allowNull: true },
+    photos: { type: DataTypes.STRING, allowNull: true },
     comment: { type: DataTypes.STRING, allowNull: true  },
     // Faltando temperamento (vetor)
     vacinated: {type: DataTypes.BOOLEAN, allowNull: true},

@@ -1,4 +1,5 @@
 import model from "../model/usuario.model.js";
+import upload from '../upload/upload_img.js';
 
 function findAll(request, response) {
   model
@@ -21,36 +22,33 @@ function findById(request, response) {
       response.json(err).status(500);
     });
 }
-
-function create(request, response) {
-  model
-    .create(
-      {
-        accountName: request.body.accountName,
-        password: request.body.password,
-        userName: request.body.userName,
-        birthDate: request.body.birthDate,
-        city: request.body.city,
-        state: request.body.state,
-        address: request.body.address,
-        preferences: request.body.preferences,
-        about: request.body.about,
-        photo: request.body.photo,
-        phoneNumber: request.body.phoneNumber,
-        website: request.body.website,
-        instagram: request.body.instagram,
-        facebook: request.body.facebook,
-        twitter: request.body.twitter,
-        whatsapp: request.body.whatsapp
-      },
-      { where: { id: request.params.id } },
-    )
-    .then(function (res) {
-      response.status(200).send(res);
-    })
-    .catch((e) => {
-      response.json(e).status(500);
-    });
+async function create(request, response) {
+  const uploadedPhotos = await upload.getFileUrl(request.file.key);
+  console.log(uploadedPhotos);
+  console.log(typeof uploadedPhotos);
+  const res = await model
+  .create(
+    {
+      accountName: request.body.accountName,
+      password: request.body.password,
+      userName: request.body.userName,
+      birthDate: request.body.birthDate,
+      city: request.body.city,
+      state: request.body.state,
+      address: request.body.address,
+      preferences: request.body.preferences,
+      about: request.body.about,
+      photo: uploadedPhotos,
+      phoneNumber: request.body.phoneNumber,
+      website: request.body.website,
+      instagram: request.body.instagram,
+      facebook: request.body.facebook,
+      twitter: request.body.twitter,
+      whatsapp: request.body.whatsapp
+    },
+    { where: { id: request.params.id } },
+  )
+  response.status(200).json(res);
 }
 
 function deleteById(request, response) {

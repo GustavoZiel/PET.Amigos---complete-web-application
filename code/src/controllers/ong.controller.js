@@ -1,4 +1,5 @@
 import model from "../model/ong.model.js";
+import upload from '../upload/upload_img.js';
 
 function findAll(request, response) {
   model
@@ -21,9 +22,11 @@ function findById(request, response) {
       response.json(err).status(500);
     });
 }
-
-function create(request, response) {
-  model
+async function create(request, response) {
+    const uploadedPhotos = await upload.getFileUrl(request.file.key);
+    console.log(uploadedPhotos);
+    console.log(typeof uploadedPhotos);
+    const res = await model
     .create(
       {
         accountName: request.body.accountName,
@@ -36,7 +39,7 @@ function create(request, response) {
         CNPJ: request.body.CNPJ,
         pets: request.body.pets,
         about: request.body.about,
-        photo: request.body.photo,
+        photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
         website: request.body.website,
         instagram: request.body.instagram,
@@ -46,12 +49,7 @@ function create(request, response) {
       },
       { where: { id: request.params.id } },
     )
-    .then(function (res) {
-      response.status(200).send(res);
-    })
-    .catch((e) => {
-      response.json(e).status(500);
-    });
+    response.status(200).json(res);
 }
 
 function deleteById(request, response) {

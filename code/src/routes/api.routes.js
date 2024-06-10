@@ -12,21 +12,21 @@ router.get('/', function (req, res) {
 });
 
 // CRUD - Pets
-router.post("/pets", upload.uploadFile.array('photos', 5), petController.create); // Create
+router.post("/pets", upload.uploadFile.single('photos'), petController.create); // Create
 router.get("/pets", petController.findAll); // Retrieve
 router.get("/pets/:id", petController.findById); // Retrieve
 router.delete("/pets/:id", petController.deleteByPk); // Delete
 router.put("/pets/:id", petController.update); // Update
 
 // CRUD - Usuários
-router.post("/users", usuarioController.create); // Create
+router.post("/users", upload.uploadFile.single('photo'), usuarioController.create); // Create
 router.get("/users", usuarioController.findAll); // Retrieve
 router.get("/users/:id", usuarioController.findById); // Retrieve
 router.delete("/users/:id", usuarioController.deleteById); // Delete
 router.put("/users/:id", usuarioController.update); // Update
 
 // CRUD - Ongs
-router.post("/ongs", ongController.create); // Create
+router.post("/ongs", upload.uploadFile.single('photo'), ongController.create); // Create
 router.get("/ongs", ongController.findAll); // Retrieve
 router.get("/ongs/:id", ongController.findById); // Retrieve
 router.delete("/ongs/:id", ongController.deleteById); // Delete
