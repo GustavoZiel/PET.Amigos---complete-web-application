@@ -44,7 +44,8 @@ async function create(request, response) {
       instagram: request.body.instagram,
       facebook: request.body.facebook,
       twitter: request.body.twitter,
-      whatsapp: request.body.whatsapp
+      whatsapp: request.body.whatsapp,
+      role: request.body.role
     },
     { where: { id: request.params.id } },
   )
@@ -81,7 +82,8 @@ function deleteById(request, response) {
         instagram: request.body.instagram,
         facebook: request.body.facebook,
         twitter: request.body.twitter,
-        whatsapp: request.body.whatsapp
+        whatsapp: request.body.whatsapp,
+        role: request.body.role
       },
       { where: { id: request.params.id } },
     )
