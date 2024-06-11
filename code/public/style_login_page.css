@@ -20,6 +20,28 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
   color: #3a0ca3;
 }
 
+.text-title-signup {
+  /* Quero adotar */
+
+  text-decoration: none;
+
+  /* H5 - Buttons */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 24px;
+  /* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+
+  text-align: center;
+
+  /* Primary Colour */
+  color: #3a0ca3;
+}
+
 .active {
   border-bottom: 2px solid #3a0ca3;
   /* Gray line at the bottom */
@@ -64,6 +86,25 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 
 /* Text Colour 4 */
   color: gray;
+
+
+}
+
+.form-font-title {
+
+  /* Paragraph - Regular */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+
+  /* or 162% */
+  /* leading-trim and text-edge are draft CSS properties.
+
+
+/* Text Colour 4 */
+  color: black;
 
 
 }
@@ -178,4 +219,20 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
 
   /* new small viewport height for modern browsers */
   min-height:100svh;
+}
+
+.form {
+  max-width: 600px;
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+.btn-primary {
+  background-color: purple; /* Define a cor de fundo para roxo */
+  border-color: purple; /* Define a cor da borda para roxo */
+  color: white; /* Define a cor do texto para branco */
+}
+.btn-primary:hover {
+  background-color: darkviolet; /* Cor de fundo ao passar o mouse */
+  border-color: rgb(8, 7, 8); /* Cor da borda ao passar o mouse */
 }
