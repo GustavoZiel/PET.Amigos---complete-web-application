@@ -58,41 +58,29 @@ async function searchBy(req, res) {
       res.status(500).json({ error: 'Failed to search for pets' });
   }
 }
-
 async function create(request, response) {
-  const { name, birth, city, state, type, breed, sex, size, comment, vacinated, adopted } = request.body;
-  const photos = request.files;
-
-  try {
-    const uploadedPhotos = await Promise.all(
-      photos.map(async (file) => {
-        const fileUrl = await upload.getFileUrl(file.key);
-        console.log(fileUrl);
-        return fileUrl;
-      })
-    );
-    console.log(uploadedPhotos);
-    console.log(typeof uploadedPhotos);
-    const pet = {
-      name,
-      birth,
-      city,
-      state,
-      type,
-      breed,
-      sex,
-      size,
-      comment,
-      vacinated,
-      adopted,
-      photos: uploadedPhotos
-    };
-
-    const res = await model.create(pet);
-    response.status(200).json(res);
-  } catch (error) {
-    response.status(500).json({ message: 'Erro ao adicionar pet.', error });
-  }
+  const uploadedPhotos = await upload.getFileUrl(request.file.key);
+  console.log(uploadedPhotos);
+  console.log(typeof uploadedPhotos);
+  const res = await model
+  .create(
+    {
+      name: request.body.name,
+      birth: request.body.birth,
+      city: request.body.city,
+      state: request.body.state,
+      type: request.body.type,
+      breed: request.body.breed,
+      sex: request.body.sex,
+      size: request.body.size,
+      photos: uploadedPhotos,
+      comment: request.body.comment,
+      vacinated: request.body.vacinated,
+      adopted: request.body.adopted,
+    },
+    { where: { id: request.params.id } },
+  )
+  response.status(200).json(res);
 }
 
 function deleteByPk(request, response) {
