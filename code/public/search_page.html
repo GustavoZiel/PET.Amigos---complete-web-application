@@ -402,11 +402,12 @@
                 animals = Array.isArray(data) ? data : [data];
                 
                 const container = document.getElementById('GridPets');
-                animals.forEach(animal => {
+                for (const animal of animals){
+                    const source_img = await fetchImage(animal.photos);
                     const card = `
                         <a href="pet_page.html" style="text-decoration: none">
                             <div class="card rounded-5 m-3 img-size">
-                                <img src="${animal.image}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
+                                <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
                                 <div class="card-body rounded-bottom-5 border-card">
                                     <h5 class="card-title font_name_black">${animal.name}</h5>
                                     <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
@@ -415,7 +416,7 @@
                         </a>
                     `;
                     container.innerHTML += card;
-                });
+                };
             } catch (error) {
                 console.error('Erro ao buscar Pets', error);
             }
@@ -429,8 +430,25 @@
         rangeSlider.oninput = function () {
             selectedValue.innerHTML = this.value + ' km';
         }
+        
     </script>
-
+    <script>
+        async function fetchImage(url) {
+            try {
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    url = 'http://' + url;
+                }
+                const response = await fetch(url);
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                const blob = await response.blob();
+                return URL.createObjectURL(blob);
+            } catch (error) {
+                console.error('There was a problem with the fetch operation:', error);
+            }
+        }
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 
