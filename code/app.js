@@ -2,7 +2,6 @@ import express from "express";
 import sequelize from './src/db/db.js';
 import apirouter from "./src/routes/api.routes.js";
 import cors from "cors";
-import user from "./src/model/user.model.js"
 
 const app = express();
 app.use(express.json());
@@ -19,8 +18,6 @@ sequelize.authenticate()
 .catch(err => {
   console.error('Não foi possível conectar ao banco de dados: aaaaaaaaaaaaaaaaaaaaaa', err);
 });
-
-user.sync({force: true})
 
 const port = 3000;
 app.listen(port, function () {

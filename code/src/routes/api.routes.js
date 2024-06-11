@@ -9,7 +9,7 @@ const router = express.Router();
 
 // Redirect to homepage once connected
 router.get('/', function (req, res) {
-    res.redirect('/home_page.html');
+    res.redirect('/home.html');
 });
 
 
