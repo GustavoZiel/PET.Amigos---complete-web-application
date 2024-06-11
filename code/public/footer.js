@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     if (footerContent) {
         const footerContainer = document.createElement('div');
         footerContainer.innerHTML = footerContent;
-        document.body.appendChild(footerContainer);
+        document.body.insertAdjacentHTML('beforeend', footerContent);
     }
     else
         console.error('Footer nao encontrado no local storage.');
