@@ -23,9 +23,10 @@ router.post("/signin_ong", authController.loginONG);
 //so pode criar ongs, usuarios e pets se tiver logado. pets so se for ong -> middlewere
 router.post("/users", authController.authPage("USER"), authController.validateToken);
 router.post("/ongs", authController.authPage("ONG"), authController.validateToken);
-//router.put("/ongs/:id", authController.authPageId(["ONG"]), authController.validateToken);
-//router.put("/user/:id", authController.authPageId(["USER"]), authController.validateToken, usuarioController.update);
-router.post("/pets", authController.authPage("ONG"), authController.validateToken);
+router.put("/ongs/:id", authController.authPageId(["ONG"]), authController.validateToken, ongController.update);
+router.put("/users/:id", authController.authPageId(["USER"]), authController.validateToken, usuarioController.update);
+router.post("/pets", authController.authPage("ONG"), authController.validateToken, petController.create);
+router.put("/pets/:id", authController.authPage("ONG"), authController.validateToken, petController.update); // Update
 
 
 
@@ -36,7 +37,7 @@ router.post("/pets", authController.authPage("ONG"), authController.validateToke
 router.get("/pets", petController.findAll); // Retrieve
 router.get("/pets/:id", petController.findById); // Retrieve
 router.delete("/pets/:id", petController.deleteByPk); // Delete
-router.put("/pets/:id", petController.update); // Update
+//router.put("/pets/:id", petController.update); // Update
 
 // CRUD - Usuários
 //router.post("/users", upload.uploadFile.single('photo'), usuarioController.create); // Create

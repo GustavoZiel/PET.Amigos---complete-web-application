@@ -12,14 +12,48 @@ function getToken(uid, uemail) {
 }
 
 // Register ONG
+// Register ONG
 async function registerONG(request, response) {
-  try {
-    const {
-        id,
+    try {
+      const {
+          accountName,
+          password,
+          ongName,
+          creationYear,
+          city,
+          state,
+          address,
+          CNPJ,
+          pets,
+          about,
+          photo,
+          phoneNumber,
+          website,
+          instagram,
+          facebook,
+          twitter,
+          whatsapp,
+          role
+      } = request.body;
+  
+      if (!accountName || !password) {
+        return response.status(400).send("Informe usuário e senha!");
+      }
+  
+      const existingOng = await ONG.findOne({ where: { accountName } });
+      if (existingOng) {
+        return response.status(400).send("Parceiro já cadastrado!");
+      }
+  
+      const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
+
+      console.log(hashedPassword);
+      
+      const newOng = await ONG.create({
         accountName,
-        password,
+        password: hashedPassword,
         ongName,
-        creationYear,
+        creationYear: new Date(creationYear),
         city,
         state,
         address,
@@ -34,29 +68,16 @@ async function registerONG(request, response) {
         twitter,
         whatsapp,
         role
-    
-    } = request.body;
-
-    if (!accountName || !password) {
-      return response.status(400).send("Informe usuário e senha!");
+      });
+  
+      const token = getToken(newOng.id, newOng.accountName);
+      response.status(201).send({ token });
+    } catch (error) {
+      console.error(error);
+      response.status(500).send(error);
     }
-
-    const existingOng = await ONG.findOne({ where: { accountName } });
-    if (existingOng) {
-      return response.status(400).send("Parceiro já cadastrado!");
-    }
-
-    const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
-    const newOng = await ONG.create(request);
-
-    const token = getToken(newOng.id, newOng.accountName);
-    response.status(201).send({ token });
-  } catch (error) {
-    console.error(error);
-    response.status(500).send(error);
   }
-}
-
+  
 
 // Register User
 async function registerUser(request, response) {
@@ -170,16 +191,18 @@ async function loginONG(request, response) {
 
 //valida se pode alterar o valor daquele id e se eh ong
 const authPageId = (permissions) => {
-  return (request, response, next) => {
-    const userRole = request.body.role;
-    const id = parseInt(request.params.id);
-    if (permissions.includes(userRole) && request.body.id == id) {
-      next();
-    } else {
-      return response.status(401).json("Nao autorizado");
-    }
+    return (request, response, next) => {
+      const userRole = request.body.role;
+      const routeId = parseInt(request.params.id);
+      const requestId = parseInt(request.body.id);
+  
+      if (permissions.includes(userRole) && requestId === routeId) {
+        next();
+      } else {
+        return response.status(401).json("Nao autorizado");
+      }
+    };
   };
-};
 
 const authPage = (permissions) => {
   return (request, response, next) => {
