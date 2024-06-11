@@ -35,6 +35,7 @@ router.put("/pets/:id", authController.authPage("ONG"), authController.validateT
 // CRUD - Pets
 //router.post("/pets", upload.uploadFile.single('photos'), petController.create); // Create
 router.get("/pets", petController.findAll); // Retrieve
+router.get("/pets/search", petController.searchBy);
 router.get("/pets/:id", petController.findById); // Retrieve
 router.delete("/pets/:id", petController.deleteByPk); // Delete
 //router.put("/pets/:id", petController.update); // Update
