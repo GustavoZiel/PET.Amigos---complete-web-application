@@ -1,4 +1,4 @@
-import model from "../model/usuario.model.js";
+import model from "../model/user.model.js";
 import upload from '../upload/upload_img.js';
 
 function findAll(request, response) {
@@ -23,9 +23,9 @@ function findById(request, response) {
     });
 }
 async function create(request, response) {
-  const uploadedPhotos = await upload.getFileUrl(request.file.key);
-  console.log(uploadedPhotos);
-  console.log(typeof uploadedPhotos);
+  // const uploadedPhotos = await upload.getFileUrl(request.file.key);
+  // console.log(uploadedPhotos);
+  // console.log(typeof uploadedPhotos);
   const res = await model
   .create(
     {
@@ -38,7 +38,7 @@ async function create(request, response) {
       address: request.body.address,
       preferences: request.body.preferences,
       about: request.body.about,
-      photo: uploadedPhotos,
+      // photo: uploadedPhotos,
       phoneNumber: request.body.phoneNumber,
       website: request.body.website,
       instagram: request.body.instagram,
@@ -55,8 +55,8 @@ async function create(request, response) {
 function deleteById(request, response) {
   model
   .destroy({ where: { id: request.params.id } })
-  .then(function (res) {
-    response.status(200).send();
+  .then( () => {
+    response.status(200).send("User deleted successfully !");
     })
     .catch(function (err) {
       response.json(err).status(500);
@@ -87,8 +87,8 @@ function deleteById(request, response) {
       },
       { where: { id: request.params.id } },
     )
-    .then(function (res) {
-      response.status(200).send(res);
+    .then( () => {
+      response.status(200).send("User updated successfully !");
     })
     .catch((e) => {
       response.json(e).status(500);

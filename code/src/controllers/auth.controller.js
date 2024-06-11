@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import ONG from "../model/ong.model.js";
-import USER from "../model/usuario.model.js";
+import USER from "../model/user.model.js";
 import { AccessDeniedError } from "sequelize";
 
 const secret = process.env.AUTH_SECRET;

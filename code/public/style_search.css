@@ -237,3 +237,14 @@ footer {
 .bg-jesus {
   background-color: #F3F3F3 !important;
 }
+
+.btn-standard-click {
+  color: #3A0CA3;
+  border-color: #3A0CA3;
+}
+
+.btn-standard-click:hover {
+  color: #fff;
+  background-color: #3A0CA3;
+  border-color: #3A0CA3;
+}

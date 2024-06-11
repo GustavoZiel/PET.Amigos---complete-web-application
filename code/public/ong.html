@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="./style_header_footer.css">
     <link rel="stylesheet" href="./style_ong_page.css">
+    <link rel="stylesheet" href="./style_header_footer.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 
     <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
@@ -16,7 +16,21 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
     <title>ONG Page</title>
+
 </head>
+
+<style>
+    .btn-standard-click {
+        color: #3A0CA3;
+        border-color: #3A0CA3;
+    }
+
+    .btn-standard-click:hover {
+        color: #fff;
+        background-color: #3A0CA3;
+        border-color: #3A0CA3;
+    }
+</style>
 
 <body>
     <!-- Informações importantes da ONG -->
@@ -61,20 +75,16 @@
 
                     <div class="d-flex justify-content-start pt-1">
                         <!-- Instagram -->
-                        <div class="link-border rounded-pill">
-                            <a href="https://www.instagram.com/acaochegodatuka/" class="font-contact">
-                                <i class="fa-brands fa-instagram"></i>
-                                Instagram
-                            </a>
-                        </div>
+                        <a href="https://www.instagram.com/acaochegodatuka/" class="btn btn-standard-click rounded-pill me-2">
+                            <i class="fa-brands fa-instagram"></i>
+                            Instagram
+                        </a>
 
                         <!-- Facebook -->
-                        <div class="link-border rounded-pill ms-2">
-                            <a href="https://www.facebook.com/acaochegodatuka/about" class="font-contact">
-                                <i class="fa-brands fa-facebook-f"></i>
-                                Facebook
-                            </a>
-                        </div>
+                        <a href="https://www.facebook.com/acaochegodatuka/about" class="btn btn-standard-click rounded-pill me-2">
+                            <i class="fa-brands fa-facebook-f"></i>
+                            Facebook
+                        </a>
                     </div>
                     <button type="button" class="bg-green border-green text-white poppins-semibold rounded-pill mt-3 text-nowrap">CONTRIBUA!</button>
                 </div>
@@ -84,7 +94,7 @@
             <div class="col-12 col-md-5 d-flex justify-content-center py-4 pt-md-0">
                 <img src="img/tuka.png" alt="Foto da ONG" class="h-100 rounded-4 img-border img-fluid">
             </div>
-            
+
             <!-- Informações (Desktop) -->
             <div class="col-7 mb-md-5">
                 <!-- Nome da ONG -->
@@ -123,20 +133,17 @@
 
                     <div class="d-flex justify-content-start pt-1">
                         <!-- Instagram -->
-                        <div class="link-border rounded-pill">
-                            <a href="https://www.instagram.com/acaochegodatuka/" class="font-contact">
-                                <i class="fa-brands fa-instagram"></i>
-                                Instagram
-                            </a>
-                        </div>
+                        <a href="https://www.instagram.com/acaochegodatuka/" class="btn btn-standard-click rounded-pill me-2">
+                            <i class="fa-brands fa-instagram"></i>
+                            Instagram
+                        </a>
 
                         <!-- Facebook -->
-                        <div class="link-border rounded-pill ms-2">
-                            <a href="https://www.facebook.com/acaochegodatuka/about" class="font-contact">
-                                <i class="fa-brands fa-facebook-f"></i>
-                                Facebook
-                            </a>
-                        </div>
+                        <a href="https://www.facebook.com/acaochegodatuka/about" class="btn btn-standard-click rounded-pill me-2">
+                            <i class="fa-brands fa-facebook-f"></i>
+                            Facebook
+                        </a>
+
                     </div>
                     <button type="button" class="bg-green border-green text-white poppins-semibold rounded-pill mt-3 text-nowrap">CONTRIBUA!</button>
                 </div>
@@ -145,7 +152,7 @@
     </section>
 
     <!-- Animais da ONG -->
-    <section class="container-fluid mt-4 px-5">
+    <div class="container-xxl mt-4">
         <!-- Título -->
         <div class="row align-items-center">
             <div class="col ong-pets-title">
@@ -153,7 +160,7 @@
             </div>
             <!-- Botão adicionar pet -->
             <div class="col text-end">
-                <button type="button" class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#petModal">
+                <button type="button" class="btn btn-standard-click btn-lg" data-bs-toggle="modal" data-bs-target="#petModal">
                     Adicionar um PET
                 </button>
             </div>
@@ -163,87 +170,90 @@
         <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header" style="background-color: #F8F9FA;">
                         <h5 class="modal-title" id="petModalLabel">Adicionar um PET</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body">
-                        <form method="POST" action="/pets" enctype="multipart/form-data">
+                    <div class="modal-body" style="background-color: #F8F9FA;">
+                        <form method="POST" action="/pets">
                             <div class="row mb-3">
                                 <div class="col">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Nome">
+                                    <div class="mb-3">
                                         <label for="name" class="form-label">Nome</label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-floating">
-                                        <input type="date" class="form-control" id="birth" name="birth">
-                                        <label for="birth">Data de Nascimento</label>
+                                    <div class="mb-3">
+                                        <label for="birth" class="form-label">Data de Nascimento</label>
+                                        <input type="date" class="form-control" id="birth" name="birth" required>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <input type="text" class="form-control" id="inputCity" name="city" placeholder="Cidade">
-                                        <label for="inputCity" class="form-label">Cidade</label>
+                                    <div class="mb-3">
+                                        <label for="cidade" class="form-label">Cidade</label>
+                                        <select class="form-select" id="cidade" name="city">
+                                            <option value="São Carlos">São Carlos</option>
+                                            <option value="Araraguara">Araraguara</option>
+                                            <option value="São Paulo">São Paulo</option>
+                                            <option value="Ribeirão Preto">Ribeirão Preto</option>
+                                            <option value="Uberlândia">Uberlândia</option>
+                                            <option value="Belo Horizonte">Belo Horizonte</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="form-floating">
-                                        <select class="form-select" id="cidade" name="state">
+                                    <div class="mb-3">
+                                        <label for="estado" class="form-label">Estado</label>
+                                        <select class="form-select" id="estado" name="state">
                                             <option value="sp">São Paulo</option>
                                             <option value="mg">Minas Gerais</option>
-                                            <option value="ba">Bahia</option>
                                         </select>
-                                        <label for="cidade">Estado</label>
                                     </div>
                                 </div>
-
                             </div>
 
                             <div class="row mb-3">
                                 <div class="col">
-                                    <div class="form-floating">
+                                    <div class="mb-3">
+                                        <label for="type" class="form-label">Espécie</label>
                                         <select class="form-select" id="type" name="type">
                                             <option value="cachorro">Cachorro</option>
                                             <option value="gato">Gato</option>
-                                            <option value="passaro">Passaro</option>
                                         </select>
-                                        <label for="type">Espécie</label>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-floating">
-                                        <input class="form-control" list="datalistOptions" id="breed" name="breed" placeholder="Raça">
-                                        <datalist id="datalistOptions">
-                                            <option value="Rusky">
-                                            <option value="Vila Brasileiro">
-                                            <option value="Poodle">
-                                            <option value="Pastor alemão">
-                                        </datalist>
+                                    <div class="mb-3">
                                         <label for="breed" class="form-label">Raça</label>
+                                        <select class="form-select" id="breed" name="breed">
+                                            <option value="husky">Husky</option>
+                                            <option value="pincher">Pincher</option>
+                                            <option value="siames">Siames</option>
+                                            <option value="persian">Persa</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-floating">
+                                    <div class="mb-3">
+                                        <label for="sex" class="form-label">Sexo</label>
                                         <select class="form-select" id="sex" name="sex">
                                             <option value="macho">Macho</option>
                                             <option value="femea">Fêmea</option>
                                         </select>
-                                        <label for="sex">Sexo</label>
                                     </div>
                                 </div>
                                 <div class="col">
-                                    <div class="form-floating">
+                                    <div class="mb-3">
+                                        <label for="porte" class="form-label">Porte</label>
                                         <select class="form-select" id="porte" name="size">
                                             <option value="small">Pequeno</option>
                                             <option value="medium">Médio</option>
                                             <option value="large">Grande</option>
                                         </select>
-                                        <label for="porte">Porte</label>
                                     </div>
                                 </div>
                             </div>
@@ -251,15 +261,15 @@
                             <div class="row mb-3">
                                 <div class="col">
                                     <label for="formFileMultiple" class="form-label">Fotos</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" name="photos" multiple>
+                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
                                 </div>
                             </div>
 
                             <div class="row my-4">
                                 <div class="col">
-                                    <div class="form-floating">
-                                        <textarea class="form-control" placeholder="Leave a comment here" id="comment" name="comment" style="height: 100px"></textarea>
-                                        <label for="comment">Descrição</label>
+                                    <div class="mb-3">
+                                        <label for="comment" class="form-label">Descrição</label>
+                                        <textarea class="form-control" id="comment" name="comment" style="height: 100px" required></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -270,23 +280,23 @@
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="temperament" value="docil">
                                         <label class="form-check-label" for="inlineCheckbox1">Dócil</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="temperament" value="brincalhao">
                                         <label class="form-check-label" for="inlineCheckbox2">Brincalhão</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="timido">
                                         <label class="form-check-label" for="inlineCheckbox3">Tímido</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="agitado">
                                         <label class="form-check-label" for="inlineCheckbox3">Agitado</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="option3">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="carinhoso">
                                         <label class="form-check-label" for="inlineCheckbox3">Carinhoso</label>
                                     </div>
                                 </div>
@@ -313,11 +323,11 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="adoptedYes" name="adopted" value=1>
+                                        <input class="form-check-input" type="radio" id="adoptedYes" name="adopted" value="1">
                                         <label class="form-check-label" for="adoptedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value=0>
+                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value="0">
                                         <label class="form-check-label" for="adoptedNo">Não</label>
                                     </div>
                                 </div>
@@ -325,7 +335,7 @@
 
                             <div class="row">
                                 <div class="col">
-                                    <button class="btn btn-primary" type="submit">Adicionar</button>
+                                    <button class="btn btn-standard-click" type="submit">Adicionar</button>
                                 </div>
                             </div>
                         </form>
@@ -337,7 +347,7 @@
 
         <!-- Fotos dos animais -->
         <div class="row pt-4">
-            <div class="col-xl-3 col-sm-6 pb-4">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
                 <div class="card rounded-5">
                     <img src="img/Pitstop.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
                     <div class="card-body rounded-bottom-5 card-border">
@@ -351,7 +361,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-sm-6 pb-4">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
                 <div class="card rounded-5">
                     <img src="img/Gup.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
                     <div class="card-body rounded-bottom-5 card-border">
@@ -365,7 +375,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-sm-6 pb-4">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
                 <div class="card rounded-5">
                     <img src="img/Ney.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
                     <div class="card-body rounded-bottom-5 card-border">
@@ -379,7 +389,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-sm-6 pb-4">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
                 <div class="card rounded-5">
                     <img src="img/Monteiro.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
                     <div class="card-body rounded-bottom-5 card-border">
@@ -393,7 +403,7 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-sm-6 pb-4">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
                 <div class="card rounded-5">
                     <img src="img/Nelso.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
                     <div class="card-body rounded-bottom-5 card-border">
@@ -407,7 +417,46 @@
                 </div>
             </div>
 
-            <div class="col-xl-3 col-sm-6 pb-4">
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
+                <div class="card rounded-5">
+                    <img src="img/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
+                    <div class="card-body rounded-bottom-5 card-border">
+                        <div class="card-title card-font-name">Juninho</div>
+                        <div class="card-text card-font-info">Santo André, SP</div>
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
+                            <div class="ms-1 card-font-info">Dócil</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
+                <div class="card rounded-5">
+                    <img src="img/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
+                    <div class="card-body rounded-bottom-5 card-border">
+                        <div class="card-title card-font-name">Juninho</div>
+                        <div class="card-text card-font-info">Santo André, SP</div>
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
+                            <div class="ms-1 card-font-info">Dócil</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
+                <div class="card rounded-5">
+                    <img src="img/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
+                    <div class="card-body rounded-bottom-5 card-border">
+                        <div class="card-title card-font-name">Juninho</div>
+                        <div class="card-text card-font-info">Santo André, SP</div>
+                        <div class="d-flex align-items-center">
+                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
+                            <div class="ms-1 card-font-info">Dócil</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
                 <div class="card rounded-5">
                     <img src="img/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
                     <div class="card-body rounded-bottom-5 card-border">
@@ -433,11 +482,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <script src="./header.js"></script>
     <script src="./footer.js"></script>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 

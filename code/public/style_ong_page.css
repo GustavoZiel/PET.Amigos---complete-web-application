@@ -1,4 +1,5 @@
 .teste {
+    color: red;
     background-color: grey;
 }
 
@@ -31,7 +32,7 @@
     font-family: "Poppins", sans-serif;
     font-weight: 600;
     font-style: normal;
-  }
+}
 
 @media (max-width: 576px) {
     .font-return-page {
@@ -103,7 +104,7 @@
 
 .ong-pets-title {
     font-family: "Poppins", sans-serif;
-    font-size: 40px;
+    font-size: 30px;
     color: black;
 }
 

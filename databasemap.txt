@@ -1,0 +1,105 @@
+Modelos das bases:
+
+Pets:
+id: id único, auto-increment da base de dados, inteiro,
+    name: nome do animal, string,
+    birth: nascimento do animal, data,
+    city: cidade do animal se encontra, string,
+    state: estado do animal, string,
+    type: especie do animal, string,
+    breed: raça do animal, string,
+    sex: sexo do animal. string,
+    size: porte do animal, string,
+    photos: link para fotos do animal, string,
+    comment: comentarios da ong sobre o animal, string,
+    vacinated: se o animal é vacinado, booleano,
+    adopted: se esta adotado, booleano
+
+ONG:
+
+    id: id único, auto-increment da base de dados, inteiro,,
+    accountName: email, primary key, string,
+    password: senha hasheada, string,
+    ongName: nome da ong, string,
+    creationYear: data criacao ong, data,
+    city: cidade ong, string,
+    state: estado da ong, string,
+    address: endereco ong, string,
+    CNPJ:cnpj, string,
+    pets:tipos de pet que trabalham, string,
+    about: sobre, string,
+    photo: link para foto da ong, string,
+    phoneNumber: letefone da ong, string,
+    website: site, string,
+    instagram: link perfil do instagram, string,
+    facebook: link perfil do facebook, string,
+    twitter: link perfil do twitter, string,,
+    whatsapp: numero whatsapp, string,
+    role: role: user/ong - para autenticacao, string,
+
+USER:
+
+    id: id único, auto-increment da base de dados, inteiro,,
+    accountName: email, primary key, string,
+    password: senha hasheada, string,
+    userName: nome do usuario, string,
+    birthDate: data nascimento usuario, data,
+    city: cidade usuario, string,
+    state: estado da usuario, string,
+    address: endereco usuario, string,
+    preferences: preferencia (especiae, porte), string,
+    about: sobre, string,
+    photo: link para foto da ong, string,
+    phoneNumber: letefone da ong, string,
+    website: site, string,
+    instagram: link perfil do instagram, string,
+    facebook: link perfil do facebook, string,
+    twitter: link perfil do twitter, string,,
+    whatsapp: numero whatsapp, string,
+    role: role: user/ong - para autenticacao, string,
+
+
+
+
+Rotas:
+
+signup e sign in - passos de autenticação - redirecionados para o create de usuario/ong dentro do registerUser / registerONG
+router.post("/signup_users",  upload.uploadFile.single('photo'), authController.registerUser); //create
+router.post("/signup_ongs", upload.uploadFile.single('photo'), authController.registerONG); //create
+router.post("/signin_users", authController.loginUser);
+router.post("/signin_ongs", authController.loginONG);
+
+
+//requisicoes que pedem autenticação
+
+// alterar um usuario ou ong especifico - deve estar logado e ser aquela ong ou usuario
+
+router.put("/ongs/:id", authController.authPageId(["ONG"]), authController.validateToken, ongController.update);//update
+router.put("/users/:id", authController.authPageId(["USER"]), authController.validateToken, usuarioController.update);m//update
+
+//para criar ou alterar um pet, precisa estar logado e ser ong
+router.post("/pets",upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.create); //create
+router.put("/pets/:id",  upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.update); //update
+
+
+// CRUD - Pets
+
+router.get("/pets", petController.findAll); // Retrieve
+router.get("/pets/search", petController.searchBy); //Retrieve
+router.get("/pets/:id", petController.findById); // Retrieve
+router.delete("/pets/:id", petController.deleteByPk); // Delete
+
+
+// CRUD - Usuários
+
+router.get("/users", usuarioController.findAll); // Retrieve
+router.get("/users/:id", usuarioController.findById); // Retrieve
+router.delete("/users/:id", usuarioController.deleteById); // Delete
+
+
+// CRUD - Ongs
+
+router.get("/ongs", ongController.findAll); // Retrieve
+router.get("/ongs/:id", ongController.findById); // Retrieve
+router.delete("/ongs/:id", ongController.deleteById); // Delete
+
