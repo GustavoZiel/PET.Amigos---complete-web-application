@@ -28,7 +28,7 @@
 <body>
   <header>
       <!-- Linha roxa no topo do site -->
-      <div class="rectangle"></div>
+      <div id="header-home" class="rectangle"></div>
 
       <!-- Navbar -->
       <nav class="navbar navbar-expand bg-body d-flex justify-content-center">
@@ -339,7 +339,7 @@
     </div>
   </main>
 
-  <footer class="container-fluid bg-black">
+  <footer id="footer-home" class="container-fluid bg-black">
     <div class="pt-2">
       <div
         class="container justify-content-between font-footer d-xs-block d-md-flex py-3"
@@ -356,17 +356,14 @@
     </div>
   </footer>
 
-  <script src="./header.js"></script>
-  <script src="./footer.js"></script>
-
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      const header = document.getElementById('header-home');
+      const header = document.querySelector('header');
       const footer = document.getElementById('footer-home');
       if (header)
-        sessionStorage.setItem('headerContent', header.outerHTML);
+        localStorage.setItem('headerContent', header.outerHTML);
       if (footer)
-        sessionStorage.setItem('footerContent', footer.outerHTML);
+        localStorage.setItem('footerContent', footer.outerHTML);
     });
   </script>
   
