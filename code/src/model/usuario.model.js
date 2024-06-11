@@ -20,7 +20,8 @@ Usuario.init({
     instagram: { type: DataTypes.STRING, allowNull: true },
     facebook: { type: DataTypes.STRING, allowNull: true },
     twitter: { type: DataTypes.STRING, allowNull: true },
-    whatsapp: { type: DataTypes.STRING, allowNull: true }
+    whatsapp: { type: DataTypes.STRING, allowNull: true },
+    role: { type: DataTypes.STRING, allowNull: true }
 }, { sequelize: sequelize, timestamps: false });
 
 Usuario.belongsToMany(Pet, { through: 'UsuarioPet' });

@@ -22,6 +22,7 @@ ONG.init({
     facebook: { type: DataTypes.STRING, allowNull: true },
     twitter: { type: DataTypes.STRING, allowNull: true },
     whatsapp: { type: DataTypes.STRING, allowNull: true },
+    role: { type: DataTypes.STRING, allowNull: false },
 }, { sequelize: sequelize, timestamps: false });
 
 ONG.hasMany(Pet);
