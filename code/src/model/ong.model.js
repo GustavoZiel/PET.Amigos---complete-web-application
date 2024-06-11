@@ -15,7 +15,7 @@ ONG.init({
     CNPJ:{ type: DataTypes.STRING, allowNull: true },
     pets:{ type: DataTypes.STRING, allowNull: false },
     about:{ type: DataTypes.STRING, allowNull: true },
-    photo:{ type: DataTypes.STRING, allowNull: false },
+    photo:{ type: DataTypes.STRING, allowNull: true },
     phoneNumber: { type: DataTypes.STRING, allowNull: false },
     website: { type: DataTypes.STRING, allowNull: true},
     instagram: { type: DataTypes.STRING, allowNull: true },

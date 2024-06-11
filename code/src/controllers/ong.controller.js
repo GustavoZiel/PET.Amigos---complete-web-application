@@ -23,9 +23,9 @@ function findById(request, response) {
     });
 }
 async function create(request, response) {
-    const uploadedPhotos = await upload.getFileUrl(request.file.key);
-    console.log(uploadedPhotos);
-    console.log(typeof uploadedPhotos);
+    // const uploadedPhotos = await upload.getFileUrl(request.file.key);
+    // console.log(uploadedPhotos);
+    // console.log(typeof uploadedPhotos);
     const res = await model
     .create(
       {
@@ -39,7 +39,7 @@ async function create(request, response) {
         CNPJ: request.body.CNPJ,
         pets: request.body.pets,
         about: request.body.about,
-        photo: uploadedPhotos,
+        // photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
         website: request.body.website,
         instagram: request.body.instagram,
@@ -56,8 +56,8 @@ async function create(request, response) {
 function deleteById(request, response) {
   model
   .destroy({ where: { id: request.params.id } })
-  .then(function (res) {
-    response.status(200).send();
+  .then( () => {
+    response.status(200).send("ONG deleted successfully !");
     })
     .catch(function (err) {
       response.json(err).status(500);
@@ -88,8 +88,8 @@ function deleteById(request, response) {
       },
       { where: { id: request.params.id } },
     )
-    .then(function (res) {
-      response.status(200).send(res);
+    .then( () => {
+      response.status(200).send("ONG updated successfully !");
     })
     .catch((e) => {
       response.json(e).status(500);
