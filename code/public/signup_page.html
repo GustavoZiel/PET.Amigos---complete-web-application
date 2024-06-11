@@ -46,7 +46,7 @@
           <div class="font-nav-brand d-flex">PET.Amigos</div><!--  -->
         </div>
       </a>
-      <form id="signupForm" method="POST" enctype="multipart/form-data">
+      <form id="signupForm" method="POST" enctype="multipart/form-data" class = "form">
         <div class="form-group">
             <label for="accountType">Escolha o tipo de conta:</label>
             <select id="accountType" name="accountType" class="form-control" onchange="toggleFields()">
@@ -192,6 +192,13 @@
             userFields.style.display = 'none';
         }
     }
+
+
+  /*   form.addEventListener('submit', event =>{
+        event.preventDefault();
+        const formData = new FormData(form);
+        console.log(FormData.get('accountName'));
+    }); */
 
     // Call toggleFields on page load to set the correct fields based on the default selected option
     document.addEventListener('DOMContentLoaded', toggleFields);

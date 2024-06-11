@@ -14,31 +14,31 @@ router.get('/', function (req, res) {
 
 
 
-/* ver como eh isso?? ou signup_usuario. no da bruna so tem um tipo de user e fica so /signup e signin*/
-router.post("/signup_usuario", authController.registerUser);
-router.post("/signup_ong", authController.registerONG);
-router.post("/signin_usuario", authController.loginUser);
-router.post("/signin_ong", authController.loginONG);
+/* signup e sign in com autenticacao -> post!!*/
+router.post("/signup_users",  upload.uploadFile.single('photo'), authController.registerUser);
+router.post("/signup_ongs", upload.uploadFile.single('photo'), authController.registerONG);
+router.post("/signin_users", authController.loginUser);
+router.post("/signin_ongs", authController.loginONG);
 
 //so pode criar ongs, usuarios e pets se tiver logado. pets so se for ong -> middlewere
 router.post("/users", authController.authPage("USER"), authController.validateToken);
 router.post("/ongs", authController.authPage("ONG"), authController.validateToken);
 router.put("/ongs/:id", authController.authPageId(["ONG"]), authController.validateToken, ongController.update);
 router.put("/users/:id", authController.authPageId(["USER"]), authController.validateToken, usuarioController.update);
-router.post("/pets", authController.authPage("ONG"), authController.validateToken, petController.create);
-router.put("/pets/:id", authController.authPage("ONG"), authController.validateToken, petController.update); // Update
+//router.post("/pets",upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.create);
+//router.put("/pets/:id",  upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.update); 
 
 
 
 
 
 // CRUD - Pets
-//router.post("/pets", upload.uploadFile.single('photos'), petController.create); // Create
+router.post("/pets", upload.uploadFile.single('photos'), petController.create); // Create
 router.get("/pets", petController.findAll); // Retrieve
 router.get("/pets/search", petController.searchBy);
 router.get("/pets/:id", petController.findById); // Retrieve
 router.delete("/pets/:id", petController.deleteByPk); // Delete
-//router.put("/pets/:id", petController.update); // Update
+router.put("/pets/:id", petController.update); // Update
 
 // CRUD - Usuários
 //router.post("/users", upload.uploadFile.single('photo'), usuarioController.create); // Create
