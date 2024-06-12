@@ -23,9 +23,7 @@ function findById(request, response) {
     });
 }
 async function create(request, response) {
-    // const uploadedPhotos = await upload.getFileUrl(request.file.key);
-    // console.log(uploadedPhotos);
-    // console.log(typeof uploadedPhotos);
+    const uploadedPhotos = await upload.getFileUrl(request.file.key);
     const res = await model
     .create(
       {
@@ -39,14 +37,14 @@ async function create(request, response) {
         CNPJ: request.body.CNPJ,
         pets: request.body.pets,
         about: request.body.about,
-        // photo: uploadedPhotos,
+        photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
         website: request.body.website,
         instagram: request.body.instagram,
         facebook: request.body.facebook,
         twitter: request.body.twitter,
         whatsapp: request.body.whatsapp,
-        role: request.body.role,
+        role: 2,
       },
       { where: { id: request.params.id } },
     )

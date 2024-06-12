@@ -59,9 +59,7 @@ async function searchBy(req, res) {
   }
 }
 async function create(request, response) {
-  // const uploadedPhotos = await upload.getFileUrl(request.file.key);
-  // console.log(uploadedPhotos);
-  // console.log(typeof uploadedPhotos);
+  const uploadedPhotos = await upload.getFileUrl(request.file.key);
   const res = await model
     .create(
       {
@@ -73,7 +71,7 @@ async function create(request, response) {
         breed: request.body.breed,
         sex: request.body.sex,
         size: request.body.size,
-        // photos: uploadedPhotos,
+        photos: uploadedPhotos,
         comment: request.body.comment,
         vacinated: request.body.vacinated,
         adopted: request.body.adopted,
