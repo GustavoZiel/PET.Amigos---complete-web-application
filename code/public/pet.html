@@ -1,107 +1,21 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="./style_header_footer.css">
-        <link rel="stylesheet" href="./style_pet_page.css">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-        <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
-        <title>Página do Pet</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style_header_footer.css">
+    <link rel="stylesheet" href="./style_pet_page.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
+    <title>Página do Pet</title>
+</head>
 
 <body class="bg-light">
-    <section class="bg-light ps-5 pb-4 mb-5 mt-3">
-        <div class="row px-5 mx-3 pt-3">
-            <div class="col-lg-3 d-flex flex-column align-items-center">
-                <div class="d-lg-none">
-                    <h1 class="poppins-semibold textPurple">
-                        CAMEMBERT
-                        <i class="fa-solid fa-mars textPurple"></i>
-                    </h1>
-                </div>
-                <div class="d-inline-flex position-relative">
-                    <div class="d-flex flex-column align-items-center">
-                        <img src="./img/Gato.png" alt="Cachorro" class="rounded-5 img-fluid animal border-purple">
-                        <span class="coracao">
-                            <img src="./img/red-heart-svgrepo-com.svg" alt="" class="img-fluid ">
-                        </span>
-                        <span class="likes">
-                            <p class=" bg-light text-sm border-purple textPurple poppins-medium rounded-pill">123</p>
-                        </span>
-                        <button type="button" class="container-fluid purpleBgColor adotar border-purple text-white poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR!</button>
-                        <!-- <button type="button" class="container-fluid bg-danger adotar border-red text-white poppins-semibold rounded-pill mt-3 text-nowrap">ADOTADO!</button> -->
-                    </div>
-                </div>
+    <section id="pets-section" class="bg-light ps-5 pb-4 mb-5 mt-3">
 
-                <!-- Modal -->
-                <div class="modal fade" id="petAdotar" tabindex="-1" aria-labelledby="petAdotarLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="petAdotarLabel">O que fazer para adotar?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem donec massa sapien faucibus et molestie ac. Ipsum dolor sit amet consectetur. At in tellus integer feugiat scelerisque. Ornare arcu dui vivamus arcu. Consectetur purus ut faucibus pulvinar elementum. Ac feugiat sed lectus vestibulum mattis ullamcorper velit sed. Blandit libero volutpat sed cras ornare. Arcu dui vivamus arcu felis bibendum ut tristique et. Sit amet mauris commodo quis imperdiet massa tincidunt nunc pulvinar. Porta nibh venenatis cras sed felis eget. Arcu bibendum at varius vel pharetra vel turpis. Convallis aenean et tortor at risus viverra adipiscing at in. Nam aliquam sem et tortor consequat id porta nibh venenatis. Consectetur a erat nam at lectus urna duis convallis. Et leo duis ut diam quam nulla porttitor massa.
-                                </p>
-                                <p>
-                                    Venenatis cras sed felis eget. Lacus suspendisse faucibus interdum posuere lorem ipsum dolor. Interdum consectetur libero id faucibus nisl tincidunt eget nullam non. Imperdiet proin fermentum leo vel orci. Convallis aenean et tortor at risus. Commodo elit at imperdiet dui accumsan. Imperdiet massa tincidunt nunc pulvinar sapien et ligula. Habitant morbi tristique senectus et netus. Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla. Commodo nulla facilisi nullam vehicula ipsum a arcu cursus vitae. Mauris a diam maecenas sed enim ut sem viverra. Semper eget duis at tellus at. Consequat nisl vel pretium lectus. Tortor id aliquet lectus proin nibh. In est ante in nibh mauris. Sit amet nisl suscipit adipiscing bibendum est. Enim sed faucibus turpis in eu mi bibendum neque.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-lg-9 row">
-                <div class=" d-none d-lg-block">
-                    <h1 class="ps-5 poppins-semibold textPurple">
-                        CAMEMBERT
-                        <i class="fa-solid fa-mars textPurple"></i>
-                    </h1>
-                </div>
-                <div class="col-lg-6 row ps-5">
-                    <div class="col-lg-6 pt-2">
-                        <h5 class=" poppins-medium headers_caract">IDADE</h5>
-                        <p class="poppins-medium text_caract">2 anos e 10 meses</p>
-                        <h5 class=" poppins-medium headers_caract">RAÇA</h5>
-                        <p class="poppins-medium text_caract">Sem raça definida</p>
-                        <h5 class=" poppins-medium headers_caract">LOCALIZAÇÃO</h5>
-                        <p class="poppins-medium text_caract">Araraquara, SP</p>
-                    </div>
-                    <div class="col-lg-6">
-                        <h5 class=" poppins-medium headers_caract">ESPÉCIE</h5>
-                        <p class="poppins-medium text_caract">Cachorro</p>
-                        <h5 class=" poppins-medium headers_caract">PORTE</h5>
-                        <p class="poppins-medium text_caract">Pequeno</p>
-                    </div>
-                    <h5 class="poppins-medium headers_caract">SOBRE</h5>
-                    <p class="poppins-medium text_caract">Cachorro dócil, manso e bem sociável. Resgatado em 2023 com outros dois irmãos. Castrado, vermifugado e possui microchip.</p>
-                </div>
-                <div class="col-lg-6 d-flex flex-column align-items-center">
-                    <div>
-                        <h5 class="poppins-medium headers_caract">INSTITUIÇÃO PROTETORA</h5>
-                    </div>
-                    <a href="./ong.html" class="text-decoration-none">
-                        <div class="d-flex flex-column align-items-center">
-                            <img src="./img/tuka.png" alt="Cachorro" class="mb-2 img-fluid rounded-5 border-purple">
-                            <button type="button" class="bg-light border-purple textPurple rounded-pill px-4 container-fluid text-nowrap">Saiba mais!</button>
-                            <p class="textOngNumber">(xx) xxxxx-xxxx</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
     </section>
 
-        <script src="./pet.js"></script>
-        <script src="./header.js"></script>
-        <script src="./footer.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    </body>
-
-</html>
+    <script src="./pet.js"></script>
+    <script src="./header.js"></script>
+    <script src="./footer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>

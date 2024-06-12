@@ -7,7 +7,7 @@ const accessKeyId = process.env["ACCESS_KEY"];
 const secretAccessKey = process.env["SECRET_KEY"];
 console.log(accessKeyId);
 const s3 = new S3Client({
-    endpoint: "http://192.168.15.3:9000",
+    endpoint: "http://192.168.166.84:9000",
     credentials: {
         accessKeyId: accessKeyId,
         secretAccessKey: secretAccessKey,
@@ -28,7 +28,7 @@ const uploadFile = multer({
     }),
 });
 
-const minioUrl = "192.168.15.3:9000/";
+const minioUrl = "192.168.166.84:9000/";
 const bucket = "pija/";
 async function getFileUrl(fileName) {
     return minioUrl + bucket + fileName;
