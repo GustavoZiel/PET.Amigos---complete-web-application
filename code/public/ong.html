@@ -170,12 +170,12 @@
         <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
-                    <div class="modal-header" style="background-color: #F8F9FA;">
+                    <div class="modal-header">
                         <h5 class="modal-title" id="petModalLabel">Adicionar um PET</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <div class="modal-body" style="background-color: #F8F9FA;">
-                        <form method="POST" action="/pets">
+                    <div class="modal-body">
+                        <form method="POST" action="/pets" enctype="multipart/form-data">
                             <div class="row mb-3">
                                 <div class="col">
                                     <div class="mb-3">
@@ -261,7 +261,7 @@
                             <div class="row mb-3">
                                 <div class="col">
                                     <label for="formFileMultiple" class="form-label">Fotos</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" multiple>
+                                    <input class="form-control" type="file" id="formFileMultiple" name="photos" multiple>
                                 </div>
                             </div>
 
@@ -323,11 +323,11 @@
                                 </div>
                                 <div class="col">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="adoptedYes" name="adopted" value="1">
+                                        <input class="form-check-input" type="radio" id="adoptedYes" name="adopted" value=1>
                                         <label class="form-check-label" for="adoptedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value="0">
+                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value=0>
                                         <label class="form-check-label" for="adoptedNo">Não</label>
                                     </div>
                                 </div>

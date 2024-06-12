@@ -36,7 +36,7 @@
                         <div class="pb-4">
                             <a href="./pet.html" style="text-decoration: none">
                                 <div class="card rounded-5 mx-4" style="width: 14rem">
-                                    <img src="imgs/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                    <img src="img/Gup.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                     <div class="card-body purpleBgColor rounded-bottom-5">
                                         <div class="text-start font_name_white">Gup</div>
                                         <div class="text-start font_infos_white">Pug</div>
@@ -52,7 +52,7 @@
                         <div class="pb-4">
                             <a href="./pet.html" style="text-decoration: none">
                                 <div class="card rounded-5 mx-4" style="width: 14rem">
-                                    <img src="imgs/Ney.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                    <img src="img/Ney.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                     <div class="card-body purpleBgColor rounded-bottom-5">
                                         <div class="text-start font_name_white">Ney</div>
                                         <div class="text-start font_infos_white">Chihuahua</div>
@@ -68,7 +68,7 @@
                         <div class="pb-4">
                             <a href="./pet.html" style="text-decoration: none">
                                 <div class="card rounded-5 mx-4" style="width: 14rem">
-                                    <img src="imgs/Monteiro.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                    <img src="img/Monteiro.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                     <div class="card-body purpleBgColor rounded-bottom-5">
                                         <div class="text-start font_name_white">Monteiro</div>
                                         <div class="text-start font_infos_white">Corgi</div>
@@ -84,7 +84,7 @@
                         <div class="pb-4">
                             <a href="./pet.html" style="text-decoration: none">
                                 <div class="card rounded-5 mx-4" style="width: 14rem">
-                                    <img src="imgs/Pitstop.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                    <img src="img/Pitstop.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                     <div class="card-body purpleBgColor rounded-bottom-5">
                                         <div class="text-start font_name_white">Pitstop</div>
                                         <div class="text-start font_infos_white">Pitbull</div>
@@ -108,7 +108,7 @@
                             <a href="./pet.html" style="text-decoration: none">
                                 <div class="carousel-item active">
                                     <div class="card rounded-5 mx-auto" style="width: 16rem">
-                                        <img src="imgs/Juninho.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <img src="img/Juninho.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                         <div class="card-body purpleBgColor rounded-bottom-5 border-card">
                                             <div class="text-start font_name_white">Juninho</div>
                                             <div class="text-start font_infos_white">Pug</div>
@@ -124,7 +124,7 @@
                             <a href="./pet.html" style="text-decoration: none">
                                 <div class="carousel-item">
                                     <div class="card rounded-5 mx-auto" style="width: 16rem">
-                                        <img src="imgs/Nelso.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <img src="img/Nelso.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                         <div class="card-body purpleBgColor rounded-bottom-5">
                                             <div class="text-start font_name_white">Nelso</div>
                                             <div class="text-start font_infos_white">Não sei</div>
@@ -140,7 +140,7 @@
                             <a href="./pet.html" style="text-decoration: none">
                                 <div class="carousel-item">
                                     <div class="card rounded-5 mx-auto" style="width: 16rem">
-                                        <img src="imgs/Pitstop.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                                        <img src="img/Pitstop.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
                                         <div class="card-body purpleBgColor rounded-bottom-5">
                                             <div class="text-start font_name_white">Pitstop</div>
                                             <div class="text-start font_infos_white">Araraquara, SP</div>
@@ -405,7 +405,7 @@
                 for (const animal of animals){
                     const source_img = await fetchImage(animal.photos);
                     const card = `
-                        <a href="pet.html" style="text-decoration: none">
+                        <a href="pet.html?id=${animal.id}" style="text-decoration: none">
                             <div class="card rounded-5 m-3 img-size">
                                 <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
                                 <div class="card-body rounded-bottom-5 border-card">
