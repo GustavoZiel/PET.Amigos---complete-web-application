@@ -15,7 +15,7 @@
 
   <!-- Bootstrap Bundle JS (includes Popper) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
+  <script src="signup.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
 
   <!--css-->
@@ -24,7 +24,6 @@
 
   <title>Sign Up Page</title>
 </head>
-
 <body>
   <header>
     <!-- Linha roxa no topo do site -->
@@ -43,170 +42,151 @@
               </g>
             </svg>
           </div>
-          <div class="font-nav-brand d-flex">PET.Amigos</div><!--  -->
+          <div class="font-nav-brand d-flex">PET.Amigos</div>
         </div>
       </a>
-      <form id="signupForm" method="POST" enctype="multipart/form-data" class = "form">
+      <h2 class="text-title-signup text-center pt-3">Cadastre-se</h2>
+      <form id="signupForm" method="POST" enctype="multipart/form-data" class = "form form-font-title" onsubmit="validateForm(event)">
         <div class="form-group">
-            <label for="accountType">Escolha o tipo de conta:</label>
+            <label for="accountType">Escolha o tipo de conta</label>
             <select id="accountType" name="accountType" class="form-control" onchange="toggleFields()">
                 <option value="user">Usuário</option>
                 <option value="ong">ONG</option>
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="accountName">E-mail:</label>
+        <div class="form-group pt-3">
+            <label for="accountName">E-mail</label>
             <input type="text" id="accountName" name="accountName" class="form-control" required>
         </div>
 
-        <div class="form-group">
-            <label for="password">Senha:</label>
+        <div class="form-group pt-3">
+            <label for="password">Senha</label>
             <input type="password" id="password" name="password" class="form-control" required>
         </div>
 
-        <div class="form-group">
-          <label for="senha_conf">Confirmar senha:</label>
-          <input type="senha_conf" id="senha_conf" name="senha_conf" class="form-control" required>
+        <div class="form-group pt-3">
+          <label for="senha_conf">Confirme sua senha</label>
+          <input type="password" id="senha_conf" name="senha_conf" class="form-control" required>
         </div>
         
         <div class="user-fields">
-          <div class="form-group">
-              <label for="userName">Nome completo:</label>
+          <div class="form-group pt-3">
+              <label for="userName">Nome completo</label>
               <input type="text" id="userName" name="userName" class="form-control">
           </div>
 
-          <div class="form-group">
-              <label for="birthDate">Data de Nascimento</label>
+          <div class="form-group pt-3">
+              <label for="birthDate">Data de nascimento</label>
               <input type="date" id="birthDate" name="birthDate" class="form-control">
           </div>
 
-          <div class="form-group">
-              <label for="preferences">Preferências:</label>
+          <div class="form-group pt-3">
+              <label for="preferences">Preferências</label>
               <input type="text" id="preferences" name="preferences" class="form-control">
           </div>
         </div>
 
         <div class="ong-fields">
-          <div class="form-group">
-              <label for="ongName">Nome da ONG:</label>
+          <div class="form-group pt-3">
+              <label for="ongName">Nome da ONG</label>
               <input type="text" id="ongName" name="ongName" class="form-control">
           </div>
 
-          <div class="form-group">
-              <label for="creationYear">Ano de fundação:</label>
+          <div class="form-group pt-3">
+              <label for="creationYear">Ano de fundação</label>
               <input type="date" id="creationYear" name="creationYear" class="form-control">
           </div>
 
-          <div class="form-group">
-              <label for="CNPJ">CNPJ:</label>
+          <div class="form-group pt-3">
+              <label for="CNPJ">CNPJ</label>
               <input type="text" id="CNPJ" name="CNPJ" class="form-control">
           </div>
 
-          <div class="form-group">
-              <label for="pets">PETS:</label>
+          <div class="form-group pt-3">
+              <label for="pets">Pets</label>
               <input type="text" id="pets" name="pets" class="form-control">
           </div>
         </div>
 
         <div class="common-fields">
-            <div class="form-group">
-                <label for="city">Cidade:</label>
+            <div class="form-group pt-3">
+                <label for="city">Cidade</label>
                 <input type="text" id="city" name="city" class="form-control" required>
             </div>
 
-            <div class="form-group">
-                <label for="state">Estado:</label>
+            <div class="form-group pt-3">
+                <label for="state">Estado</label>
                 <input type="text" id="state" name="state" class="form-control" required>
             </div>
 
-            <div class="form-group">
-              <label for="address">Endereço:</label>
+            <div class="form-group pt-3">
+              <label for="address">Endereço</label>
               <input type="text" id="address" name="address" class="form-control" required>
             </div>
             
-            <div class="form-group">
-              <label for="phoneNumber">Numero de telefone:</label>
+            <div class="form-group pt-3">
+              <label for="phoneNumber">Número de telefone</label>
               <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
             </div>
             
-            <div class="form-group">
-              <label for="website">Site:</label>
+            <div class="form-group pt-3">
+              <label for="website">Site</label>
               <input type="text" id="website" name="website" class="form-control" required>
             </div>
             
-            <div class="form-group">
-              <label for="instagram">Instagram:</label>
+            <div class="form-group pt-3">
+              <label for="instagram">Instagram</label>
               <input type="text" id="instagram" name="instagram" class="form-control" required>
             </div>
 
-            <div class="form-group">
-              <label for="facebook">Facebook:</label>
+            <div class="form-group pt-3">
+              <label for="facebook">Facebook</label>
               <input type="text" id="facebook" name="facebook" class="form-control" required>
             </div>
 
-            <div class="form-group">
-              <label for="twitter">Twitter:</label>
+            <div class="form-group pt-3">
+              <label for="twitter">Twitter</label>
               <input type="text" id="twitter" name="twitter" class="form-control" required>
             </div>
             
-            <div class="form-group">
-              <label for="whatsapp">Whatsapp:</label>
+            <div class="form-group pt-3">
+              <label for="whatsapp">WhatsApp</label>
               <input type="text" id="whatsapp" name="whatsapp" class="form-control" required>
             </div>
 
-            <div class="form-group">
-              <label for="about">Sobre:</label>
+            <div class="form-group pt-3">
+              <label for="about">Descrição</label>
               <input type="text" id="about" name="about" class="form-control" required>
             </div>
 
-            <div class="form-group">
+            <div class="form-group pt-3">
               <label for="photo" class="form-label">Fotos</label>
               <input class="form-control" type="file" id="photo" name="photo" multiple>
             </div>
         </div>
 
-        <div class="form-group pt-3">
-            <button type="submit" class="btn btn-primary">Cadastrar-se</button>
+        <div class="form-group pt-3" align="center">
+            <button type="submit" class="col-6 mx-auto btn btn-light form-button form-button-font">Cadastrar-se</button>
         </div>
     </form>
+    <!-- Modal -->
+    <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="petAdotarLabel">Erro</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            As senhas não coincidem. Por favor, verifique e tente novamente.
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   </main>
-  <script>
-    function toggleFields() {
-        const accountType = document.getElementById('accountType').value;
-        const ongFields = document.querySelector('.ong-fields');
-        const userFields = document.querySelector('.user-fields');
-        const form = document.getElementById('signupForm');
-
-        if (accountType === 'ong') {
-            ongFields.style.display = 'block';
-            userFields.style.display = 'none';
-            form.action = '/ongs'; // Alterar o action do formulário para /ongs
-        } else if (accountType === 'user') {
-            ongFields.style.display = 'none';
-            userFields.style.display = 'block';
-            form.action = '/users'; // Alterar o action do formulário para /users
-        } else {
-            ongFields.style.display = 'none';
-            userFields.style.display = 'none';
-        }
-    }
-
-
-  /*   form.addEventListener('submit', event =>{
-        event.preventDefault();
-        const formData = new FormData(form);
-        console.log(FormData.get('accountName'));
-    }); */
-
-    // Call toggleFields on page load to set the correct fields based on the default selected option
-    document.addEventListener('DOMContentLoaded', toggleFields);
-  </script>
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="./footer.js"></script>
+ 
 </body>
 
 </html>

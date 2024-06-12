@@ -4,8 +4,10 @@ document.addEventListener("DOMContentLoaded", function () {
     if (headerContent) {
         const headerContainer = document.createElement('div');
         headerContainer.innerHTML = headerContent;
-        document.body.insertBefore(headerContainer, document.body.firstChild);
+
+        const headerElement = headerContainer.querySelector('header');
+        document.body.insertBefore(headerElement, document.body.firstChild);
+    } else {
+        console.error('Header não encontrado no local storage.');
     }
-    else
-        console.error('Header nao encontrado no local storage.');
 });
