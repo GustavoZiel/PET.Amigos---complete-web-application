@@ -1,0 +1,250 @@
+body {
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+}
+
+footer {
+  margin-top: auto;
+}
+
+.font_h1_search {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1em, 1.5em + 2vw, 3em);
+  line-height: 65px;
+  color: rgb(0, 0, 0);
+}
+
+.font_h2_search {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: clamp(1em, 1.5em + 2vw, 3em);
+  line-height: 50px;
+  color: black;
+}
+
+.font_prefs {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1em, 1.4em + 1vw, 3em);
+  line-height: 65px;
+  color: rgb(44, 44, 44);
+}
+
+.font_name_white {
+  font-family: 'Poppins';
+  font-size: clamp(1.5em, 0.5em + 1.2vw, 2.2em);
+  font-weight: 500;
+  color: white;
+}
+
+.font_infos_white {
+  font-family: 'Poppins';
+  font-size: clamp(1.2em, 0.3em + 0.8vw, 1.8em);
+  font-weight: 300;
+  color: white;
+}
+
+.font_name_black {
+  font-family: 'Poppins';
+  font-size: clamp(1.5em, 0.5em + 1.2vw, 2.2em);
+  font-weight: 500;
+  color: black;
+}
+
+.font_infos_black {
+  font-family: 'Poppins';
+  font-size: clamp(1.2em, 0.3em + 0.8vw, 1.8em);
+  font-weight: 300;
+  color: black;
+}
+
+.font_icons {
+  font-family: 'Poppins';
+  font-size: clamp(1em, 0.2em + 0.7vw, 1em);
+  font-weight: 300;
+  color: white;
+}
+
+.purpleBgColor {
+  background-color: #3a0ca3;
+}
+
+.lilacBgColor {
+  background-color: #67549467;
+}
+
+.greyBgColor {
+  background-color: grey;
+}
+
+.border-card {
+  border-bottom: 0.15em solid #3a0ca3;
+  border-left: 0.15em solid #3a0ca3;
+  border-right: 0.15em solid #3a0ca3;
+  border-top: none;
+}
+
+.border-img-card {
+  border: 0.15em solid #3a0ca3;
+}
+
+.button-pages {
+  background-color: #3a0ca3;
+  color: white;
+  border: solid white;
+  border-radius: 50%;
+  padding: 7px 14px;
+  text-align: center;
+  font-size: 20px;
+}
+
+.button-pages:hover {
+  background-color: #7e58d8;
+  color: black;
+}
+
+.card:hover {
+  background-color: #7e58d8;
+  text-decoration: none;
+}
+
+.btn-toggle {
+  padding: .25rem .5rem;
+  font-weight: 500;
+  color: #3A0CA3;
+  background-color: #FFF;
+  font-size: x-large;
+}
+
+.btn-toggle:hover {
+  color: #3A0CA3;
+  background-color: transparent;
+}
+
+.btn-toggle::before {
+  width: 1.25em;
+  line-height: 0;
+  content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%233a0ca3' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M5 14l6-6-6-6'/%3e%3c/svg%3e");
+  transition: transform .35s ease;
+  transform-origin: .5em 50%;
+}
+
+.btn-toggle[aria-expanded="true"]::before {
+  transform: rotate(90deg);
+}
+
+.btn-selectd {
+  background-color: #3A0CA3;
+  color: white;
+  border-color: #3A0CA3;
+}
+
+.btn-toggle-item {
+  width: 80%;
+  padding: 1px;
+  padding-left: 25px;
+  margin: 5px;
+  display: inline-flex;
+  background-color: #FFF;
+  font-weight: 400;
+  font-size: large;
+}
+
+.btn-outline-purple {
+  color: #3A0CA3;
+  border-color: #3A0CA3;
+}
+
+.btn-outline-purple:hover {
+  color: #fff;
+  background-color: #3A0CA3;
+  border-color: #3A0CA3;
+}
+
+.btn-outline-purple.active {
+  color: white;
+  background-color: #3A0CA3;
+  border-color: #3A0CA3;
+}
+
+.form-range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3A0CA3;
+  cursor: pointer;
+}
+
+.form-range::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3A0CA3;
+  cursor: pointer;
+}
+
+.form-range::-ms-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #3A0CA3;
+  cursor: pointer;
+}
+
+.distancia-texto {
+  color: #3A0CA3;
+  font-size: small;
+}
+
+.img-size {
+  width: 18em;
+}
+
+.btn-filter {
+  font-size: x-large;
+  color: #3A0CA3;
+  border-color: #3A0CA3;
+  font-family: 'Poppins';
+}
+
+.btn-filter:hover {
+  color: white;
+  border-color: #3A0CA3;
+}
+
+.btn-filter-close:hover {
+  color: red;
+}
+
+.font-btn-filter {
+  font-size: x-large;
+  color: #3A0CA3;
+  font-family: 'Poppins';
+}
+
+.scrollmenu {
+  overflow: auto;
+  white-space: nowrap;
+}
+
+.bg-jesus {
+  background-color: #F3F3F3 !important;
+}
+
+.btn-standard-click {
+  color: #3A0CA3;
+  border-color: #3A0CA3;
+}
+
+.btn-standard-click:hover {
+  color: #fff;
+  background-color: #3A0CA3;
+  border-color: #3A0CA3;
+}
