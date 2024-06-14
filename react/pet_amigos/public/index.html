@@ -1,39 +1,372 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta name="theme-color" content="#000000" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="pt-br">
 
-    <link rel="stylesheet" href="./style_ong_page.css">
-    <link rel="stylesheet" href="./style_header_footer.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <!-- FONTE UTILIZADA-->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
 
-    <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <!-- Bootstrap Bundle JS (includes Popper) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <title>ONG Page</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous" />
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+  <!--css-->
+  <link rel="stylesheet" href="./style_home.css" />
+  <link rel="stylesheet" href="./style_header_footer.css" />
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-    <script src="./header.js"></script>
-    <script src="./footer.js"></script>
+  <title>Home Page</title>
+</head>
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-  </body>
+<body>
+  <header>
+      <!-- Linha roxa no topo do site -->
+      <div id="header-home" class="rectangle"></div>
+
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand bg-body d-flex justify-content-center">
+          <div class="container d-flex justify-content-between">
+
+              <!-- Logo + nome (PET.Amigos) -->
+              <a class="navbar-brand" href="./home.html">
+                  <div class="d-flex align-items-center justify-content-center">
+                      <div class="purple-circle me-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="white" width="50%">
+                              <title>14-House</title>
+                              <g id="_14-House" data-name="14-House">
+                                  <path d="M31.62,12.22l-15-12a1,1,0,0,0-1.25,0l-15,12A1,1,0,0,0,1,14H3V31a1,1,0,0,0,1,1H24V30H20V21a1,1,0,0,0-1-1H13a1,1,0,0,0-1,1v9H5V14H22V12H3.85L16,2.28,28.15,12H28a1,1,0,0,0-1,1v6h2V14h2a1,1,0,0,0,.62-1.78ZM14,22h4v8H14Z" />
+                                  <path d="M25,26.59l-1.29-1.29-1.41,1.41,2,2a1,1,0,0,0,1.41,0l6-6-1.41-1.41Z" />
+                              </g>
+                          </svg>
+                      </div>
+                      <div class="font-nav-brand d-flex">
+                          PET.Amigos
+                      </div>
+                  </div>
+              </a>
+
+              <!-- Botões para outras páginas -->
+              <ul class="navbar-nav">
+
+                  <!-- PET Search Page -->
+                  <li class="nav-item">
+                      <a class="nav-link" href="search.html">
+                          <div class="d-flex align-items-center">
+                              <div class="me-1  d-flex align-items-center">
+                                  <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="30px">
+                                      <path d="M52.475 36.916a3.993 3.993 0 1 0 3.993 3.993 4 4 0 0 0-3.993-3.993zm0 4.485a.493.493 0 1 1 .493-.492.493.493 0 0 1-.493.491zM75.527 36.916a3.993 3.993 0 1 0 3.994 3.993 4 4 0 0 0-3.994-3.993zm0 4.485a.493.493 0 1 1 .494-.492.493.493 0 0 1-.494.491zM79.608 104.574A15.508 15.508 0 0 0 64.31 91.25h-.617a15.508 15.508 0 0 0-15.3 13.324l-1.254 9.039a1.75 1.75 0 1 0 3.466.481l1.254-9.04a12 12 0 0 1 11.832-10.3h.617a12 12 0 0 1 11.832 10.3l1.254 9.04a1.75 1.75 0 0 0 1.731 1.51 1.8 1.8 0 0 0 .242-.017 1.75 1.75 0 0 0 1.493-1.974z" />
+                                      <path d="M110.84 54.341c-4.368-5.1-4.458-12.1-4.546-18.881-.1-7.768-.2-15.8-7.194-20.134-3.912-2.424-7.694-3.118-11.236-2.062-4.6 1.367-7.4 5.308-8.51 7.2a20.906 20.906 0 0 0-15.28-8.033h-.148a20.906 20.906 0 0 0-15.28 8.033c-1.115-1.888-3.914-5.829-8.51-7.2-3.545-1.056-7.325-.362-11.236 2.062-6.991 4.332-7.094 12.366-7.194 20.134-.088 6.777-.178 13.785-4.546 18.881-4.306 5.025-6.671 13.06-1.683 18.828a10.707 10.707 0 0 0 8.123 3.656 13.571 13.571 0 0 0 7.178-2.217 26.936 26.936 0 0 0 7.866 7.119 30.151 30.151 0 0 0-5.154 13.137l-2.6 18.749a1.75 1.75 0 0 0 1.493 1.974 1.8 1.8 0 0 0 .242.017 1.75 1.75 0 0 0 1.731-1.51l2.6-18.749a26.632 26.632 0 0 1 4.853-12.008 25.977 25.977 0 0 0 5.631 1.7h.008l.038.007c.8.144 1.52.243 2.19.3A26.725 26.725 0 0 0 64 82.7a26.609 26.609 0 0 0 11.829 2.757q1.237 0 2.483-.114c.677-.058 1.4-.157 2.194-.3l.038-.008h.02a26.01 26.01 0 0 0 5.624-1.7 26.622 26.622 0 0 1 4.854 12.009l2.6 18.749a1.75 1.75 0 0 0 1.731 1.51 1.8 1.8 0 0 0 .242-.017 1.75 1.75 0 0 0 1.493-1.974l-2.6-18.748a30.141 30.141 0 0 0-5.156-13.138 26.96 26.96 0 0 0 7.865-7.119 13.569 13.569 0 0 0 7.178 2.217 10.71 10.71 0 0 0 8.127-3.656c4.989-5.768 2.624-13.802-1.682-18.827zM29.026 71.583c-4.046 2.557-8.324 2.278-10.9-.7-2.634-3.047-3.126-8.637 1.692-14.264 5.194-6.06 5.3-14.057 5.387-21.114.1-7.449.179-13.882 5.539-17.205a11.772 11.772 0 0 1 6.138-2.008 7.868 7.868 0 0 1 2.235.32c4.147 1.222 6.521 5.586 6.872 6.272.254.851 1.919 7.088-2.5 10.944a26.232 26.232 0 0 0-9.283 18.642c-.619 14.173-3.512 18.058-5.18 19.113zm20.966 10.274c-.14-.012-.294-.034-.44-.05V65.13a14.435 14.435 0 0 1 5.893-11.647c0 .061-.007.124-.007.184a8.577 8.577 0 0 0 6.813 8.382v17.593a23.247 23.247 0 0 1-12.259 2.215zm11.392-30.935c.017 0 .032-.011.049-.014a14.443 14.443 0 0 1 5.14 0c.016 0 .03.01.046.013.12.022.234.056.353.08 2.088.585 2.091 1.833 2.091 2.665a5.063 5.063 0 1 1-10.125 0c0-.832 0-2.079 2.09-2.664.119-.024.235-.058.356-.08zM78 81.857a23.229 23.229 0 0 1-12.25-2.214V62.049a8.576 8.576 0 0 0 6.812-8.382c0-.061 0-.123-.006-.185a14.435 14.435 0 0 1 5.895 11.648v16.676c-.151.017-.306.039-.451.051zm3.95-.731v-16a17.913 17.913 0 0 0-14.706-17.647c-.042-.008-.083-.006-.125-.011a16.907 16.907 0 0 0-6.236 0c-.042 0-.082 0-.124.011A17.913 17.913 0 0 0 46.052 65.13v16a23.315 23.315 0 0 1-12.736-8.986c2.526-3.6 3.972-10.031 4.386-19.519a22.772 22.772 0 0 1 8.092-16.158c4.276-3.733 4.469-8.826 4.077-11.962a1.742 1.742 0 0 0 .433-.432c3.38-4.926 8.369-7.891 13.7-8.143 5.327.252 10.316 3.217 13.7 8.143a1.733 1.733 0 0 0 .434.425c-.394 3.134-.2 8.233 4.076 11.969A22.772 22.772 0 0 1 90.3 52.622c.414 9.488 1.86 15.921 4.386 19.519a23.313 23.313 0 0 1-12.735 8.985zm27.926-10.246c-2.578 2.984-6.856 3.261-10.9.7-1.668-1.055-4.561-4.94-5.18-19.113a26.232 26.232 0 0 0-9.285-18.642c-4.43-3.868-2.773-10.037-2.5-10.942.348-.683 2.723-5.051 6.873-6.274 2.536-.749 5.356-.181 8.373 1.688 5.36 3.323 5.443 9.756 5.539 17.205.091 7.057.193 15.054 5.387 21.114 4.822 5.63 4.325 11.22 1.693 14.264z" />
+                                  </svg>
+                              </div>
+                              <div class="font-nav-link d-none d-xs-none d-sm-flex">
+                                  Pets
+                              </div>
+                          </div>
+                      </a>
+                  </li>
+
+                  <!-- Meu perfil -->
+                  <li class="nav-item ms-3 d-flex align-items-center">
+                      <a class="nav-link" href="profile.html">
+                          <div class="d-flex align-items-center">
+                              <div class="me-1 d-flex align-items-center">
+                                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25px">
+                                      <title>60.User</title>
+                                      <g id="_60.User" data-name="60.User">
+                                          <path d="M12,12a4,4,0,1,1,4-4A4,4,0,0,1,12,12Zm0-6a2,2,0,1,0,2,2A2,2,0,0,0,12,6Z" />
+                                          <path d="M18.9,21.166l-1.972-.332a5,5,0,1,0-9.862,0L5.1,21.166a7,7,0,1,1,13.806,0Z" />
+                                          <path d="M12,24A12,12,0,1,1,24,12,12.013,12.013,0,0,1,12,24ZM12,2A10,10,0,1,0,22,12,10.011,10.011,0,0,0,12,2Z" />
+                                      </g>
+                                  </svg>
+                              </div>
+                              <div class="font-nav-link d-none d-xs-none d-sm-flex">
+                                  Meu perfil
+                              </div>
+                          </div>
+                      </a>
+                  </li>
+
+              </ul>
+          </div>
+      </nav>
+  </header>
+
+  <main class="container-fluid row justify-content-center px-5 background-home mx-0">
+    <div>
+      <div class="py-4">
+        <h3 class="font-h3-homepage">PET É VIDA!</h3>
+        <h1 class="font-h1-homepage">
+          Encontre seu novo melhor amigo!
+        </h1>
+        <p class="font-p-homepage justify-content-center col-12">
+          Conheça nossos animais prontos para receberem um novo lar.
+          Personalize suas preferências e encontre o PET ideal!
+        </p>
+      </div>
+
+      <div class="container d-none d-sm-block col-md-9" style="max-height: 70%">
+        <div id="meuCarrossel" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-indicators">
+            <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#meuCarrossel" data-bs-slide-to="2" aria-label="Slide 3" aria-current="true"></button>
+          </div>
+          <div class="carousel-inner rounded-4">
+            <div class="carousel-item active">
+              <img src="https://alldogsdream.com/wp-content/uploads/2023/03/Tips-for-traveling-with-dog-1200x675.jpg" class="d-block w-100 image-carousel" alt="First slide" />
+            </div>
+            <div class="carousel-item">
+              <img src="https://www.womansworld.com/wp-content/uploads/2019/09/cute-bunny-in-a-field-of-grass-and-white-flowers.jpg" class="d-block w-100 image-carousel" alt="Second slide" />
+            </div>
+            <div class="carousel-item">
+              <img src="https://companionprotect.com/wp-content/uploads/2020/09/Keeping-the-Cat-Claws-at-Bay-1200x675.png" class="d-block w-100 image-carousel" alt="Third slide" />
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#meuCarrossel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#meuCarrossel" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+
+
+      <div class="d-sm-none col-12">
+        <img src="https://img.freepik.com/free-photo/vertical-shot-cute-cat-background-field_181624-56606.jpg?t=st=1714248228~exp=1714251828~hmac=abf7ab018e76ce46da152fce885e4277451a91743882995f06cafca1c9944a6b&w=360" alt="gato na natureza" class="img-fluid">
+      </div>
+
+    </div>
+
+    <div class="row align-items-center justify-content-center py-4">
+      <!-- First main div occupying 6 columns on all screen sizes -->
+      <div class="col-12 col-md-6 align-items-center flex-column">
+        <h3 class="font-h3-homepage pd-7">QUEM SOMOS?</h3>
+        <h2 class="font-h2-homepage">
+          Ajudando na adoção responsável!
+        </h2>
+        <p class="font-p-homepage">
+          Somos uma plataforma aberta e acessível para pessoas e instituições
+          de proteção animal interessadas em encontrar lares responsáveis e
+          amorosos!
+        </p>
+
+        <!-- First shadowed div -->
+        <div class="row justify-content-center">
+          <div class="shadow-sm p-3 mb-5 bg-white rounded col-6 shadow_box">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <i class="fa-solid fa-user fa-2xl d-sm-block d-none" style="color: #4361ee"></i>
+              </div>
+              <div class="col">
+                <h3 class="font-h3-homepage">Cadastro Simples</h3>
+                <p class="font-p-homepage">
+                  O cadastro em nossa plataforma é rápido e simples!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Second shadowed div -->
+        <div class="row justify-content-center">
+          <div class="shadow-sm p-3 mb-5 bg-white rounded col-6 shadow_box">
+            <div class="row align-items-center">
+              <div class="col-auto">
+                <i class="fa-solid fa-paw fa-2xl d-sm-block d-none" style="color: #4361ee"></i>
+              </div>
+              <div class="col">
+                <h3 class="font-h3-homepage">Combinação ideal</h3>
+                <p class="font-p-homepage">
+                  Nossa plataforma sugere opções de acordo com suas
+                  preferências!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Second main div occupying 6 columns on all screen sizes -->
+      <div class="col-12 col-md-6">
+        <div class="row align-items-center justify-content-center">
+          <!-- First image occupying 3 columns on all screen sizes -->
+          <div class="col-12 col-sm-6">
+            <img src="https://plus.unsplash.com/premium_photo-1686090449483-89a9b794e7cf?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" class="img-fluid py-3 rounded-3" alt="Image 1" />
+          </div>
+
+          <!-- Second and third images occupying 3 columns each, stacked on smaller screens -->
+          <div class="d-none d-sm-block col-sm-6">
+            <img src="https://media.istockphoto.com/id/1551607933/pt/foto/golden-retriever-dog-doing-trick.jpg?s=612x612&w=is&k=20&c=gkQzcd1Cw3WCQMuY1morzbMlCqVjAWNhcCJQCjBGjq0=" class="img-fluid py-3 rounded-3" alt="Image 2" />
+            <img src="https://media.istockphoto.com/id/1333782261/pt/foto/playful-dog-sitting-looking-at-camera.jpg?s=612x612&w=is&k=20&c=EFa_sA5jVkED4RTly9xg3FEm0PfLw5NIWNsgZD5VPE4=" class="img-fluid py-3 rounded-3" alt="Image 3" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="">
+      <div class="py-4 justify-content-center">
+        <h3 class="font-h3-homepage">CONHEÇA OS PETS</h3>
+        <h2 class="font-h2-homepage">Prontos para serem adotados</h2>
+        <p class="font-p-homepage col-12">
+          Conheça os animais que estão te esperando. Explore suas preferências
+          e encontre seu novo melhor amigo!
+        </p>
+        <!--Varios animais-->
+        <div class="row align-content-center align-items-center">
+          <!--Um animal-->
+          <div class="d-none d-sm-block col-sm-6 col-lg-3 py-3">
+            <a href="./pet.html" style="text-decoration: none">
+              <div class="card rounded-5 mx-4" style="width: 14rem">
+                <img src="img/Ney.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                <div class="card-body purpleBgColor rounded-bottom-5">
+                  <div class="text-start font_name_white">Ney</div>
+                  <div class="text-start font_infos_white">Chihuahua</div>
+                  <div class="text-start font_infos_white">Ibaté - SP</div>
+                  <div class="row_icon">
+                    <i class="fa-solid fa-heart fa-lg" style="color: white"></i>
+                    <p class="text font_icons">Dócil</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col-12 col-sm-6 col-lg-3 py-3">
+            <a href="./pet.html" style="text-decoration: none">
+              <div class="card rounded-5 mx-4" style="width: 14rem">
+                <img src="img/Monteiro.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                <div class="card-body purpleBgColor rounded-bottom-5">
+                  <div class="text-start font_name_white">Monteiro</div>
+                  <div class="text-start font_infos_white">Corgi</div>
+                  <div class="text-start font_infos_white">Uberaba, MG</div>
+                  <div class="row_icon">
+                    <i class="fa-solid fa-heart fa-lg" style="color: white"></i>
+                    <p class="text font_icons">Dócil</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="d-none d-md-block col-md-6 col-lg-3 py-3">
+            <a href="./pet.html" style="text-decoration: none">
+              <div class="card rounded-5 mx-4" style="width: 14rem">
+                <img src="img/Pitstop.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                <div class="card-body purpleBgColor rounded-bottom-5">
+                  <div class="text-start font_name_white">Pitstop</div>
+                  <div class="text-start font_infos_white">Pitbull</div>
+                  <div class="text-start font_infos_white">Salvador, BA</div>
+                  <div class="row_icon">
+                    <i class="fa-solid fa-heart fa-lg" style="color: white"></i>
+                    <p class="text font_icons">Dócil</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="d-none d-md-block col-md-6 col-lg-3 py-3">
+            <a href="./pet.html" style="text-decoration: none">
+              <div class="card rounded-5 mx-4" style="width: 14rem">
+                <img src="img/Nelso.png" class="card-img-top rounded-top-5 border-img-card" alt="Gup">
+                <div class="card-body purpleBgColor rounded-bottom-5">
+                  <div class="text-start font_name_white">Nelso</div>
+                  <div class="text-start font_infos_white">Bernese</div>
+                  <div class="text-start font_infos_white">Araras - SP</div>
+                  <div class="row_icon">
+                    <i class="fa-solid fa-heart fa-lg" style="color: white"></i>
+                    <p class="text font_icons">Dócil</p>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="py-4 ">
+      <div>
+        <h3 class="font-h3-homepage">CONHEÇA NOSSOS PARCEIROS</h3>
+        <h2 class="font-h2-homepage">Instituições protetoras</h2>
+        <p class="font-p-homepage col-12">
+          Saiba mais sobre as instituições de proteção animal cadastradas em
+          nossa plataforma!
+        </p>
+      </div>
+      <div class="container">
+        <div class="row align-content-center justify-content-center">
+          <div class="col-12 col-md-5 col-lg-5 m-4 d-flex image-border background-ongs">
+            <img class="image-container p-3" src="https://static.wixstatic.com/media/eee5c2_c2db42dfbd6646d3b0a6417facf679ec~mv2.png" />
+          </div>
+          <div class="col-12 col-md-5 col-lg-4 image-border d-flex m-4 background-ongs">
+            <a href="ong.html">
+              <img class="image-container" src="./img/tuka.png" />
+            </a>
+          </div>
+        </div>
+        <div class="row align-content-center justify-content-center">
+          <div class="col-12 col-md-5 col-lg-4 m-4 d-flex image-border background-ongs">
+            <img class="image-container p-3" src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/3c2ee6113723863.602d7af606936.png" />
+          </div>
+          <div class="col-12 col-md-5 col-lg-5 image-border d-flex m-4 background-ongs">
+            <img class="image-container" src="https://www.amigonaosecompra.com.br/images/logo-dd2f46da4323bad85158a2c3a01fa3aa.png?vsn=d" />
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="banner-parceiro row justify-content-center m-4 col-12 col-md-10">
+        <div class="col-12 p-md-5 col-md-6 col-lg-8 order-0 order-md-0">
+          <h1 class="title-banner py-4">Seja parceiro!</h1>
+          <p class="text-banner py-2 py-md-3">Gostaria de fazer parte da plataforma?
+            Cadastre sua instituição ou ONG agora mesmo!</p>
+        </div>
+        <div class="col-12 col-md-6 col-lg-4 px-5 py-4 md-p-5 d-flex align-items-center justify-content-center order-1 order-md-1">
+          <a href="signup.html" class="btn btn-light btn-custom-font">
+            Faça parte!
+          </a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer-home" class="container-fluid bg-black">
+    <div class="pt-2">
+      <div
+        class="container justify-content-between font-footer d-xs-block d-md-flex py-3"
+      >
+        <div>
+          <p>© PET.Amigos (Todos os direitos reservados)</p>
+        </div>
+        <div class="d-lg-flex d-xs-block pt-3 pt-md-0">
+          <p>Termos e condições</p>
+          <p class="px-lg-4">Política de Privacidade</p>
+          <p>Disclaimer</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const header = document.querySelector('header');
+      const footer = document.getElementById('footer-home');
+      if (header)
+        localStorage.setItem('headerContent', header.outerHTML);
+      if (footer)
+        localStorage.setItem('footerContent', footer.outerHTML);
+    });
+  </script>
+  
+</body>
+
 </html>
