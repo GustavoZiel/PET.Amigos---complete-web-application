@@ -161,3 +161,14 @@
 .bg-green {
     background-color: #28A745;
 }
+
+.btn-standard-click {
+    color: #3A0CA3;
+    border-color: #3A0CA3;
+}
+
+.btn-standard-click:hover {
+    color: #fff;
+    background-color: #3A0CA3;
+    border-color: #3A0CA3;
+}
