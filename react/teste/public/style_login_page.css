@@ -1,0 +1,238 @@
+.text-title-login {
+  /* Quero adotar */
+
+  text-decoration: none;
+
+  /* H5 - Buttons */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  /* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+
+  text-align: center;
+
+  /* Primary Colour */
+  color: #3a0ca3;
+}
+
+.text-title-signup {
+  /* Quero adotar */
+
+  text-decoration: none;
+
+  /* H5 - Buttons */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 32px;
+  line-height: 24px;
+  /* leading-trim and text-edge are draft CSS properties.
+
+Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+*/
+
+  text-align: center;
+
+  /* Primary Colour */
+  color: #3a0ca3;
+}
+
+.active {
+  border-bottom: 2px solid #3a0ca3;
+  /* Gray line at the bottom */
+}
+
+.with-border-gray {
+  border-bottom: 2px solid #ccc;
+  /* Gray line at the bottom */
+  /* Optional: Add some padding at the bottom */
+}
+
+.with-border-purple {
+  border-bottom: 2px solid #3a0ca3;
+  /* Gray line at the bottom */
+  padding-top: 10px;
+  /* Optional: Add some padding at the bottom */
+}
+
+.body {
+  margin: none;
+}
+
+.form-shape {
+  /* Rectangle 12 */
+
+  background: rgba(212, 212, 212, 0.2);
+  border-radius: 20px;
+}
+
+.form-font {
+
+  /* Paragraph - Regular */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+
+  /* or 162% */
+  /* leading-trim and text-edge are draft CSS properties.
+
+
+/* Text Colour 4 */
+  color: gray;
+
+
+}
+
+.form-font-title {
+
+  /* Paragraph - Regular */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+
+  /* or 162% */
+  /* leading-trim and text-edge are draft CSS properties.
+
+
+/* Text Colour 4 */
+  color: black;
+
+
+}
+
+.form_button {
+  /* Rectangle 13 */
+  box-sizing: border-box;
+  /* Primary Colour */
+  background-color: #3a0ca3 !important;
+  /* Added !important to ensure specificity */
+  border: 1px solid #bfbdc1;
+  border-radius: 50px;
+}
+
+.form-button-font {
+  /* H5 - Buttons */
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #ffffff;
+}
+
+.font-h2-login-page {
+
+  /* PET É VIDA! */
+
+
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 29px;
+  /* leading-trim and text-edge are draft CSS properties.
+  
+  Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+  */
+
+  letter-spacing: 0.1em;
+
+  /* Colour 1 */
+  color: #3a0ca3;
+
+
+}
+
+.btn-light {
+  background-color: #3a0ca3;
+  border-color: #3a0ca3;
+  color: white;
+  /* Define a cor do texto como branco */
+}
+
+.btn-light:hover {
+  background-color: white;
+  /* Muda a cor de fundo para branco */
+  border-color: #3a0ca3;
+  color: #3a0ca3;
+  /* Muda a cor do texto para roxo */
+}
+
+.font-h2-loginpage {
+  /* Encontre seu novo melhor amigo! */
+  /* H1 */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 30px;
+  /* or 113% */
+  /* leading-trim and text-edge are draft CSS properties.
+
+    Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
+    */
+
+  /* Text Colour 1 */
+  color: #0b090a;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.clickable:hover {
+  color: #3a0ca3 !important;
+  /* Mudando a cor para azul quando o mouse passar sobre o texto */
+}
+
+
+.form-select,
+.form-control,
+.form-control::placeholder {
+  /* Paragraph - Regular */
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 26px;
+  /* Text Colour 4 */
+  color: #8e8e8e;
+}
+
+#grid-container {
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  grid-template-columns:100%;
+
+  /* fallback height */
+  min-height:100vh;
+
+  /* new small viewport height for modern browsers */
+  min-height:100svh;
+}
+
+.form {
+  max-width: 600px;
+  margin: 0 auto; 
+  padding: 20px; 
+}
+
+.btn-primary {
+  background-color: purple; /* Define a cor de fundo para roxo */
+  border-color: purple; /* Define a cor da borda para roxo */
+  color: white; /* Define a cor do texto para branco */
+}
+.btn-primary:hover {
+  background-color: darkviolet; /* Cor de fundo ao passar o mouse */
+  border-color: rgb(8, 7, 8); /* Cor da borda ao passar o mouse */
+}
