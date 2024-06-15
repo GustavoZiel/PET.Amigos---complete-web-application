@@ -1,14 +1,51 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const ongSection = document.getElementById('ong-section');
-    const ongCard = createOngCard();
-    ongSection.appendChild(ongCard);
-    
-    const petsOwnedSection = document.getElementById('pets-owned-section');
-    const petsOwnedCard = createPetsOwnedCard();
-    petsOwnedSection.appendChild(petsOwnedCard);
-})
+    const getParameterByName = (name) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    };
 
-function createOngCard() {
+    const ONGId = getParameterByName('id'); // Extrai o ID da URL
+    if (ONGId) {
+        try {
+            const response = await fetch(`/ongs/${ONGId}`);
+            if (!response.ok) {
+                throw new Error('Erro ao buscar dados da ONG');
+            }
+            const ong = await response.json();
+            const ongimage = await fetchImage(ong.photo);
+            const ongSection = document.getElementById('ong-section');
+            const ongCard = createOngCard(ong, ongimage);
+            ongSection.appendChild(ongCard);
+
+            const petsOwnedSection = document.getElementById('pets-owned-section');
+            const petsOwnedCard = createPetsOwnedCard();
+            petsOwnedSection.appendChild(petsOwnedCard);
+        } catch (error) {
+            console.error('Erro ao buscar dados da ONG:', error);
+        }
+    } else {
+        console.error('ID da ONG não encontrado na URL.');
+    }
+});
+async function fetchImage(url) {
+    try {
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+            url = 'http://' + url;
+        }
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const blob = await response.blob();
+        return URL.createObjectURL(blob);
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
+function createOngCard(ong, ongimage) {
+    const data = new Date();(ong.creationYear);
+    const ano = data.getFullYear();
     const ongCard = document.createElement('div');
     ongCard.innerHTML = `
     <!-- Informações importantes da ONG -->
@@ -18,33 +55,33 @@ function createOngCard() {
             <!-- Informações (Mobile) -->
             <div class="col-12">
                 <!-- Nome da ONG -->
-                <div class="font-ong-name d-flex d-md-none justify-content-center">Acãochego da Tuka</div>
+                <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
 
                 <!-- Dados -->
                 <div class="container-fluid d-sm-flex justify-content-start pt-4">
                     <!-- Localização -->
                     <div class="d-md-none pb-2 pe-5 pb-sm-0">
                         <div class="font-type-info">LOCALIZAÇÃO</div>
-                        <div class="font-info">ARARAQUARA, SP</div>
+                        <div class="font-info">${ong.city}, ${ong.state}</div>
                     </div>
 
                     <!-- Desde -->
                     <div class="d-md-none pb-2 pe-5 pb-sm-0">
                         <div class="font-type-info">DESDE</div>
-                        <div class="font-info">2018</div>
+                        <div class="font-info">${ano}</div>
                     </div>
 
                     <!-- Animais -->
                     <div class="d-md-none pb-sm-0">
                         <div class="font-type-info">ANIMAIS</div>
-                        <div class="font-info">CACHORRO, GATO</div>
+                        <div class="font-info">${ong.pets}</div>
                     </div>
                 </div>
 
                 <!-- Sobre -->
                 <div class="container-fluid d-block d-md-none py-2">
                     <div class="font-type-info">SOBRE</div>
-                    <div class="font-info">Um espaço aconchegante para anjos que já sofreram na rua e esperam por um lar.</div>
+                    <div class="font-info">${ong.about}</div>
                 </div>
 
                 <!-- Contato -->
@@ -53,13 +90,13 @@ function createOngCard() {
 
                     <div class="d-flex justify-content-start pt-1">
                         <!-- Instagram -->
-                        <a href="https://www.instagram.com/acaochegodatuka/" class="btn btn-standard-click rounded-pill me-2">
+                        <a href="https://www.instagram.com/${ong.instagram}/" class="btn btn-standard-click rounded-pill me-2">
                             <i class="fa-brands fa-instagram"></i>
                             Instagram
                         </a>
 
                         <!-- Facebook -->
-                        <a href="https://www.facebook.com/acaochegodatuka/about" class="btn btn-standard-click rounded-pill me-2">
+                        <a href="https://www.facebook.com/${ong.facebook}/about" class="btn btn-standard-click rounded-pill me-2">
                             <i class="fa-brands fa-facebook-f"></i>
                             Facebook
                         </a>
@@ -70,39 +107,39 @@ function createOngCard() {
 
             <!-- Foto -->
             <div class="col-12 col-md-5 d-flex justify-content-center py-4 pt-md-0">
-                <img src="img/tuka.png" alt="Foto da ONG" class="h-100 rounded-4 img-border img-fluid">
+                <img src="${ongimage}" alt="${ong.ongName}" class="h-100 rounded-4 img-border img-fluid">
             </div>
 
             <!-- Informações (Desktop) -->
             <div class="col-7 mb-md-5">
                 <!-- Nome da ONG -->
-                <div class="font-ong-name d-none d-md-flex">Acãochego da Tuka</div>
+                <div class="font-ong-name d-none d-md-flex">${ong.ongName}</div>
 
                 <!-- Dados -->
                 <div class="d-none d-md-flex pt-2 justify-content-start">
                     <!-- Localização -->
                     <div class="me-3">
                         <div class="font-type-info">LOCALIZAÇÃO</div>
-                        <div class="font-info">ARARAQUARA, SP</div>
+                        <div class="font-info">${ong.city}, ${ong.state}</div>
                     </div>
 
                     <!-- Desde -->
                     <div class="mx-3">
                         <div class="font-type-info">DESDE</div>
-                        <div class="font-info">2018</div>
+                        <div class="font-info">${ano}</div>
                     </div>
 
                     <!-- Animais -->
                     <div class="ms-3">
                         <div class="font-type-info">ANIMAIS</div>
-                        <div class="font-info">CACHORRO, GATO</div>
+                        <div class="font-info">${ong.pets}</div>
                     </div>
                 </div>
 
                 <!-- Sobre -->
                 <div class="d-none d-md-block py-3">
                     <div class="font-type-info">SOBRE</div>
-                    <div class="font-info">Um espaço aconchegante para anjos que já sofreram na rua e esperam por um lar.</div>
+                    <div class="font-info">${ong.about}</div>
                 </div>
 
                 <!-- Contato -->
@@ -111,13 +148,13 @@ function createOngCard() {
 
                     <div class="d-flex justify-content-start pt-1">
                         <!-- Instagram -->
-                        <a href="https://www.instagram.com/acaochegodatuka/" class="btn btn-standard-click rounded-pill me-2">
+                        <a href="https://www.instagram.com/${ong.instagram}/" class="btn btn-standard-click rounded-pill me-2">
                             <i class="fa-brands fa-instagram"></i>
                             Instagram
                         </a>
 
                         <!-- Facebook -->
-                        <a href="https://www.facebook.com/acaochegodatuka/about" class="btn btn-standard-click rounded-pill me-2">
+                        <a href="https://www.facebook.com/${ong.facebook}/about" class="btn btn-standard-click rounded-pill me-2">
                             <i class="fa-brands fa-facebook-f"></i>
                             Facebook
                         </a>
@@ -366,7 +403,7 @@ function createPetsOwnedCard() {
                     <img src="img/Gup.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
                     <div class="card-body rounded-bottom-5 card-border">
                         <div class="card-title card-font-name">Gup</div>
-                        <div class="card-text card-font-info">Araraquara, SP</div>
+                        <div class="card-text card-font-info">Araraquara,SP</div>
                         <div class="d-flex align-items-center">
                             <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
                             <div class="ms-1 card-font-info">Dócil</div>

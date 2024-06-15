@@ -1,14 +1,59 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    const profileSection = document.getElementById('profile-section');
-    const profileCard = createProfileCard();
-    profileSection.appendChild(profileCard);
+    const getParameterByName = (name) => {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
+    };
 
-    const likedSection = document.getElementById('liked-section');
-    const likedPetsCard = createLikedPetsCard();
-    likedSection.appendChild(likedPetsCard);
-})
+    const userId = getParameterByName('id'); // Extrai o ID da URL
+    if (userId) {
+        try {
+            const response = await fetch(`/users/${userId}`);
+            if (!response.ok) {
+                throw new Error('Erro ao buscar dados do usuário');
+            }
+            const user = await response.json();
+            const userimage = await fetchImage(user.photo);
+            const profileSection = document.getElementById('profile-section');
+            const profileCard = createProfileCard(user, userimage);
+            profileSection.appendChild(profileCard);
 
-function createProfileCard() {
+            const likedSection = document.getElementById('liked-section');
+            const likedPetsCard = createLikedPetsCard();
+            likedSection.appendChild(likedPetsCard);
+        } catch (error) {
+            console.error('Erro ao buscar dados do usuário:', error);
+        }
+    } else {
+        console.error('ID do usuário não encontrado na URL.');
+    }
+});
+async function fetchImage(url) {
+    try {
+        if (!url.startsWith('http://') && !url.startsWith('https://')) {
+            url = 'http://' + url;
+        }
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const blob = await response.blob();
+        return URL.createObjectURL(blob);
+    } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+function calculateAge(birthDate) {
+    const today = new Date();
+    const birth = new Date(birthDate);
+    let age = today.getFullYear() - birth.getFullYear();
+    const m = today.getMonth() - birth.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+        age--;
+    }
+    return age;
+}
+function createProfileCard(user, userimage) {
+    const idade = calculateAge(user.birthDate)
     const profileCard = document.createElement('div');
     profileCard.innerHTML = `
         <section>
@@ -17,27 +62,27 @@ function createProfileCard() {
                 <!-- Informações (Mobile) -->
                 <div class="col-12 order-1">
                     <!-- Nome da ONG -->
-                    <div class="font-ong-name d-flex d-md-none justify-content-center">Pedro Monteiro</div>
+                    <div class="font-ong-name d-flex d-md-none justify-content-center">${user.userName}</div>
 
                     <!-- Dados -->
                     <div class="container-fluid d-sm-flex justify-content-start pt-4">
                         <!-- Localização -->
                         <div class="d-md-none pb-2 pe-5 pb-sm-0">
                             <div class="font-type-info">LOCALIZAÇÃO</div>
-                            <div class="font-info">Belo Horizonte, MG</div>
+                            <div class="font-info">${user.city}, ${user.state}</div>
                         </div>
 
                         <!-- Idade -->
                         <div class="d-md-none pb-sm-0">
                             <div class="font-type-info">Idade</div>
-                            <div class="font-info">26</div>
+                            <div class="font-info">${idade} anos</div>
                         </div>
                     </div>
                     <div class="container-fluid d-sm-flex justify-content-start">
                         <!-- Animais -->
                         <div class="d-md-none pb-2 pe-5 pb-sm-0">
                             <div class="font-type-info">ANIMAIS PREFERIDOS</div>
-                            <div class="font-info">Cachorro, Gato</div>
+                            <div class="font-info">${user.preferences}</div>
                         </div>
 
                         <!-- Moradia -->
@@ -50,7 +95,7 @@ function createProfileCard() {
                     <!-- Sobre -->
                     <div class="container-fluid d-block d-md-none py-2">
                         <div class="font-type-info">SOBRE</div>
-                        <div class="font-info">Fã número um do cruzeiro, amo o Camembert.</div>
+                        <div class="font-info">${user.about}</div>
                     </div>
 
                     <!-- Contato -->
@@ -60,7 +105,7 @@ function createProfileCard() {
                         <div class="d-flex justify-content-start pt-1">
                             <!-- Instagram -->
                             <div class="link-border rounded-pill">
-                                <a href="https://www.instagram.com/acaochegodatuka/" class="font-contact">
+                                <a href="https://www.instagram.com/${user.instagram}/" class="font-contact">
                                     <i class="fa-brands fa-instagram"></i>
                                     Instagram
                                 </a>
@@ -68,7 +113,7 @@ function createProfileCard() {
 
                             <!-- Facebook -->
                             <div class="link-border rounded-pill ms-2">
-                                <a href="https://www.facebook.com/acaochegodatuka/about" class="font-contact">
+                                <a href="https://www.facebook.com/${user.facebook}/about" class="font-contact">
                                     <i class="fa-brands fa-facebook-f"></i>
                                     Facebook
                                 </a>
@@ -79,33 +124,33 @@ function createProfileCard() {
 
                 <!-- Foto -->
                 <div class="col-12 col-md-5 d-flex justify-content-center py-4 pt-md-0 order-0">
-                    <img src="./img/usuario.jpg" alt="Foto do usuario" id="foto" class="h-100 rounded-4 img-border">
+                    <img src="${userimage}" alt="${user.userName}" id="foto" class="h-100 rounded-4 img-border">
                 </div>
 
                 <!-- Informações (Desktop) -->
                 <div class="col-7 mb-md-5">
                     <!-- Nome do usuário -->
-                    <div class="font-ong-name d-none d-md-flex">Pedro Monteiro</div>
+                    <div class="font-ong-name d-none d-md-flex">${user.userName}</div>
 
                     <!-- Dados -->
                     <div class="d-none d-md-flex pt-2 justify-content-start">
                         <!-- Localização -->
                         <div class="me-3">
                             <div class="font-type-info">LOCALIZAÇÃO</div>
-                            <div class="font-info">Belo Horizonte, MG</div>
+                            <div class="font-info">${user.city}, ${user.state}</div>
                         </div>
 
                         <!-- Idade -->
                         <div class="ms-3">
                             <div class="font-type-info">Idade</div>
-                            <div class="font-info">26</div>
+                            <div class="font-info">${idade} anos</div>
                         </div>
                     </div>
                     <div class="d-none d-md-flex pt-2 justify-content-start">
                         <!-- Animais -->
                         <div class="me-3">
                             <div class="font-type-info">ANIMAIS PREFERIDOS</div>
-                            <div class="font-info">CACHORRO, GATO</div>
+                            <div class="font-info">${user.preferences}</div>
                         </div>
 
                         <!-- MORADIA -->
@@ -119,7 +164,7 @@ function createProfileCard() {
                     <!-- Sobre -->
                     <div class="d-none d-md-block py-3">
                         <div class="font-type-info">SOBRE</div>
-                        <div class="font-info">Fã número um do cruzeiro, amo o Camembert.</div>
+                        <div class="font-info">${user.about}</div>
                     </div>
 
                     <!-- Contato -->
@@ -129,7 +174,7 @@ function createProfileCard() {
                         <div class="d-flex justify-content-start pt-1">
                             <!-- Instagram -->
                             <div class="link-border rounded-pill">
-                                <a href="https://www.instagram.com/acaochegodatuka/" class="font-contact">
+                                <a href="https://www.instagram.com/${user.instagram}/" class="font-contact">
                                     <i class="fa-brands fa-instagram"></i>
                                     Instagram
                                 </a>
@@ -137,7 +182,7 @@ function createProfileCard() {
 
                             <!-- Facebook -->
                             <div class="link-border rounded-pill ms-2">
-                                <a href="https://www.facebook.com/acaochegodatuka/about" class="font-contact">
+                                <a href="https://www.facebook.com/${user.facebook}/about" class="font-contact">
                                     <i class="fa-brands fa-facebook-f"></i>
                                     Facebook
                                 </a>
