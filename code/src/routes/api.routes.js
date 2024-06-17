@@ -12,8 +12,6 @@ router.get('/', function (req, res) {
     res.redirect('/home.html');
 });
 
-
-
 // /* signup e sign in com autenticacao -> post!!*/
 // router.post("/signup_users",  upload.uploadFile.single('photo'), authController.registerUser);
 // router.post("/signup_ongs", upload.uploadFile.single('photo'), authController.registerONG);
