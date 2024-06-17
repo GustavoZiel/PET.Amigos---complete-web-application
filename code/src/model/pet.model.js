@@ -1,23 +1,23 @@
 import { Model, DataTypes } from "sequelize"
 import sequelize from '../db/db.js'
 
-class Pet extends Model {}
+class Pet extends Model { }
 Pet.init(
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    name: { type: DataTypes.STRING, allowNull: true },
-    birth: { type: DataTypes.STRING, allowNull: true  },
-    city: {type: DataTypes.STRING, allowNull: true},
-    state: {type: DataTypes.STRING, allowNull: true},
-    type: { type: DataTypes.STRING, allowNull: true },
-    breed: { type: DataTypes.STRING, allowNull: true  },
-    sex: {type: DataTypes.STRING, allowNull: true},
-    size: {type: DataTypes.STRING, allowNull: true},
-    photos: { type: DataTypes.STRING, allowNull: true },
-    comment: { type: DataTypes.STRING, allowNull: true  },
-    // Faltando temperamento (vetor)
-    vacinated: {type: DataTypes.BOOLEAN, allowNull: true},
-    adopted: {type: DataTypes.BOOLEAN, allowNull: true}
+    name: { type: DataTypes.STRING },
+    birth: { type: DataTypes.STRING },
+    city: { type: DataTypes.STRING },
+    state: { type: DataTypes.STRING },
+    type: { type: DataTypes.STRING },
+    breed: { type: DataTypes.STRING },
+    sex: { type: DataTypes.STRING },
+    size: { type: DataTypes.STRING },
+    photos: { type: DataTypes.STRING },
+    comment: { type: DataTypes.STRING },
+    temperament: { type: DataTypes.ARRAY(DataTypes.STRING) },
+    vacinated: { type: DataTypes.BOOLEAN },
+    adopted: { type: DataTypes.BOOLEAN }
   },
   { sequelize: sequelize, timestamps: false },
 );

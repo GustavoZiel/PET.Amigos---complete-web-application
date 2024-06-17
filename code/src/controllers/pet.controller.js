@@ -72,6 +72,7 @@ async function create(request, response) {
         sex: request.body.sex,
         size: request.body.size,
         photos: uploadedPhotos,
+        temperament: request.body.temperament,
         comment: request.body.comment,
         vacinated: request.body.vacinated,
         adopted: request.body.adopted,
@@ -92,7 +93,8 @@ function deleteByPk(request, response) {
     });
 }
 
-function update(request, response) {
+async function update(request, response) {
+  const uploadedPhotos = await upload.getFileUrl(request.file.key);
   model
     .update(
       {
@@ -105,6 +107,8 @@ function update(request, response) {
         sex: request.body.sex,
         size: request.body.size,
         comment: request.body.comment,
+        photos: uploadedPhotos,
+        temperament: request.body.temperament,
         vacinated: request.body.vacinated,
         adopted: request.body.adopted
       },

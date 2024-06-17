@@ -16,7 +16,7 @@ sequelize.authenticate()
   console.log('Conexão com o banco de dados foi bem-sucedida.');
 })
 .catch(err => {
-  console.error('Não foi possível conectar ao banco de dados: aaaaaaaaaaaaaaaaaaaaaa', err);
+  console.error('Não foi possível conectar ao banco de dados: ', err);
 });
 
 const port = 3000;

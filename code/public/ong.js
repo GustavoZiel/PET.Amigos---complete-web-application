@@ -44,7 +44,7 @@ async function fetchImage(url) {
 }
 
 function createOngCard(ong, ongimage) {
-    const data = new Date();(ong.creationYear);
+    const data = new Date(); (ong.creationYear);
     const ano = data.getFullYear();
     const ongCard = document.createElement('div');
     ongCard.innerHTML = `
@@ -101,7 +101,7 @@ function createOngCard(ong, ongimage) {
                             Facebook
                         </a>
                     </div>
-                    <button type="button" class="bg-green border-green text-white poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#ongContribuir">CONTRIBUA!</button>
+                    <button class="btn btn-contribua rounded-pill mt-3" data-bs-toggle="modal" data-bs-target="#ongContribuir">CONTRIBUA!</button>
                 </div>
             </div>            
 
@@ -160,7 +160,7 @@ function createOngCard(ong, ongimage) {
                         </a>
 
                     </div>
-                    <button type="button" class="bg-green border-green text-white poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#ongContribuir">CONTRIBUA!</button>
+                    <button class="btn btn-contribua rounded-pill mt-3" data-bs-toggle="modal" data-bs-target="#ongContribuir">CONTRIBUA!</button>
                 </div>
             </div>
 
@@ -245,9 +245,14 @@ function createPetsOwnedCard() {
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="estado" class="form-label">Estado</label>
-                                        <select class="form-select" id="estado" name="state">
-                                            <option value="sp">São Paulo</option>
-                                            <option value="mg">Minas Gerais</option>
+                                        <select class="form-select" id="state" name="state">
+                                            <option value="ES">Espírito Santo</option>
+                                            <option value="MG">Minas Gerais</option>
+                                            <option value="RJ">Rio de Janeiro</option>
+                                            <option value="SP">São Paulo</option>
+                                            <option value="PR">Paraná</option>
+                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="SC">Santa Catarina</option>
                                         </select>
                                     </div>
                                 </div>
@@ -258,8 +263,9 @@ function createPetsOwnedCard() {
                                     <div class="mb-3">
                                         <label for="type" class="form-label">Espécie</label>
                                         <select class="form-select" id="type" name="type">
-                                            <option value="cachorro">Cachorro</option>
-                                            <option value="gato">Gato</option>
+                                            <option value="Cachorro">Cachorro</option>
+                                            <option value="Gato">Gato</option>
+                                            <option value="Roedor">Gato</option>
                                         </select>
                                     </div>
                                 </div>
@@ -267,10 +273,26 @@ function createPetsOwnedCard() {
                                     <div class="mb-3">
                                         <label for="breed" class="form-label">Raça</label>
                                         <select class="form-select" id="breed" name="breed">
-                                            <option value="husky">Husky</option>
-                                            <option value="pincher">Pincher</option>
-                                            <option value="siames">Siames</option>
-                                            <option value="persian">Persa</option>
+                                            <option value="Husky">Husky</option>
+                                            <option value="Pincher">Pincher</option>
+                                            <option value="Bulldog">Bulldog</option>
+                                            <option value="Beagle">Beagle</option>
+                                            <option value="Poodle">Poodle</option>
+                                            <option value="Labrador">Labrador</option>
+                                            <option value="Golden Retriever">Golden Retriever</option>
+                                            <option value="German Shepherd">Pastor Alemão</option>
+                                            <option value="Chihuahua">Chihuahua</option>
+                                            <option value="Dachshund">Dachshund</option>
+                                            <option value="Boxer">Boxer</option>
+                                            <option value="Rottweiler">Rottweiler</option>
+                                            <option value="Yorkshire Terrier">Yorkshire Terrier</option>
+                                            <option value="Shih Tzu">Shih Tzu</option>
+                                            <option value="Doberman">Doberman</option>
+                                            <option value="Pug">Pug</option>
+                                            <option value="Cocker Spaniel">Cocker Spaniel</option>
+                                            <option value="Border Collie">Border Collie</option>
+                                            <option value="Schnauzer">Schnauzer</option>
+                                            <option value="Great Dane">Dogue Alemão</option>
                                         </select>
                                     </div>
                                 </div>
@@ -278,8 +300,8 @@ function createPetsOwnedCard() {
                                     <div class="mb-3">
                                         <label for="sex" class="form-label">Sexo</label>
                                         <select class="form-select" id="sex" name="sex">
-                                            <option value="macho">Macho</option>
-                                            <option value="femea">Fêmea</option>
+                                            <option value="Macho">Macho</option>
+                                            <option value="Fêmea">Fêmea</option>
                                         </select>
                                     </div>
                                 </div>
@@ -287,9 +309,9 @@ function createPetsOwnedCard() {
                                     <div class="mb-3">
                                         <label for="porte" class="form-label">Porte</label>
                                         <select class="form-select" id="porte" name="size">
-                                            <option value="small">Pequeno</option>
-                                            <option value="medium">Médio</option>
-                                            <option value="large">Grande</option>
+                                            <option value="Pequeno">Pequeno</option>
+                                            <option value="Médio">Médio</option>
+                                            <option value="Grande">Grande</option>
                                         </select>
                                     </div>
                                 </div>
@@ -317,23 +339,23 @@ function createPetsOwnedCard() {
                                 </div>
                                 <div class="col-auto">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="temperament" value="docil">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="temperament" value="Dócil">
                                         <label class="form-check-label" for="inlineCheckbox1">Dócil</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="temperament" value="brincalhao">
-                                        <label class="form-check-label" for="inlineCheckbox2">Brincalhão</label>
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="temperament" value="Agitado">
+                                        <label class="form-check-label" for="inlineCheckbox2">Agitado</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="timido">
-                                        <label class="form-check-label" for="inlineCheckbox3">Tímido</label>
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="Calmo">
+                                        <label class="form-check-label" for="inlineCheckbox3">Calmo</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="agitado">
-                                        <label class="form-check-label" for="inlineCheckbox3">Agitado</label>
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="Brincalhão">
+                                        <label class="form-check-label" for="inlineCheckbox3">Brincalhão</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="carinhoso">
+                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="temperament" value="Carinhoso">
                                         <label class="form-check-label" for="inlineCheckbox3">Carinhoso</label>
                                     </div>
                                 </div>

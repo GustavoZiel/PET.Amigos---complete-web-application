@@ -83,23 +83,37 @@ function createPetCard(pet, petImageUrl) {
                     <i class="fa-solid fa-${pet.sex === 'macho' ? 'mars' : 'venus'} textPurple"></i>
                 </h1>
             </div>
-            <div class="col-lg-6 row ps-5">
-                <div class="col-lg-6 pt-2">
-                    <h5 class="poppins-medium headers_caract">IDADE</h5>
-                    <p class="poppins-medium text_caract">${idade} anos</p>
-                    <h5 class="poppins-medium headers_caract">RAÇA</h5>
-                    <p class="poppins-medium text_caract">${pet.breed}</p>
-                    <h5 class="poppins-medium headers_caract">LOCALIZAÇÃO</h5>
-                    <p class="poppins-medium text_caract">${pet.city}, ${pet.state}</p>
+            <div class="col-lg-6 ps-5 mt-3">
+                <div class="row pb-0 mb-0">
+                    <div class="col">
+                        <h5 class="poppins-medium headers_caract">IDADE</h5>
+                        <p class="poppins-medium text_caract">${idade} anos</p>
+                    </div>
+                    <div class="col">
+                        <h5 class="poppins-medium headers_caract">RAÇA</h5>
+                        <p class="poppins-medium text_caract">${pet.breed}</p>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <h5 class="poppins-medium headers_caract">ESPÉCIE</h5>
-                    <p class="poppins-medium text_caract">${pet.type}</p>
-                    <h5 class="poppins-medium headers_caract">PORTE</h5>
-                    <p class="poppins-medium text_caract">${pet.size}</p>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="poppins-medium headers_caract">LOCALIZAÇÃO</h5>
+                        <p class="poppins-medium text_caract">${pet.city}, ${pet.state}</p>
+                    </div>
+                    <div class="col">
+                        <h5 class="poppins-medium headers_caract">ESPÉCIE</h5>
+                        <p class="poppins-medium text_caract">${pet.type}</p>
+                    </div>
+                    <div class="col">
+                        <h5 class="poppins-medium headers_caract">PORTE</h5>
+                        <p class="poppins-medium text_caract">${pet.size}</p>
+                    </div>
                 </div>
-                <h5 class="poppins-medium headers_caract">SOBRE</h5>
-                <p class="poppins-medium text_caract">${pet.comment}</p>
+                <div class="row">
+                    <div class="col">
+                        <h5 class="poppins-medium headers_caract">SOBRE</h5>
+                        <p class="poppins-medium text_caract">${pet.comment}</p>
+                    </div>
+                </div>
             </div>
             <div class="col-lg-6 d-flex flex-column align-items-center">
                 <div>
