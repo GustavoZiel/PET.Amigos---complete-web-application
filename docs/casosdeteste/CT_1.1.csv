@@ -1,0 +1,138 @@
+CENÁRIOS DE TESTE,,,,,,,,
+"CASO DE USO ""CADASTRAR USUÁRIO""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,,,,SAÍDA ESPERADA
+,,Nome_conta,Senha,Confirmar senha,Nome_usuario,Não podem ser nulos,Podem ser nulos,
+1,Típico,pedro_mont,Pedr@o123,Pedr@o123,pedrão,Preenchidos,Preenchidos,Mensagem de usuário cadastrado
+2,,pedro_mont,Pedr@o123,Pedr@o123,pedrão,Preenchidos,Não preenchidos,Mensagem de usuário cadastrado
+3,A1: Conta já existente,pedro_mont(repetido),Pedr@o123,Pedr@o123,pedrão,Não preenchidos,Não preenchidos,Mensagem avisando sobre a existência de uma conta com esse nome
+4,,pedro_mont(repetido),Pedr@o123,Pedr@o123,pedrão,Não preenchidos,Preenchidos,Mensagem avisando sobre a existência de uma conta com esse nome
+5,A2: Senha fraca,pedro_mont,123456,123456,pedrão,Não preenchidos,Não preenchidos,Mensagem informando requisitos da senha
+6,,pedro_mont,123456,123456,pedrão,Não preenchidos,Preenchidos,Mensagem informando requisitos da senha
+7,A3: Confirmação de senha errada,pedro_mont,Pedr@o123,123456,pedrão,Não preenchidos,Não preenchidos,Mensagem avisando que as senhas estão diferentes
+8,,pedro_mont,Pedr@o123,123456,pedrão,Não preenchidos,Preenchidos,Mensagem avisando que as senhas estão diferentes
+9,A4: Informações faltantes,pedro_mont,Pedr@o123,Pedr@o123,pedrão,Não preenchidos,Não preenchidos,Mensagem avisando quais campos faltam
+10,,pedro_mont,Pedr@o123,Pedr@o123,pedrão,Não preenchidos,Preenchidos,Mensagem avisando quais campos faltam
+11,A5: Informações erradas,pedro_mont,Pedr@o123,Pedr@o123,pedrão,Preenchidos errado,Não preenchidos,Mensagem avisando formato esperado
+12,,pedro_mont,Pedr@o123,Pedr@o123,pedrão,Preenchidos errado,Preenchidos,Mensagem avisando formato esperado
+13,,pedro_mont,Pedr@o123,Pedr@o123,pedrão,Preenchidos errado,Preenchidos errado,Mensagem avisando formato esperado
+14,,pedro_mont,Pedr@o123,Pedr@o123,pedrão,Preenchidos,Preenchidos errado,Mensagem avisando formato esperado
+"Dados que não podem ser nulos: Data_nascimento, Cidade, Estado, Endereço, Preferências, Sobre, Foto, Num_tel",,,,,,,,
+"Dados que podem ser nulos: Site, Sobre, Instagram, Facebook, Twitter, Whatsapp",,,,,,,,
+"CASO DE USO ""CADASTRAR ONG""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,,,,SAÍDA ESPERADA
+,,Nome_conta,Senha,Confirmar senha,Nome_ONG,Não podem ser nulos,Podem ser nulos,
+1,Típico,pedro_ONG,Pedr@o123,Pedr@o123,pedrão,preenchidos,preenchidos,Mensagem de usuário cadastrado
+2,,pedro_ONG,Pedr@o123,Pedr@o123,pedrão,preenchidos,Não preenchidos,Mensagem de usuário cadastrado
+3,A1: Conta já existente,pedro_ONG(repetido),Pedr@o123,Pedr@o123,pedrão,Não preenchidos,Não preenchidos,Mensagem avisando sobre a existência de uma conta com esse nome
+4,,pedro_ONG(repetido),Pedr@o123,Pedr@o123,pedrão,Não preenchidos,preenchidos,Mensagem avisando sobre a existência de uma conta com esse nome
+5,A2: Senha fraca,pedro_ONG,123456,123456,pedrão,Não preenchidos,Não preenchidos,Mensagem informando requisitos da senha
+6,,pedro_ONG,123456,123456,pedrão,Não preenchidos,preenchidos,Mensagem informando requisitos da senha
+7,A3: Confirmação de senha errada,pedro_ONG,Pedr@o123,123456,pedrão,Não preenchidos,Não preenchidos,Mensagem avisando que as senhas estão diferentes
+8,,pedro_ONG,Pedr@o123,123456,pedrão,Não preenchidos,preenchidos,Mensagem avisando que as senhas estão diferentes
+9,A4: Informações faltantes,pedro_ONG,Pedr@o123,Pedr@o123,pedrão,Não preenchidos,Não preenchidos,Mensagem avisando quais campos faltam
+10,,pedro_ONG,Pedr@o123,Pedr@o123,pedrão,Não preenchidos,preenchidos,Mensagem avisando quais campos faltam
+11,A5: Informações erradas,pedro_ONG,Pedr@o123,Pedr@o123,pedrão,preenchidos errado,Não preenchidos,Mensagem avisando formato esperado
+12,,pedro_ONG,Pedr@o123,Pedr@o123,pedrão,preenchidos errado,preenchidos,Mensagem avisando formato esperado
+13,,pedro_ONG,Pedr@o123,Pedr@o123,pedrão,preenchidos errado,preenchidos errado,Mensagem avisando formato esperado
+14,,pedro_ONG,Pedr@o123,Pedr@o123,pedrão,preenchidos,preenchidos errado,Mensagem avisando formato esperado
+"Dados que não podem ser nulos: Ano_criação, Cidade, Estado, Endereço, Preferências, Sobre, Foto, Num_tel, PETS",,,,,,,,
+"Dados que podem ser nulos: Site, CNPJ, Sobre, Instagram, Facebook, Twitter, Whatsapp",,,,,,,,
+,,,,,,,,
+"CASO DE USO ""EDITAR PERFIL""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,,,,SAÍDA ESPERADA
+,,Nome_conta,Senha,Confirmar senha,Nome_usuario,Não podem ser nulos,Podem ser nulos,
+1,Típico,alterado ou não,inalterado,inalterado,alterado ou não,alterado ou não,alterado ou não,Mensagem de alterações feitas com sucesso
+2,,alterado ou não,alterado,alterado,alterado ou não,alterado ou não,alterado ou não,Mensagem de alterações feitas com sucesso
+3,,inalterado,inalterado,inalterado,inalterado,inalterado,inalterado,Mensagem de alterações feitas com sucesso
+4,A1: Informações obrigatórias faltantes,Alterado vazio,inalterado,inalterado,inalterado,inalterado,alterado ou não,Mensagem de erro informando campos faltantes
+5,,inalterado,inalterado,inalterado,Alterado vazio,inalterado,alterado ou não,Mensagem de erro informando campos faltantes
+6,,inalterado,inalterado,inalterado,inalterado,Alterado vazio,alterado ou não,Mensagem de erro informando campos faltantes
+7,,Alterado vazio,inalterado,inalterado,Alterado vazio,Alterado vazio,alterado ou não,Mensagem de erro informando campos faltantes
+8,,Alterado vazio,inalterado,inalterado,Alterado vazio,inalterado,alterado ou não,Mensagem de erro informando campos faltantes
+9,,Alterado vazio,inalterado,inalterado,inalterado,Alterado vazio,alterado ou não,Mensagem de erro informando campos faltantes
+10,,inalterado,inalterado,inalterado,Alterado vazio,Alterado vazio,alterado ou não,Mensagem de erro informando campos faltantes
+11,A2: Senhas diferentes,,Pedr@o123,Pedr!nho123,,,,Mensagem de erro informando que as senhas precisam ser iguais
+12,,,Alterado vazio,Alterado vazio,,,,Mensagem avisando que a senha nã ode ser vazia
+13,A3: Senha fraca,,123456,123456,,,,Mensagem informando requisitos da senha
+14,"Sequência alternativa ausente, usuário não logado",sem opção,sem opção,sem opção,sem opção,sem opção,sem opção,Usuário redirecionado para a página de cadastro
+"Dados que não podem ser nulos: Data_nascimento, Cidade, Estado, Endereço, Preferências, Sobre, Foto, Num_tel",,,,,,,,
+"Dados que podem ser nulos: Site, Sobre, Instagram, Facebook, Twitter, Whatsapp",,,,,,,,
+,,,,,,,,
+"CASO DE USO ""CADASTRAR ANIMAL""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,,,,
+,,Nome,Nascimento,Raça,Sexo,Tamanho,Foto,Sobre
+1,Típico,Gup,43992,Pug,M,Pequeno,gup.png,Um belo cachorro
+2,,Gup,Nulo,Pug,M,Pequeno,gup.png,Um belo cachorro
+3,,Gup,43992,Nulo,M,Pequeno,gup.png,Um belo cachorro
+4,,Gup,43992,Pug,Nulo,Pequeno,gup.png,Um belo cachorro
+5,,Gup,43992,Pug,M,Nulo,gup.png,Um belo cachorro
+6,,Gup,43992,Pug,M,Pequeno,gup.png,Um belo cachorro
+7,,Gup,43992,Pug,M,Pequeno,gup.png,Nulo
+8,A1: Usuário não ONG,Não aparece opção,Não aparece opção,Não aparece opção,Não aparece opção,Não aparece opção,Não aparece opção,Não aparece opção
+9,A2: Informações obrigatórias faltantes,Nulo,43992,Pug,M,Pequeno,gup.png,Um belo cachorro
+10,,Gup,43992,Pug,M,Pequeno,gup.png,Um belo cachorro
+11,,Gup,43992,Pug,Nulo,Pequeno,gup.png,Um belo cachorro
+12,,Nulo,43992,Pug,Nulo,Pequeno,gup.png,Um belo cachorro
+,,,,,,,,
+"CASO DE USO ""EDITAR ANIMAL""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,,,,
+,,Nome,Nascimento,Raça,Sexo,Tamanho,Foto,Sobre
+1,Típico,alterado ou não,alterado ou não,alterado ou não,alterado ou não,alterado ou não,alterado ou não,alterado ou não
+2,,inalterado,inalterado,inalterado,inalterado,inalterado,inalterado,inalterado
+3,A1: Usuário não ONG,Não aparece opção,Não aparece opção,Não aparece opção,Não aparece opção,Não aparece opção,Não aparece opção,Não aparece opção
+4,A2: Informações obrigatórias faltantes,Alterado para Nulo,43992,Pug,M,Pequeno,gup.png,Um belo cachorro
+5,,Gup,43992,Pug,Alterado para Nulo,Pequeno,gup.png,Um belo cachorro
+6,,Alterado para Nulo,43992,Pug,Alterado para Nulo,Pequeno,gup.png,Um belo cachorro
+,,,,,,,,
+"CASO DE USO ""BUSCAR ANIMAIS""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,,,SAÍDA ESPERADA,
+,,Filtro espécie,Filtro raça,Filtro local,Filtro idade,Filtro temperamento,,
+1,Típico,Nenhum,Nenhum,Nenhum,Nenhum,Nenhum,Aparecer animais sem nenhuma restrição,
+2,,Gato,Nenhum,Nenhum,Nenhum,Nenhum,Aparecer gatos sem nenhuma restrição,
+3,,Gato,persa,Nenhum,Nenhum,Nenhum,Aparecer gatos persas sem nenhuma restrição,
+4,,Cachorro,Nenhum,Nenhum,Nenhum,Nenhum,Aparecer cachorros sem nenhuma restrição,
+5,,Cachorro,Pug,Nenhum,Nenhum,Nenhum,Aparecer pugs sem nenhuma restrição,
+6,,Nenhum,Nenhum,Araraquara,Nenhum,Nenhum,Aparecer animais de Araraquara,
+7,,Nenhum,Nenhum,São Paulo,Nenhum,Nenhum,Aparecer animais de São Paulo,
+8,,Nenhum,Nenhum,Nenhum,2 anos,Nenhum,Aparecer animais de 2 anos de idade,
+9,,Nenhum,Nenhum,Nenhum,Nenhum,Agitado,Aparecer animais agitados,
+10,,Cachorro,Pug,Araraquara,2 anos,Agitado,Aparecer um cachorro que bate com todas as restrições,
+11,,Nenhum,Nenhum,Nenhum,Nenhum,Nenhum,Aparecer animais sem nenhuma restrição,
+12,,Nenhum,Nenhum,Nenhum,Nenhum,Nenhum,Aparecer animais sem nenhuma restrição,
+13,A1: Não há nenhum animal correspondente,Cachorro,Pug,Manaus,2 anos,Agitado,Aparecer mensagem de nenhum animal encontrado,
+,,,,,,,,
+"CASO DE USO ""VISUALIZAR ANIMAIS""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,SAÍDA ESPERADA,,,
+,,Nome do animal,Tipo de usuário,Acessou pela busca,,,,
+1,Típico,Gup,Usuário,Sim,"Aparecer página do Gup com todas as informações, inclusive como adotar",,,
+2,,Camembert,Usuário,Sim,"Aparecer página do Camembert com todas as informações, icnlusive como adotar",,,
+3,"Sequência alternativa ausente, usuário não logado",Gup,Sem login,Sim,"Aparecer página do Gup com todas as informações, exceto sobre adoção",,,
+4,"Sequência alternativa ausente, usuário veio da página da ONG",Gup,Usuário,Não,"Aparecer página do Gup com todas as informações, inclusive como adotar",,,
+5,"Sequência alternativa ausente, usuário não logado veio da página da ONG",Gup,Sem login,Não,"Aparecer página do Gup com todas as informações, exceto sobre adoção",,,
+6,"Sequência alternativa ausente, usuário do tipo ONG",Gup,ONG,Sim,"Aparecer página do Gup com todas as informações, inclusive como adotar e com a opção de editar",,,
+7,"Sequência alternativa ausente, usuário do tipo ONG veio pela sua própria página",Gup,ONG,Não,"Aparecer página do Gup com todas as informações, inclusive como adotar e com a opção de editar",,,
+,,,,,,,,
+"CASO DE USO ""VISUALIZAR ONG""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,SAÍDA ESPERADA,,,
+,,Cenário,Nome da ONG,Tipo de usuário,,,,
+,1,Típico,Acãochego,Usuário,Aparecer página da Ong com todas as informações,,,
+,2,,Acãochego,Sem login,Aparecer página da Ong com todas as informações,,,
+,3,,Amigo do cão,Usuário,Aparecer página da Ong com todas as informações e a opção de editar,,,
+,4,"Sequência alternativa ausente, usuário do tipo ONG",Acãochego,ONG,Aparecer página da Ong com todas as informações e a opção de editar,,,
+,,,,,,,,
+"CASO DE USO ""ADOTAR ANIMAIS""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,,SAÍDA ESPERADA,,
+,,Nome do animal,Tipo de usuário,Adotado,Informações da adoção,,,
+1,Típico,Gup,Usuário,Não,Disponibilizadas,Aparecer pop up com informações da ONG sobre a adoção,,
+2,,Camembert,ONG,Não,Disponibilizadas,Aparecer pop up com informações da ONG sobre a adoção,,
+3,A1: animal já adotado,Jorge,Usuário,Sim,Disponibilizadas,"No lugar do botão quero adotar, aparecer já adotado",,
+4,A2: ONG não disponibilizou informações,Juan,Usuário,Não,Não disponíveis,Aparecer pop up com contatos da ONG,,
+5,"Sequência alternativa ausente, usuário não logado",Gup,Sem login,Não,Disponibilizadas,Botão de quero adotar levar para a página de login,,
+,,,,,,,,
+"CASO DE USO ""QUERO AJUDAR""",,,,,,,,
+CASO DE TESTE,CENÁRIO,ATRIBUTOS,,,SAÍDA ESPERADA,,,
+,,Nome da ONG,Tipo de usuário,Informações de doações,,,,
+1,Típico,Acãochego,Usuário,Disponibilizadas,Aparecer pop up com informações da ONG sobre formas de doação,,,
+2,,Acãochego,ONG,Disponibilizadas,Aparecer pop up com informações da ONG sobre formas de doação,,,
+3,,Amigo do cão,Sem login,Disponibilizadas,Aparecer pop up com informações da ONG sobre formas de doação,,,
+4,A1: Ong não disponibilizou informações,Acãochego,Usuário,Não disponíveis,Aparecer pop up com contatos da ONG,,,
