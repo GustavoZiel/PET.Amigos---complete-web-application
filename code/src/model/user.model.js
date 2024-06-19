@@ -24,7 +24,19 @@ Usuario.init({
     role: { type: DataTypes.STRING, allowNull: true }
 }, { sequelize: sequelize, timestamps: false });
 
-Usuario.belongsToMany(Pet, { through: 'UsuarioPet' });
-Pet.belongsToMany(Usuario, { through: 'UsuarioPet' });
+const UsuarioPet = sequelize.define('UsuarioPet', {}, { timestamps: false });
 
-export default Usuario;
+
+Usuario.belongsToMany(Pet, {
+    through: UsuarioPet,
+    foreignKey: 'accountName',
+    otherKey: 'petId'
+});
+Pet.belongsToMany(Usuario, {
+    through: UsuarioPet,
+    foreignKey: 'petId',
+    otherKey: 'accountName'
+});
+
+export { Usuario };
+export { UsuarioPet };

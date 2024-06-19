@@ -67,10 +67,9 @@ function createPetCard(pet, petImageUrl) {
                 <div class="d-flex flex-column align-items-center">
                     <img src="${petImageUrl}" alt="${pet.type}" class="rounded-5 img-fluid animal border-purple">
                     <span class="coracao">
-                        <img src="../img/red-heart-svgrepo-com.svg" alt="" class="img-fluid ">
-                    </span>
-                    <span class="likes">
-                        <p class="bg-light text-sm border-purple textPurple poppins-medium rounded-pill">123</p>
+                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button">
+                            <img id="coracaoImg" src="./img/red-heart-svgrepo-com.svg" alt="" class="img-fluid ">
+                        </button>
                     </span>
                     <button type="button" class="container-fluid purpleBgColor adotar border-purple text-white poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR!</button>
                 </div>
@@ -129,6 +128,15 @@ function createPetCard(pet, petImageUrl) {
             </div>
         </div>
     `;
+    const coracaoImg = petCard.querySelector('#coracaoImg');
+
+    coracaoImg.addEventListener('click', () => {
+        if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
+            coracaoImg.src = './img/empty-heart.svg';
+        } else {
+            coracaoImg.src = './img/red-heart-svgrepo-com.svg';
+        }
+    });
 
     return petCard;
 }

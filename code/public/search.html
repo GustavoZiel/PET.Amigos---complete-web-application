@@ -411,12 +411,29 @@
                                 <div class="card-body rounded-bottom-5 border-card">
                                     <h5 class="card-title font_name_black">${animal.name}</h5>
                                     <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
+                                    <span class="coracao">
+                                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button">
+                                            <img src="./img/red-heart-svgrepo-com.svg" alt="" class="img-fluid coracaoImg">
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
                         </a>
                     `;
                     container.innerHTML += card;
                 };
+                const coracaoImgs = document.querySelectorAll('.coracaoImg');
+                coracaoImgs.forEach((coracaoImg) => {
+                    coracaoImg.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
+                            coracaoImg.src = './img/empty-heart.svg';
+                        } else {
+                            coracaoImg.src = './img/red-heart-svgrepo-com.svg';
+                        }
+                    });
+                });
             } catch (error) {
                 console.error('Erro ao buscar Pets', error);
             }

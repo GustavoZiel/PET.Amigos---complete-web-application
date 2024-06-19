@@ -2,6 +2,7 @@ import express from "express";
 import petController from "../controllers/pet.controller.js";
 import usuarioController from "../controllers/user.controller.js";
 import ongController from "../controllers/ong.controller.js";
+import likeController from "../controllers/likes.controller.js";
 import upload from '../upload/upload_img.js';
 // import authController from "../controllers/auth.controller.js";
 
@@ -48,5 +49,13 @@ router.get("/ongs", ongController.findAll); // Retrieve
 router.get("/ongs/:id", ongController.findById); // Retrieve
 router.delete("/ongs/:id", ongController.deleteById); // Delete
 router.put("/ongs/:id", ongController.update); // Update
+
+// CRUD - Likes
+router.post("/likes", likeController.create); // Create
+router.get("/likes", likeController.findAll); // Retrieve
+router.get("/likes/:accountName/:petId", likeController.findBykey); // Retrieve
+router.get("/likes/:accountName", likeController.findByuser); // Retrieve
+router.delete("/likes/:accountName/:petId", likeController.deleteBykey); // Delete
+router.put("/likes/:accountName/:petId", likeController.update); // Update
 
 export default router;

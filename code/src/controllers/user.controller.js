@@ -1,8 +1,8 @@
-import model from "../model/user.model.js";
+import { Usuario } from "../model/user.model.js";
 import upload from '../upload/upload_img.js';
 
 function findAll(request, response) {
-  model
+  Usuario
     .findAll()
     .then(function (res) {
       response.json(res).status(200);
@@ -13,7 +13,7 @@ function findAll(request, response) {
 }
 
 function findById(request, response) {
-  model
+  Usuario
     .findOne({ where: { id: request.params.id } })
     .then(function (res) {
       response.json(res).status(200);
@@ -24,7 +24,7 @@ function findById(request, response) {
 }
 async function create(request, response) {
   const uploadedPhotos = await upload.getFileUrl(request.file.key);
-  const res = await model
+  const res = await Usuario
   .create(
     {
       accountName: request.body.accountName,
@@ -51,7 +51,7 @@ async function create(request, response) {
 }
 
 function deleteById(request, response) {
-  model
+  Usuario
   .destroy({ where: { id: request.params.id } })
   .then( () => {
     response.status(200).send("User deleted successfully !");
@@ -62,7 +62,7 @@ function deleteById(request, response) {
   }
   
   function update(request, response) {
-    model
+    Usuario
     .update(
       {
         accountName: request.body.accountName,
