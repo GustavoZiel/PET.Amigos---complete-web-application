@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import bcrypt from "bcryptjs";
 import ONG from "../model/ong.model.js";
-import USER from "../model/user.model.js";
+import USER from "../model/usuario.model.js";
 import { AccessDeniedError } from "sequelize";
 
 const secret = process.env.AUTH_SECRET;
@@ -14,97 +14,95 @@ function getToken(uid, uemail) {
 // Register ONG
 // Register ONG
 async function registerONG(request, response) {
-    try {
-      const {
-          accountName,
-          password,
-          ongName,
-          creationYear,
-          city,
-          state,
-          address,
-          CNPJ,
-          pets,
-          about,
-          photo,
-          phoneNumber,
-          website,
-          instagram,
-          facebook,
-          twitter,
-          whatsapp,
-          role
-      } = request.body;
-  
-      if (!accountName || !password) {
-        return response.status(400).send("Informe usuário e senha!");
-      }
-  
-      const existingOng = await ONG.findOne({ where: { accountName } });
-      if (existingOng) {
-        return response.status(400).send("Parceiro já cadastrado!");
-      }
-  
-      const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
+  try {
+    const {
+      accountName,
+      password,
+      ongName,
+      creationYear,
+      city,
+      state,
+      address,
+      CNPJ,
+      pets,
+      about,
+      photo,
+      phoneNumber,
+      website,
+      instagram,
+      facebook,
+      twitter,
+      whatsapp,
+      role,
+    } = request.body;
 
-      console.log(hashedPassword);
-      
-      const newOng = await ONG.create({
-        accountName,
-        password: hashedPassword,
-        ongName,
-        creationYear: new Date(creationYear),
-        city,
-        state,
-        address,
-        CNPJ,
-        pets,
-        about,
-        photo,
-        phoneNumber,
-        website,
-        instagram,
-        facebook,
-        twitter,
-        whatsapp,
-        role
-      });
-  
-      const token = getToken(newOng.id, newOng.accountName);
-      response.status(201).send({ token });
-    } catch (error) {
-      console.error(error);
-      response.status(500).send(error);
+    if (!accountName || !password) {
+      return response.status(400).send("Informe usuário e senha!");
     }
+
+    const existingOng = await ONG.findOne({ where: { accountName } });
+    if (existingOng) {
+      return response.status(400).send("Parceiro já cadastrado!");
+    }
+
+    const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
+
+    console.log(hashedPassword);
+
+    const newOng = await ONG.create({
+      accountName,
+      password: hashedPassword,
+      ongName,
+      creationYear: new Date(creationYear),
+      city,
+      state,
+      address,
+      CNPJ,
+      pets,
+      about,
+      photo,
+      phoneNumber,
+      website,
+      instagram,
+      facebook,
+      twitter,
+      whatsapp,
+      role,
+    });
+
+    const token = getToken(newOng.id, newOng.accountName);
+    response.status(201).send({ token });
+  } catch (error) {
+    console.error(error);
+    response.status(500).send(error);
   }
-  
+}
 
 // Register User
 async function registerUser(request, response) {
   try {
-
     const {
-        id,
-        accountName,
-        password,
-        userName,
-        birthDate,
-        city,
-        state,
-        address,
-        preferences,
-        about,
-        photo,
-        phoneNumber,
-        website,
-        instagram,
-        facebook,
-        twitter,
-        whatsapp,
-        role,
-      } = request.body;
+      id,
+      accountName,
+      password,
+      userName,
+      birthDate,
+      city,
+      state,
+      address,
+      preferences,
+      about,
+      photo,
+      phoneNumber,
+      website,
+      instagram,
+      facebook,
+      twitter,
+      whatsapp,
+      role,
+    } = request.body;
 
-    if (! accountName || !password) {
+    if (!accountName || !password) {
       return response.status(400).send("Informe usuário e senha!");
     }
 
@@ -114,27 +112,27 @@ async function registerUser(request, response) {
     }
 
     const hashedPassword = bcrypt.hashSync(password, bcrypt.genSaltSync());
-    request.body.password = hashedPassword
+    request.body.password = hashedPassword;
     const newUser = await USER.create({
-        id,
-        accountName,
-        password: hashedPassword,
-        userName,
-        birthDate,
-        city,
-        state,
-        address,
-        preferences,
-        about,
-        photo,
-        phoneNumber,
-        website,
-        instagram,
-        facebook,
-        twitter,
-        whatsapp,
-        role,
-      });
+      id,
+      accountName,
+      password: hashedPassword,
+      userName,
+      birthDate,
+      city,
+      state,
+      address,
+      preferences,
+      about,
+      photo,
+      phoneNumber,
+      website,
+      instagram,
+      facebook,
+      twitter,
+      whatsapp,
+      role,
+    });
     const token = getToken(newUser.id, newUser.Nome_Conta);
     response.status(201).send({ token });
   } catch (error) {
@@ -152,7 +150,7 @@ async function loginUser(request, response) {
       return response.status(400).send("Informe usuário e senha!");
     }
 
-    const user = await USER.findOne({ where: { accountName} });
+    const user = await USER.findOne({ where: { accountName } });
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return response.status(401).send("Usuário e senha inválidos!");
     }
@@ -182,7 +180,9 @@ async function loginONG(request, response) {
     }
 
     const token = getToken(ong.id, ong.accountName);
-    response.status(200).json({ id: ong.id, accountName: ong.accountName, token });
+    response
+      .status(200)
+      .json({ id: ong.id, accountName: ong.accountName, token });
   } catch (erro) {
     console.error(erro);
     response.status(500).send(erro);
@@ -191,19 +191,32 @@ async function loginONG(request, response) {
 
 //valida se pode alterar o valor daquele id e se eh ong
 const authPageId = (permissions) => {
-    return (request, response, next) => {
-      const userRole = request.body.role;
-      const routeId = parseInt(request.params.id);
-      const requestId = parseInt(request.body.id);
-  
-      if (permissions.includes(userRole) && requestId === routeId) {
-        next();
-      } else {
-        return response.status(401).json("Nao autorizado");
-      }
-    };
-  };
+  return (request, response, next) => {
+    const userRole = request.body.role;
+    const routeId = parseInt(request.params.id);
+    
+    let token = request.headers.authorization;
+    let requestId;
 
+    if (token && token.startsWith("Bearer ")) {
+      token = token.slice(7);
+      try {
+        const decoded = jwt.verify(token, secret);
+        requestId = parseInt(decoded.sub);
+      } catch (err) {
+        return response.status(401).json("Token verification failed");
+      }
+    } else {
+      return response.status(401).json("No token provided");
+    }
+
+    if (permissions.includes(userRole) && requestId === routeId) {
+      next();
+    } else {
+      return response.status(401).json("Nao autorizado " + requestId);
+    }
+  };
+};
 const authPage = (permissions) => {
   return (request, response, next) => {
     const userRole = request.body.role;
