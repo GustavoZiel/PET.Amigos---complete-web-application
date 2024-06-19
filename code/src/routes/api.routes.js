@@ -3,7 +3,7 @@ import petController from "../controllers/pet.controller.js";
 import usuarioController from "../controllers/user.controller.js";
 import ongController from "../controllers/ong.controller.js";
 import upload from '../upload/upload_img.js';
-// import authController from "../controllers/auth.controller.js";
+import authController from "../controllers/auth.controller.js";
 
 const router = express.Router();
 
@@ -15,18 +15,18 @@ router.get('/', function (req, res) {
 
 
 // /* signup e sign in com autenticacao -> post!!*/
-// router.post("/signup_users",  upload.uploadFile.single('photo'), authController.registerUser);
-// router.post("/signup_ongs", upload.uploadFile.single('photo'), authController.registerONG);
-// router.post("/signin_users", authController.loginUser);
-// router.post("/signin_ongs", authController.loginONG);
+router.post("/signup_users",  upload.uploadFile.single('photo'), authController.registerUser);
+router.post("/signup_ongs", upload.uploadFile.single('photo'), authController.registerONG);
+router.post("/signin_users", authController.loginUser);
+router.post("/signin_ongs", authController.loginONG);
 
 // //so pode criar ongs, usuarios e pets se tiver logado. pets so se for ong -> middlewere
-// router.post("/users", authController.authPage("USER"), authController.validateToken);
-// router.post("/ongs", authController.authPage("ONG"), authController.validateToken);
-// router.put("/ongs/:id", authController.authPageId(["ONG"]), authController.validateToken, ongController.update);
-// router.put("/users/:id", authController.authPageId(["USER"]), authController.validateToken, usuarioController.update);
-// //router.post("/pets",upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.create);
-// //router.put("/pets/:id",  upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.update); 
+ router.post("/users", authController.authPage("USER"), authController.validateToken);
+ router.post("/ongs", authController.authPage("ONG"), authController.validateToken);
+ router.put("/ongs/:id", authController.authPageId(["ONG"]), authController.validateToken, ongController.update);
+ router.put("/users/:id", authController.authPageId(["USER"]), authController.validateToken, usuarioController.update);
+ //router.post("/pets",upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.create);
+ //router.put("/pets/:id",  upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.update); 
 
 
 // CRUD - Pets
