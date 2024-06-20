@@ -13,8 +13,18 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             const pet = await response.json();
             const petImageUrl = await fetchImage(pet.photos);
+            const accountName = 1;
+
+            let isLiked = true;  
+            const likes = await fetch(`/likes/${accountName}/${petId}`);
+            const likedPet = await likes.json();
+            
+            if(likedPet === null){
+                isLiked = false;
+            }
+
             const petsSection = document.getElementById('pets-section');
-            const petCard = createPetCard(pet, petImageUrl);
+            const petCard = createPetCard(pet, petImageUrl, isLiked);
             petsSection.appendChild(petCard);
         } catch (error) {
             console.error('Erro ao buscar dados do pet:', error);
@@ -50,9 +60,11 @@ function calculateAge(birthDate) {
     return age;
 }
 
-function createPetCard(pet, petImageUrl) {
+function createPetCard(pet, petImageUrl, isLiked) {
     const idade = calculateAge(pet.birth)
     const petCard = document.createElement('div');
+    const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
+    console.log(coracaoImgSrc);
     petCard.classList.add('row', 'px-5', 'mx-3', 'pt-3');
 
     petCard.innerHTML = `
@@ -68,7 +80,7 @@ function createPetCard(pet, petImageUrl) {
                     <img src="${petImageUrl}" alt="${pet.type}" class="rounded-5 img-fluid animal border-purple">
                     <span class="coracao">
                         <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${pet.id}">
-                            <img id="coracaoImg" src="./img/empty-heart.svg" alt="" class="img-fluid ">
+                            <img id="coracaoImg" src="${coracaoImgSrc}" alt="" class="img-fluid ">
                         </button>
                     </span>
                     <button type="button" class="container-fluid purpleBgColor adotar border-purple text-white poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR!</button>

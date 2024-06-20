@@ -1,4 +1,6 @@
 .env
-.gitignore
+.minio.sys
 sonar-scanner
 .scannerwork
+buckets
+.gitignore

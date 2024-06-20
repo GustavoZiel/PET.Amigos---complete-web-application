@@ -404,6 +404,15 @@
                 const container = document.getElementById('GridPets');
                 for (const animal of animals){
                     const source_img = await fetchImage(animal.photos);
+                    let isLiked = true;  
+                    const accountName = 1;
+                    const likes = await fetch(`/likes/${accountName}/${animal.id}`);
+                    const likedPet = await likes.json();
+                    if(likedPet === null){
+                        isLiked = false;
+                    }
+                    const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
+                    console.log(coracaoImgSrc);
                     const card = `
                         <a href="pet.html?id=${animal.id}" style="text-decoration: none">
                             <div class="card rounded-5 m-3 img-size">
@@ -413,7 +422,7 @@
                                     <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
                                     <span class="coracao">
                                         <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${animal.id}">
-                                            <img src="./img/empty-heart.svg" alt="" class="img-fluid">
+                                            <img src="${coracaoImgSrc}" alt="" class="img-fluid">
                                         </button>
                                     </span>
                                 </div>
