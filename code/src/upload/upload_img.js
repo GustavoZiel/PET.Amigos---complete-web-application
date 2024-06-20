@@ -7,12 +7,12 @@ const accessKeyId = process.env["ACCESS_KEY"];
 const secretAccessKey = process.env["SECRET_KEY"];
 console.log(accessKeyId);
 const s3 = new S3Client({
-    endpoint: "http://192.168.166.84:9000",
+    endpoint: "http://127.0.0.1:9000",
     credentials: {
         accessKeyId: accessKeyId,
         secretAccessKey: secretAccessKey,
     },
-    region: "us-west-rack-2",
+    region: "us-east-1",
     sslEnabled: false,
     s3ForcePathStyle: true,
 });
@@ -20,7 +20,7 @@ const s3 = new S3Client({
 const uploadFile = multer({
     storage: multerS3({
         s3: s3,
-        bucket: "pija",
+        bucket: "imagens-site",
         acl: "public-read",
         key: function (request, arquivo, cb) {
             cb(null, Date.now() + "-" + arquivo.originalname);
@@ -28,8 +28,8 @@ const uploadFile = multer({
     }),
 });
 
-const minioUrl = "192.168.166.84:9000/";
-const bucket = "pija/";
+const minioUrl = "127.0.0.1:9000/";
+const bucket = "imagens-site/";
 async function getFileUrl(fileName) {
     return minioUrl + bucket + fileName;
 }

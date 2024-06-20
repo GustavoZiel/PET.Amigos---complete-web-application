@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         const accountType = document.getElementById('accountType').value;
 
+        console.log(formData);
+
         let url = '';
         if (accountType === 'ong') {
             formData.append('role', 'ONG');
@@ -46,15 +48,34 @@ document.addEventListener('DOMContentLoaded', function() {
             url = 'http://localhost:3000/signup_users';
         }
 
+        //formData.set('photo', 'foto aqui');
+
         try {
             const response = await fetch(url, {
                 method: 'POST',
                 body: formData,
+
             });
+
+            /* axios.post(url, formData, {
+                headers: {
+                    "Content-type": "multipart/form-data",
+                },
+            }).then(res => {
+                const data = res;
+                console.log(data.token)
+                localStorage.setItem('token', data.token);
+                const token_test = localStorage.getItem('token');
+                console.log(token_test);
+                window.location.href = 'home.html';
+            }) */
 
             if (response.ok) {
                 const data = await response.json();
+                console.log(data.token)
                 localStorage.setItem('token', data.token);
+                const token_test = localStorage.getItem('token');
+                console.log(token_test);
                 window.location.href = 'home.html';
             } else {
                 console.error('Error submitting form');
