@@ -22,6 +22,28 @@
   color: #3a0ca3;
 }
 
+.border-adotar {
+  border: 0.15em solid #3A0CA3;
+}
+
+.text-adotar {
+  font-size: 3vh;
+  color: #3A0CA3;
+}
+
+.text-adotar:hover {
+  font-size: 3vh;
+  color: white;
+}
+
+.bg-adotar {
+  background-color: white;
+}
+
+.bg-adotar:hover {
+  background-color: #3a0ca3;
+}
+
 .textOngNumber {
   color: black;
   font-size: 4vh;
