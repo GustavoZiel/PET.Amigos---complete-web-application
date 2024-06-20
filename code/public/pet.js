@@ -62,11 +62,20 @@ function calculateAge(birthDate) {
 }
 
 function createPetCard(pet, petImageUrl, isLiked) {
-    let [idade, mes] = calculateAge(pet.birth)
+    let [ano, mes] = calculateAge(pet.birth)
     const petCard = document.createElement('div');
     const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
     console.log(coracaoImgSrc);
     petCard.classList.add('row', 'px-5', 'mx-3', 'pt-3');
+
+    let idade;
+    if (ano === 0) {
+        idade = mes + ' meses'
+    } else if (idade === 1) {
+        idade = ano + ' ano e ' + mes + ' meses'
+    } else {
+        idade = ano + ' anos e ' + mes + ' meses'
+    }
 
     petCard.innerHTML = `
         <div class="col-lg-3 d-flex flex-column align-items-center">
@@ -124,7 +133,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
                 <div class="row pb-0 mb-0">
                     <div class="col">
                         <h5 class="poppins-medium headers_caract">IDADE</h5>
-                        <p class="poppins-medium text_caract">${idade} anos e ${mes} meses</p>
+                        <p class="poppins-medium text_caract">${idade}</p>
                     </div>
                     <div class="col">
                         <h5 class="poppins-medium headers_caract">RAÇA</h5>
