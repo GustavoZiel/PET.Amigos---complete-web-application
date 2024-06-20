@@ -57,11 +57,12 @@ function calculateAge(birthDate) {
     if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
         age--;
     }
-    return age;
+
+    return [age, 12+m];
 }
 
 function createPetCard(pet, petImageUrl, isLiked) {
-    const idade = calculateAge(pet.birth)
+    let [idade, mes] = calculateAge(pet.birth)
     const petCard = document.createElement('div');
     const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
     console.log(coracaoImgSrc);
@@ -83,10 +84,35 @@ function createPetCard(pet, petImageUrl, isLiked) {
                             <img id="coracaoImg" src="${coracaoImgSrc}" alt="" class="img-fluid ">
                         </button>
                     </span>
-                    <button type="button" class="container-fluid purpleBgColor adotar border-purple text-white poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR!</button>
+                    <button type="button" class="container-fluid bg-adotar border-adotar textPurple text-adotar poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR!</button>
                 </div>
             </div>
         </div>
+
+        <!-- Modal -->
+            <div class="modal fade" id="petAdotar" tabindex="-1" aria-labelledby="petAdotarLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="petAdotarLabel">Como adotar esse pet?</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <p>
+                            Entre em contato com a ONG usando os meios de comunicação disponibilizados por ela (telefone,
+                            Instagram, Facebook, etc).
+                            </p>
+
+                            <p>
+                            O site PET.Amigos não se responsabiliza pela legalização da adoção, deixamos isso somente com
+                            a ONG em questão. Nossa missão é apenas a de ser um portal para ajudar nossos queridos animais
+                            a encontrarem uma nova casa.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         <div class="col-lg-9 row">
             <div class="d-none d-lg-block">
                 <h1 class="ps-5 poppins-semibold textPurple">
@@ -98,7 +124,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
                 <div class="row pb-0 mb-0">
                     <div class="col">
                         <h5 class="poppins-medium headers_caract">IDADE</h5>
-                        <p class="poppins-medium text_caract">${idade} anos</p>
+                        <p class="poppins-medium text_caract">${idade} anos e ${mes} meses</p>
                     </div>
                     <div class="col">
                         <h5 class="poppins-medium headers_caract">RAÇA</h5>
