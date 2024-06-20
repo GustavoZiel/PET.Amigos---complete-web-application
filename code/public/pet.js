@@ -67,8 +67,8 @@ function createPetCard(pet, petImageUrl) {
                 <div class="d-flex flex-column align-items-center">
                     <img src="${petImageUrl}" alt="${pet.type}" class="rounded-5 img-fluid animal border-purple">
                     <span class="coracao">
-                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button">
-                            <img id="coracaoImg" src="./img/red-heart-svgrepo-com.svg" alt="" class="img-fluid ">
+                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${pet.id}">
+                            <img id="coracaoImg" src="./img/empty-heart.svg" alt="" class="img-fluid ">
                         </button>
                     </span>
                     <button type="button" class="container-fluid purpleBgColor adotar border-purple text-white poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR!</button>
@@ -129,11 +129,38 @@ function createPetCard(pet, petImageUrl) {
         </div>
     `;
     const coracaoImg = petCard.querySelector('#coracaoImg');
+    const CoracaoButton = petCard.querySelector('#toggleHeart')
 
     coracaoImg.addEventListener('click', () => {
+        const petId = CoracaoButton.dataset.petId;
+
         if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
             coracaoImg.src = './img/empty-heart.svg';
+
+            fetch(`/likes/1/${petId}`, { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Curtida removida para o pet com ID ${petId}`);
+                } else {
+                    console.error('Erro ao remover a curtida');
+                }
+            })
+            .catch(error => console.error('Erro ao remover a curtida:', error));
         } else {
+            fetch(`/likes`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ accountName: 1, petId: petId })
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                } else {
+                    console.error('Erro ao adicionar a curtida');
+                }
+            })
+            .catch(error => console.error('Erro ao adicionar a curtida:', error));
+
             coracaoImg.src = './img/red-heart-svgrepo-com.svg';
         }
     });

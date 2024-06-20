@@ -30,7 +30,6 @@ function findBykey(request, response) {
     });
 }
 async function create(request, response) {
-    const uploadedPhotos = await upload.getFileUrl(request.file.key);
     const res = await UsuarioPet
     .create(
     {

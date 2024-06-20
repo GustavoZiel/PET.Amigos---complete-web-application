@@ -412,8 +412,8 @@
                                     <h5 class="card-title font_name_black">${animal.name}</h5>
                                     <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
                                     <span class="coracao">
-                                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button">
-                                            <img src="./img/red-heart-svgrepo-com.svg" alt="" class="img-fluid coracaoImg">
+                                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${animal.id}">
+                                            <img src="./img/empty-heart.svg" alt="" class="img-fluid">
                                         </button>
                                     </span>
                                 </div>
@@ -422,14 +422,41 @@
                     `;
                     container.innerHTML += card;
                 };
-                const coracaoImgs = document.querySelectorAll('.coracaoImg');
-                coracaoImgs.forEach((coracaoImg) => {
-                    coracaoImg.addEventListener('click', (event) => {
+                const coracaoButtons = document.querySelectorAll('.heart-button');
+                coracaoButtons.forEach(coracaoButton  => {
+                    coracaoButton.addEventListener('click', (event) => {
                         event.preventDefault();
                         event.stopPropagation();
+                        
+                        const petId = coracaoButton.dataset.petId;
+                        const coracaoImg = coracaoButton.querySelector('img');
                         if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
+                            fetch(`/likes/1/${petId}`, { method: 'DELETE' })
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log(`Curtida removida para o pet com ID ${petId}`);
+                                } else {
+                                    console.error('Erro ao remover a curtida');
+                                }
+                            })
+                            .catch(error => console.error('Erro ao remover a curtida:', error));
+
                             coracaoImg.src = './img/empty-heart.svg';
                         } else {
+                            fetch(`/likes`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ accountName: 1, petId: petId })
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                                } else {
+                                    console.error('Erro ao adicionar a curtida');
+                                }
+                            })
+                            .catch(error => console.error('Erro ao adicionar a curtida:', error));
+
                             coracaoImg.src = './img/red-heart-svgrepo-com.svg';
                         }
                     });
