@@ -1,6 +1,7 @@
 import model from "../model/pet.model.js";
 import upload from '../upload/upload_img.js';
 import { Op } from 'sequelize';
+import { UsuarioPet } from "../model/user.model.js";
 
 function findAll(request, response) {
   model
@@ -57,6 +58,24 @@ async function searchBy(req, res) {
     console.error('Error searching for pets:', err);
     res.status(500).json({ error: 'Failed to search for pets' });
   }
+}
+async function getLikedPets(req, res){
+    const userId = req.params.userId;
+    const pets = await UsuarioPet.findAll({
+      include: [{
+        model: model,
+        where: { userId: userId },
+        required: true,
+      }]
+    });
+
+    return pets.map(pet => ({
+      id: pet.id,
+      name: pet.name,
+      city: pet.city,
+      state: pet.state,
+      photos: pet.photos,
+    }));
 }
 async function create(request, response) {
   const uploadedPhotos = await upload.getFileUrl(request.file.key);
@@ -129,4 +148,5 @@ export default {
   create,
   deleteByPk,
   update,
+  getLikedPets,
 };
