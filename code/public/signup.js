@@ -18,6 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
         const ongFields = document.querySelector('.ong-fields');
         const userFields = document.querySelector('.user-fields');
 
+        console.log(accountType)
+        console.log(ongFields)
+        console.log(userFields)
+        
+
         if (accountType === 'ong') {
             ongFields.style.display = 'block';
             userFields.style.display = 'none';
