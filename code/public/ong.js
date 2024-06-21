@@ -503,12 +503,12 @@ async function createPetsOwnedCard() {
                 </div>
     </div>
     `;
-    const botao = likedPetsCard.querySelector('#petModal');
+    const botao = petsOwnedCard.querySelector('#petModal');
     botao.innerHTML += addPetsButton();
-    const petsContainer = likedPetsCard.querySelector('#GridPets');
+    const petsContainer = petsOwnedCard.querySelector('#GridPets');
 
     try {
-        const accountName = 1;
+        const accountName = 2;
         const response = await fetch(`/ONG-pets/${accountName}`);
         console.log(response)
         if (!response.ok) {

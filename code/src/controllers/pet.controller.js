@@ -1,5 +1,4 @@
 import Pet from "../model/pet.model.js";
-import ONG from "../model/ong.model.js";
 import upload from '../upload/upload_img.js';
 import { Op } from 'sequelize';
 import { Usuario } from "../model/user.model.js";
@@ -93,34 +92,27 @@ async function getLikedPets(req, res){
 }
 async function getONGPets(req, res){
   try{
-    const ONGId = req.params.ONGId;
-    const pets = await ONG.findAll({
-      where: { id: ONGId },
-      include: [{
-        model: Pet,
-        required: false,
-        through: {
-          attributes: []
-        }
-      }]
-    });
-    if (!pets) {
-      return res.status(404).json({ message: "Usuário não encontrado" });
-    }
-    const animais = pets.flatMap(usuario => 
-      usuario.Pets.map(pet => ({
+    const ONGacc = req.params.ONGacc;
+    console.log(ONGacc);
+      const pets = await Pet.findAll({
+        where: { ONGAccountName: ONGacc },
+      });
+      if (!pets) {
+        return res.status(404).json({ message: "Usuário não encontrado" });
+      }
+      console.log(pets)
+      const animais = pets.map(pet => ({
           id: pet.id,
           name: pet.name,
           city: pet.city,
           state: pet.state,
           photos: pet.photos,
-      }))
-  );
-    return res.status(200).json(animais);
-  }catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: "Erro ao buscar pets" });
-  }
+      }));
+      return res.status(200).json(animais);
+    }catch (error) {
+      console.error(error);
+      return res.status(500).json({ message: "Erro ao buscar pets" });
+    }
 }
 
 async function create(request, response) {

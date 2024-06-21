@@ -49,7 +49,7 @@ router.get("/ongs", ongController.findAll); // Retrieve
 router.get("/ongs/:id", ongController.findById); // Retrieve
 router.delete("/ongs/:id", ongController.deleteById); // Delete
 router.put("/ongs/:id", ongController.update); // Update
-router.get("/ONG-pets/:ONGId", petController.getONGPets); // pets que uma ong possui
+router.get("/ONG-pets/:ONGacc", petController.getONGPets); // pets que uma ong possui
 
 // CRUD - Likes
 router.post("/likes", likeController.create); // Create
