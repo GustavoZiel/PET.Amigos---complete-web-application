@@ -1,10 +1,11 @@
-import model from "../model/pet.model.js";
+import Pet from "../model/pet.model.js";
+import ONG from "../model/ong.model.js";
 import upload from '../upload/upload_img.js';
 import { Op } from 'sequelize';
-import { UsuarioPet } from "../model/user.model.js";
+import { Usuario } from "../model/user.model.js";
 
 function findAll(request, response) {
-  model
+  Pet
     .findAll()
     .then(function (res) {
       response.json(res).status(200);
@@ -15,7 +16,7 @@ function findAll(request, response) {
 }
 
 function findById(request, response) {
-  model
+  Pet
     .findByPk(request.params.id)
     .then(function (res) {
       response.json(res).status(200);
@@ -51,7 +52,7 @@ async function searchBy(req, res) {
       searchParams.where.adopted = adopted;
 
     // Buscar os pets com base nos parâmetros
-    const pets = await model.findAll(searchParams);
+    const pets = await Pet.findAll(searchParams);
 
     res.status(200).json(pets);
   } catch (err) {
@@ -60,26 +61,70 @@ async function searchBy(req, res) {
   }
 }
 async function getLikedPets(req, res){
+  try{
     const userId = req.params.userId;
-    const pets = await UsuarioPet.findAll({
+    const likes = await Usuario.findAll({
+      where: { id: userId },
       include: [{
-        model: model,
-        where: { userId: userId },
-        required: true,
+        model: Pet,
+        required: false,
+        through: {
+          attributes: [] // se você tiver uma tabela de junção e não quiser incluir os atributos dela
+        }
       }]
     });
-
-    return pets.map(pet => ({
-      id: pet.id,
-      name: pet.name,
-      city: pet.city,
-      state: pet.state,
-      photos: pet.photos,
-    }));
+    if (!likes) {
+      return res.status(404).json({ message: "Usuário não encontrado" });
+    }
+    const pets = likes.flatMap(usuario => 
+      usuario.Pets.map(pet => ({
+          id: pet.id,
+          name: pet.name,
+          city: pet.city,
+          state: pet.state,
+          photos: pet.photos,
+      }))
+  );
+    return res.status(200).json(pets);
+  }catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Erro ao buscar pets" });
+  }
+}
+async function getONGPets(req, res){
+  try{
+    const ONGId = req.params.ONGId;
+    const pets = await ONG.findAll({
+      where: { id: ONGId },
+      include: [{
+        model: Pet,
+        required: false,
+        through: {
+          attributes: [] // se você tiver uma tabela de junção e não quiser incluir os atributos dela
+        }
+      }]
+    });
+    if (!pets) {
+      return res.status(404).json({ message: "Usuário não encontrado" });
+    }
+    const animais = pets.flatMap(usuario => 
+      usuario.Pets.map(pet => ({
+          id: pet.id,
+          name: pet.name,
+          city: pet.city,
+          state: pet.state,
+          photos: pet.photos,
+      }))
+  );
+    return res.status(200).json(animais);
+  }catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Erro ao buscar pets" });
+  }
 }
 async function create(request, response) {
   const uploadedPhotos = await upload.getFileUrl(request.file.key);
-  const res = await model
+  const res = await Pet
     .create(
       {
         name: request.body.name,
@@ -102,7 +147,7 @@ async function create(request, response) {
 }
 
 function deleteByPk(request, response) {
-  model
+  Pet
     .destroy({ where: { id: request.params.id } })
     .then( () => {
       response.status(200).send("Pet deleted successfully !");
@@ -114,7 +159,7 @@ function deleteByPk(request, response) {
 
 async function update(request, response) {
   const uploadedPhotos = await upload.getFileUrl(request.file.key);
-  model
+  Pet
     .update(
       {
         name: request.body.name,
@@ -148,5 +193,6 @@ export default {
   create,
   deleteByPk,
   update,
+  getONGPets,
   getLikedPets,
 };
