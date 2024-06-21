@@ -242,8 +242,6 @@ async function createOngCard(ong, ongimage) {
 
     const deleteButton = ongCard.querySelector('#confirmDeletion')
     
-    msg = '';
-
     const ongId = getParameterByName('id');
     deleteButton.addEventListener('click', async () => {
         let isSucesso = -1;
@@ -270,13 +268,10 @@ async function createOngCard(ong, ongimage) {
             popUp.toggle()
             popUp.show()
 
-            console.log('BBBBBBBBBBBBBBBBBBBBBBB')
-
             const botaoRedirect = document.querySelector('#redirectButton')
             console.log(botaoRedirect)
 
             botaoRedirect.addEventListener('click', () => {
-                console.log('AAAAAAAAAAAAAAAAAAAAAAa')
                 window.location.href = 'home.html';
             })
         } else if (isSucesso === 0) {
