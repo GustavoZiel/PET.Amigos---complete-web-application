@@ -161,7 +161,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
                 <div>
                     <h5 class="poppins-medium headers_caract">INSTITUIÇÃO PROTETORA</h5>
                 </div>
-                <a href="./ong.html" class="text-decoration-none">
+                <a href="./ong.html?id=${pet.ONGAccountName}" class="text-decoration-none">
                     <div class="d-flex flex-column align-items-center">
                         <img src="./img/tuka.png" alt="Acaochego da Tuka" class="mb-2 img-fluid rounded-5 border-purple">
                         <button type="button" class="bg-light border-purple textPurple rounded-pill px-4 container-fluid text-nowrap">Saiba mais!</button>
