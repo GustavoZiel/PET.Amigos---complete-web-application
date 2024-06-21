@@ -5,19 +5,18 @@ class Pet extends Model { }
 Pet.init(
   {
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true },
-    name: { type: DataTypes.STRING },
-    birth: { type: DataTypes.STRING },
-    city: { type: DataTypes.STRING },
-    state: { type: DataTypes.STRING },
+    name: { type: DataTypes.STRING, allowNull: false },
+    birth: { type: DataTypes.STRING, allowNull: false },
+    city: { type: DataTypes.STRING, allowNull: false },
+    state: { type: DataTypes.STRING, allowNull: false },
     type: { type: DataTypes.STRING },
-    breed: { type: DataTypes.STRING },
-    sex: { type: DataTypes.STRING },
-    size: { type: DataTypes.STRING },
-    photos: { type: DataTypes.STRING },
-    comment: { type: DataTypes.STRING },
+    sex: { type: DataTypes.STRING, allowNull: false },
+    size: { type: DataTypes.STRING, allowNull: false },
+    photos: { type: DataTypes.STRING, allowNull: false },
+    comment: { type: DataTypes.STRING, allowNull: false },
     temperament: { type: DataTypes.ARRAY(DataTypes.STRING) },
-    vacinated: { type: DataTypes.BOOLEAN },
-    adopted: { type: DataTypes.BOOLEAN }
+    vacinated: { type: DataTypes.BOOLEAN, allowNull: false },
+    adopted: { type: DataTypes.BOOLEAN, allowNull: false }
   },
   { sequelize: sequelize, timestamps: false },
 );

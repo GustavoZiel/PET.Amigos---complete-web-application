@@ -1,8 +1,9 @@
+const getParameterByName = (name) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+};
+
 document.addEventListener('DOMContentLoaded', async () => {
-    const getParameterByName = (name) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    };
 
     const ONGId = getParameterByName('id'); // Extrai o ID da URL
     if (ONGId) {
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const ong = await response.json();
             const ongimage = await fetchImage(ong.photo);
             const ongSection = document.getElementById('ong-section');
-            const ongCard = createOngCard(ong, ongimage);
+            const ongCard = await createOngCard(ong, ongimage);
             ongSection.appendChild(ongCard);
 
             const petsOwnedSection = document.getElementById('pets-owned-section');
@@ -43,7 +44,7 @@ async function fetchImage(url) {
     }
 }
 
-function createOngCard(ong, ongimage) {
+async function createOngCard(ong, ongimage) {
     const data = new Date(); (ong.creationYear);
     const ano = data.getFullYear();
     const ongCard = document.createElement('div');
@@ -136,7 +137,7 @@ function createOngCard(ong, ongimage) {
                                 <br>
                                 <br>
                                 
-                                <div class="d-flex justify-content-center"><button type="button" class="btn-confirm-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng">SIM, DESEJO APAGAR</button></div>
+                                <div class="d-flex justify-content-center"><button id="confirmDeletion" type="button" class="btn-confirm-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng">SIM, DESEJO APAGAR</button></div>
                             </div>
                         </div>
                     </div>
@@ -205,8 +206,80 @@ function createOngCard(ong, ongimage) {
                     </div>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="popUpCorreto" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="popUpLabel">Sucesso</h5>
+                            <button id="redirectButton" type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Perfil da ONG apagado com sucesso!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="popUpErro" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="popUpLabel">Erro</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Falha ao apagar o perfil da ONG. Tente novamente mais tarde!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>`;
+
+    const deleteButton = ongCard.querySelector('#confirmDeletion')
+    
+    const ongId = getParameterByName('id');
+    deleteButton.addEventListener('click', async () => {
+        let isSucesso = -1;
+
+        await fetch(`/ongs/${ongId}`, { method: 'DELETE' })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Perfil da ONG com ID ${ongId} removido`);
+                isSucesso = 1
+            } else {
+                console.error('Erro ao remover conta da ONG.');
+                isSucesso = 0
+            }
+        })
+
+        if(true) {
+            isSucesso = 1
+        }
+
+        console.log(isSucesso)
+
+        if (isSucesso === 1) {
+            var popUp = new bootstrap.Modal(document.querySelector('#popUpCorreto'))
+            popUp.toggle()
+            popUp.show()
+
+            const botaoRedirect = document.querySelector('#redirectButton')
+            console.log(botaoRedirect)
+
+            botaoRedirect.addEventListener('click', () => {
+                window.location.href = 'home.html';
+            })
+        } else if (isSucesso === 0) {
+            var popUp = new bootstrap.Modal(document.querySelector('#popUpErro'))
+            popUp.toggle()
+            popUp.show()
+        }
+    });
 
     return ongCard;
 }
@@ -240,7 +313,7 @@ function addPetsButton(){
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="cidade" class="form-label">Cidade</label>
-                                        <select class="form-select" id="cidade" name="city">
+                                        <select class="form-select" id="cidade" name="city" required>
                                             <option value="São Carlos">São Carlos</option>
                                             <option value="Araraguara">Araraguara</option>
                                             <option value="São Paulo">São Paulo</option>
@@ -253,12 +326,12 @@ function addPetsButton(){
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="estado" class="form-label">Estado</label>
-                                        <select class="form-select" id="state" name="state">
-                                            <option value="ES">Espírito Santo</option>
+                                        <select class="form-select" id="state" name="state" required>
+                                            <option value="SP">São Paulo</option>
                                             <option value="MG">Minas Gerais</option>
                                             <option value="RJ">Rio de Janeiro</option>
-                                            <option value="SP">São Paulo</option>
                                             <option value="PR">Paraná</option>
+                                            <option value="ES">Espírito Santo</option>
                                             <option value="RS">Rio Grande do Sul</option>
                                             <option value="SC">Santa Catarina</option>
                                         </select>
@@ -270,44 +343,18 @@ function addPetsButton(){
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="type" class="form-label">Espécie</label>
-                                        <select class="form-select" id="type" name="type">
+                                        <select class="form-select" id="type" name="type" required>
                                             <option value="Cachorro">Cachorro</option>
                                             <option value="Gato">Gato</option>
-                                            <option value="Roedor">Gato</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label for="breed" class="form-label">Raça</label>
-                                        <select class="form-select" id="breed" name="breed">
-                                            <option value="Husky">Husky</option>
-                                            <option value="Pincher">Pincher</option>
-                                            <option value="Bulldog">Bulldog</option>
-                                            <option value="Beagle">Beagle</option>
-                                            <option value="Poodle">Poodle</option>
-                                            <option value="Labrador">Labrador</option>
-                                            <option value="Golden Retriever">Golden Retriever</option>
-                                            <option value="German Shepherd">Pastor Alemão</option>
-                                            <option value="Chihuahua">Chihuahua</option>
-                                            <option value="Dachshund">Dachshund</option>
-                                            <option value="Boxer">Boxer</option>
-                                            <option value="Rottweiler">Rottweiler</option>
-                                            <option value="Yorkshire Terrier">Yorkshire Terrier</option>
-                                            <option value="Shih Tzu">Shih Tzu</option>
-                                            <option value="Doberman">Doberman</option>
-                                            <option value="Pug">Pug</option>
-                                            <option value="Cocker Spaniel">Cocker Spaniel</option>
-                                            <option value="Border Collie">Border Collie</option>
-                                            <option value="Schnauzer">Schnauzer</option>
-                                            <option value="Great Dane">Dogue Alemão</option>
+                                            <option value="Roedor">Roedor</option>
+                                            <option value="Passaro">Passaro</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="sex" class="form-label">Sexo</label>
-                                        <select class="form-select" id="sex" name="sex">
+                                        <select class="form-select" id="sex" name="sex" required>
                                             <option value="Macho">Macho</option>
                                             <option value="Fêmea">Fêmea</option>
                                         </select>
@@ -316,7 +363,7 @@ function addPetsButton(){
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="porte" class="form-label">Porte</label>
-                                        <select class="form-select" id="porte" name="size">
+                                        <select class="form-select" id="porte" name="size" required>
                                             <option value="Pequeno">Pequeno</option>
                                             <option value="Médio">Médio</option>
                                             <option value="Grande">Grande</option>
@@ -328,7 +375,7 @@ function addPetsButton(){
                             <div class="row mb-3">
                                 <div class="col">
                                     <label for="formFileMultiple" class="form-label">Fotos</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" name="photos" multiple>
+                                    <input class="form-control" type="file" id="formFileMultiple" name="photos" multiple required>
                                 </div>
                             </div>
 
@@ -375,7 +422,7 @@ function addPetsButton(){
                                 </div>
                                 <div class="col">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="vacinatedYes" name="vacinated" value="1">
+                                        <input class="form-check-input" type="radio" id="vacinatedYes" name="vacinated" value="1" required>
                                         <label class="form-check-label" for="vacinatedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
@@ -394,7 +441,7 @@ function addPetsButton(){
                                         <label class="form-check-label" for="adoptedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value=0>
+                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value=0 required>
                                         <label class="form-check-label" for="adoptedNo">Não</label>
                                     </div>
                                 </div>

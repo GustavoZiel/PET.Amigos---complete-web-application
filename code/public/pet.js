@@ -136,15 +136,11 @@ function createPetCard(pet, petImageUrl, isLiked) {
                         <p class="poppins-medium text_caract">${idade}</p>
                     </div>
                     <div class="col">
-                        <h5 class="poppins-medium headers_caract">RAÇA</h5>
-                        <p class="poppins-medium text_caract">${pet.breed}</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col">
                         <h5 class="poppins-medium headers_caract">LOCALIZAÇÃO</h5>
                         <p class="poppins-medium text_caract">${pet.city}, ${pet.state}</p>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <h5 class="poppins-medium headers_caract">ESPÉCIE</h5>
                         <p class="poppins-medium text_caract">${pet.type}</p>
