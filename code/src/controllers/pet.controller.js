@@ -59,25 +59,34 @@ async function searchBy(req, res) {
     res.status(500).json({ error: 'Failed to search for pets' });
   }
 }
-async function getLikedPets(req, res){
-    const userId = req.params.userId;
-    const pets = await UsuarioPet.findAll({
-      include: [{
-        model: model,
-        where: { userId: userId },
-        required: true,
-      }]
-    });
 
-    return pets.map(pet => ({
-      id: pet.id,
-      name: pet.name,
-      city: pet.city,
-      state: pet.state,
-      photos: pet.photos,
-    }));
+async function getLikedPets(req, res) {
+  const userId = req.params.userId;
+  const pets = await UsuarioPet.findAll({
+    include: [{
+      model: model,
+      where: { userId: userId },
+      required: true,
+    }]
+  });
+
+  return pets.map(pet => ({
+    id: pet.id,
+    name: pet.name,
+    city: pet.city,
+    state: pet.state,
+    photos: pet.photos,
+  }));
 }
+
 async function create(request, response) {
+  let temperament = request.body.temperament;
+  if (!temperament) {
+    temperament = [];
+  } else if (!Array.isArray(temperament)) {
+    temperament = [temperament];
+  }
+
   const uploadedPhotos = await upload.getFileUrl(request.file.key);
   const res = await model
     .create(
@@ -87,11 +96,10 @@ async function create(request, response) {
         city: request.body.city,
         state: request.body.state,
         type: request.body.type,
-        breed: request.body.breed,
         sex: request.body.sex,
         size: request.body.size,
         photos: uploadedPhotos,
-        temperament: request.body.temperament,
+        temperament: temperament,
         comment: request.body.comment,
         vacinated: request.body.vacinated,
         adopted: request.body.adopted,
@@ -104,7 +112,7 @@ async function create(request, response) {
 function deleteByPk(request, response) {
   model
     .destroy({ where: { id: request.params.id } })
-    .then( () => {
+    .then(() => {
       response.status(200).send("Pet deleted successfully !");
     })
     .catch(function (err) {
@@ -113,6 +121,12 @@ function deleteByPk(request, response) {
 }
 
 async function update(request, response) {
+  let temperament = request.body.temperament;
+  if (!temperament) {
+    temperament = [];
+  } else if (!Array.isArray(temperament)) {
+    temperament = [temperament];
+  }
   const uploadedPhotos = await upload.getFileUrl(request.file.key);
   model
     .update(
@@ -122,12 +136,11 @@ async function update(request, response) {
         city: request.body.city,
         state: request.body.state,
         type: request.body.type,
-        breed: request.body.breed,
         sex: request.body.sex,
         size: request.body.size,
         comment: request.body.comment,
         photos: uploadedPhotos,
-        temperament: request.body.temperament,
+        temperament: temperament,
         vacinated: request.body.vacinated,
         adopted: request.body.adopted
       },

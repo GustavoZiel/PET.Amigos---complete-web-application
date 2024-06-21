@@ -259,7 +259,7 @@ function createPetsOwnedCard() {
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="cidade" class="form-label">Cidade</label>
-                                        <select class="form-select" id="cidade" name="city">
+                                        <select class="form-select" id="cidade" name="city" required>
                                             <option value="São Carlos">São Carlos</option>
                                             <option value="Araraguara">Araraguara</option>
                                             <option value="São Paulo">São Paulo</option>
@@ -272,12 +272,12 @@ function createPetsOwnedCard() {
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="estado" class="form-label">Estado</label>
-                                        <select class="form-select" id="state" name="state">
-                                            <option value="ES">Espírito Santo</option>
+                                        <select class="form-select" id="state" name="state" required>
+                                            <option value="SP">São Paulo</option>
                                             <option value="MG">Minas Gerais</option>
                                             <option value="RJ">Rio de Janeiro</option>
-                                            <option value="SP">São Paulo</option>
                                             <option value="PR">Paraná</option>
+                                            <option value="ES">Espírito Santo</option>
                                             <option value="RS">Rio Grande do Sul</option>
                                             <option value="SC">Santa Catarina</option>
                                         </select>
@@ -289,44 +289,18 @@ function createPetsOwnedCard() {
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="type" class="form-label">Espécie</label>
-                                        <select class="form-select" id="type" name="type">
+                                        <select class="form-select" id="type" name="type" required>
                                             <option value="Cachorro">Cachorro</option>
                                             <option value="Gato">Gato</option>
-                                            <option value="Roedor">Gato</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label for="breed" class="form-label">Raça</label>
-                                        <select class="form-select" id="breed" name="breed">
-                                            <option value="Husky">Husky</option>
-                                            <option value="Pincher">Pincher</option>
-                                            <option value="Bulldog">Bulldog</option>
-                                            <option value="Beagle">Beagle</option>
-                                            <option value="Poodle">Poodle</option>
-                                            <option value="Labrador">Labrador</option>
-                                            <option value="Golden Retriever">Golden Retriever</option>
-                                            <option value="German Shepherd">Pastor Alemão</option>
-                                            <option value="Chihuahua">Chihuahua</option>
-                                            <option value="Dachshund">Dachshund</option>
-                                            <option value="Boxer">Boxer</option>
-                                            <option value="Rottweiler">Rottweiler</option>
-                                            <option value="Yorkshire Terrier">Yorkshire Terrier</option>
-                                            <option value="Shih Tzu">Shih Tzu</option>
-                                            <option value="Doberman">Doberman</option>
-                                            <option value="Pug">Pug</option>
-                                            <option value="Cocker Spaniel">Cocker Spaniel</option>
-                                            <option value="Border Collie">Border Collie</option>
-                                            <option value="Schnauzer">Schnauzer</option>
-                                            <option value="Great Dane">Dogue Alemão</option>
+                                            <option value="Roedor">Roedor</option>
+                                            <option value="Passaro">Passaro</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="sex" class="form-label">Sexo</label>
-                                        <select class="form-select" id="sex" name="sex">
+                                        <select class="form-select" id="sex" name="sex" required>
                                             <option value="Macho">Macho</option>
                                             <option value="Fêmea">Fêmea</option>
                                         </select>
@@ -335,7 +309,7 @@ function createPetsOwnedCard() {
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="porte" class="form-label">Porte</label>
-                                        <select class="form-select" id="porte" name="size">
+                                        <select class="form-select" id="porte" name="size" required>
                                             <option value="Pequeno">Pequeno</option>
                                             <option value="Médio">Médio</option>
                                             <option value="Grande">Grande</option>
@@ -347,7 +321,7 @@ function createPetsOwnedCard() {
                             <div class="row mb-3">
                                 <div class="col">
                                     <label for="formFileMultiple" class="form-label">Fotos</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" name="photos" multiple>
+                                    <input class="form-control" type="file" id="formFileMultiple" name="photos" multiple required>
                                 </div>
                             </div>
 
@@ -394,7 +368,7 @@ function createPetsOwnedCard() {
                                 </div>
                                 <div class="col">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="vacinatedYes" name="vacinated" value="1">
+                                        <input class="form-check-input" type="radio" id="vacinatedYes" name="vacinated" value="1" required>
                                         <label class="form-check-label" for="vacinatedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
@@ -413,7 +387,7 @@ function createPetsOwnedCard() {
                                         <label class="form-check-label" for="adoptedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value=0>
+                                        <input class="form-check-input" type="radio" id="adoptedNo" name="adopted" value=0 required>
                                         <label class="form-check-label" for="adoptedNo">Não</label>
                                     </div>
                                 </div>

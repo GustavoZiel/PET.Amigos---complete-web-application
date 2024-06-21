@@ -12,12 +12,12 @@ app.use(express.static('public'))
 
 // Testando a conexão
 sequelize.authenticate()
-.then(() => {
-  console.log('Conexão com o banco de dados foi bem-sucedida.');
-})
-.catch(err => {
-  console.error('Não foi possível conectar ao banco de dados: ', err);
-});
+  .then(() => {
+    console.log('Conexão com o banco de dados foi bem-sucedida.');
+  })
+  .catch(err => {
+    console.error('Não foi possível conectar ao banco de dados: ', err);
+  });
 
 const port = 3000;
 app.listen(port, function () {
