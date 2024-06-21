@@ -233,17 +233,14 @@ async function createLikedPetsCard() {
         </section>
     `;
     const petsContainer = likedPetsCard.querySelector('#GridPets');
-    console.log("fui ate aqui")
 
     try {
-        console.log("morri");
         const accountName = 1;
         const response = await fetch(`/all-pets/${accountName}`);
         console.log(response)
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
-        console.log("fue feu")
         const data = await response.json();
         animals = Array.isArray(data) ? data : [data];
         console.log(animals);

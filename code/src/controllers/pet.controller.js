@@ -100,7 +100,7 @@ async function getONGPets(req, res){
         model: Pet,
         required: false,
         through: {
-          attributes: [] // se você tiver uma tabela de junção e não quiser incluir os atributos dela
+          attributes: []
         }
       }]
     });

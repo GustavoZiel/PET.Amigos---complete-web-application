@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             ongSection.appendChild(ongCard);
 
             const petsOwnedSection = document.getElementById('pets-owned-section');
-            const petsOwnedCard = createPetsOwnedCard();
+            const petsOwnedCard = await createPetsOwnedCard();
             petsOwnedSection.appendChild(petsOwnedCard);
         } catch (error) {
             console.error('Erro ao buscar dados da ONG:', error);
@@ -210,28 +210,9 @@ function createOngCard(ong, ongimage) {
 
     return ongCard;
 }
-
-function createPetsOwnedCard() {
-    const petsOwnedCard = document.createElement('div');
-    petsOwnedCard.innerHTML = `
-        
-    <!-- Animais da ONG -->
-    <div class="container-xxl mt-4">
-        <!-- Título -->
-        <div class="row align-items-center">
-            <div class="col ong-pets-title">
-                Animais esperando por um lar!
-            </div>
-            <!-- Botão adicionar pet -->
-            <div class="col text-end">
-                <button type="button" class="btn btn-standard-click btn-lg" data-bs-toggle="modal" data-bs-target="#petModal">
-                    Adicionar um PET
-                </button>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
+function addPetsButton(){
+    const botaoadd =`
+    <!-- Modal -->
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -428,148 +409,133 @@ function createPetsOwnedCard() {
 
                     </div>
                 </div>
+            </div>`
+    return botaoadd;
+}
+async function createPetsOwnedCard() {
+    const petsOwnedCard = document.createElement('div');
+    petsOwnedCard.innerHTML = `
+        
+    <!-- Animais da ONG -->
+    <div class="container-xxl mt-4">
+        <!-- Título -->
+        <div class="row align-items-center">
+            <div class="col ong-pets-title">
+                Animais esperando por um lar!
+            </div>
+            <!-- Botão adicionar pet -->
+            <div class="col text-end">
+                <button type="button" class="btn btn-standard-click btn-lg" data-bs-toggle="modal" data-bs-target="#petModal">
+                    Adicionar um PET
+                </button>
             </div>
         </div>
-
-        <!-- Fotos dos animais -->
-        <div class="row pt-4">
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Pitstop.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Pitstop</div>
-                        <div class="card-text card-font-info">Salvador, BA</div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Gup.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Gup</div>
-                        <div class="card-text card-font-info">Araraquara,SP</div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Ney.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Ney</div>
-                        <div class="card-text card-font-info">Santos, SP</div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Monteiro.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Monteiro</div>
-                        <div class="card-text card-font-info">Belo Horizonte, <SPan></SPan></div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Nelso.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Nelso</div>
-                        <div class="card-text card-font-info">Rio de Janeiro, RJ</div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Juninho</div>
-                        <div class="card-text card-font-info">Santo André, SP</div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Juninho</div>
-                        <div class="card-text card-font-info">Santo André, SP</div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Juninho</div>
-                        <div class="card-text card-font-info">Santo André, SP</div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-6 col-md-4 col-lg-3 col-xl-2 pb-4">
-                <div class="card rounded-5">
-                    <img src="img/Juninho.png" class="card-img-top img-fluid rounded-top-5 img-border" alt="Pitstop">
-                    <div class="card-body rounded-bottom-5 card-border">
-                        <div class="card-title card-font-name">Juninho</div>
-                        <div class="card-text card-font-info">Santo André, SP</div>
-                        <div class="d-flex align-items-center">
-                            <i class="fa-solid fa-heart fa-lg" style="color: black; display: inline-block;"></i>
-                            <div class="ms-1 card-font-info">Dócil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
         </div>
-
         <!-- Controle de páginas -->
-        <div class="mb-3">
-            <div class="container-fluid d-flex justify-content-end">
-                <div>
-                    <button type="button" class="button-pages-purple rounded-circle me-2">&lt</button>
-                    <button type="button" class="button-pages-purple rounded-circle me-2">1</button>
-                    <button type="button" class="button-pages-white rounded-circle me-2">2</button>
-                    <button type="button" class="button-pages-purple rounded-circle">&gt</button>
+            <div class="row d-flex">
+                    <div class="col d-flex">
+                        <div class="d-inline-flex flex-column mt-3">
+                            <div id="GridPets" class="d-flex justify-content-center flex-wrap"></div>
+                            <div class="my-3 mx-5 text-end">
+                                <a href="search.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">&lt</button>
+                                </a>
+                                <a href="search.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">1</button>
+                                </a>
+                                <a href="search.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">2</button>
+                                </a>
+                                <a href="search.html" style="text-decoration: none">
+                                    <button type="button" class="button-pages mx-1">&gt</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
     </div>
     `;
+    const botao = likedPetsCard.querySelector('#petModal');
+    botao.innerHTML += addPetsButton();
+    const petsContainer = likedPetsCard.querySelector('#GridPets');
+
+    try {
+        const accountName = 1;
+        const response = await fetch(`/ONG-pets/${accountName}`);
+        console.log(response)
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        animals = Array.isArray(data) ? data : [data];
+        console.log(animals);
+        
+        for (const animal of animals){
+            const source_img = await fetchImage(animal.photos);
+            let isLiked = true;  
+            const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
+            console.log(coracaoImgSrc);
+            const card = `
+                <a href="pet.html?id=${animal.id}" style="text-decoration: none">
+                    <div class="card rounded-5 m-3 img-size">
+                        <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
+                        <div class="card-body rounded-bottom-5 border-card">
+                            <h5 class="card-title font_name_black">${animal.name}</h5>
+                            <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
+                            <span class="coracao">
+                                <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${animal.id}">
+                                    <img src="${coracaoImgSrc}" alt="" class="img-fluid">
+                                </button>
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            `;
+            petsContainer.innerHTML += card;
+        };
+        const coracaoButtons = document.querySelectorAll('.heart-button');
+        coracaoButtons.forEach(coracaoButton  => {
+            coracaoButton.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                const petId = coracaoButton.dataset.petId;
+                const coracaoImg = coracaoButton.querySelector('img');
+                if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
+                    fetch(`/likes/1/${petId}`, { method: 'DELETE' })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(`Curtida removida para o pet com ID ${petId}`);
+                        } else {
+                            console.error('Erro ao remover a curtida');
+                        }
+                    })
+                    .catch(error => console.error('Erro ao remover a curtida:', error));
+
+                    coracaoImg.src = './img/empty-heart.svg';
+                } else {
+                    fetch(`/likes`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ accountName: 1, petId: petId })
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                        } else {
+                            console.error('Erro ao adicionar a curtida');
+                        }
+                    })
+                    .catch(error => console.error('Erro ao adicionar a curtida:', error));
+
+                    coracaoImg.src = './img/red-heart-svgrepo-com.svg';
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Erro ao buscar Pets', error);
+    }
 
     return petsOwnedCard;
 }
