@@ -159,7 +159,7 @@ const authPageId = (permissions) => {
   return (request, response, next) => {
     const userRole = request.body.role;
     const routeId = parseInt(request.params.id);
-    
+
     let token = request.headers.authorization;
     let requestId;
 
