@@ -1,8 +1,9 @@
+const getParameterByName = (name) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+};
+
 document.addEventListener('DOMContentLoaded', async () => {
-    const getParameterByName = (name) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    };
 
     const ONGId = getParameterByName('id'); // Extrai o ID da URL
     if (ONGId) {
@@ -14,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const ong = await response.json();
             const ongimage = await fetchImage(ong.photo);
             const ongSection = document.getElementById('ong-section');
-            const ongCard = createOngCard(ong, ongimage);
+            const ongCard = await createOngCard(ong, ongimage);
             ongSection.appendChild(ongCard);
 
             const petsOwnedSection = document.getElementById('pets-owned-section');
@@ -43,7 +44,7 @@ async function fetchImage(url) {
     }
 }
 
-function createOngCard(ong, ongimage) {
+async function createOngCard(ong, ongimage) {
     const data = new Date(); (ong.creationYear);
     const ano = data.getFullYear();
     const ongCard = document.createElement('div');
@@ -136,7 +137,7 @@ function createOngCard(ong, ongimage) {
                                 <br>
                                 <br>
                                 
-                                <div class="d-flex justify-content-center"><button type="button" class="btn-confirm-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng">SIM, DESEJO APAGAR</button></div>
+                                <div class="d-flex justify-content-center"><button id="confirmDeletion" type="button" class="btn-confirm-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng">SIM, DESEJO APAGAR</button></div>
                             </div>
                         </div>
                     </div>
@@ -205,8 +206,80 @@ function createOngCard(ong, ongimage) {
                     </div>
                 </div>
             </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="popUpCorreto" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="popUpLabel">Sucesso</h5>
+                            <button id="redirectButton" type="button" class="btn-close" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Perfil da ONG apagado com sucesso!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal -->
+            <div class="modal fade" id="popUpErro" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="popUpLabel">Erro</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            Falha ao apagar o perfil da ONG. Tente novamente mais tarde!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>`;
+
+    const deleteButton = ongCard.querySelector('#confirmDeletion')
+    
+    const ongId = getParameterByName('id');
+    deleteButton.addEventListener('click', async () => {
+        let isSucesso = -1;
+
+        await fetch(`/ongs/${ongId}`, { method: 'DELETE' })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Perfil da ONG com ID ${ongId} removido`);
+                isSucesso = 1
+            } else {
+                console.error('Erro ao remover conta da ONG.');
+                isSucesso = 0
+            }
+        })
+
+        if(true) {
+            isSucesso = 1
+        }
+
+        console.log(isSucesso)
+
+        if (isSucesso === 1) {
+            var popUp = new bootstrap.Modal(document.querySelector('#popUpCorreto'))
+            popUp.toggle()
+            popUp.show()
+
+            const botaoRedirect = document.querySelector('#redirectButton')
+            console.log(botaoRedirect)
+
+            botaoRedirect.addEventListener('click', () => {
+                window.location.href = 'home.html';
+            })
+        } else if (isSucesso === 0) {
+            var popUp = new bootstrap.Modal(document.querySelector('#popUpErro'))
+            popUp.toggle()
+            popUp.show()
+        }
+    });
 
     return ongCard;
 }
