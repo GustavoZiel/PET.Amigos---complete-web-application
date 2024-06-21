@@ -175,6 +175,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
             </div>
         </div>
     `;
+    
     const coracaoImg = petCard.querySelector('#coracaoImg');
     const CoracaoButton = petCard.querySelector('#toggleHeart')
 

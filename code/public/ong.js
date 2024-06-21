@@ -55,7 +55,7 @@ function createOngCard(ong, ongimage) {
             <!-- Informações (Mobile) -->
             <div class="col-12">
                 <!-- Nome da ONG -->
-                <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
+                    <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
 
                 <!-- Dados -->
                 <div class="container-fluid d-sm-flex justify-content-start pt-4">
@@ -113,7 +113,34 @@ function createOngCard(ong, ongimage) {
             <!-- Informações (Desktop) -->
             <div class="col-7 mb-md-5">
                 <!-- Nome da ONG -->
-                <div class="font-ong-name d-none d-md-flex">${ong.ongName}</div>
+                <div class="font-ong-name d-none d-md-flex align-items-center">
+                    ${ong.ongName}
+                    <div class="ps-5">
+                        <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="removeOng" tabindex="-1" aria-labelledby="removeOngLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="removeOngLabel">Deseja remover sua conta?</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Caso apague a conta, todos seus dados serão perdidos.
+
+                                <br>
+                                <br>
+                                <br>
+                                
+                                <div class="d-flex justify-content-center"><button type="button" class="btn-confirm-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng">SIM, DESEJO APAGAR</button></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <!-- Dados -->
                 <div class="d-none d-md-flex pt-2 justify-content-start">

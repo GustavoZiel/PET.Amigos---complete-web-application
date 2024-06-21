@@ -89,6 +89,30 @@
     border-width: 1px;
 }
 
+.btn-edit {
+    background: none;
+    border: none;
+}
+
+.btn-edit:hover {
+    color: #218838;
+}
+
+.btn-remove {
+    background: none;
+    border: none;
+}
+
+.btn-remove:hover {
+    color: red;
+}
+
+.btn-confirm-remove {
+    background: none;
+    border: none;
+    color: red;
+}
+
 .ong-pets-title {
     font-family: "Poppins", sans-serif;
     font-size: 30px;
