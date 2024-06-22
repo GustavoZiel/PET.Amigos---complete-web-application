@@ -1,3 +1,27 @@
+.btn-edit {
+  background: none;
+  border: none;
+}
+
+.btn-edit:hover {
+  color: #218838;
+}
+
+.btn-remove {
+  background: none;
+  border: none;
+}
+
+.btn-remove:hover {
+  color: red;
+}
+
+.btn-confirm-remove {
+  background: none;
+  border: none;
+  color: red;
+}
+
 .border-purple {
   border: 0.25em solid #3A0CA3;
 }
@@ -68,14 +92,17 @@
   outline: none;
   width: 300px;
 }
-body{
+
+body {
   flex-direction: column;
   min-height: 100vh;
   display: flex;
 }
-footer{
+
+footer {
   margin-top: auto;
 }
+
 .teste {
   background-color: grey;
 }
