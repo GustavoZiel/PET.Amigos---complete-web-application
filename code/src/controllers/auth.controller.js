@@ -27,7 +27,7 @@ async function registerONG(request, response) {
     }
     const hashedPassword = bcrypt.hashSync(senha, bcrypt.genSaltSync());
     const uploadedPhotos = await upload.getFileUrl(request.file.key);
-    const res = await Usuario
+    const res = await ONG
     .create(
       {
         accountName: nome,
