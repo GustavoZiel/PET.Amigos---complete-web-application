@@ -109,8 +109,6 @@ async function loginUser(request, response) {
   try {
     const { accountName, password } = request.body;
 
-    console.log(request.body);
-
     if (!accountName || !password) {
       return response.status(400).send("Informe usuário e senha!");
     }

@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const accountType = document.getElementById('accountType').value;
 
         console.log(formData);
-
         let url = '';
         if (accountType === 'ong') {
             formData.append('role', 'ONG');
@@ -23,17 +22,18 @@ document.addEventListener('DOMContentLoaded', function() {
         var json = JSON.stringify(object);
 
         try {
+            console.log(url)
             const response = await fetch(url, {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: json,
             });
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data.token);
                 localStorage.setItem('token', data.token);
-                const token_test = localStorage.getItem('token');
-                console.log(token_test);
                 window.location.href = 'home.html';
             } else {
                 console.error('Error submitting form');
