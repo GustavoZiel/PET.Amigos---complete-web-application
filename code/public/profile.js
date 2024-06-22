@@ -64,12 +64,16 @@ function createProfileCard(user, userimage) {
     const profileCard = document.createElement('div');
     profileCard.innerHTML = `
         <section>
-            <!-- Foto e informações da ONG -->
+            <!-- Foto e informações do Usuário -->
             <div class="container-fluid row bg-light pt-4">
                 <!-- Informações (Mobile) -->
                 <div class="col-12 order-1">
-                    <!-- Nome da ONG -->
-                    <div class="font-ong-name d-flex d-md-none justify-content-center">${user.userName}</div>
+                    <!-- Nome do Usuário -->
+                    <div class="font-name d-flex d-md-none justify-content-center">${user.userName}</div>
+                    <div class="font-name d-flex justify-content-center">
+                            <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeUser"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
 
                     <!-- Dados -->
                     <div class="container-fluid d-sm-flex justify-content-start pt-4">
@@ -263,7 +267,7 @@ function createProfileCard(user, userimage) {
     
     const profileId = getParameterByName('id');
     deleteButton.addEventListener('click', async () => {
-        let isSucesso = 1;
+        let isSucesso = -1;
 
         await fetch(`/users/${profileId}`, { method: 'DELETE' })
         .then(response => {
