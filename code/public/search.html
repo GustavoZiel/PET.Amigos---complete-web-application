@@ -22,6 +22,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/ced5a00aa9.js" crossorigin="anonymous"></script>
 
+
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
     <title>Search Page</title>
 
 </head>
@@ -183,16 +187,16 @@
                                 <div class="rounded-4 show" id="especie-filtro" style="background-color: #E4E4E4;">
                                     <ul class="list-unstyled my-3">
                                         <li>
-                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Cachorro</button>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill" data-key="type" data-value="Cachorro">Cachorro</button>
                                         </li>
                                         <li>
-                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Gato</button>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill" data-key="type" data-value="Gato">Gato</button>
                                         </li>
                                         <li>
-                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Roedores</button>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill" data-key="type" data-value="Roedores">Roedores</button>
                                         </li>
                                         <li>
-                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill">Outros</button>
+                                            <button class="btn-toggle-item btn btn-outline-purple rounded-pill" data-key="type" data-value="Outros">Outros</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -206,10 +210,10 @@
                                 <div class="rounded-4 show" id="sexo-filtro" style="background-color: #E4E4E4;">
                                     <ul class="list-unstyled my-3">
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Macho</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="sex" data-value="Macho">Macho</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Fêmea</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="sex" data-value="Fêmea">Fêmea</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -223,16 +227,19 @@
                                 <div class="rounded-4 show" id="temperamento-filtro" style="background-color: #E4E4E4;">
                                     <ul class="list-unstyled my-3">
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Agitado</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="par_temperaments" data-value="Dócil">Dócil</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Brincalhão</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="par_temperaments" data-value="Agitado">Agitado</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Tímido</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="par_temperaments" data-value="Brincalhão">Brincalhão</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Calmo</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="par_temperaments" data-value="Tímido">Tímido</button>
+                                        </li>
+                                        <li>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="par_temperaments" data-value="Calmo">Calmo</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -246,19 +253,19 @@
                                 <div class="rounded-4 show" id="idade-filtro" style="background-color: #E4E4E4;">
                                     <ul class="list-unstyled my-3">
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Filhote</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="birth" data-value="0">Filhote</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">1-3 anos </button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="birth" data-value="1">1-3 anos </button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">4-6 anos</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="birth" data-value="2">4-6 anos</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">7-10 anos</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="birth" data-value="3">7-10 anos</button>
                                         </li>
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">11+ anos</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="birth" data-value="4">11+ anos</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -272,7 +279,7 @@
                                 <div class="rounded-4 show" id="outros-filtro" style="background-color: #E4E4E4;">
                                     <ul class="list-unstyled my-3">
                                         <li>
-                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill">Vacinado</button>
+                                            <button class="col-8 btn-toggle-item btn btn-outline-purple rounded-pill" data-key="vacinated" data-value="vacinated">Vacinado</button>
                                         </li>
                                     </ul>
                                 </div>
@@ -290,20 +297,13 @@
                                 <i class="bi bi-filter"></i>
                                 Filtros
                             </button>
-                            <!-- <button class="mx-3 btn font-btn-filter dropdown-toggle rounded-pill" type="button" data-bs-toggle="dropdown" aria-expanded="true">
-                                <i class="bi bi-arrow-down-up"></i>
-                                Ordenar
-                            </button> -->
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Distância</a></li>
-                                <li><a class="dropdown-item" href="#">Idade</a></li>
-                            </ul>
                         </div>
                         <div id="activeFilters" class="align-items-center d-md-flex d-none flex-wrap text-nowrap my-5 ms-5">
                             <span class="font-btn-filter me-4">
                                 <i class="bi bi-filter"></i>
                                 Filtros ativos:
                             </span>
+                            <button id="SearchButton" class="btn btn-primary ms-auto">Refazer Busca</button>
                         </div>
                     </div>
                 </div>
@@ -370,13 +370,34 @@
     <script>
         async function fetchAndDisplayAnimals() {
             try {
-                const response = await fetch(`pets/`);
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                let pars = {
+                    birthstart: null,
+                    birthend: null,
+                    city: null,
+                    state: null,
+                    type: null,
+                    sex: null,
+                    par_temperaments: null,
+                    vacinated: null,
+                    adopted: false
+                };
+                if(pars.birthstart === null)
+                    pars.birthstart = '0000-00-00';
+                if(pars.birthend === null)
+                    pars.birthend = '9999-99-99';
+
+                // Construindo a query string com base nos valores de pars
+                const queryParams = new URLSearchParams();
+                for (const [key, value] of Object.entries(pars)) {
+                    if (value !== null && value !== "") {
+                        queryParams.append(key, value);
+                    }
                 }
-                const data = await response.json();
-                animals = Array.isArray(data) ? data : [data];
-                
+
+                const response = await axios.get(`pets/search?${queryParams.toString()}`);
+                const data = response.data;
+                const animals = Array.isArray(data) ? data : [data];
+                    
                 const container = document.getElementById('GridPets');
                 for (const animal of animals){
                     const source_img = await fetchImage(animal.photos);
@@ -453,13 +474,127 @@
         document.addEventListener('DOMContentLoaded', fetchAndDisplayAnimals());
     </script>
     <script>
-        var rangeSlider = document.getElementById('rangeSlider');
-        var selectedValue = document.getElementById('selectedValue');
+            let pars = {
+            birthstart: null,
+            birthend: null,
+            city: null,
+            state: null,
+            type: null,
+            sex: null,
+            par_temperaments: null,
+            vacinated: null,
+            adopted: null
+        };
 
-        rangeSlider.oninput = function () {
-            selectedValue.innerHTML = this.value + ' km';
+        document.querySelectorAll('.btn-toggle-item').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const key = event.target.getAttribute('data-key');
+                const value = event.target.getAttribute('data-value');
+
+                if (key === "par_temperaments" || key === "sex" || key === "type") {
+                   
+                } else if (key === "vacinated") {
+                    pars[key] = pars[key] === true ? null : true;
+                } else {
+                    pars[key] = pars[key] === value ? null : value;
+                }
+            });
+        });
+        async function RefazerBusca() {
+            
+            try {
+                if(pars.birthstart === null)
+                    pars.birthstart = '0000-00-00';
+                if(pars.birthend === null)
+                    pars.birthend = '9999-99-99';
+
+                axios.get('http://localhost:3000/pets/search', {
+                    params: pars
+                })
+                .then(response => {
+                    console.log(response.data);
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+                const data = response.data;
+                const animals = Array.isArray(data) ? data : [data];
+                
+                const container = document.getElementById('GridPets');
+                container.innerHTML = '';
+                for (const animal of animals){
+                    const source_img = await fetchImage(animal.photos);
+                    let isLiked = true;  
+                    const accountName = 1;
+                    const likes = await fetch(`/likes/${accountName}/${animal.id}`);
+                    const likedPet = await likes.json();
+                    if(likedPet === null){
+                        isLiked = false;
+                    }
+                    const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
+                    console.log(coracaoImgSrc);
+                    const card = `
+                        <a href="pet.html?id=${animal.id}" style="text-decoration: none">
+                            <div class="card rounded-5 m-3 img-size">
+                                <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
+                                <div class="card-body rounded-bottom-5 border-card">
+                                    <h5 class="card-title font_name_black">${animal.name}</h5>
+                                    <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
+                                    <span class="coracao">
+                                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${animal.id}">
+                                            <img src="${coracaoImgSrc}" alt="" class="img-fluid">
+                                        </button>
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    `;
+                    container.innerHTML += card;
+                };
+                const coracaoButtons = document.querySelectorAll('.heart-button');
+                coracaoButtons.forEach(coracaoButton  => {
+                    coracaoButton.addEventListener('click', (event) => {
+                        event.preventDefault();
+                        event.stopPropagation();
+                        
+                        const petId = coracaoButton.dataset.petId;
+                        const coracaoImg = coracaoButton.querySelector('img');
+                        if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
+                            fetch(`/likes/1/${petId}`, { method: 'DELETE' })
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log(`Curtida removida para o pet com ID ${petId}`);
+                                } else {
+                                    console.error('Erro ao remover a curtida');
+                                }
+                            })
+                            .catch(error => console.error('Erro ao remover a curtida:', error));
+
+                            coracaoImg.src = './img/empty-heart.svg';
+                        } else {
+                            fetch(`/likes`, {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify({ accountName: 1, petId: petId })
+                            })
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                                } else {
+                                    console.error('Erro ao adicionar a curtida');
+                                }
+                            })
+                            .catch(error => console.error('Erro ao adicionar a curtida:', error));
+
+                            coracaoImg.src = './img/red-heart-svgrepo-com.svg';
+                        }
+                    });
+                });
+            } catch (error) {
+                console.error('Erro ao buscar Pets', error);
+            }
         }
-        
+        document.getElementById('SearchButton').addEventListener('click', RefazerBusca);
     </script>
     <script>
         async function fetchImage(url) {
