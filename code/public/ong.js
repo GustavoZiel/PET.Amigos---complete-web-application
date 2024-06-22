@@ -55,12 +55,10 @@ async function createOngCard(ong, ongimage) {
             <!-- Informações (Mobile) -->
             <div class="col-12">
                 <!-- Nome da ONG -->
-                <div class="font-ong-name d-flex d-md-none justify-content-center">
-                    ${ong.ongName}
-                    <div class="ps-5">
-                        <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
+                <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
+                <div class="font-name d-flex d-md-none justify-content-center">
+                    <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
 
                 <!-- Dados -->
@@ -249,7 +247,7 @@ async function createOngCard(ong, ongimage) {
     
     const ongId = getParameterByName('id');
     deleteButton.addEventListener('click', async () => {
-        let isSucesso = -1;
+        let isSucesso = 1;
 
         await fetch(`/ongs/${ongId}`, { method: 'DELETE' })
         .then(response => {
