@@ -64,7 +64,7 @@ function createProfileCard(user, userimage) {
                 <div class="col-12 order-1">
                     <!-- Nome do Usuário -->
                     <div class="font-name d-flex d-md-none justify-content-center">${user.userName}</div>
-                    <div class="font-name d-flex justify-content-center">
+                    <div class="font-name d-flex d-md-none justify-content-center">
                             <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
                             <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeUser"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
