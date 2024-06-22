@@ -3,13 +3,7 @@ const getParameterByName = (name) => {
     return urlParams.get(name);
 };
 
-
 document.addEventListener('DOMContentLoaded', async () => {
-    const getParameterByName = (name) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    };
-
     const userId = getParameterByName('id'); // Extrai o ID da URL
     if (userId) {
         try {

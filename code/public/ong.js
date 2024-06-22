@@ -4,7 +4,6 @@ const getParameterByName = (name) => {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-
     const ONGId = getParameterByName('id'); // Extrai o ID da URL
     if (ONGId) {
         try {
@@ -56,7 +55,13 @@ async function createOngCard(ong, ongimage) {
             <!-- Informações (Mobile) -->
             <div class="col-12">
                 <!-- Nome da ONG -->
-                    <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
+                <div class="font-ong-name d-flex d-md-none justify-content-center">
+                    ${ong.ongName}
+                    <div class="ps-5">
+                        <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
+                    </div>
+                </div>
 
                 <!-- Dados -->
                 <div class="container-fluid d-sm-flex justify-content-start pt-4">
@@ -256,12 +261,6 @@ async function createOngCard(ong, ongimage) {
                 isSucesso = 0
             }
         })
-
-        if(true) {
-            isSucesso = 1
-        }
-
-        console.log(isSucesso)
 
         if (isSucesso === 1) {
             var popUp = new bootstrap.Modal(document.querySelector('#popUpCorreto'))
