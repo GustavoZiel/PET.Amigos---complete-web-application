@@ -1,3 +1,9 @@
+const getParameterByName = (name) => {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+};
+
+
 document.addEventListener('DOMContentLoaded', async () => {
     const getParameterByName = (name) => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -131,7 +137,34 @@ function createProfileCard(user, userimage) {
                 <!-- Informações (Desktop) -->
                 <div class="col-7 mb-md-5">
                     <!-- Nome do usuário -->
-                    <div class="font-ong-name d-none d-md-flex">${user.userName}</div>
+                    <div class="font-ong-name d-none d-md-flex align-items-center">
+                        ${user.userName}
+                        <div class="ps-5">
+                            <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeUser"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="removeUser" tabindex="-1" aria-labelledby="removeUserLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="removeUserLabel">Deseja remover sua conta?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Caso apague a conta, todos seus dados serão perdidos.
+
+                                    <br>
+                                    <br>
+                                    <br>
+                                    
+                                    <div class="d-flex justify-content-center"><button id="confirmDeletion" type="button" class="btn-confirm-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng">SIM, DESEJO APAGAR</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- Dados -->
                     <div class="d-none d-md-flex pt-2 justify-content-start">
@@ -191,9 +224,75 @@ function createProfileCard(user, userimage) {
                         </div>
                     </div>
                 </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="popUpCorreto" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="popUpLabel">Sucesso</h5>
+                                <button id="redirectButton" type="button" class="btn-close" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Perfil de usuário apagado com sucesso!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="popUpErro" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="popUpLabel">Erro</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Falha ao apagar o perfil de usuário. Tente novamente mais tarde!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     `;
+
+    const deleteButton = profileCard.querySelector('#confirmDeletion')
+    
+    const profileId = getParameterByName('id');
+    deleteButton.addEventListener('click', async () => {
+        let isSucesso = 1;
+
+        await fetch(`/users/${profileId}`, { method: 'DELETE' })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Perfil de usuário com ID ${profileId} removido`);
+                isSucesso = 1
+            } else {
+                console.error('Erro ao remover conta do usuário.');
+                isSucesso = 0
+            }
+        })
+
+        if (isSucesso === 1) {
+            var popUp = new bootstrap.Modal(document.querySelector('#popUpCorreto'))
+            popUp.toggle()
+            popUp.show()
+
+            const botaoRedirect = document.querySelector('#redirectButton')
+            console.log(botaoRedirect)
+
+            botaoRedirect.addEventListener('click', () => {
+                window.location.href = 'home.html';
+            })
+        } else if (isSucesso === 0) {
+            var popUp = new bootstrap.Modal(document.querySelector('#popUpErro'))
+            popUp.toggle()
+            popUp.show()
+        }
+    });
 
     return profileCard;
 }
