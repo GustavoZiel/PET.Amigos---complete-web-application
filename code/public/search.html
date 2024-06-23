@@ -374,7 +374,7 @@
                                     <i class="bi bi-filter"></i>
                                     Filtros
                                 </button>
-                                <button id="SearchButton" class="btn btn-primary align-items-center mt-2">Aplicar Filtros</button>
+                                <button id="SearchButtonMobile" class="btn btn-search rounded-pill align-items-center mt-2">Aplicar Filtros</button>
                             </div>
                         </div>
                         <div id="activeFilters"
@@ -388,14 +388,14 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button id="SearchButton" class="btn btn-primary align-items-center d-md-flex d-none flex-wrap mb-5 ms-5">Aplicar Filtros</button>
+                        <button id="SearchButtonDesktop" class="btn btn-search rounded-pill align-items-center d-md-flex d-none flex-wrap mb-5 ms-5">Aplicar Filtros</button>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <div class="d-lg-flex d-none mx-5 align-items-center justify-content-between">
-                            <h2 class="font_h2_search">8 Pets encontrados!</h2>
+                        <div id="PetsEncontrados" class="d-lg-flex d-none mx-5 align-items-center justify-content-between">
+                            
                         </div>
                     </div>
                 </div>
@@ -429,113 +429,6 @@
     <script src="./header.js"></script>
     <script src="./footer.js"></script>
     <script src="./filters.js"></script>
-    <script>
-        async function fetchAndDisplayAnimals() {
-            try {
-                let pars = {
-                    birthstart: null,
-                    birthend: null,
-                    city: null,
-                    state: null,
-                    type: null,
-                    sex: null,
-                    par_temperaments: null,
-                    castrated: null,
-                    chipped: null,
-                    adopted: null
-                }
-                if (pars.birthstart === null)
-                    pars.birthstart = '0000-00-00';
-                if (pars.birthend === null)
-                    pars.birthend = '9999-99-99';
-
-                // Construindo a query string com base nos valores de pars
-                const queryParams = new URLSearchParams();
-                for (const [key, value] of Object.entries(pars)) {
-                    if (value !== null && value !== "") {
-                        queryParams.append(key, value);
-                    }
-                }
-
-                const response = await axios.get(`pets/search?${queryParams.toString()}`);
-                const data = response.data;
-                const animals = Array.isArray(data) ? data : [data];
-
-                const container = document.getElementById('GridPets');
-                for (const animal of animals) {
-                    const source_img = await fetchImage(animal.photos);
-                    let isLiked = true;
-                    const email = 1;
-                    const likes = await fetch(`/likes/${email}/${animal.id}`);
-                    const likedPet = await likes.json();
-                    if (likedPet === null) {
-                        isLiked = false;
-                    }
-                    const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
-                    console.log(coracaoImgSrc);
-                    const card = `
-                        <a href="pet.html?id=${animal.id}" style="text-decoration: none">
-                            <div class="card rounded-5 m-3 img-size">
-                                <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
-                                <div class="card-body rounded-bottom-5 border-card">
-                                    <h5 class="card-title font_name_black">${animal.name}</h5>
-                                    <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
-                                    <span class="coracao">
-                                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${animal.id}">
-                                            <img src="${coracaoImgSrc}" alt="" class="img-fluid">
-                                        </button>
-                                    </span>
-                                </div>
-                            </div>
-                        </a>
-                    `;
-                    container.innerHTML += card;
-                };
-                const coracaoButtons = document.querySelectorAll('.heart-button');
-                coracaoButtons.forEach(coracaoButton => {
-                    coracaoButton.addEventListener('click', (event) => {
-                        event.preventDefault();
-                        event.stopPropagation();
-
-                        const petId = coracaoButton.dataset.petId;
-                        const coracaoImg = coracaoButton.querySelector('img');
-                        if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
-                            fetch(`/likes/1/${petId}`, { method: 'DELETE' })
-                                .then(response => {
-                                    if (response.ok) {
-                                        console.log(`Curtida removida para o pet com ID ${petId}`);
-                                    } else {
-                                        console.error('Erro ao remover a curtida');
-                                    }
-                                })
-                                .catch(error => console.error('Erro ao remover a curtida:', error));
-
-                            coracaoImg.src = './img/empty-heart.svg';
-                        } else {
-                            fetch(`/likes`, {
-                                method: 'POST',
-                                headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ email: 1, petId: petId })
-                            })
-                                .then(response => {
-                                    if (response.ok) {
-                                        console.log(`Curtida adicionada para o pet com ID ${petId}`);
-                                    } else {
-                                        console.error('Erro ao adicionar a curtida');
-                                    }
-                                })
-                                .catch(error => console.error('Erro ao adicionar a curtida:', error));
-
-                            coracaoImg.src = './img/red-heart-svgrepo-com.svg';
-                        }
-                    });
-                });
-            } catch (error) {
-                console.error('Erro ao buscar Pets', error);
-            }
-        }
-        document.addEventListener('DOMContentLoaded', fetchAndDisplayAnimals());
-    </script>
     <script>
         let pars = {
             birthstart: null,
@@ -649,9 +542,17 @@
                         const data = response.data;
                         const animals = Array.isArray(data) ? data : [data];
 
+                        const pets_encontrados = document.getElementById("PetsEncontrados");
                         const container = document.getElementById('GridPets');
+                        
                         container.innerHTML = '';
+                        pets_encontrados.innerHTML = '';
+                        
+                        const h2Pets = document.createElement('h2');
+                        h2Pets.classList.add('font_h2_search');
+                        h2Pets.textContent = `${animals.length} Pets encontrados!`;
 
+                        pets_encontrados.appendChild(h2Pets);
                         for (const animal of animals) {
                             try {
                                 const source_img = await fetchImage(animal.photos);
@@ -735,7 +636,9 @@
                 console.error('Erro ao buscar Pets', error);
             }
         }
-        document.getElementById('SearchButton').addEventListener('click', RefazerBusca);
+        document.addEventListener('DOMContentLoaded', RefazerBusca());
+        document.getElementById('SearchButtonMobile').addEventListener('click', RefazerBusca);
+        document.getElementById('SearchButtonDesktop').addEventListener('click', RefazerBusca);
     </script>
     <script>
         async function fetchImage(url) {
