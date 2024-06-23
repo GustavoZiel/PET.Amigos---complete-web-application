@@ -151,7 +151,7 @@ async function createOngCard(ong, ongimage) {
 
                                     <div class="form-group pt-3">
                                         <label for="creationYear" class="form-label">Ano de fundação</label>
-                                        <input type="date" id="creationYear" class="form-control" name="creationYear" value="${ong.creationYear.substring(0,10)}" required>
+                                        <input type="date" id="creationYear" class="form-control" name="creationYear" value="${ong.creationYear.substring(0, 10)}" required>
                                     </div>
 
                                     <div class="form-group pt-3">
@@ -409,7 +409,6 @@ async function createOngCard(ong, ongimage) {
         event.preventDefault(); // Prevent the default form submission behavior
 
         const formData = new FormData(editarForm); // Correctly pass the form element, not the event
-        console.log(formData); // Debugging: Log the JSON object
 
         // Convert FormData to JSON object
         const data = {};
@@ -426,52 +425,51 @@ async function createOngCard(ong, ongimage) {
             },
             body: JSON.stringify(data)
         })
-        .then(response => {
-            if (response.ok) {
-                console.log("Perfil da ONG com ID " + ong.id + " atualizado"); // Adjusted to use the correct ID
+            .then(response => {
+                if (response.ok) {
+                    console.log("Perfil da ONG com ID " + ong.id + " atualizado"); // Adjusted to use the correct ID
 
-                var popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
-                popUp.toggle()
-                popUp.show()
+                    var popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
+                    popUp.toggle()
+                    popUp.show()
 
-                const botaoRedirect = document.querySelector('#redirectButtonEdit')
-                console.log(botaoRedirect)
+                    const botaoRedirect = document.querySelector('#redirectButtonEdit')
 
-                botaoRedirect.addEventListener('click', () => {
-                    window.location.href = "ong.html?id=" + ong.id;
-                })
-            } else {
-                console.error('Erro ao atualizar perfil da ONG.');
+                    botaoRedirect.addEventListener('click', () => {
+                        window.location.href = "ong.html?id=" + ong.id;
+                    })
+                } else {
+                    console.error('Erro ao atualizar perfil da ONG.');
 
-                var popUp = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
-                popUp.toggle()
-                popUp.show()
-            }
-        })
+                    var popUp = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
+                    popUp.toggle()
+                    popUp.show()
+                }
+            })
     });
 
     const deleteButton = ongCard.querySelector('#confirmDeletion')
-    
+
     const ongId = getParameterByName('id');
     deleteButton.addEventListener('click', async () => {
         let isSucesso = 1;
 
-        await fetch(`/ongs/${ongId}`, { 
+        await fetch(`/ongs/${ongId}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + token
             },
         })
-        .then(response => {
-            if (response.ok) {
-                console.log(`Perfil da ONG com ID ${ongId} removido`);
-                isSucesso = 1
-            } else {
-                console.error('Erro ao remover conta da ONG.');
-                isSucesso = 0
-            }
-        })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Perfil da ONG com ID ${ongId} removido`);
+                    isSucesso = 1
+                } else {
+                    console.error('Erro ao remover conta da ONG.');
+                    isSucesso = 0
+                }
+            })
 
         if (isSucesso === 1) {
             var popUp = new bootstrap.Modal(document.querySelector('#popUpCorreto'))
@@ -479,7 +477,6 @@ async function createOngCard(ong, ongimage) {
             popUp.show()
 
             const botaoRedirect = document.querySelector('#redirectButton')
-            console.log(botaoRedirect)
 
             botaoRedirect.addEventListener('click', () => {
                 window.location.href = 'home.html';
@@ -494,8 +491,8 @@ async function createOngCard(ong, ongimage) {
     return ongCard;
 }
 
-function addPetsButton(){
-    const botaoadd =`
+function addPetsButton() {
+    const botaoadd = `
     <!-- Modal -->
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
@@ -524,27 +521,25 @@ function addPetsButton(){
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="cidade" class="form-label">Cidade</label>
-                                        <select class="form-select" id="cidade" name="city" required>
-                                            <option value="São Carlos">São Carlos</option>
-                                            <option value="Araraguara">Araraguara</option>
-                                            <option value="São Paulo">São Paulo</option>
-                                            <option value="Ribeirão Preto">Ribeirão Preto</option>
-                                            <option value="Uberlândia">Uberlândia</option>
-                                            <option value="Belo Horizonte">Belo Horizonte</option>
+                                        <select class="form-select" id="citySelect" name="city" required>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="estado" class="form-label">Estado</label>
-                                        <select class="form-select" id="state" name="state" required>
+                                        <select class="form-select" id="stateSelect" name="state" required>
                                             <option value="SP">São Paulo</option>
-                                            <option value="MG">Minas Gerais</option>
                                             <option value="RJ">Rio de Janeiro</option>
-                                            <option value="PR">Paraná</option>
+                                            <option value="MG">Minas Gerais</option>
                                             <option value="ES">Espírito Santo</option>
-                                            <option value="RS">Rio Grande do Sul</option>
+                                            <option value="DF">Distrito Federal</option>
+                                            <option value="GO">Goiás</option>
+                                            <option value="MT">Mato Grosso</option>
+                                            <option value="MS">Mato Grosso do Sul</option>
+                                            <option value="PR">Paraná</option>
                                             <option value="SC">Santa Catarina</option>
+                                            <option value="RS">Rio Grande do Sul</option>
                                         </select>
                                     </div>
                                 </div>
@@ -554,7 +549,7 @@ function addPetsButton(){
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="type" class="form-label">Espécie</label>
-                                        <select class="form-select" id="type" name="type" required>
+                                        <select class="form-select" id="specie" name="type" required>
                                             <option value="Cachorro">Cachorro</option>
                                             <option value="Gato">Gato</option>
                                             <option value="Roedor">Roedor</option>
@@ -565,11 +560,7 @@ function addPetsButton(){
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="breed" class="form-label">Raça</label>
-                                        <select class="form-select" id="breed" name="breed">
-                                            <option value="Cachorro">Husky</option>
-                                            <option value="Gato">Pug</option>
-                                            <option value="Roedor">Pit Bull</option>
-                                            <option value="Passaro">Golden</option>
+                                        <select class="form-select" id="breed" name="breed" required>
                                         </select>
                                     </div>
                                 </div>
@@ -694,8 +685,31 @@ function addPetsButton(){
                     </div>
                 </div>
             </div>`
+
+
     return botaoadd;
 }
+
+const breedOptions = {
+    Cachorro: ["Labrador", "Pastor Alemão", "Golden Retriever", "Bulldog", "Poodle", "Beagle", "Rottweiler", "Yorkshire Terrier", "Boxer", "Dachshund", "Shih Tzu", "Chihuahua", "Pug", "Maltês", "Doberman", "Border Collie", "Schnauzer", "Dogue Alemão", "Akita", "Pastor Australiano"],
+    Gato: ["Siamês", "Persa", "Maine Coon", "Bengal", "Ragdoll", "British Shorthair", "Sphynx", "Scottish Fold", "American Shorthair", "Siberiano", "Devon Rex", "Oriental Shorthair"],
+    Roedor: ["Hamster", "Porquinho-da-Índia", "Gerbil", "Camundongo", "Rato", "Furão", "Capivara", "Marmota", "Esquilo"],
+    Passaro: ["Canário", "Papagaio", "Pardal", "Periquito", "Calopsita", "Arara", "Cacatua", "Periquito Australiano", "Papagaio-do-congo", "Tucano", "Pombo", "Codorna"]
+};
+
+const citiesByState = {
+    SP: ["São Carlos", "Araraquara", "São Paulo", "Guarulhos", "Campinas", "São Bernardo do Campo", "Santo André", "São José dos Campos", "Sorocaba", "Ribeirão Preto", "Santos", "Osasco"],
+    RJ: ["Rio de Janeiro", "São Gonçalo", "Duque de Caxias", "Nova Iguaçu", "Niterói", "Belford Roxo", "Campos dos Goytacazes", "São João de Meriti", "Petrópolis", "Volta Redonda"],
+    MG: ["Araxá", "Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Betim", "Montes Claros", "Ribeirão das Neves", "Uberaba", "Governador Valadares", "Ipatinga"],
+    ES: ["Serra", "Vila Velha", "Cariacica", "Vitória", "Linhares", "Colatina", "São Mateus", "Cachoeiro de Itapemirim", "Aracruz", "Guarapari"],
+    DF: ["Brasília", "Taguatinga", "Ceilândia", "Samambaia", "Planaltina", "Gama", "Santa Maria", "Recanto das Emas", "Guará", "São Sebastião"],
+    GO: ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Águas Lindas de Goiás", "Valparaíso de Goiás", "Trindade", "Formosa", "Novo Gama"],
+    MT: ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Tangará da Serra", "Sorriso", "Lucas do Rio Verde", "Primavera do Leste", "Cáceres", "Barra do Garças"],
+    MS: ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã", "Naviraí", "Nova Andradina", "Paranaíba", "Sidrolândia", "Maracaju"],
+    PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa", "Cascavel", "São José dos Pinhais", "Foz do Iguaçu", "Colombo", "Guarapuava", "Paranaguá"],
+    SC: ["Joinville", "Florianópolis", "Blumenau", "São José", "Chapecó", "Itajaí", "Criciúma", "Jaraguá do Sul", "Lages", "Palhoça"],
+    RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
+};
 
 async function createPetsOwnedCard() {
     const petsOwnedCard = document.createElement('div');
@@ -746,22 +760,61 @@ async function createPetsOwnedCard() {
     botao.innerHTML += addPetsButton();
     const petsContainer = petsOwnedCard.querySelector('#GridPets');
 
+    const speciesSelect = petsOwnedCard.querySelector('#specie');
+    const breedSelect = petsOwnedCard.querySelector('#breed');
+
+    speciesSelect.addEventListener('change', selectBreedBySpecie);
+    function selectBreedBySpecie(){
+        const selectedSpecies = speciesSelect.value;
+        const breeds = breedOptions[selectedSpecies] || [];
+
+        breedSelect.innerHTML = '';
+
+        breeds.forEach(breed => {
+            const option = document.createElement('option');
+            option.value = breed;
+            option.textContent = breed;
+            breedSelect.appendChild(option);
+        });
+    }
+
+    const statesSelect = petsOwnedCard.querySelector('#stateSelect');
+    const citySelect = petsOwnedCard.querySelector('#citySelect');
+
+    console.log(statesSelect)
+    console.log(citySelect)
+
+    statesSelect.addEventListener('change', selectCityByState);
+    function selectCityByState(){
+        const selectedStates = statesSelect.value;
+        const cities = citiesByState[selectedStates] || [];
+
+        citySelect.innerHTML = '';
+
+        cities.forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        });
+    }
+
+    selectBreedBySpecie();
+    selectCityByState();
+
     try {
         const ONGId = 1;
         const response = await fetch(`/ONG-pets/${ONGId}`);
-        console.log(response)
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
         animals = Array.isArray(data) ? data : [data];
-        console.log(animals);
-        
-        for (const animal of animals){
+
+        for (const animal of animals) {
             const source_img = await fetchImage(animal.photos);
-            let isLiked = true;  
+            let isLiked = true;
             const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
-            console.log(coracaoImgSrc);
             const card = `
                 <a href="pet.html?id=${animal.id}" style="text-decoration: none">
                     <div class="card rounded-5 m-3 img-size">
@@ -781,23 +834,23 @@ async function createPetsOwnedCard() {
             petsContainer.innerHTML += card;
         };
         const coracaoButtons = document.querySelectorAll('.heart-button');
-        coracaoButtons.forEach(coracaoButton  => {
+        coracaoButtons.forEach(coracaoButton => {
             coracaoButton.addEventListener('click', (event) => {
                 event.preventDefault();
                 event.stopPropagation();
-                
+
                 const petId = coracaoButton.dataset.petId;
                 const coracaoImg = coracaoButton.querySelector('img');
                 if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
                     fetch(`/likes/1/${petId}`, { method: 'DELETE' })
-                    .then(response => {
-                        if (response.ok) {
-                            console.log(`Curtida removida para o pet com ID ${petId}`);
-                        } else {
-                            console.error('Erro ao remover a curtida');
-                        }
-                    })
-                    .catch(error => console.error('Erro ao remover a curtida:', error));
+                        .then(response => {
+                            if (response.ok) {
+                                console.log(`Curtida removida para o pet com ID ${petId}`);
+                            } else {
+                                console.error('Erro ao remover a curtida');
+                            }
+                        })
+                        .catch(error => console.error('Erro ao remover a curtida:', error));
 
                     coracaoImg.src = './img/empty-heart.svg';
                 } else {
@@ -806,14 +859,14 @@ async function createPetsOwnedCard() {
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ email: 1, petId: petId })
                     })
-                    .then(response => {
-                        if (response.ok) {
-                            console.log(`Curtida adicionada para o pet com ID ${petId}`);
-                        } else {
-                            console.error('Erro ao adicionar a curtida');
-                        }
-                    })
-                    .catch(error => console.error('Erro ao adicionar a curtida:', error));
+                        .then(response => {
+                            if (response.ok) {
+                                console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                            } else {
+                                console.error('Erro ao adicionar a curtida');
+                            }
+                        })
+                        .catch(error => console.error('Erro ao adicionar a curtida:', error));
 
                     coracaoImg.src = './img/red-heart-svgrepo-com.svg';
                 }

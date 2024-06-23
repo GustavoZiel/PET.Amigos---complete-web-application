@@ -61,6 +61,27 @@ function calculateAge(birthDate) {
     return [age, 12 + m];
 }
 
+const breedOptions = {
+    Cachorro: ["Labrador", "Pastor Alemão", "Golden Retriever", "Bulldog", "Poodle", "Beagle", "Rottweiler", "Yorkshire Terrier", "Boxer", "Dachshund", "Shih Tzu", "Chihuahua", "Pug", "Maltês", "Doberman", "Border Collie", "Schnauzer", "Dogue Alemão", "Akita", "Pastor Australiano"],
+    Gato: ["Siamês", "Persa", "Maine Coon", "Bengal", "Ragdoll", "British Shorthair", "Sphynx", "Scottish Fold", "American Shorthair", "Siberiano", "Devon Rex", "Oriental Shorthair"],
+    Roedor: ["Hamster", "Porquinho-da-Índia", "Gerbil", "Camundongo", "Rato", "Furão", "Capivara", "Marmota", "Esquilo"],
+    Passaro: ["Canário", "Papagaio", "Pardal", "Periquito", "Calopsita", "Arara", "Cacatua", "Periquito Australiano", "Papagaio-do-congo", "Tucano", "Pombo", "Codorna"]
+};
+
+const citiesByState = {
+    SP: ["São Carlos", "Araraquara", "São Paulo", "Guarulhos", "Campinas", "São Bernardo do Campo", "Santo André", "São José dos Campos", "Sorocaba", "Ribeirão Preto", "Santos", "Osasco"],
+    RJ: ["Rio de Janeiro", "São Gonçalo", "Duque de Caxias", "Nova Iguaçu", "Niterói", "Belford Roxo", "Campos dos Goytacazes", "São João de Meriti", "Petrópolis", "Volta Redonda"],
+    MG: ["Araxá", "Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Betim", "Montes Claros", "Ribeirão das Neves", "Uberaba", "Governador Valadares", "Ipatinga"],
+    ES: ["Serra", "Vila Velha", "Cariacica", "Vitória", "Linhares", "Colatina", "São Mateus", "Cachoeiro de Itapemirim", "Aracruz", "Guarapari"],
+    DF: ["Brasília", "Taguatinga", "Ceilândia", "Samambaia", "Planaltina", "Gama", "Santa Maria", "Recanto das Emas", "Guará", "São Sebastião"],
+    GO: ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Águas Lindas de Goiás", "Valparaíso de Goiás", "Trindade", "Formosa", "Novo Gama"],
+    MT: ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Tangará da Serra", "Sorriso", "Lucas do Rio Verde", "Primavera do Leste", "Cáceres", "Barra do Garças"],
+    MS: ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã", "Naviraí", "Nova Andradina", "Paranaíba", "Sidrolândia", "Maracaju"],
+    PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa", "Cascavel", "São José dos Pinhais", "Foz do Iguaçu", "Colombo", "Guarapuava", "Paranaguá"],
+    SC: ["Joinville", "Florianópolis", "Blumenau", "São José", "Chapecó", "Itajaí", "Criciúma", "Jaraguá do Sul", "Lages", "Palhoça"],
+    RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
+};
+
 function createPetCard(pet, petImageUrl, isLiked) {
     let [ano, mes] = calculateAge(pet.birth)
     const petCard = document.createElement('div');
@@ -145,27 +166,25 @@ function createPetCard(pet, petImageUrl, isLiked) {
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="cidade" class="form-label">Cidade</label>
-                                        <select class="form-select" id="cidade" name="city" required>
-                                            <option value="São Carlos" ${pet.city === 'São Carlos' ? 'selected' : ''}>São Carlos</option>
-                                            <option value="Araraguara" ${pet.city === 'Araraguara' ? 'selected' : ''}>Araraguara</option>
-                                            <option value="São Paulo" ${pet.city === 'São Paulo' ? 'selected' : ''}>São Paulo</option>
-                                            <option value="Ribeirão Preto" ${pet.city === 'Ribeirão Preto' ? 'selected' : ''}>Ribeirão Preto</option>
-                                            <option value="Uberlândia" ${pet.city === 'Uberlândia' ? 'selected' : ''}>Uberlândia</option>
-                                            <option value="Belo Horizonte" ${pet.city === 'Belo Horizonte' ? 'selected' : ''}>Belo Horizonte</option>
+                                        <select class="form-select" id="citySelect" name="city" required>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="estado" class="form-label">Estado</label>
-                                        <select class="form-select" id="state" name="state" required>
+                                        <select class="form-select" id="stateSelect" name="state" required>
                                             <option value="SP" ${pet.state === 'SP' ? 'selected' : ''}>São Paulo</option>
-                                            <option value="MG" ${pet.state === 'MG' ? 'selected' : ''}>Minas Gerais</option>
                                             <option value="RJ" ${pet.state === 'RJ' ? 'selected' : ''}>Rio de Janeiro</option>
-                                            <option value="PR" ${pet.state === 'PR' ? 'selected' : ''}>Paraná</option>
+                                            <option value="MG" ${pet.state === 'MG' ? 'selected' : ''}>Minas Gerais</option>
                                             <option value="ES" ${pet.state === 'ES' ? 'selected' : ''}>Espírito Santo</option>
-                                            <option value="RS" ${pet.state === 'RS' ? 'selected' : ''}>Rio Grande do Sul</option>
+                                            <option value="DF" ${pet.state === 'DF' ? 'selected' : ''}>Distrito Federal</option>
+                                            <option value="GO" ${pet.state === 'GO' ? 'selected' : ''}>Goiás</option>
+                                            <option value="MT" ${pet.state === 'MT' ? 'selected' : ''}>Mato Grosso</option>
+                                            <option value="MS" ${pet.state === 'MS' ? 'selected' : ''}>Mato Grosso do Sul</option>
+                                            <option value="PR" ${pet.state === 'PR' ? 'selected' : ''}>Paraná</option>
                                             <option value="SC" ${pet.state === 'SC' ? 'selected' : ''}>Santa Catarina</option>
+                                            <option value="RS" ${pet.state === 'RS' ? 'selected' : ''}>Rio Grande do Sul</option>
                                         </select>
                                     </div>
                                 </div>
@@ -175,7 +194,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
                                 <div class="col">
                                     <div class="mb-3">
                                         <label for="type" class="form-label">Espécie</label>
-                                        <select class="form-select" id="type" name="type" required>
+                                        <select class="form-select" id="specie" name="type" required>
                                             <option value="Cachorro" ${pet.type === 'Cachorro' ? 'selected' : ''}>Cachorro</option>
                                             <option value="Gato" ${pet.type === 'Gato' ? 'selected' : ''}>Gato</option>
                                             <option value="Roedor" ${pet.type === 'Roedor' ? 'selected' : ''}>Roedor</option>
@@ -187,10 +206,6 @@ function createPetCard(pet, petImageUrl, isLiked) {
                                     <div class="mb-3">
                                         <label for="breed" class="form-label">Raça</label>
                                         <select class="form-select" id="breed" name="breed">
-                                            <option value="Husky">Husky</option>
-                                            <option value="Pug">Pug</option>
-                                            <option value="Pit Bull">Pit Bull</option>
-                                            <option value="Golden">Golden</option>
                                         </select>
                                     </div>
                                 </div>
@@ -297,7 +312,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
 
                             <div class="row">
                                 <div class="col text-end">
-                                    <button class="btn btn-standard-click" type="submit">Adicionar</button>
+                                    <button class="btn btn-standard-click" type="submit">Editar</button>
                                 </div>
                             </div>
                         </form>
@@ -442,6 +457,51 @@ function createPetCard(pet, petImageUrl, isLiked) {
         </div>
     `;
 
+    const speciesSelect = petCard.querySelector('#specie');
+    const breedSelect = petCard.querySelector('#breed');
+
+    speciesSelect.addEventListener('change', selectBreedBySpecie);
+    function selectBreedBySpecie() {
+        const selectedSpecies = speciesSelect.value;
+        const breeds = breedOptions[selectedSpecies] || [];
+
+        breedSelect.innerHTML = '';
+
+        breeds.forEach(breed => {
+            const option = document.createElement('option');
+            option.value = breed;
+            option.textContent = breed;
+            if (breed === pet.breed) {
+                option.selected = true;
+            }
+            breedSelect.appendChild(option);
+        });
+    }
+
+    const statesSelect = petCard.querySelector('#stateSelect');
+    const citySelect = petCard.querySelector('#citySelect');
+
+    statesSelect.addEventListener('change', selectCityByState);
+    function selectCityByState() {
+        const selectedStates = statesSelect.value;
+        const cities = citiesByState[selectedStates] || [];
+
+        citySelect.innerHTML = '';
+
+        cities.forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            if (city === pet.city) {
+                option.selected = true;
+            }
+            citySelect.appendChild(option);
+        });
+    }
+
+    selectCityByState();
+    selectBreedBySpecie();
+
     const coracaoImg = petCard.querySelector('#coracaoImg');
     const CoracaoButton = petCard.querySelector('#toggleHeart');
 
@@ -483,16 +543,23 @@ function createPetCard(pet, petImageUrl, isLiked) {
     editarForm.addEventListener('submit', (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
 
-        const formData = new FormData(editarForm); // Correctly pass the form element, not the event
-        console.log(formData); // Debugging: Log the JSON object
+        const formData = new FormData(editarForm);
 
-        // Convert FormData to JSON object
-        const data = {};
-        formData.forEach((value, key) => {
-            data[key] = value;
+        pet.temperament.forEach((temperament, index) => {
+            formData.append('temperament[]', temperament);
         });
 
-        console.log(data); // Debugging: Log the JSON object
+        const data = {};
+        formData.forEach((value, key) => {
+            if (data[key] !== undefined) {
+                if (!Array.isArray(data[key])) {
+                    data[key] = [data[key]];
+                }
+                data[key].push(value);
+            } else {
+                data[key] = value;
+            }
+        });
 
         fetch(`/pets/${pet.id}`, {
             method: 'PUT',
@@ -507,14 +574,12 @@ function createPetCard(pet, petImageUrl, isLiked) {
                     window.location.href = `pet.html?id=${pet.id}`;
                 } else {
                     console.error('Erro ao atualizar perfil do PET.');
-                    // Hide the edit modal
                     const editPetModalElement = document.querySelector('#editPetModal');
                     const popUpEdit = bootstrap.Modal.getInstance(editPetModalElement);
                     if (popUpEdit) {
                         popUpEdit.hide();
                     }
 
-                    // Show the error modal
                     var popUpEditError = new bootstrap.Modal(document.querySelector('#popUpErroEdit'));
                     popUpEditError.show();
                 }
@@ -526,7 +591,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
     deleteButton.addEventListener('click', async () => {
         let isSucesso = -1;
 
-        await fetch(`/ongs/${pet.id}`, { method: 'DELETE' })
+        await fetch(`/pets/${pet.id}`, { method: 'DELETE' })
             .then(response => {
                 if (response.ok) {
                     console.log(`Perfil da Pet com ID ${pet.id} removido`);
@@ -543,7 +608,6 @@ function createPetCard(pet, petImageUrl, isLiked) {
             popUp.show()
 
             const botaoRedirect = document.querySelector('#redirectButton')
-            console.log(botaoRedirect)
 
             botaoRedirect.addEventListener('click', () => {
                 window.location.href = 'home.html';

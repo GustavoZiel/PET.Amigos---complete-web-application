@@ -172,14 +172,15 @@ function deleteByPk(request, response) {
 function update(request, response) {
   console.log(request.params)
   console.log(request.body)
-  console.log(request.file.key)
-
+  
+  console.log(request.body.temperament)
   let temperament = request.body.temperament;
   if (!temperament) {
     temperament = [];
   } else if (!Array.isArray(temperament)) {
     temperament = [temperament];
   }
+  console.log(temperament)
   Pet
     .update(
       {
