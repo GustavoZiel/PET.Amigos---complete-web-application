@@ -473,3 +473,7 @@ Read more: https://drafts.csswg.org/css-inline-3/#leading-trim
     font-size: 15px;
   }
 }
+
+.img-rounded {
+  border-radius: 50px; /* Ajuste o valor conforme necessário */
+}
