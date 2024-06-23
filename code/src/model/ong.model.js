@@ -23,7 +23,7 @@ ONG.init({
     whatsapp: { type: DataTypes.STRING, allowNull: true },
     role: { type: DataTypes.STRING, allowNull: false },
     pix: { type: DataTypes.STRING, allowNull: true },
-    contribute: { type: DataTypes.STRING, allowNull: true }, 
+    contribute: { type: DataTypes.STRING, allowNull: true },
 }, { sequelize: sequelize, timestamps: false });
 
 
