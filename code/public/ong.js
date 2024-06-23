@@ -243,7 +243,7 @@ async function createOngCard(ong, ongimage) {
 
                                     <div class="row pt-3">
                                         <div class="d-flex justify-content-end">
-                                            <button class="btn btn-standard-click" type="submit" data-bs-dismiss="modal">Adicionar</button>
+                                            <button class="btn btn-standard-click" type="submit" data-bs-dismiss="modal">Editar</button>
                                         </div>
                                     </div>
 
