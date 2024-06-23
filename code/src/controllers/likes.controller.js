@@ -11,7 +11,7 @@ function findAll(request, response) {
 }
 function findByuser(request, response) {
     UsuarioPet
-    .findAll({ where: { accountName: request.params.accountName} })
+    .findAll({ where: { UserId: request.params.UserId} })
     .then(function (res) {
         response.json(res).status(200);
     })
@@ -21,7 +21,7 @@ function findByuser(request, response) {
 }
 function findBykey(request, response) {
     UsuarioPet
-    .findOne({ where: { accountName: request.params.accountName, petId: request.params.petId } })
+    .findOne({ where: { UserId: request.params.UserId, petId: request.params.petId } })
     .then(function (res) {
         response.json(res).status(200);
     })
@@ -33,7 +33,7 @@ async function create(request, response) {
     const res = await UsuarioPet
     .create(
     {
-        accountName: 1,
+        UserId: 1,
         petId: request.body.petId
     },
     { where: { id: request.params.id } },
@@ -43,7 +43,7 @@ async function create(request, response) {
 
 function deleteBykey(request, response) {
     UsuarioPet
-    .destroy({ where: { accountName: request.params.accountName, petId: request.params.petId } })
+    .destroy({ where: { UserId: request.params.UserId, petId: request.params.petId } })
     .then( () => {
         response.status(200).send("ONG deleted successfully !");
     })
@@ -56,7 +56,7 @@ function update(request, response) {
     UsuarioPet
     .update(
     {
-        accountName: 1,
+        UserId: 1,
         petId: request.body.petId
     },
     { where: { id: request.params.id } },

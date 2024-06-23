@@ -16,21 +16,22 @@ function getToken(uid, uemail) {
 // Register ONG
 async function registerONG(request, response) {
   try {
-    const nome = request.body.accountName;
+    const nome = request.body.email;
     const senha = request.body.password;
     if (!nome || !senha) {
       return response.status(400).send("Informe usuário e senha!");
     }
-    const existingONG = await ONG.findOne({ where: { accountName: nome } });
+    const existingONG = await ONG.findOne({ where: { email: nome } });
     if (existingONG) {
       return response.status(400).send("Parceiro já cadastrado!");
     }
     const hashedPassword = bcrypt.hashSync(senha, bcrypt.genSaltSync());
     const uploadedPhotos = await upload.getFileUrl(request.file.key);
+    const pets = Array.isArray(request.body.pets) ? request.body.pets : [request.body.pets];
     const res = await ONG
     .create(
       {
-        accountName: nome,
+        email: nome,
         password: hashedPassword,
         ongName: request.body.ongName,
         creationYear: request.body.creationYear,
@@ -38,20 +39,21 @@ async function registerONG(request, response) {
         state: request.body.state,
         address: request.body.address,
         CNPJ: request.body.CNPJ,
-        pets: request.body.pets,
+        pets: pets,
         about: request.body.about,
         photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
         website: request.body.website,
         instagram: request.body.instagram,
         facebook: request.body.facebook,
-        twitter: request.body.twitter,
         whatsapp: request.body.whatsapp,
-        role: request.body.role
+        role: request.body.role,
+        pix: request.body.pix,
+        contribute: request.body.contribute
       },
       { where: { id: request.params.id } },
     )
-    const token = getToken(res.id, res.accountName);
+    const token = getToken(res.id, res.email);
     response.status(201).send({ token });
   } catch (error) {
     console.error(error);
@@ -62,41 +64,37 @@ async function registerONG(request, response) {
 // Register User
 async function registerUser(request, response) {
   try {
-    const nome = request.body.accountName;
+    const nome = request.body.email;
     const senha = request.body.password;
     if (!nome || !senha) {
       return response.status(400).send("Informe usuário e senha!");
     }
-    const existingUser = await Usuario.findOne({ where: {accountName: nome } });
+    const existingUser = await Usuario.findOne({ where: {email: nome } });
     if (existingUser) {
       return response.status(400).send("Parceiro já cadastrado!");
     }
     const hashedPassword = bcrypt.hashSync(senha, bcrypt.genSaltSync());
     const uploadedPhotos = await upload.getFileUrl(request.file.key);
+    const preferences = Array.isArray(request.body.preferences) ? request.body.preferences : [request.body.preferences]
     const res = await Usuario
     .create(
       {
-        accountName: nome,
+        email: nome,
         password: hashedPassword,
         userName: request.body.userName,
         birthDate: request.body.birthDate,
         city: request.body.city,
         state: request.body.state,
-        address: request.body.address,
-        preferences: request.body.preferences,
+        home: request.body.home,
+        preferences: preferences,
         about: request.body.about,
         photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
-        website: request.body.website,
-        instagram: request.body.instagram,
-        facebook: request.body.facebook,
-        twitter: request.body.twitter,
-        whatsapp: request.body.whatsapp,
         role: request.body.role
       },
       { where: { id: request.params.id } },
     )
-    const token = getToken(res.id, res.accountName);
+    const token = getToken(res.id, res.email);
     response.status(201).send({ token });
   } catch (error) {
     console.error(error);
@@ -107,13 +105,13 @@ async function registerUser(request, response) {
 // Login User
 async function loginUser(request, response) {
   try {
-    const { accountName, password } = request.body;
+    const { email, password } = request.body;
 
-    if (!accountName || !password) {
+    if (!email || !password) {
       return response.status(400).send("Informe usuário e senha!");
     }
 
-    const user = await Usuario.findOne({ where: { accountName } });
+    const user = await Usuario.findOne({ where: { email } });
     if (!user || !bcrypt.compareSync(password, user.password)) {
       return response.status(401).send("Usuário e senha inválidos!");
     }
@@ -121,7 +119,7 @@ async function loginUser(request, response) {
     const token = getToken(user.id, user.Nome_Conta);
     response
       .status(200)
-      .json({ id: user.id, accountName: user.accountName, token });
+      .json({ id: user.id, email: user.email, token });
   } catch (erro) {
     console.error(erro);
     response.status(500).send(erro);
@@ -131,21 +129,21 @@ async function loginUser(request, response) {
 // Login ONG
 async function loginONG(request, response) {
   try {
-    const { accountName, password } = request.body;
+    const { email, password } = request.body;
 
-    if (!accountName || !password) {
+    if (!email || !password) {
       return response.status(400).send("Informe usuário e senha!");
     }
 
-    const ong = await ONG.findOne({ where: { accountName } });
+    const ong = await ONG.findOne({ where: { email } });
     if (!ong || !bcrypt.compareSync(password, ong.password)) {
       return response.status(401).send("Usuário e senha inválidos!");
     }
 
-    const token = getToken(ong.id, ong.accountName);
+    const token = getToken(ong.id, ong.email);
     response
       .status(200)
-      .json({ id: ong.id, accountName: ong.accountName, token });
+      .json({ id: ong.id, email: ong.email, token });
   } catch (erro) {
     console.error(erro);
     response.status(500).send(erro);

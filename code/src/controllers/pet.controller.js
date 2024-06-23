@@ -70,9 +70,9 @@ async function searchBy(req, res) {
 }
 async function getLikedPets(req, res){
   try{
-    const userId = req.params.userId;
+    const UserId = req.params.UserId;
     const likes = await Usuario.findAll({
-      where: { id: userId },
+      where: { id: UserId },
       include: [{
         model: Pet,
         required: false,
@@ -101,10 +101,10 @@ async function getLikedPets(req, res){
 }
 async function getONGPets(req, res){
   try{
-    const ONGacc = req.params.ONGacc;
-    console.log(ONGacc);
+    const ONGId = req.params.ONGId;
+    console.log(ONGId);
       const pets = await Pet.findAll({
-        where: { ONGAccountName: ONGacc },
+        where: { ONGId: ONGId },
       });
       if (!pets) {
         return res.status(404).json({ message: "Usuário não encontrado" });
@@ -142,11 +142,13 @@ async function create(request, response) {
         state: request.body.state,
         type: request.body.type,
         sex: request.body.sex,
+        breed: request.body.breed,
         size: request.body.size,
         photos: uploadedPhotos,
         temperament: temperament,
         comment: request.body.comment,
-        vacinated: request.body.vacinated,
+        castrated: request.body.castrated,
+        chipped: request.body.chipped,
         adopted: request.body.adopted,
       },
       { where: { id: request.params.id } },
@@ -182,12 +184,14 @@ async function update(request, response) {
         state: request.body.state,
         type: request.body.type,
         sex: request.body.sex,
+        breed: request.body.breed,
         size: request.body.size,
-        comment: request.body.comment,
         photos: uploadedPhotos,
         temperament: temperament,
-        vacinated: request.body.vacinated,
-        adopted: request.body.adopted
+        comment: request.body.comment,
+        castrated: request.body.castrated,
+        chipped: request.body.chipped,
+        adopted: request.body.adopted,
       },
       { where: { id: request.params.id } },
     )

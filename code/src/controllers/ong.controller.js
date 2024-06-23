@@ -27,8 +27,8 @@ async function create(request, response) {
     const res = await model
     .create(
       {
-        accountName: request.body.accountName,
-        password: request.body.password,
+        email: nome,
+        password: hashedPassword,
         ongName: request.body.ongName,
         creationYear: request.body.creationYear,
         city: request.body.city,
@@ -42,9 +42,10 @@ async function create(request, response) {
         website: request.body.website,
         instagram: request.body.instagram,
         facebook: request.body.facebook,
-        twitter: request.body.twitter,
         whatsapp: request.body.whatsapp,
-        role: 2,
+        role: request.body.role,
+        pix: request.body.pix,
+        contribute: request.body.contribute
       },
       { where: { id: request.params.id } },
     )
@@ -66,8 +67,8 @@ function deleteById(request, response) {
     model
     .update(
       {
-        accountName: request.body.accountName,
-        password: request.body.password,
+        email: nome,
+        password: hashedPassword,
         ongName: request.body.ongName,
         creationYear: request.body.creationYear,
         city: request.body.city,
@@ -76,13 +77,15 @@ function deleteById(request, response) {
         CNPJ: request.body.CNPJ,
         pets: request.body.pets,
         about: request.body.about,
-        photo: request.body.photo,
+        photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
         website: request.body.website,
         instagram: request.body.instagram,
         facebook: request.body.facebook,
-        twitter: request.body.twitter,
-        whatsapp: request.body.whatsapp
+        whatsapp: request.body.whatsapp,
+        role: request.body.role,
+        pix: request.body.pix,
+        contribute: request.body.contribute
       },
       { where: { id: request.params.id } },
     )

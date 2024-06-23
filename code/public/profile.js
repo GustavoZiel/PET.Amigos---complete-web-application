@@ -102,29 +102,6 @@ function createProfileCard(user, userimage) {
                         <div class="font-type-info">SOBRE</div>
                         <div class="font-info">${user.about}</div>
                     </div>
-
-                    <!-- Contato -->
-                    <div class="container-fluid font-contact d-block d-md-none">
-                        <div class="font-type-info">CONTATO</div>
-
-                        <div class="d-flex justify-content-start pt-1">
-                            <!-- Instagram -->
-                            <div class="link-border rounded-pill">
-                                <a href="https://www.instagram.com/${user.instagram}/" class="font-contact">
-                                    <i class="fa-brands fa-instagram"></i>
-                                    Instagram
-                                </a>
-                            </div>
-
-                            <!-- Facebook -->
-                            <div class="link-border rounded-pill ms-2">
-                                <a href="https://www.facebook.com/${user.facebook}/about" class="font-contact">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                    Facebook
-                                </a>
-                            </div>
-                        </div>
-                    </div>
                 </div>
 
                 <!-- Foto -->
@@ -197,29 +174,6 @@ function createProfileCard(user, userimage) {
                     <div class="d-none d-md-block py-3">
                         <div class="font-type-info">SOBRE</div>
                         <div class="font-info">${user.about}</div>
-                    </div>
-
-                    <!-- Contato -->
-                    <div class="font-contact d-none d-md-block">
-                        <div class="font-type-info">CONTATO</div>
-
-                        <div class="d-flex justify-content-start pt-1">
-                            <!-- Instagram -->
-                            <div class="link-border rounded-pill">
-                                <a href="https://www.instagram.com/${user.instagram}/" class="font-contact">
-                                    <i class="fa-brands fa-instagram"></i>
-                                    Instagram
-                                </a>
-                            </div>
-
-                            <!-- Facebook -->
-                            <div class="link-border rounded-pill ms-2">
-                                <a href="https://www.facebook.com/${user.facebook}/about" class="font-contact">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                    Facebook
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -332,8 +286,8 @@ async function createLikedPetsCard() {
     const petsContainer = likedPetsCard.querySelector('#GridPets');
 
     try {
-        const accountName = 1;
-        const response = await fetch(`/all-pets/${accountName}`);
+        const UserId = 1;
+        const response = await fetch(`/all-pets/${UserId}`);
         console.log(response)
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -389,7 +343,7 @@ async function createLikedPetsCard() {
                     fetch(`/likes`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ accountName: 1, petId: petId })
+                        body: JSON.stringify({ email: 1, petId: petId })
                     })
                     .then(response => {
                         if (response.ok) {

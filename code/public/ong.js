@@ -350,6 +350,17 @@ function addPetsButton(){
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
+                                        <label for="breed" class="form-label">Raça</label>
+                                        <select class="form-select" id="breed" name="breed">
+                                            <option value="Cachorro">Husky</option>
+                                            <option value="Gato">Pug</option>
+                                            <option value="Roedor">Pit Bull</option>
+                                            <option value="Passaro">Golden</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
                                         <label for="sex" class="form-label">Sexo</label>
                                         <select class="form-select" id="sex" name="sex" required>
                                             <option value="Macho">Macho</option>
@@ -415,16 +426,31 @@ function addPetsButton(){
 
                             <div class="row mb-3">
                                 <div class="col-2 d-inline">
-                                    <span>Vacinado: </span>
+                                    <span>Castrado: </span>
                                 </div>
                                 <div class="col">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="vacinatedYes" name="vacinated" value="1" required>
-                                        <label class="form-check-label" for="vacinatedYes">Sim</label>
+                                        <input class="form-check-input" type="radio" id="castratedYes" name="castrated" value="1" required>
+                                        <label class="form-check-label" for="castratedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="vacinatedNo" name="vacinated" value="0">
-                                        <label class="form-check-label" for="vacinatedNo">Não</label>
+                                        <input class="form-check-input" type="radio" id="castratedNo" name="castrated" value="0">
+                                        <label class="form-check-label" for="castratedNo">Não</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-2 d-inline">
+                                    <span>Chippado: </span>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="chippedYes" name="chipped" value="1" required>
+                                        <label class="form-check-label" for="chippedYes">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="chippedNo" name="chipped" value="0">
+                                        <label class="form-check-label" for="chippedNo">Não</label>
                                     </div>
                                 </div>
                             </div>
@@ -505,8 +531,8 @@ async function createPetsOwnedCard() {
     const petsContainer = petsOwnedCard.querySelector('#GridPets');
 
     try {
-        const accountName = 2;
-        const response = await fetch(`/ONG-pets/${accountName}`);
+        const ONGId = 1;
+        const response = await fetch(`/ONG-pets/${ONGId}`);
         console.log(response)
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -562,7 +588,7 @@ async function createPetsOwnedCard() {
                     fetch(`/likes`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ accountName: 1, petId: petId })
+                        body: JSON.stringify({ email: 1, petId: petId })
                     })
                     .then(response => {
                         if (response.ok) {

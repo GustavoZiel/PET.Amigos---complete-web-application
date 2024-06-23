@@ -5,7 +5,7 @@ import Pet from './pet.model.js'
 class ONG extends Model { }
 ONG.init({
     id: { type: DataTypes.INTEGER, autoIncrement: true, primaryKey: true  },
-    email: { type: DataTypes.STRING, allowNull: false },
+    email: { type: DataTypes.STRING, allowNull: false, unique: true },
     password:{ type: DataTypes.STRING, allowNull: false },
     ongName: { type: DataTypes.STRING, allowNull: false },
     creationYear: { type: DataTypes.DATE, allowNull: false },
@@ -13,7 +13,7 @@ ONG.init({
     state: { type: DataTypes.STRING, allowNull: false },
     address:{ type: DataTypes.STRING, allowNull: false },
     CNPJ:{ type: DataTypes.STRING, allowNull: true },
-    pets:{ type: DataTypes.STRING, allowNull: false },
+    pets:{ type: DataTypes.ARRAY(DataTypes.STRING), allowNull: true },
     about:{ type: DataTypes.STRING, allowNull: false },
     photo:{ type: DataTypes.STRING, allowNull: false },
     phoneNumber: { type: DataTypes.STRING, allowNull: false },
