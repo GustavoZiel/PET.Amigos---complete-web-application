@@ -167,20 +167,17 @@ function deleteByPk(request, response) {
     });
 }
 
-async function update(request, response) {
+function update(request, response) {
   console.log(request.params)
   console.log(request.body)
-  console.log(request.file)
   console.log(request.file.key)
-  
+
   let temperament = request.body.temperament;
   if (!temperament) {
     temperament = [];
   } else if (!Array.isArray(temperament)) {
     temperament = [temperament];
   }
-  const uploadedPhotos = await upload.getFileUrl(request.file.key);
-  console.log(uploadedPhotos)
   Pet
     .update(
       {
@@ -192,7 +189,6 @@ async function update(request, response) {
         sex: request.body.sex,
         breed: request.body.breed,
         size: request.body.size,
-        photos: uploadedPhotos,
         temperament: temperament,
         comment: request.body.comment,
         castrated: request.body.castrated,

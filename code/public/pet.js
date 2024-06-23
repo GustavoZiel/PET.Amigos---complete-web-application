@@ -471,19 +471,24 @@ function createPetCard(pet, petImageUrl, isLiked) {
             },
             body: JSON.stringify(data)
         })
-        .then(response => {
-            if (response.ok) {
-                console.log(`Perfil do PET com ID ${pet.id} atualizado`); // Adjusted to use the correct ID
-                // window.location.href = `pet.html?id=${pet.id}`;
-            } else {
-                console.error('Erro ao atualizar perfil do PET.');
-                var popUpEdit = new bootstrap.Modal(document.querySelector('#editPetModal'))
-                var popUpEditError = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
-                popUpEdit.toggle()
-                popUpEditError.toggle()
-                // popUp.show()
-            }
-        })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Perfil do PET com ID ${pet.id} atualizado`); // Adjusted to use the correct ID
+                    window.location.href = `pet.html?id=${pet.id}`;
+                } else {
+                    console.error('Erro ao atualizar perfil do PET.');
+                    // Hide the edit modal
+                    const editPetModalElement = document.querySelector('#editPetModal');
+                    const popUpEdit = bootstrap.Modal.getInstance(editPetModalElement);
+                    if (popUpEdit) {
+                        popUpEdit.hide();
+                    }
+
+                    // Show the error modal
+                    var popUpEditError = new bootstrap.Modal(document.querySelector('#popUpErroEdit'));
+                    popUpEditError.show();
+                }
+            })
     });
 
 
