@@ -125,7 +125,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form enctype="multipart/form-data">
+                        <form id="editarPetForm"  method="post" enctype="multipart/form-data">
                             <div class="row mb-3">
                                 <div class="col">
                                     <div class="mb-3">
@@ -280,7 +280,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
                             </div>
 
                             <div class="row">
-                                <div class="col">
+                                <div class="col text-end">
                                     <button class="btn btn-standard-click" type="submit">Adicionar</button>
                                 </div>
                             </div>
@@ -367,7 +367,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="popUpCorreto" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+        <div class="modal fade" id="popUpCorretoRemove" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -382,7 +382,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
         </div>
 
         <!-- Modal -->
-        <div class="modal fade" id="popUpErro" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+        <div class="modal fade" id="popUpErroRemove" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -390,51 +390,27 @@ function createPetCard(pet, petImageUrl, isLiked) {
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        Falha ao apagar o perfil do PET. Tente novamente mais tarde!
+                        Falha ao apagar o perfil do PET. Tente novamente !
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="popUpErroEdit" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="popUpLabel">Erro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Falha ao editar o perfil do PET. Tente novamente !
                     </div>
                 </div>
             </div>
         </div>
     `;
-
-    const deleteButton = petCard.querySelector('#confirmDeletion')
-    deleteButton.addEventListener('click', async () => {
-        let isSucesso = -1;
-
-        await fetch(`/pets/${pet.id}`, { method: 'DELETE' })
-            .then(response => {
-                if (response.ok) {
-                    console.log(`Perfil do PET com ID ${pet.id} removido`);
-                    isSucesso = 1
-                } else {
-                    console.error('Erro ao remover perfil do PET.');
-                    isSucesso = 0
-                }
-            })
-
-        if (true) {
-            isSucesso = 1
-        }
-
-        console.log(isSucesso)
-
-        if (isSucesso === 1) {
-            var popUp = new bootstrap.Modal(document.querySelector('#popUpCorreto'))
-            popUp.toggle()
-            popUp.show()
-
-            const botaoRedirect = document.querySelector('#redirectButton')
-            console.log(botaoRedirect)
-
-            botaoRedirect.addEventListener('click', () => {
-                window.location.href = 'home.html';
-            })
-        } else if (isSucesso === 0) {
-            var popUp = new bootstrap.Modal(document.querySelector('#popUpErro'))
-            popUp.toggle()
-            popUp.show()
-        }
-    });
 
     const coracaoImg = petCard.querySelector('#coracaoImg');
     const CoracaoButton = petCard.querySelector('#toggleHeart');
@@ -473,5 +449,77 @@ function createPetCard(pet, petImageUrl, isLiked) {
         }
     });
 
+    const editarForm = petCard.querySelector('#editarPetForm');
+    editarForm.addEventListener('submit', (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        const formData = new FormData(editarForm); // Correctly pass the form element, not the event
+        console.log(formData); // Debugging: Log the JSON object
+
+        // Convert FormData to JSON object
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        console.log(data); // Debugging: Log the JSON object
+
+        fetch(`/pets/${pet.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log(`Perfil do PET com ID ${pet.id} atualizado`); // Adjusted to use the correct ID
+                // window.location.href = `pet.html?id=${pet.id}`;
+            } else {
+                console.error('Erro ao atualizar perfil do PET.');
+                var popUpEdit = new bootstrap.Modal(document.querySelector('#editPetModal'))
+                var popUpEditError = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
+                popUpEdit.toggle()
+                popUpEditError.toggle()
+                // popUp.show()
+            }
+        })
+    });
+
+
+    const deleteButton = petCard.querySelector('#confirmDeletion')
+    deleteButton.addEventListener('click', async () => {
+        let isSucesso = -1;
+
+        await fetch(`/ongs/${pet.id}`, { method: 'DELETE' })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Perfil da Pet com ID ${pet.id} removido`);
+                    isSucesso = 1
+                } else {
+                    console.error('Erro ao remover conta da Pet.');
+                    isSucesso = 0
+                }
+            })
+
+        if (isSucesso === 1) {
+            var popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoRemove'))
+            popUp.toggle()
+            popUp.show()
+
+            const botaoRedirect = document.querySelector('#redirectButton')
+            console.log(botaoRedirect)
+
+            botaoRedirect.addEventListener('click', () => {
+                window.location.href = 'home.html';
+            })
+        } else if (isSucesso === 0) {
+            var popUp = new bootstrap.Modal(document.querySelector('#popUpErroRemove'))
+            popUp.toggle()
+            popUp.show()
+        }
+    });
+
     return petCard;
 }
+

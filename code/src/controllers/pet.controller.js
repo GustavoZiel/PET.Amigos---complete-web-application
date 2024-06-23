@@ -166,6 +166,11 @@ function deleteByPk(request, response) {
 }
 
 async function update(request, response) {
+  console.log(request.params)
+  console.log(request.body)
+  console.log(request.file)
+  console.log(request.file.key)
+  
   let temperament = request.body.temperament;
   if (!temperament) {
     temperament = [];
@@ -173,6 +178,7 @@ async function update(request, response) {
     temperament = [temperament];
   }
   const uploadedPhotos = await upload.getFileUrl(request.file.key);
+  console.log(uploadedPhotos)
   Pet
     .update(
       {

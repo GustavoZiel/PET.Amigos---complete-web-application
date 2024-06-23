@@ -1,3 +1,15 @@
+.btn-standard-click {
+  color: #3A0CA3 !important;
+  border-color: #3A0CA3 !important;
+}
+
+
+.btn-standard-click:hover {
+  color: #fff !important;
+  background-color: #3A0CA3 !important;
+  border-color: #3A0CA3 !important;
+}
+
 .btn-edit {
   background: none;
   border: none;

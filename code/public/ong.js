@@ -283,6 +283,7 @@ async function createOngCard(ong, ongimage) {
 
     return ongCard;
 }
+
 function addPetsButton(){
     const botaoadd =`
     <!-- Modal -->
@@ -448,7 +449,7 @@ function addPetsButton(){
                             </div>
 
                             <div class="row">
-                                <div class="col">
+                                <div class="col text-end">
                                     <button class="btn btn-standard-click" type="submit">Adicionar</button>
                                 </div>
                             </div>
@@ -459,6 +460,7 @@ function addPetsButton(){
             </div>`
     return botaoadd;
 }
+
 async function createPetsOwnedCard() {
     const petsOwnedCard = document.createElement('div');
     petsOwnedCard.innerHTML = `
