@@ -24,13 +24,13 @@ const UsuarioPet = sequelize.define('UsuarioPet', {}, { timestamps: false });
 
 Usuario.belongsToMany(Pet, {
     through: UsuarioPet,
-    foreignKey: 'accountName',
+    foreignKey: 'email',
     otherKey: 'petId'
 });
 Pet.belongsToMany(Usuario, {
     through: UsuarioPet,
     foreignKey: 'petId',
-    otherKey: 'accountName'
+    otherKey: 'email'
 });
 
 export { Usuario };
