@@ -185,6 +185,17 @@ function createPetCard(pet, petImageUrl, isLiked) {
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
+                                        <label for="breed" class="form-label">Raça</label>
+                                        <select class="form-select" id="breed" name="breed">
+                                            <option value="Husky">Husky</option>
+                                            <option value="Pug">Pug</option>
+                                            <option value="Pit Bull">Pit Bull</option>
+                                            <option value="Golden">Golden</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
                                         <label for="sex" class="form-label">Sexo</label>
                                         <select class="form-select" id="sex" name="sex" required>
                                             <option value="Macho" ${pet.sex === 'Macho' ? 'selected' : ''}>Macho</option>
@@ -203,14 +214,6 @@ function createPetCard(pet, petImageUrl, isLiked) {
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <label for="formFileMultiple" class="form-label">Fotos</label>
-                                    <input class="form-control" type="file" id="formFileMultiple" name="photos" multiple>
-                                </div>
-                            </div>
-
                             <div class="row my-4">
                                 <div class="col">
                                     <div class="mb-3">
@@ -219,7 +222,6 @@ function createPetCard(pet, petImageUrl, isLiked) {
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row mb-3 align-items-end">
                                 <div class="col-3">
                                     <span>Temperamento: </span>
@@ -247,19 +249,33 @@ function createPetCard(pet, petImageUrl, isLiked) {
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row mb-3">
                                 <div class="col-2 d-inline">
-                                    <span>Vacinado: </span>
+                                    <span>Castrado: </span>
                                 </div>
                                 <div class="col">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="vacinatedYes" name="vacinated" value="1" ${pet.vacinated === true ? 'checked' : ''} required>
-                                        <label class="form-check-label" for="vacinatedYes">Sim</label>
+                                        <input class="form-check-input" type="radio" id="castratedYes" name="castrated" value="1" ${pet.castrated === true ? 'checked' : ''} required>
+                                        <label class="form-check-label" for="castratedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="vacinatedNo" name="vacinated" value="0" ${pet.vacinated === false ? 'checked' : ''}>
-                                        <label class="form-check-label" for="vacinatedNo">Não</label>
+                                        <input class="form-check-input" type="radio" id="castratedNo" name="castrated" value="0" ${pet.castrated === false ? 'checked' : ''}>
+                                        <label class="form-check-label" for="castratedNo">Não</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-2 d-inline">
+                                    <span>Chippado: </span>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="chippedYes" name="chipped" value="1" ${pet.chipped === true ? 'checked' : ''} required>
+                                        <label class="form-check-label" for="chippedYes">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="chippedNo" name="chipped" value="0" ${pet.chipped === false ? 'checked' : ''}>
+                                        <label class="form-check-label" for="chippedNo">Não</label>
                                     </div>
                                 </div>
                             </div>
@@ -337,8 +353,22 @@ function createPetCard(pet, petImageUrl, isLiked) {
                 </div>
                 <div class="row">
                     <div class="col">
+                        <h5 class="poppins-medium headers_caract">CASTRADO</h5>
+                        <p class="poppins-medium text_caract">${pet.castrated == true ? 'Sim' : 'Não'}</p>
+                    </div>
+                    <div class="col">
+                        <h5 class="poppins-medium headers_caract">CHIPPADO</h5>
+                        <p class="poppins-medium text_caract">${pet.chipped === true ? 'Sim' : 'Não'}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
                         <h5 class="poppins-medium headers_caract">ESPÉCIE</h5>
                         <p class="poppins-medium text_caract">${pet.type}</p>
+                    </div>
+                    <div class="col">
+                        <h5 class="poppins-medium headers_caract">RAÇA</h5>
+                        <p class="poppins-medium text_caract">${pet.breed}</p>
                     </div>
                     <div class="col">
                         <h5 class="poppins-medium headers_caract">PORTE</h5>
