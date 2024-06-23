@@ -243,12 +243,42 @@ async function createOngCard(ong, ongimage) {
 
                                     <div class="row pt-3">
                                         <div class="d-flex justify-content-end">
-                                            <button class="btn btn-standard-click" type="submit">Adicionar</button>
+                                            <button class="btn btn-standard-click" type="submit" data-bs-dismiss="modal">Adicionar</button>
                                         </div>
                                     </div>
 
 
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal - Editar ONG (Pop-up sucesso ao editar) -->
+                <div class="modal fade" id="popUpCorretoEdit" tabindex="-1" aria-labelledby="popUpCorretoEditLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="popUpCorretoEditLabel">Sucesso</h5>
+                                <button id="redirectButtonEdit" type="button" class="btn-close" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Perfil da ONG editado com sucesso!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal - Editar ONG (Pop-up erro ao editar) -->
+                <div class="modal fade" id="popUpErroEdit" tabindex="-1" aria-labelledby="popUpErroEditLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="popUpErroEdit">Erro</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Falha ao editar o perfil da ONG. Tente novamente mais tarde!
                             </div>
                         </div>
                     </div>
@@ -373,10 +403,9 @@ async function createOngCard(ong, ongimage) {
     </section>`;
 
     token = localStorage.getItem('token')
-
     const editarForm = ongCard.querySelector('#editOngForm');
 
-    editarForm.addEventListener('submit', (event) => {
+    editarForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
 
         const formData = new FormData(editarForm); // Correctly pass the form element, not the event
@@ -400,9 +429,23 @@ async function createOngCard(ong, ongimage) {
         .then(response => {
             if (response.ok) {
                 console.log("Perfil da ONG com ID " + ong.id + " atualizado"); // Adjusted to use the correct ID
-                window.location.href = "ong.html?id=" + ong.id
+
+                var popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
+                popUp.toggle()
+                popUp.show()
+
+                const botaoRedirect = document.querySelector('#redirectButtonEdit')
+                console.log(botaoRedirect)
+
+                botaoRedirect.addEventListener('click', () => {
+                    window.location.href = "ong.html?id=" + ong.id;
+                })
             } else {
                 console.error('Erro ao atualizar perfil da ONG.');
+
+                var popUp = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
+                popUp.toggle()
+                popUp.show()
             }
         })
     });
