@@ -374,7 +374,7 @@
                                     <i class="bi bi-filter"></i>
                                     Filtros
                                 </button>
-                                <button id="SearchButton" class="btn btn-primary align-items-center mt-2">Aplicar Filtros</button>
+                                <button id="SearchButtonMobile" class="btn btn-search rounded-pill align-items-center mt-2">Aplicar Filtros</button>
                             </div>
                         </div>
                         <div id="activeFilters"
@@ -388,14 +388,14 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button id="SearchButton" class="btn btn-primary align-items-center d-md-flex d-none flex-wrap mb-5 ms-5">Aplicar Filtros</button>
+                        <button id="SearchButtonDesktop" class="btn btn-search rounded-pill align-items-center d-md-flex d-none flex-wrap mb-5 ms-5">Aplicar Filtros</button>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <div class="d-lg-flex d-none mx-5 align-items-center justify-content-between">
-                            <h2 class="font_h2_search">8 Pets encontrados!</h2>
+                        <div id="PetsEncontrados" class="d-lg-flex d-none mx-5 align-items-center justify-content-between">
+                            
                         </div>
                     </div>
                 </div>
@@ -649,9 +649,17 @@
                         const data = response.data;
                         const animals = Array.isArray(data) ? data : [data];
 
+                        const pets_encontrados = document.getElementById("PetsEncontrados");
                         const container = document.getElementById('GridPets');
+                        
                         container.innerHTML = '';
+                        pets_encontrados.innerHTML = '';
+                        
+                        const h2Pets = document.createElement('h2');
+                        h2Pets.classList.add('font_h2_search');
+                        h2Pets.textContent = `${animals.length} Pets encontrados!`;
 
+                        pets_encontrados.appendChild(h2Pets);
                         for (const animal of animals) {
                             try {
                                 const source_img = await fetchImage(animal.photos);
@@ -735,7 +743,8 @@
                 console.error('Erro ao buscar Pets', error);
             }
         }
-        document.getElementById('SearchButton').addEventListener('click', RefazerBusca);
+        document.getElementById('SearchButtonMobile').addEventListener('click', RefazerBusca);
+        document.getElementById('SearchButtonDesktop').addEventListener('click', RefazerBusca);
     </script>
     <script>
         async function fetchImage(url) {

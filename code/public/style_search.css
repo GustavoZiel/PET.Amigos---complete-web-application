@@ -219,13 +219,28 @@ footer {
   border-color: #3A0CA3;
 }
 
-.btn-filter-close:hover {
-  color: red;
-}
-
 .font-btn-filter {
   font-size: x-large;
   color: #3A0CA3;
+  font-family: 'Poppins';
+}
+
+.btn-search {
+  font-size: x-large;
+  color: #095f01;
+  border-color: #095f01;
+  font-family: 'Poppins';
+}
+
+.btn-search:hover {
+  color: white;
+  border-color: white;
+  background-color: #095f01;
+}
+
+.font-btn-search {
+  font-size: x-large;
+  color: #ffffff;
   font-family: 'Poppins';
 }
 
