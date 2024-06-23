@@ -172,8 +172,6 @@ function deleteByPk(request, response) {
 function update(request, response) {
   console.log(request.params)
   console.log(request.body)
-  
-  console.log(request.body.temperament)
   let temperament = request.body.temperament;
   if (!temperament) {
     temperament = [];

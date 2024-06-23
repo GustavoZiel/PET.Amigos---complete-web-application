@@ -102,7 +102,7 @@ async function createOngCard(ong, ongimage) {
                         </a>
 
                         <!-- Facebook -->
-                        <a href="https://www.facebook.com/${ong.facebook}/about" class="btn btn-standard-click rounded-pill me-2">
+                        <a href="https://www.facebook.com/${ong.facebook}/" class="btn btn-standard-click rounded-pill me-2">
                             <i class="fa-brands fa-facebook-f"></i>
                             Facebook
                         </a>
@@ -336,19 +336,21 @@ async function createOngCard(ong, ongimage) {
                 <div class="font-contact d-none d-md-block">
                     <div class="font-type-info">CONTATO</div>
 
-                    <div class="d-flex justify-content-start pt-1">
+                    <div class="d-flex justify-content-start pt-1 align-items-center">
                         <!-- Instagram -->
-                        <a href="https://www.instagram.com/${ong.instagram}/" class="btn btn-standard-click rounded-pill me-2">
+                        <a id="instaDiv" href="https://www.instagram.com/${ong.instagram}/" class="btn btn-standard-click rounded-pill me-2">
                             <i class="fa-brands fa-instagram"></i>
                             Instagram
                         </a>
 
                         <!-- Facebook -->
-                        <a href="https://www.facebook.com/${ong.facebook}/about" class="btn btn-standard-click rounded-pill me-2">
+                        <a id="faceDiv" href="https://www.facebook.com/${ong.facebook}/about" class="btn btn-standard-click rounded-pill me-2">
                             <i class="fa-brands fa-facebook-f"></i>
                             Facebook
                         </a>
 
+                        <!-- Sem contato -->
+                        <div id="semContato" class="font-info">ONG sem redes sociais :(</div>
                     </div>
                     <button class="btn btn-contribua rounded-pill mt-3" data-bs-toggle="modal" data-bs-target="#ongContribuir">CONTRIBUA!</button>
                 </div>
@@ -363,7 +365,12 @@ async function createOngCard(ong, ongimage) {
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            Chave PIX: 14 98143 6371
+                            ${ong.contribute}
+
+                            <br>
+                            <br>
+
+                            Chave PIX: ${ong.pix}
                         </div>
                     </div>
                 </div>
@@ -404,6 +411,24 @@ async function createOngCard(ong, ongimage) {
 
     token = localStorage.getItem('token')
     const editarForm = ongCard.querySelector('#editOngForm');
+
+    var instagramDiv = ongCard.querySelector("#instaDiv");
+    var facebookDiv = ongCard.querySelector("#faceDiv");
+    var semContatoDiv = ongCard.querySelector("#semContato")
+    let temContato = true
+
+    if(!(ong.instagram || ong.facebook)) {
+        temContato = false
+    }
+    if (!ong.instagram) {
+        instagramDiv.remove()
+    }
+    if (!ong.facebook) {
+        facebookDiv.remove()
+    }
+    if(temContato) {
+        semContatoDiv.remove()
+    }
 
     editarForm.addEventListener('submit', async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
