@@ -27,7 +27,7 @@ function findById(request, response) {
 
 async function searchBy(req, res) {
   try {
-    const { birthstart, birthend, city, state, type, sex, par_temperaments, vacinated, adopted } = req.query;
+    const { birthstart, birthend, city, state, type, sex, par_temperaments, castrated, chipped, adopted } = req.query;
     console.log(typeof birthend);
     const searchParams = {
       where: {}
@@ -54,8 +54,10 @@ async function searchBy(req, res) {
         searchParams.where.temperament[Op.and] = parTemperamentsArray.map(temp => ({ [Op.contains]: [temp] }));
       }
     }
-    if (vacinated)
-      searchParams.where.vacinated = vacinated;
+    if (castrated)
+      searchParams.where.castrated = castrated;
+    if (chipped)
+      searchParams.where.chipped = chipped;
     if (adopted)
       searchParams.where.adopted = adopted;
 

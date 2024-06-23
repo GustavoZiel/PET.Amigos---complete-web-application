@@ -19,8 +19,9 @@ function addFilterItem(button) {
     filterButton.type = 'button';
     filterButton.className = 'p-0 pe-2 btn me-3 btn-filter rounded-pill';
     filterButton.innerHTML = `
-            <span class="font-btn-filter">
-                <i class="bi bi-x font-btn-filter btn-filter-close" onclick="removeActiveFilter(this)"></i> ${filterText}
+            <span class="d-flex align-items-center">
+                <i class="bi font-btn-filter btn-filter-close"></i>
+                <span class="font-btn-filter ms-2">${filterText}</span>
             </span>`;
     activeFiltersContainer.appendChild(filterButton);
 }
@@ -34,16 +35,4 @@ function removeFilterItem(button) {
         if (activeButton.textContent.trim().includes(filterText))
             activeFiltersContainer.removeChild(activeButton);
     });
-}
-
-function removeActiveFilter(iconElement) {
-    const button = iconElement.closest('.btn-filter');
-    const filterText = button.textContent.trim();
-
-    const filterButtons = document.querySelectorAll('.btn-outline-purple');
-    filterButtons.forEach(filterButton => {
-        if (filterButton.textContent.trim() === filterText)
-            filterButton.classList.remove('active');
-    });
-    button.parentElement.removeChild(button);
 }
