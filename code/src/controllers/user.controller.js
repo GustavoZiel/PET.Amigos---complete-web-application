@@ -27,23 +27,18 @@ async function create(request, response) {
   const res = await Usuario
   .create(
     {
-      accountName: request.body.accountName,
-      password: request.body.password,
-      userName: request.body.userName,
-      birthDate: request.body.birthDate,
-      city: request.body.city,
-      state: request.body.state,
-      address: request.body.address,
-      preferences: request.body.preferences,
-      about: request.body.about,
-      photo: uploadedPhotos,
-      phoneNumber: request.body.phoneNumber,
-      website: request.body.website,
-      instagram: request.body.instagram,
-      facebook: request.body.facebook,
-      twitter: request.body.twitter,
-      whatsapp: request.body.whatsapp,
-      role: request.body.role
+      email: nome,
+        password: hashedPassword,
+        userName: request.body.userName,
+        birthDate: request.body.birthDate,
+        city: request.body.city,
+        state: request.body.state,
+        home: request.body.home,
+        preferences: request.body.preferences,
+        about: request.body.about,
+        photo: uploadedPhotos,
+        phoneNumber: request.body.phoneNumber,
+        role: request.body.role
     },
     { where: { id: request.params.id } },
   )
@@ -65,22 +60,17 @@ function deleteById(request, response) {
     Usuario
     .update(
       {
-        accountName: request.body.accountName,
-        password: request.body.password,
+        email: nome,
+        password: hashedPassword,
         userName: request.body.userName,
         birthDate: request.body.birthDate,
         city: request.body.city,
         state: request.body.state,
-        address: request.body.address,
+        home: request.body.home,
         preferences: request.body.preferences,
         about: request.body.about,
-        photo: request.body.photo,
+        photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
-        website: request.body.website,
-        instagram: request.body.instagram,
-        facebook: request.body.facebook,
-        twitter: request.body.twitter,
-        whatsapp: request.body.whatsapp,
         role: request.body.role
       },
       { where: { id: request.params.id } },

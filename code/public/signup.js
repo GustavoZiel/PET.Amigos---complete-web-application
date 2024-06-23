@@ -15,7 +15,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Função para alternar campos com base no tipo de conta
     function toggleFields() {
         const accountType = document.getElementById('accountType').value;
-        const ongFields = document.querySelector('.ong-fields');
+        const ongFields = document.querySelectorAll('.ong-fields');
+        const ongInput = document.querySelectorAll('.ong-input');
+        const userInput = document.querySelectorAll('.user-input');
         const userFields = document.querySelector('.user-fields');
 
         console.log(accountType)
@@ -24,13 +26,28 @@ document.addEventListener('DOMContentLoaded', function() {
         
 
         if (accountType === 'ong') {
-            ongFields.style.display = 'block';
+            ongFields.forEach(field => {
+                field.style.display = 'block';
+            });
+            userInput.forEach(field => {
+                field.required = false; 
+            });
+            ongInput.forEach(field => {
+                field.required = true;
+            });
             userFields.style.display = 'none';
         } else if (accountType === 'user') {
-            ongFields.style.display = 'none';
+            ongFields.forEach(field => {
+                field.style.display = 'none';
+            });
+            userInput.forEach(field => {
+                field.required = true; 
+            });
+            ongInput.forEach(field => {
+                field.required = false;
+            });
             userFields.style.display = 'block';
         } else {
-            ongFields.style.display = 'none';
             userFields.style.display = 'none';
         }
     }

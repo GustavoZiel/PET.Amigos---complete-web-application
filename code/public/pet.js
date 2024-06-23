@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             const pet = await response.json();
             const petImageUrl = await fetchImage(pet.photos);
-            const accountName = 1;
+            const email = 1;
 
             let isLiked = true;
-            const likes = await fetch(`/likes/${accountName}/${petId}`);
+            const likes = await fetch(`/likes/${email}/${petId}`);
             const likedPet = await likes.json();
 
             if (likedPet === null) {
@@ -434,7 +434,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
             fetch(`/likes`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ accountName: 1, petId: petId })
+                body: JSON.stringify({ email: 1, petId: petId })
             })
                 .then(response => {
                     if (response.ok) {

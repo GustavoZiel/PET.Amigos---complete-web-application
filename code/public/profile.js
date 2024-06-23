@@ -3,13 +3,7 @@ const getParameterByName = (name) => {
     return urlParams.get(name);
 };
 
-
 document.addEventListener('DOMContentLoaded', async () => {
-    const getParameterByName = (name) => {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(name);
-    };
-
     const userId = getParameterByName('id'); // Extrai o ID da URL
     if (userId) {
         try {
@@ -70,7 +64,7 @@ function createProfileCard(user, userimage) {
                 <div class="col-12 order-1">
                     <!-- Nome do Usuário -->
                     <div class="font-name d-flex d-md-none justify-content-center">${user.userName}</div>
-                    <div class="font-name d-flex justify-content-center">
+                    <div class="font-name d-flex d-md-none justify-content-center">
                             <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
                             <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeUser"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
@@ -107,29 +101,6 @@ function createProfileCard(user, userimage) {
                     <div class="container-fluid d-block d-md-none py-2">
                         <div class="font-type-info">SOBRE</div>
                         <div class="font-info">${user.about}</div>
-                    </div>
-
-                    <!-- Contato -->
-                    <div class="container-fluid font-contact d-block d-md-none">
-                        <div class="font-type-info">CONTATO</div>
-
-                        <div class="d-flex justify-content-start pt-1">
-                            <!-- Instagram -->
-                            <div class="link-border rounded-pill">
-                                <a href="https://www.instagram.com/${user.instagram}/" class="font-contact">
-                                    <i class="fa-brands fa-instagram"></i>
-                                    Instagram
-                                </a>
-                            </div>
-
-                            <!-- Facebook -->
-                            <div class="link-border rounded-pill ms-2">
-                                <a href="https://www.facebook.com/${user.facebook}/about" class="font-contact">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                    Facebook
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -203,29 +174,6 @@ function createProfileCard(user, userimage) {
                     <div class="d-none d-md-block py-3">
                         <div class="font-type-info">SOBRE</div>
                         <div class="font-info">${user.about}</div>
-                    </div>
-
-                    <!-- Contato -->
-                    <div class="font-contact d-none d-md-block">
-                        <div class="font-type-info">CONTATO</div>
-
-                        <div class="d-flex justify-content-start pt-1">
-                            <!-- Instagram -->
-                            <div class="link-border rounded-pill">
-                                <a href="https://www.instagram.com/${user.instagram}/" class="font-contact">
-                                    <i class="fa-brands fa-instagram"></i>
-                                    Instagram
-                                </a>
-                            </div>
-
-                            <!-- Facebook -->
-                            <div class="link-border rounded-pill ms-2">
-                                <a href="https://www.facebook.com/${user.facebook}/about" class="font-contact">
-                                    <i class="fa-brands fa-facebook-f"></i>
-                                    Facebook
-                                </a>
-                            </div>
-                        </div>
                     </div>
                 </div>
 
@@ -338,8 +286,8 @@ async function createLikedPetsCard() {
     const petsContainer = likedPetsCard.querySelector('#GridPets');
 
     try {
-        const accountName = 1;
-        const response = await fetch(`/all-pets/${accountName}`);
+        const UserId = 1;
+        const response = await fetch(`/all-pets/${UserId}`);
         console.log(response)
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -395,7 +343,7 @@ async function createLikedPetsCard() {
                     fetch(`/likes`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ accountName: 1, petId: petId })
+                        body: JSON.stringify({ email: 1, petId: petId })
                     })
                     .then(response => {
                         if (response.ok) {

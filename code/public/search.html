@@ -402,8 +402,8 @@
                 for (const animal of animals){
                     const source_img = await fetchImage(animal.photos);
                     let isLiked = true;  
-                    const accountName = 1;
-                    const likes = await fetch(`/likes/${accountName}/${animal.id}`);
+                    const email = 1;
+                    const likes = await fetch(`/likes/${email}/${animal.id}`);
                     const likedPet = await likes.json();
                     if(likedPet === null){
                         isLiked = false;
@@ -452,7 +452,7 @@
                             fetch(`/likes`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ accountName: 1, petId: petId })
+                                body: JSON.stringify({ email: 1, petId: petId })
                             })
                             .then(response => {
                                 if (response.ok) {
@@ -525,8 +525,8 @@
                 for (const animal of animals){
                     const source_img = await fetchImage(animal.photos);
                     let isLiked = true;  
-                    const accountName = 1;
-                    const likes = await fetch(`/likes/${accountName}/${animal.id}`);
+                    const email = 1;
+                    const likes = await fetch(`/likes/${email}/${animal.id}`);
                     const likedPet = await likes.json();
                     if(likedPet === null){
                         isLiked = false;
@@ -575,7 +575,7 @@
                             fetch(`/likes`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
-                                body: JSON.stringify({ accountName: 1, petId: petId })
+                                body: JSON.stringify({ email: 1, petId: petId })
                             })
                             .then(response => {
                                 if (response.ok) {

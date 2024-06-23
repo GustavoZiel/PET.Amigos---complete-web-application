@@ -50,15 +50,15 @@
       <form id="signupForm" enctype="multipart/form-data" class = "form form-font-title">
         <div class="form-group">
             <label for="accountType">Escolha o tipo de conta</label>
-            <select id="accountType" name="accountType" class="form-control" onchange="toggleFields()">
+            <select id="accountType" name="accountType" class="form-control">
                 <option value="user">Usuário</option>
                 <option value="ong">ONG</option>
             </select>
         </div>
 
         <div class="form-group pt-3">
-            <label for="accountName">E-mail</label>
-            <input type="text" id="accountName" name="accountName" class="form-control" required>
+            <label for="email">E-mail</label>
+            <input type="text" id="email" name="email" class="form-control" required>
         </div>
 
         <div class="form-group pt-3">
@@ -74,29 +74,74 @@
         <div class="user-fields">
           <div class="form-group pt-3">
               <label for="userName">Nome completo</label>
-              <input type="text" id="userName" name="userName" class="form-control">
+              <input type="text" id="userName" name="userName" class="form-control user-input" required>
           </div>
 
           <div class="form-group pt-3">
               <label for="birthDate">Data de nascimento</label>
-              <input type="date" id="birthDate" name="birthDate" class="form-control">
+              <input type="date" id="birthDate" name="birthDate" class="form-control user-input" required>
           </div>
-
-          <div class="form-group pt-3">
-              <label for="preferences">Preferências</label>
-              <input type="text" id="preferences" name="preferences" class="form-control">
+          <div class="row mb-3 align-items-end">
+            <div class="col-3">
+                <span>Pets preferidos: </span>
+            </div>
+            <div class="col-auto">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="preferences" value="Cachorros">
+                    <label class="form-check-label" for="inlineCheckbox1">Cachorros</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="preferences" value="Gatos">
+                    <label class="form-check-label" for="inlineCheckbox2">Gatos</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="preferences" value="Roedores">
+                    <label class="form-check-label" for="inlineCheckbox3">Roedores</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="preferences" value="Pássaros">
+                    <label class="form-check-label" for="inlineCheckbox4">Pássaros</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="preferences" value="Outros">
+                    <label class="form-check-label" for="inlineCheckbox5">Outros</label>
+                </div>
+            </div>
+          </div>
+          <div class="row mb-3 align-items-end">
+            <div class="col-3">
+                <span>Tipo moradia: </span>
+            </div>
+            <div class="col-auto">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="moradiaCheckbox1" name="home" value="Casa">
+                    <label class="form-check-label" for="moradiaCheckbox1">Casa</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="moradiaCheckbox2" name="home" value="Apartamento espaçoso">
+                    <label class="form-check-label" for="moradiaCheckbox2">Apartamento espaçoso</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="moradiaCheckbox3" name="home" value="Kitnet">
+                    <label class="form-check-label" for="moradiaCheckbox3">Kitnet</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="moradiaCheckbox4" name="home" value="Sítio">
+                    <label class="form-check-label" for="moradiaCheckbox4">Sítio</label>
+                </div>
+            </div>
           </div>
         </div>
 
         <div class="ong-fields">
           <div class="form-group pt-3">
               <label for="ongName">Nome da ONG</label>
-              <input type="text" id="ongName" name="ongName" class="form-control">
+              <input type="text" id="ongName" name="ongName" class="form-control ong-input" required>
           </div>
 
           <div class="form-group pt-3">
               <label for="creationYear">Ano de fundação</label>
-              <input type="date" id="creationYear" name="creationYear" class="form-control">
+              <input type="date" id="creationYear" name="creationYear" class="form-control ong-input" required>
           </div>
 
           <div class="form-group pt-3">
@@ -104,67 +149,96 @@
               <input type="text" id="CNPJ" name="CNPJ" class="form-control">
           </div>
 
+          <div class="row mb-3 align-items-end">
+            <div class="col-3">
+                <span>Animais sob proteção: </span>
+            </div>
+            <div class="col-auto">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="petsCheckbox1" name="pets" value="Cachorros">
+                    <label class="form-check-label" for="petsCheckbox1">Cachorros</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="petsCheckbox2" name="pets" value="Gatos">
+                    <label class="form-check-label" for="petsCheckbox2">Gatos</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="petsCheckbox3" name="pets" value="Roedores">
+                    <label class="form-check-label" for="petsCheckbox3">Roedores</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="petsCheckbox4" name="pets" value="Pássaros">
+                    <label class="form-check-label" for="petsCheckbox4">Pássaros</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="checkbox" id="petsCheckbox5" name="pets" value="Outros">
+                    <label class="form-check-label" for="petsCheckbox5">Outros</label>
+                </div>
+            </div>
+          </div>
+
           <div class="form-group pt-3">
-              <label for="pets">Pets</label>
-              <input type="text" id="pets" name="pets" class="form-control">
+            <label for="address">Endereço</label>
+            <input type="text" id="address" name="address" class="form-control ong-input" required>
           </div>
         </div>
 
         <div class="common-fields">
-            <div class="form-group pt-3">
-                <label for="city">Cidade</label>
-                <input type="text" id="city" name="city" class="form-control" required>
-            </div>
+          <div class="form-group pt-3">
+            <label for="city">Cidade</label>
+            <input type="text" id="city" name="city" class="form-control" required>
+          </div>
 
-            <div class="form-group pt-3">
-                <label for="state">Estado</label>
-                <input type="text" id="state" name="state" class="form-control" required>
-            </div>
+          <div class="form-group pt-3">
+            <label for="state">Estado</label>
+            <input type="text" id="state" name="state" class="form-control" required>
+          </div>
+          
+          
+          <div class="form-group pt-3">
+            <label for="about">Descrição</label>
+            <input type="text" id="about" name="about" class="form-control" required>
+          </div>
+          
+          
+          <div class="form-group pt-3">
+            <label for="phoneNumber">Número de telefone</label>
+            <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
+          </div>
+        </div>
+        <div class="ong-fields">
+          <div class="form-group pt-3">
+            <label for="website">Site</label>
+            <input type="text" id="website" name="website" class="form-control">
+          </div>
+          
+          <div class="form-group pt-3">
+            <label for="instagram">Instagram</label>
+            <input type="text" id="instagram" name="instagram" class="form-control">
+          </div>
+          
+          <div class="form-group pt-3">
+            <label for="facebook">Facebook</label>
+            <input type="text" id="facebook" name="facebook" class="form-control">
+          </div>
+          
+          <div class="form-group pt-3">
+            <label for="whatsapp">WhatsApp</label>
+            <input type="text" id="whatsapp" name="whatsapp" class="form-control">
+          </div>
+          <div class="form-group pt-3">
+            <label for="pix">Pix</label>
+            <input type="text" id="pix" name="pix" class="form-control">
+          </div>
 
-            <div class="form-group pt-3">
-              <label for="address">Endereço</label>
-              <input type="text" id="address" name="address" class="form-control" required>
-            </div>
-            
-            <div class="form-group pt-3">
-              <label for="phoneNumber">Número de telefone</label>
-              <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
-            </div>
-            
-            <div class="form-group pt-3">
-              <label for="website">Site</label>
-              <input type="text" id="website" name="website" class="form-control" required>
-            </div>
-            
-            <div class="form-group pt-3">
-              <label for="instagram">Instagram</label>
-              <input type="text" id="instagram" name="instagram" class="form-control" required>
-            </div>
-
-            <div class="form-group pt-3">
-              <label for="facebook">Facebook</label>
-              <input type="text" id="facebook" name="facebook" class="form-control" required>
-            </div>
-
-            <div class="form-group pt-3">
-              <label for="twitter">Twitter</label>
-              <input type="text" id="twitter" name="twitter" class="form-control" required>
-            </div>
-            
-            <div class="form-group pt-3">
-              <label for="whatsapp">WhatsApp</label>
-              <input type="text" id="whatsapp" name="whatsapp" class="form-control" required>
-            </div>
-
-            <div class="form-group pt-3">
-              <label for="about">Descrição</label>
-              <input type="text" id="about" name="about" class="form-control" required>
-            </div>
-
-            <div class="form-group pt-3">
-              <label for="photo" class="form-label">Fotos</label>
-              <input class="form-control" type="file" id="photo" name="photo" multiple>
-            </div>
+          <div class="form-group pt-3">
+            <label for="contribute">Mensagem para incentivar doações</label>
+            <input type="text" id="contribute" name="contribute" class="form-control">
+          </div>
+        </div>
+        <div class="form-group pt-3">
+          <label for="photo" class="form-label">Fotos</label>
+          <input class="form-control" type="file" id="photo" name="photo" required>
         </div>
 
         <div class="form-group pt-3" align="center">

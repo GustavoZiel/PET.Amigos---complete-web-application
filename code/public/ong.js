@@ -4,7 +4,6 @@ const getParameterByName = (name) => {
 };
 
 document.addEventListener('DOMContentLoaded', async () => {
-
     const ONGId = getParameterByName('id'); // Extrai o ID da URL
     if (ONGId) {
         try {
@@ -52,11 +51,15 @@ async function createOngCard(ong, ongimage) {
     <!-- Informações importantes da ONG -->
     <section>
         <!-- Foto e informações da ONG -->
-        <div class="container-fluid row bg-light">
+        <div class="container-fluid row bg-light ">
             <!-- Informações (Mobile) -->
             <div class="col-12">
                 <!-- Nome da ONG -->
-                    <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
+                <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
+                <div class="font-name d-flex d-md-none justify-content-center">
+                    <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
 
                 <!-- Dados -->
                 <div class="container-fluid d-sm-flex justify-content-start pt-4">
@@ -107,22 +110,164 @@ async function createOngCard(ong, ongimage) {
             </div>            
 
             <!-- Foto -->
-            <div class="col-12 col-md-5 d-flex justify-content-center py-4 pt-md-0">
+            <div class="col-12 col-md-6 d-flex justify-content-center py-4 pt-md-0">
                 <img src="${ongimage}" alt="${ong.ongName}" class="h-100 rounded-4 img-border img-fluid">
             </div>
 
             <!-- Informações (Desktop) -->
-            <div class="col-7 mb-md-5">
+            <div class="col-6 mb-md-5">
                 <!-- Nome da ONG -->
                 <div class="font-ong-name d-none d-md-flex align-items-center">
                     ${ong.ongName}
                     <div class="ps-5">
-                        <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
                         <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
 
-                <!-- Modal -->
+                <!-- Modal - Editar ONG -->
+                <div class="modal fade" id="editOngModal" tabindex="-1" aria-labelledby="editOngModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="editOngModalLabel">Editar ONG</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <form enctype="multipart/form-data">
+
+
+                                    <div class="form-group">
+                                        <label for="email">E-mail</label>
+                                        <input type="text" id="email" name="email" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="password">Senha</label>
+                                        <input type="password" id="password" name="password" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="senha_conf">Confirme sua senha</label>
+                                        <input type="password" id="senha_conf" name="senha_conf" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="ongName">Nome da ONG</label>
+                                        <input type="text" id="ongName" name="ongName" class="form-control ong-input" required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="creationYear">Ano de fundação</label>
+                                        <input type="date" id="creationYear" name="creationYear" class="form-control ong-input" required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="CNPJ">CNPJ</label>
+                                        <input type="text" id="CNPJ" name="CNPJ" class="form-control">
+                                    </div>
+
+                                    <div class="row pt-3 align-items-end">
+                                        <span>Animais sob proteção: </span>
+
+                                        <div class="col-auto pt-2">
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox1" name="pets" value="Cachorros">
+                                                <label class="form-check-label" for="petsCheckbox1">Cachorros</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox2" name="pets" value="Gatos">
+                                                <label class="form-check-label" for="petsCheckbox2">Gatos</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox3" name="pets" value="Roedores">
+                                                <label class="form-check-label" for="petsCheckbox3">Roedores</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox4" name="pets" value="Pássaros">
+                                                <label class="form-check-label" for="petsCheckbox4">Pássaros</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox5" name="pets" value="Outros">
+                                                <label class="form-check-label" for="petsCheckbox5">Outros</label>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="address">Endereço</label>
+                                        <input type="text" id="address" name="address" class="form-control ong-input" required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="city">Cidade</label>
+                                        <input type="text" id="city" name="city" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="state">Estado</label>
+                                        <input type="text" id="state" name="state" class="form-control" required>
+                                    </div>
+                                
+                                    <div class="form-group pt-3">
+                                        <label for="about">Descrição</label>
+                                        <input type="text" id="about" name="about" class="form-control" required>
+                                    </div>
+                                
+                                    <div class="form-group pt-3">
+                                        <label for="phoneNumber">Número de telefone</label>
+                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="website">Site</label>
+                                        <input type="text" id="website" name="website" class="form-control">
+                                    </div>
+                                
+                                    <div class="form-group pt-3">
+                                        <label for="instagram">Instagram</label>
+                                        <input type="text" id="instagram" name="instagram" class="form-control">
+                                    </div>
+                                
+                                    <div class="form-group pt-3">
+                                        <label for="facebook">Facebook</label>
+                                        <input type="text" id="facebook" name="facebook" class="form-control">
+                                    </div>
+                                
+                                    <div class="form-group pt-3">
+                                        <label for="whatsapp">WhatsApp</label>
+                                        <input type="text" id="whatsapp" name="whatsapp" class="form-control">
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="pix">Pix</label>
+                                        <input type="text" id="pix" name="pix" class="form-control">
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="contribute">Mensagem para incentivar doações</label>
+                                        <input type="text" id="contribute" name="contribute" class="form-control">
+                                    </div>
+
+                                    <div class="form-group pt-3">
+                                        <label for="photo" class="form-label">Fotos</label>
+                                        <input class="form-control" type="file" id="photo" name="photo" required>
+                                    </div>
+
+                                    <div class="row pt-3">
+                                        <div class="col">
+                                            <button class="btn btn-standard-click" type="submit">Adicionar</button>
+                                        </div>
+                                    </div>
+
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal - Remover ONG (Pop-up inicial) -->
                 <div class="modal fade" id="removeOng" tabindex="-1" aria-labelledby="removeOngLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -192,7 +337,7 @@ async function createOngCard(ong, ongimage) {
                 </div>
             </div>
 
-            <!-- Modal -->
+            <!-- Modal - Contribua -->
             <div class="modal fade" id="ongContribuir" tabindex="-1" aria-labelledby="ongContribuirLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -207,7 +352,7 @@ async function createOngCard(ong, ongimage) {
                 </div>
             </div>
 
-            <!-- Modal -->
+            <!-- Modal - Remover ONG (Pop-up sucesso ao apagar) -->
             <div class="modal fade" id="popUpCorreto" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -222,7 +367,7 @@ async function createOngCard(ong, ongimage) {
                 </div>
             </div>
 
-            <!-- Modal -->
+            <!-- Modal - Remover ONG (Pop-up erro ao apagar) -->
             <div class="modal fade" id="popUpErro" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -244,7 +389,7 @@ async function createOngCard(ong, ongimage) {
     
     const ongId = getParameterByName('id');
     deleteButton.addEventListener('click', async () => {
-        let isSucesso = -1;
+        let isSucesso = 1;
 
         await fetch(`/ongs/${ongId}`, { method: 'DELETE' })
         .then(response => {
@@ -256,12 +401,6 @@ async function createOngCard(ong, ongimage) {
                 isSucesso = 0
             }
         })
-
-        if(true) {
-            isSucesso = 1
-        }
-
-        console.log(isSucesso)
 
         if (isSucesso === 1) {
             var popUp = new bootstrap.Modal(document.querySelector('#popUpCorreto'))
@@ -354,6 +493,17 @@ function addPetsButton(){
                                 </div>
                                 <div class="col">
                                     <div class="mb-3">
+                                        <label for="breed" class="form-label">Raça</label>
+                                        <select class="form-select" id="breed" name="breed">
+                                            <option value="Cachorro">Husky</option>
+                                            <option value="Gato">Pug</option>
+                                            <option value="Roedor">Pit Bull</option>
+                                            <option value="Passaro">Golden</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="mb-3">
                                         <label for="sex" class="form-label">Sexo</label>
                                         <select class="form-select" id="sex" name="sex" required>
                                             <option value="Macho">Macho</option>
@@ -419,16 +569,31 @@ function addPetsButton(){
 
                             <div class="row mb-3">
                                 <div class="col-2 d-inline">
-                                    <span>Vacinado: </span>
+                                    <span>Castrado: </span>
                                 </div>
                                 <div class="col">
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="vacinatedYes" name="vacinated" value="1" required>
-                                        <label class="form-check-label" for="vacinatedYes">Sim</label>
+                                        <input class="form-check-input" type="radio" id="castratedYes" name="castrated" value="1" required>
+                                        <label class="form-check-label" for="castratedYes">Sim</label>
                                     </div>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" id="vacinatedNo" name="vacinated" value="0">
-                                        <label class="form-check-label" for="vacinatedNo">Não</label>
+                                        <input class="form-check-input" type="radio" id="castratedNo" name="castrated" value="0">
+                                        <label class="form-check-label" for="castratedNo">Não</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col-2 d-inline">
+                                    <span>Chippado: </span>
+                                </div>
+                                <div class="col">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="chippedYes" name="chipped" value="1" required>
+                                        <label class="form-check-label" for="chippedYes">Sim</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" id="chippedNo" name="chipped" value="0">
+                                        <label class="form-check-label" for="chippedNo">Não</label>
                                     </div>
                                 </div>
                             </div>
@@ -510,8 +675,8 @@ async function createPetsOwnedCard() {
     const petsContainer = petsOwnedCard.querySelector('#GridPets');
 
     try {
-        const accountName = 2;
-        const response = await fetch(`/ONG-pets/${accountName}`);
+        const ONGId = 1;
+        const response = await fetch(`/ONG-pets/${ONGId}`);
         console.log(response)
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -567,7 +732,7 @@ async function createPetsOwnedCard() {
                     fetch(`/likes`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ accountName: 1, petId: petId })
+                        body: JSON.stringify({ email: 1, petId: petId })
                     })
                     .then(response => {
                         if (response.ok) {
