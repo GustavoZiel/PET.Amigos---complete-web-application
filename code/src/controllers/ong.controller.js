@@ -1,5 +1,6 @@
 import model from "../model/ong.model.js";
 import upload from '../upload/upload_img.js';
+import bcrypy from 'bcryptjs';
 
 function findAll(request, response) {
   model
@@ -27,7 +28,7 @@ async function create(request, response) {
     const res = await model
     .create(
       {
-        email: nome,
+        email: request.body.email,
         password: hashedPassword,
         ongName: request.body.ongName,
         creationYear: request.body.creationYear,
@@ -64,20 +65,20 @@ function deleteById(request, response) {
   }
   
   function update(request, response) {
+    const pets = Array.isArray(request.body.pets) ? request.body.pets : [request.body.pets];
+
     model
     .update(
       {
-        email: nome,
-        password: hashedPassword,
+        email: request.body.email,
         ongName: request.body.ongName,
         creationYear: request.body.creationYear,
         city: request.body.city,
         state: request.body.state,
         address: request.body.address,
         CNPJ: request.body.CNPJ,
-        pets: request.body.pets,
+        pets: pets,
         about: request.body.about,
-        photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
         website: request.body.website,
         instagram: request.body.instagram,
@@ -91,9 +92,12 @@ function deleteById(request, response) {
     )
     .then( () => {
       response.status(200).send("ONG updated successfully !");
+      console.log("AAAAAAAAAAAAAAAAAA")
     })
     .catch((e) => {
       response.json(e).status(500);
+      console.log("BBBBBBBBBBBBBBBBBBB")
+      console.log(e)
     });
 }
 

@@ -29,18 +29,18 @@ router.post("/signin_ongs", authController.loginONG);
 
 
 // CRUD - Pets
-router.put("/pets/:id", upload.uploadFile.single('photos'), petController.update); // Update
 router.post("/pets", upload.uploadFile.single('photos'), petController.create); // Create
 router.get("/pets", petController.findAll); // Retrieve
 router.get("/pets/search", petController.searchBy);
 router.get("/pets/:id", petController.findById); // Retrieve
 router.delete("/pets/:id", petController.deleteByPk); // Delete
+router.put("/pets/:id", petController.update); // Update
 
 // CRUD - Usuários
 router.post("/users", upload.uploadFile.single('photo'), usuarioController.create); // Create
 router.get("/users", usuarioController.findAll); // Retrieve
 router.get("/users/:id", usuarioController.findById); // Retrieve
-router.delete("/users/:id", usuarioController.deleteById); // Delete
+// router.delete("/users/:id", usuarioController.deleteById); // Delete
 router.put("/users/:id", usuarioController.update); // Update
 
 // CRUD - Ongs

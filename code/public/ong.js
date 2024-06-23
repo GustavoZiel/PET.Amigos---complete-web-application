@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('ID da ONG não encontrado na URL.');
     }
 });
+
 async function fetchImage(url) {
     try {
         if (!url.startsWith('http://') && !url.startsWith('https://')) {
@@ -44,9 +45,10 @@ async function fetchImage(url) {
 }
 
 async function createOngCard(ong, ongimage) {
-    const data = new Date(); (ong.creationYear);
+    const data = new Date(ong.creationYear);
     const ano = data.getFullYear();
     const ongCard = document.createElement('div');
+
     ongCard.innerHTML = `
     <!-- Informações importantes da ONG -->
     <section>
@@ -110,12 +112,12 @@ async function createOngCard(ong, ongimage) {
             </div>            
 
             <!-- Foto -->
-            <div class="col-12 col-md-6 d-flex justify-content-center py-4 pt-md-0">
+            <div class="col-12 col-md-7 d-flex justify-content-center py-4 pt-md-0">
                 <img src="${ongimage}" alt="${ong.ongName}" class="h-100 rounded-4 img-border img-fluid">
             </div>
 
             <!-- Informações (Desktop) -->
-            <div class="col-6 mb-md-5">
+            <div class="col-5 mb-md-5">
                 <!-- Nome da ONG -->
                 <div class="font-ong-name d-none d-md-flex align-items-center">
                     ${ong.ongName}
@@ -134,37 +136,27 @@ async function createOngCard(ong, ongimage) {
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <form enctype="multipart/form-data">
+                                <form enctype="multipart/form-data" id="editOngForm">
 
 
                                     <div class="form-group">
                                         <label for="email">E-mail</label>
-                                        <input type="text" id="email" name="email" class="form-control" required>
-                                    </div>
-
-                                    <div class="form-group pt-3">
-                                        <label for="password">Senha</label>
-                                        <input type="password" id="password" name="password" class="form-control" required>
-                                    </div>
-
-                                    <div class="form-group pt-3">
-                                        <label for="senha_conf">Confirme sua senha</label>
-                                        <input type="password" id="senha_conf" name="senha_conf" class="form-control" required>
+                                        <input type="text" id="email" name="email" class="form-control" value="${ong.email}" required>
                                     </div>
 
                                     <div class="form-group pt-3">
                                         <label for="ongName">Nome da ONG</label>
-                                        <input type="text" id="ongName" name="ongName" class="form-control ong-input" required>
+                                        <input type="text" id="ongName" name="ongName" class="form-control ong-input" value="${ong.ongName}" required>
                                     </div>
 
                                     <div class="form-group pt-3">
-                                        <label for="creationYear">Ano de fundação</label>
-                                        <input type="date" id="creationYear" name="creationYear" class="form-control ong-input" required>
+                                        <label for="creationYear" class="form-label">Ano de fundação</label>
+                                        <input type="date" id="creationYear" class="form-control" name="creationYear" value="${ong.creationYear.substring(0,10)}" required>
                                     </div>
 
                                     <div class="form-group pt-3">
                                         <label for="CNPJ">CNPJ</label>
-                                        <input type="text" id="CNPJ" name="CNPJ" class="form-control">
+                                        <input type="text" id="CNPJ" name="CNPJ" class="form-control" value="${ong.CNPJ}">
                                     </div>
 
                                     <div class="row pt-3 align-items-end">
@@ -172,23 +164,23 @@ async function createOngCard(ong, ongimage) {
 
                                         <div class="col-auto pt-2">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox1" name="pets" value="Cachorros">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox1" name="pets" value="Cachorros" ${ong.pets.includes('Cachorros') ? 'checked' : ''}>
                                                 <label class="form-check-label" for="petsCheckbox1">Cachorros</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox2" name="pets" value="Gatos">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox2" name="pets" value="Gatos" ${ong.pets.includes('Gatos') ? 'checked' : ''}>
                                                 <label class="form-check-label" for="petsCheckbox2">Gatos</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox3" name="pets" value="Roedores">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox3" name="pets" value="Roedores" ${ong.pets.includes('Roedores') ? 'checked' : ''}>
                                                 <label class="form-check-label" for="petsCheckbox3">Roedores</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox4" name="pets" value="Pássaros">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox4" name="pets" value="Pássaros" ${ong.pets.includes('Pássaros') ? 'checked' : ''}>
                                                 <label class="form-check-label" for="petsCheckbox4">Pássaros</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox5" name="pets" value="Outros">
+                                                <input class="form-check-input" type="checkbox" id="petsCheckbox5" name="pets" value="Outros" ${ong.pets.includes('Outros') ? 'checked' : ''}>
                                                 <label class="form-check-label" for="petsCheckbox5">Outros</label>
                                             </div>
                                         </div>
@@ -196,72 +188,97 @@ async function createOngCard(ong, ongimage) {
 
                                     <div class="form-group pt-3">
                                         <label for="address">Endereço</label>
-                                        <input type="text" id="address" name="address" class="form-control ong-input" required>
+                                        <input type="text" id="address" name="address" class="form-control ong-input" value="${ong.address}" required>
                                     </div>
 
                                     <div class="form-group pt-3">
                                         <label for="city">Cidade</label>
-                                        <input type="text" id="city" name="city" class="form-control" required>
+                                        <input type="text" id="city" name="city" class="form-control" value="${ong.city}" required>
                                     </div>
 
                                     <div class="form-group pt-3">
                                         <label for="state">Estado</label>
-                                        <input type="text" id="state" name="state" class="form-control" required>
+                                        <input type="text" id="state" name="state" class="form-control" value="${ong.state}" required>
                                     </div>
                                 
                                     <div class="form-group pt-3">
                                         <label for="about">Descrição</label>
-                                        <input type="text" id="about" name="about" class="form-control" required>
+                                        <input type="text" id="about" name="about" class="form-control" value="${ong.about}" required>
                                     </div>
                                 
                                     <div class="form-group pt-3">
                                         <label for="phoneNumber">Número de telefone</label>
-                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" required>
+                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" value="${ong.phoneNumber}" required>
                                     </div>
 
                                     <div class="form-group pt-3">
                                         <label for="website">Site</label>
-                                        <input type="text" id="website" name="website" class="form-control">
+                                        <input type="text" id="website" name="website" value="${ong.website}" class="form-control">
                                     </div>
                                 
                                     <div class="form-group pt-3">
                                         <label for="instagram">Instagram</label>
-                                        <input type="text" id="instagram" name="instagram" class="form-control">
+                                        <input type="text" id="instagram" name="instagram" class="form-control" value="${ong.instagram}">
                                     </div>
                                 
                                     <div class="form-group pt-3">
                                         <label for="facebook">Facebook</label>
-                                        <input type="text" id="facebook" name="facebook" class="form-control">
+                                        <input type="text" id="facebook" name="facebook" class="form-control" value="${ong.facebook}">
                                     </div>
                                 
                                     <div class="form-group pt-3">
                                         <label for="whatsapp">WhatsApp</label>
-                                        <input type="text" id="whatsapp" name="whatsapp" class="form-control">
+                                        <input type="text" id="whatsapp" name="whatsapp" class="form-control" value="${ong.whatsapp}">
                                     </div>
 
                                     <div class="form-group pt-3">
                                         <label for="pix">Pix</label>
-                                        <input type="text" id="pix" name="pix" class="form-control">
+                                        <input type="text" id="pix" name="pix" class="form-control" value="${ong.pix}">
                                     </div>
 
                                     <div class="form-group pt-3">
                                         <label for="contribute">Mensagem para incentivar doações</label>
-                                        <input type="text" id="contribute" name="contribute" class="form-control">
-                                    </div>
-
-                                    <div class="form-group pt-3">
-                                        <label for="photo" class="form-label">Fotos</label>
-                                        <input class="form-control" type="file" id="photo" name="photo" required>
+                                        <input type="text" id="contribute" name="contribute" class="form-control" value="${ong.contribute}">
                                     </div>
 
                                     <div class="row pt-3">
-                                        <div class="col">
-                                            <button class="btn btn-standard-click" type="submit">Adicionar</button>
+                                        <div class="d-flex justify-content-end">
+                                            <button class="btn btn-standard-click" type="submit" data-bs-dismiss="modal">Editar</button>
                                         </div>
                                     </div>
 
 
                                 </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal - Editar ONG (Pop-up sucesso ao editar) -->
+                <div class="modal fade" id="popUpCorretoEdit" tabindex="-1" aria-labelledby="popUpCorretoEditLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="popUpCorretoEditLabel">Sucesso</h5>
+                                <button id="redirectButtonEdit" type="button" class="btn-close" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Perfil da ONG editado com sucesso!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal - Editar ONG (Pop-up erro ao editar) -->
+                <div class="modal fade" id="popUpErroEdit" tabindex="-1" aria-labelledby="popUpErroEditLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="popUpErroEdit">Erro</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                Falha ao editar o perfil da ONG. Tente novamente mais tarde!
                             </div>
                         </div>
                     </div>
@@ -385,13 +402,67 @@ async function createOngCard(ong, ongimage) {
         </div>
     </section>`;
 
+    token = localStorage.getItem('token')
+    const editarForm = ongCard.querySelector('#editOngForm');
+
+    editarForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        const formData = new FormData(editarForm); // Correctly pass the form element, not the event
+        console.log(formData); // Debugging: Log the JSON object
+
+        // Convert FormData to JSON object
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        data['role'] = 'ONG'
+        fetch(`/ongs/${ong.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Perfil da ONG com ID " + ong.id + " atualizado"); // Adjusted to use the correct ID
+
+                var popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
+                popUp.toggle()
+                popUp.show()
+
+                const botaoRedirect = document.querySelector('#redirectButtonEdit')
+                console.log(botaoRedirect)
+
+                botaoRedirect.addEventListener('click', () => {
+                    window.location.href = "ong.html?id=" + ong.id;
+                })
+            } else {
+                console.error('Erro ao atualizar perfil da ONG.');
+
+                var popUp = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
+                popUp.toggle()
+                popUp.show()
+            }
+        })
+    });
+
     const deleteButton = ongCard.querySelector('#confirmDeletion')
     
     const ongId = getParameterByName('id');
     deleteButton.addEventListener('click', async () => {
         let isSucesso = 1;
 
-        await fetch(`/ongs/${ongId}`, { method: 'DELETE' })
+        await fetch(`/ongs/${ongId}`, { 
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+        })
         .then(response => {
             if (response.ok) {
                 console.log(`Perfil da ONG com ID ${ongId} removido`);
@@ -670,6 +741,7 @@ async function createPetsOwnedCard() {
                 </div>
     </div>
     `;
+
     const botao = petsOwnedCard.querySelector('#petModal');
     botao.innerHTML += addPetsButton();
     const petsContainer = petsOwnedCard.querySelector('#GridPets');
