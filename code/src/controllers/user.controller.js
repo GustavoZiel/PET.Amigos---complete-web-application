@@ -28,17 +28,17 @@ async function create(request, response) {
   .create(
     {
       email: nome,
-        password: hashedPassword,
-        userName: request.body.userName,
-        birthDate: request.body.birthDate,
-        city: request.body.city,
-        state: request.body.state,
-        home: request.body.home,
-        preferences: request.body.preferences,
-        about: request.body.about,
-        photo: uploadedPhotos,
-        phoneNumber: request.body.phoneNumber,
-        role: request.body.role
+      password: hashedPassword,
+      userName: request.body.userName,
+      birthDate: request.body.birthDate,
+      city: request.body.city,
+      state: request.body.state,
+      home: request.body.home,
+      preferences: request.body.preferences,
+      about: request.body.about,
+      photo: uploadedPhotos,
+      phoneNumber: request.body.phoneNumber,
+      role: request.body.role
     },
     { where: { id: request.params.id } },
   )
@@ -57,19 +57,19 @@ function deleteById(request, response) {
   }
   
   function update(request, response) {
+    const preferences = Array.isArray(request.body.preferences) ? request.body.preferences : [request.body.preferences];
+
     Usuario
     .update(
       {
-        email: nome,
-        password: hashedPassword,
+        email: request.body.email,
         userName: request.body.userName,
         birthDate: request.body.birthDate,
         city: request.body.city,
         state: request.body.state,
         home: request.body.home,
-        preferences: request.body.preferences,
+        preferences: preferences,
         about: request.body.about,
-        photo: uploadedPhotos,
         phoneNumber: request.body.phoneNumber,
         role: request.body.role
       },
@@ -80,6 +80,7 @@ function deleteById(request, response) {
     })
     .catch((e) => {
       response.json(e).status(500);
+      console.log(e)
     });
 }
 

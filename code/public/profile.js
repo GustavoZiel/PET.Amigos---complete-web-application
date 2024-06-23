@@ -64,7 +64,7 @@ function createProfileCard(user, userimage) {
                 <div class="col-12 order-1">
                     <!-- Nome do Usuário -->
                     <div class="font-name d-flex d-md-none justify-content-center">${user.userName}</div>
-                    <div class="font-name d-flex d-md-none justify-content-center">
+                    <div class="font-name d-flex d-md-none zjustify-content-center">
                             <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
                             <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeUser"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
@@ -105,22 +105,160 @@ function createProfileCard(user, userimage) {
                 </div>
 
                 <!-- Foto -->
-                <div class="col-12 col-md-5 d-flex justify-content-center py-4 pt-md-0 order-0">
+                <div class="col-12 col-md-7 d-flex justify-content-center py-4 pt-md-0 order-0">
                     <img src="${userimage}" alt="${user.userName}" id="foto" class="h-100 rounded-4 img-border">
                 </div>
 
                 <!-- Informações (Desktop) -->
-                <div class="col-7 mb-md-5">
+                <div class="col-5 mb-md-5">
                     <!-- Nome do usuário -->
                     <div class="font-ong-name d-none d-md-flex align-items-center">
                         ${user.userName}
                         <div class="ps-5">
-                            <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="fa-regular fa-pen-to-square"></i></button>
                             <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeUser"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
 
-                    <!-- Modal -->
+                    <!-- Modal - Editar Usuário -->
+                    <div class="modal fade" id="editUserModal" tabindex="-1" aria-labelledby="editUserModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editUserModalLabel">Editar Usuário</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form enctype="multipart/form-data" id="editUserForm">
+
+
+                                        <div class="form-group">
+                                            <label for="email">E-mail</label>
+                                            <input type="text" id="email" name="email" class="form-control" value="${user.email}" required>
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="userName">Nome completo</label>
+                                            <input type="text" id="userName" name="userName" class="form-control user-input" value="${user.userName}" required>
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="birthDate">Data de nascimento</label>
+                                            <input type="date" id="birthDate" name="birthDate" class="form-control user-input" value="${user.birthDate.substring(0,10)}" required>
+                                        </div>
+                                        <div class="row pt-3 align-items-end">
+                                            <span>Pets preferidos: </span>
+
+                                            <div class="col-auto pt-2">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="preferences" value="Cachorros" ${user.preferences.includes('Cachorros') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="inlineCheckbox1">Cachorros</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="preferences" value="Gatos" ${user.preferences.includes('Gatos') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="inlineCheckbox2">Gatos</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="preferences" value="Roedores" ${user.preferences.includes('Roedores') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="inlineCheckbox3">Roedores</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name="preferences" value="Pássaros" ${user.preferences.includes('Pássaros') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="inlineCheckbox4">Pássaros</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name="preferences" value="Outros" ${user.preferences.includes('Outros') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="inlineCheckbox5">Outros</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row pt-3 align-items-end">
+                                            <span>Tipo moradia: </span>
+
+                                            <div class="col-auto pt-2">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="moradiaCheckbox1" name="home" value="Casa" ${user.home.includes('Casa') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="moradiaCheckbox1">Casa</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="moradiaCheckbox2" name="home" value="Apartamento espaçoso" ${user.home.includes('Apartamento espaçoso') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="moradiaCheckbox2">Apartamento espaçoso</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="moradiaCheckbox3" name="home" value="Kitnet" ${user.home.includes('Kitnet') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="moradiaCheckbox3">Kitnet</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="moradiaCheckbox4" name="home" value="Sítio" ${user.home.includes('Sítio') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="moradiaCheckbox4">Sítio</label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="city">Cidade</label>
+                                            <input type="text" id="city" name="city" class="form-control" value="${user.city}" required>
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="state">Estado</label>
+                                            <input type="text" id="state" name="state" class="form-control" value="${user.state}" required>
+                                        </div>
+                                                                                
+                                        <div class="form-group pt-3">
+                                            <label for="about">Descrição</label>
+                                            <input type="text" id="about" name="about" class="form-control" value="${user.about}" required>
+                                        </div>
+                                        
+                                        <div class="form-group pt-3">
+                                            <label for="phoneNumber">Número de telefone</label>
+                                            <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" value="${user.phoneNumber}" required>
+                                        </div>
+
+                                        <div class="row pt-3">
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-standard-click" type="submit" data-bs-dismiss="modal">Editar</button>
+                                            </div>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal - Remover Usuário (Pop-up sucesso ao apagar) -->
+                    <div class="modal fade" id="popUpCorretoEdit" tabindex="-1" aria-labelledby="popUpCorretoEditLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="popUpCorretoEditLabel">Sucesso</h5>
+                                    <button id="redirectButtonEdit" type="button" class="btn-close" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Perfil de usuário atualizado com sucesso!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal - Editar Usuário (Pop-up erro ao editar) -->
+                    <div class="modal fade" id="popUpErroEdit" tabindex="-1" aria-labelledby="popUpErroEditLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="popUpErroEdit">Erro</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Falha ao editar o perfil de Usuário. Tente novamente mais tarde!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Modal - Remover Usuário (Pop-up inicial) -->
                     <div class="modal fade" id="removeUser" tabindex="-1" aria-labelledby="removeUserLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg">
                             <div class="modal-content">
@@ -177,7 +315,7 @@ function createProfileCard(user, userimage) {
                     </div>
                 </div>
 
-                <!-- Modal -->
+                <!-- Modal - Remover Usuário (Pop-up sucesso ao apagar) -->
                 <div class="modal fade" id="popUpCorreto" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -192,7 +330,7 @@ function createProfileCard(user, userimage) {
                     </div>
                 </div>
 
-                <!-- Modal -->
+                <!-- Modal - Remover Usuário (Pop-up erro ao apagar) -->
                 <div class="modal fade" id="popUpErro" tabindex="-1" aria-labelledby="popUpLabel" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -210,6 +348,56 @@ function createProfileCard(user, userimage) {
             </div>
         </section>
     `;
+
+    token = localStorage.getItem('token')
+    const editarForm = profileCard.querySelector('#editUserForm');
+
+    editarForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent the default form submission behavior
+
+        const formData = new FormData(editarForm); // Correctly pass the form element, not the event
+        console.log(formData); // Debugging: Log the JSON object
+
+        // Convert FormData to JSON object
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        data['role'] = 'USER'
+        fetch(`/users/${user.id}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                console.log("Perfil de Usuário com ID " + user.id + " atualizado"); // Adjusted to use the correct ID
+
+                var popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
+
+                console.log(popUp)
+                popUp.toggle()
+                popUp.show()
+
+                const botaoRedirect = document.querySelector('#redirectButtonEdit')
+                console.log(botaoRedirect)
+
+                botaoRedirect.addEventListener('click', () => {
+                    window.location.href = "profile.html?id=" + user.id;
+                })
+            } else {
+                console.error('Erro ao atualizar perfil de Usuário.');
+
+                var popUp = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
+                popUp.toggle()
+                popUp.show()
+            }
+        })
+    });
 
     const deleteButton = profileCard.querySelector('#confirmDeletion')
     
