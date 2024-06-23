@@ -497,7 +497,7 @@ async function createLikedPetsCard() {
                             <h5 class="card-title font_name_black">${animal.name}</h5>
                             <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
                             <span class="coracao">
-                                <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${animal.id}">
+                                <button type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${animal.id}">
                                     <img src="${coracaoImgSrc}" alt="" class="img-fluid">
                                 </button>
                             </span>
@@ -507,7 +507,7 @@ async function createLikedPetsCard() {
             `;
             petsContainer.innerHTML += card;
         };
-        const coracaoButtons = document.querySelectorAll('.heart-button');
+        const coracaoButtons = petsContainer.querySelectorAll('.heart-button');
         coracaoButtons.forEach(coracaoButton  => {
             coracaoButton.addEventListener('click', (event) => {
                 event.preventDefault();
