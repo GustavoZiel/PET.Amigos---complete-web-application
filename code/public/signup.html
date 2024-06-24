@@ -81,9 +81,9 @@
               <label for="birthDate">Data de nascimento</label>
               <input type="date" id="birthDate" name="birthDate" class="form-control user-input" required>
           </div>
-          <div class="row mb-3 align-items-end">
-            <div class="col-3">
-                <span>Pets preferidos: </span>
+          <div class="row mb-3 align-items-end pt-3">
+            <div class="col-12">
+                <span>Espécies de interesse: </span>
             </div>
             <div class="col-auto">
                 <div class="form-check form-check-inline">
@@ -109,8 +109,8 @@
             </div>
           </div>
           <div class="row mb-3 align-items-end">
-            <div class="col-3">
-                <span>Tipo moradia: </span>
+            <div class="col-12">
+                <span>Tipo de moradia: </span>
             </div>
             <div class="col-auto">
                 <div class="form-check form-check-inline">
@@ -150,7 +150,7 @@
           </div>
 
           <div class="row mb-3 align-items-end">
-            <div class="col-3">
+            <div class="col-12 pt-3">
                 <span>Animais sob proteção: </span>
             </div>
             <div class="col-auto">
@@ -177,27 +177,42 @@
             </div>
           </div>
 
-          <div class="form-group pt-3">
+          <div class="form-group pb-3">
             <label for="address">Endereço</label>
             <input type="text" id="address" name="address" class="form-control ong-input" required>
           </div>
         </div>
 
         <div class="common-fields">
-          <div class="form-group pt-3">
-            <label for="city">Cidade</label>
-            <input type="text" id="city" name="city" class="form-control" required>
-          </div>
-
-          <div class="form-group pt-3">
+          <div class="form-group">
             <label for="state">Estado</label>
-            <input type="text" id="state" name="state" class="form-control" required>
-          </div>
+            <select id="state" name="state" class="form-control" required onchange="selectCityByState()">
+                <option value="">Selecione um Estado...</option>
+                <option value="SP">São Paulo</option>
+                <option value="RJ">Rio de Janeiro</option>
+                <option value="MG">Minas Gerais</option>
+                <option value="ES">Espírito Santo</option>
+                <option value="DF">Distrito Federal</option>
+                <option value="GO">Goiás</option>
+                <option value="MT">Mato Grosso</option>
+                <option value="MS">Mato Grosso do Sul</option>
+                <option value="PR">Paraná</option>
+                <option value="SC">Santa Catarina</option>
+                <option value="RS">Rio Grande do Sul</option>
+            </select>
+        </div>
+    
+        <div class="form-group pt-3">
+            <label for="city">Cidade</label>
+            <select id="city" name="city" class="form-control" required>
+                <option value="">Selecione uma Cidade...</option>
+            </select>
+        </div>
           
           
           <div class="form-group pt-3">
             <label for="about">Descrição</label>
-            <input type="text" id="about" name="about" class="form-control" required>
+            <input type="text" id="about" name="about" class="form-control" placeholder="Insira informações adicionais..." required>
           </div>
           
           
