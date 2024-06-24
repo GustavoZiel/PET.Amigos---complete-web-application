@@ -7,25 +7,39 @@ document.addEventListener('DOMContentLoaded', async () => {
     const petId = getParameterByName('id'); // Extrai o ID da URL
     if (petId) {
         try {
-            const response = await fetch(`/pets/${petId}`);
-            if (!response.ok) {
+            // Getting Pet info
+            const responsePet = await fetch(`/pets/${petId}`);
+            if (!responsePet.ok) {
                 throw new Error('Erro ao buscar dados do pet');
             }
-            const pet = await response.json();
+            const pet = await responsePet.json();
             const petImageUrl = await fetchImage(pet.photos);
+            console.log(petImageUrl)
             const email = 1;
-
+            
+            // Like logic
             let isLiked = true;
             const likes = await fetch(`/likes/${email}/${petId}`);
             const likedPet = await likes.json();
-
             if (likedPet === null) {
                 isLiked = false;
             }
 
+            // Getting Ong info
+            const responseOng = await fetch(`/ongs/${pet.ONGId}`);
+            if (!responseOng.ok) {
+                throw new Error('Erro ao buscar dados do pet');
+            }
+            const ong = await responseOng.json();
+            console.log(ong)
+            const ongImageUrl = await fetchImage(ong.photo);
+            console.log(ongImageUrl)
+
+            // Creating Pet card
             const petsSection = document.getElementById('pets-section');
-            const petCard = createPetCard(pet, petImageUrl, isLiked);
+            const petCard = createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl);
             petsSection.appendChild(petCard);
+            
         } catch (error) {
             console.error('Erro ao buscar dados do pet:', error);
         }
@@ -82,7 +96,7 @@ const citiesByState = {
     RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
 };
 
-function createPetCard(pet, petImageUrl, isLiked) {
+function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl) {
     let [ano, mes] = calculateAge(pet.birth)
     const petCard = document.createElement('div');
     const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
@@ -109,7 +123,7 @@ function createPetCard(pet, petImageUrl, isLiked) {
             </div>
             <div class="d-inline-flex position-relative">
                 <div class="d-flex flex-column align-items-center">
-                    <img src="${petImageUrl}" alt="${pet.type}" class="rounded-5 img-fluid animal border-purple fixed-img-size">
+                    <img src="${petImageUrl}" alt="${pet.type}" class="rounded-5 img-fluid animal border-purple imgPerfil-standard-size">
                     <span class="coracao">
                         <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${pet.id}">
                             <img id="coracaoImg" src="${coracaoImgSrc}" alt="" class="img-fluid ">
@@ -401,11 +415,11 @@ function createPetCard(pet, petImageUrl, isLiked) {
                 <div>
                     <h5 class="poppins-medium headers_caract">INSTITUIÇÃO PROTETORA</h5>
                 </div>
-                <a href="./ong.html" class="text-decoration-none">
+                <a href="./ong.html?id=${ong.id}" class="text-decoration-none">
                     <div class="d-flex flex-column align-items-center">
-                        <img src="./img/tuka.png" alt="Acaochego da Tuka" class="mb-2 img-fluid rounded-5 border-purple fixed-img-size">
+                        <img src="${ongImageUrl}" alt="${ong.name}" class="mb-2 img-fluid rounded-5 border-purple imgPerfil-standard-size">
                         <button type="button" class="bg-light border-purple textPurple rounded-pill px-4 container-fluid text-nowrap">Saiba mais!</button>
-                        <p class="textOngNumber">(xx) xxxxx-xxxx</p>
+                        <p class="textOngNumber">${ong.phoneNumber}</p>
                     </div>
                 </a>
             </div>

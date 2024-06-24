@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             ongSection.appendChild(ongCard);
 
             const petsOwnedSection = document.getElementById('pets-owned-section');
-            const petsOwnedCard = await createPetsOwnedCard();
+            const petsOwnedCard = await createPetsOwnedCard(ong.id);
             petsOwnedSection.appendChild(petsOwnedCard);
         } catch (error) {
             console.error('Erro ao buscar dados da ONG:', error);
@@ -112,8 +112,8 @@ async function createOngCard(ong, ongimage) {
             </div>            
 
             <!-- Foto -->
-            <div class="col-12 col-md-7 d-flex justify-content-center py-4 pt-md-0">
-                <img src="${ongimage}" alt="${ong.ongName}" class="h-100 rounded-4 img-border img-fluid">
+            <div class="col-12 col-md-6 justify-content-center d-flex mb-4">
+                <img src="${ongimage}" alt="${ong.ongName}" class="h-100 rounded-4 img-border imgPerfil-standard-size">
             </div>
 
             <!-- Informações (Desktop) -->
@@ -417,7 +417,7 @@ async function createOngCard(ong, ongimage) {
     var semContatoDiv = ongCard.querySelector("#semContato")
     let temContato = true
 
-    if(!(ong.instagram || ong.facebook)) {
+    if (!(ong.instagram || ong.facebook)) {
         temContato = false
     }
     if (!ong.instagram) {
@@ -426,7 +426,7 @@ async function createOngCard(ong, ongimage) {
     if (!ong.facebook) {
         facebookDiv.remove()
     }
-    if(temContato) {
+    if (temContato) {
         semContatoDiv.remove()
     }
 
@@ -516,13 +516,13 @@ async function createOngCard(ong, ongimage) {
     return ongCard;
 }
 
-function addPetsButton() {
+function addPetsButton(ONGId) {
     const botaoadd = `
     <!-- Modal -->
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="petModalLabel">Adicionar um PET</h5>
+                        <h5 class="modal-title" id="petModalLabel">Adicionar um Pet</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -700,6 +700,8 @@ function addPetsButton() {
                                 </div>
                             </div>
 
+                            <input type="hidden" name="ongId" value="${ONGId}">
+
                             <div class="row">
                                 <div class="col text-end">
                                     <button class="btn btn-standard-click" type="submit">Adicionar</button>
@@ -736,7 +738,7 @@ const citiesByState = {
     RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
 };
 
-async function createPetsOwnedCard() {
+async function createPetsOwnedCard(ONGId) {
     const petsOwnedCard = document.createElement('div');
     petsOwnedCard.innerHTML = `
         
@@ -749,8 +751,8 @@ async function createPetsOwnedCard() {
             </div>
             <!-- Botão adicionar pet -->
             <div class="col text-end">
-                <button type="button" class="btn btn-standard-click btn-lg" data-bs-toggle="modal" data-bs-target="#petModal">
-                    Adicionar um PET
+                <button type="button" class="btn btn-standard-click btn-lg rounded-pill" data-bs-toggle="modal" data-bs-target="#petModal">
+                    Adicionar um Pet
                 </button>
             </div>
         </div>
@@ -781,15 +783,16 @@ async function createPetsOwnedCard() {
     </div>
     `;
 
+
     const botao = petsOwnedCard.querySelector('#petModal');
-    botao.innerHTML += addPetsButton();
+    botao.innerHTML += addPetsButton(ONGId);
     const petsContainer = petsOwnedCard.querySelector('#GridPets');
 
     const speciesSelect = petsOwnedCard.querySelector('#specie');
     const breedSelect = petsOwnedCard.querySelector('#breed');
 
     speciesSelect.addEventListener('change', selectBreedBySpecie);
-    function selectBreedBySpecie(){
+    function selectBreedBySpecie() {
         const selectedSpecies = speciesSelect.value;
         const breeds = breedOptions[selectedSpecies] || [];
 
@@ -806,11 +809,8 @@ async function createPetsOwnedCard() {
     const statesSelect = petsOwnedCard.querySelector('#stateSelect');
     const citySelect = petsOwnedCard.querySelector('#citySelect');
 
-    console.log(statesSelect)
-    console.log(citySelect)
-
     statesSelect.addEventListener('change', selectCityByState);
-    function selectCityByState(){
+    function selectCityByState() {
         const selectedStates = statesSelect.value;
         const cities = citiesByState[selectedStates] || [];
 

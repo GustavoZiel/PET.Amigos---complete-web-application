@@ -207,9 +207,9 @@
                                     CIDADE
                                 </button>
                                 <div class="rounded-4 show" id="cidade-filtro" style="background-color: #E4E4E4;">
-                                    <ul class="list-unstyled my-3">
+                                    <ul class="list-unstyled my-2 mx-4">
                                         <li>
-                                            <input type="text" id="cidade-input" class="form-control text-center" placeholder="Digite a cidade">
+                                            <input type="text" id="cidade-input" class="form-control text-center rounded-pill" placeholder="Digite a cidade" style="border-color: #3A0CA3;">
                                         </li>
                                     </ul>
                                 </div>
@@ -222,9 +222,9 @@
                                     ESTADO
                                 </button>
                                 <div class="rounded-4 show" id="estado-filtro" style="background-color: #E4E4E4;">
-                                    <ul class="list-unstyled my-3">
+                                    <ul class="list-unstyled my-2 mx-4">
                                         <li>
-                                            <input type="text" id="estado-input" class="form-control text-center" placeholder="Digite o estado (Sigla)">
+                                            <input type="text" id="estado-input" class="form-control text-center rounded-pill" placeholder="Digite o estado (Sigla)" style="border-color: #3A0CA3;">
                                         </li>
                                     </ul>
                                 </div>
@@ -374,11 +374,11 @@
                                     <i class="bi bi-filter"></i>
                                     Filtros
                                 </button>
-                                <button id="SearchButtonMobile" class="btn btn-search rounded-pill align-items-center mt-2">Aplicar Filtros</button>
+                                <button id="SearchButtonMobile" class="btn btn-search rounded-pill align-items-center">Aplicar Filtros</button>
                             </div>
                         </div>
                         <div id="activeFilters"
-                            class="align-items-center d-md-flex d-none flex-wrap text-nowrap my-5 ms-5">
+                            class="align-items-center d-md-flex d-none flex-wrap text-nowrap mt-5 ms-5">
                             <span class="font-btn-filter me-4">
                                 <i class="bi bi-filter"></i>
                                 Filtros ativos:
@@ -388,22 +388,22 @@
                 </div>
                 <div class="row">
                     <div class="col">
-                        <button id="SearchButtonDesktop" class="btn btn-search rounded-pill align-items-center d-md-flex d-none flex-wrap mb-5 ms-5">Aplicar Filtros</button>
+                        <button id="SearchButtonDesktop" class="btn btn-search rounded-pill align-items-center d-md-flex d-none flex-wrap my-4 ms-5">Aplicar Filtros</button>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="col">
-                        <div id="PetsEncontrados" class="d-lg-flex d-none mx-5 align-items-center justify-content-between">
+                        <div id="PetsEncontrados" class="d-lg-flex d-none mx-5 mt-2 align-items-center justify-content-between">
                             
                         </div>
                     </div>
                 </div>
 
-                <div class="row d-flex">
-                    <div class="col d-flex">
-                        <div class="d-inline-flex flex-column mt-3">
-                            <div id="GridPets" class="d-flex justify-content-center flex-wrap"></div>
+                <div class="row">
+                    <div class="col">
+                        <div class="container text-center">
+                            <div id="GridPets" class="d-flex flex-wrap"></div>
                         </div>
                     </div>
                 </div>

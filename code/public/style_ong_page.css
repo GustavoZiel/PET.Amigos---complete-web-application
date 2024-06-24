@@ -1,3 +1,9 @@
+.imgPerfil-standard-size {
+    width: 400px;
+    object-fit: cover;
+    /* Isso garante que a imagem se ajuste ao contêiner sem distorção */
+}
+
 .purple-bg {
     background-color: #3A0CA3;
 }
@@ -166,15 +172,15 @@
 }
 
 .btn-contribua {
-    border-color: #218838 !important;     
-    color: #218838 !important;            
+    border-color: #218838 !important;
+    color: #218838 !important;
 }
 
 /* Hover effect styles */
 .btn-contribua:hover {
     background-color: #218838 !important;
-    border-color: #218838 !important;     
-    color: #fff !important;            
+    border-color: #218838 !important;
+    color: #fff !important;
 }
 
 .btn-standard-click {

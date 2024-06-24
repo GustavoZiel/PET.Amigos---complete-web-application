@@ -28,7 +28,6 @@ function findById(request, response) {
 async function searchBy(req, res) {
   try {
     const { birthstart, birthend, city, state, type, sex, par_temperaments, castrated, chipped, adopted } = req.query;
-    console.log(typeof birthend);
     const searchParams = {
       where: {}
     };
@@ -70,8 +69,8 @@ async function searchBy(req, res) {
     res.status(500).json({ error: 'Failed to search for pets' });
   }
 }
-async function getLikedPets(req, res){
-  try{
+async function getLikedPets(req, res) {
+  try {
     const UserId = req.params.UserId;
     const likes = await Usuario.findAll({
       where: { id: UserId },
@@ -86,44 +85,42 @@ async function getLikedPets(req, res){
     if (!likes) {
       return res.status(404).json({ message: "Usuário não encontrado" });
     }
-    const pets = likes.flatMap(usuario => 
+    const pets = likes.flatMap(usuario =>
       usuario.Pets.map(pet => ({
-          id: pet.id,
-          name: pet.name,
-          city: pet.city,
-          state: pet.state,
-          photos: pet.photos,
+        id: pet.id,
+        name: pet.name,
+        city: pet.city,
+        state: pet.state,
+        photos: pet.photos,
       }))
-  );
+    );
     return res.status(200).json(pets);
-  }catch (error) {
+  } catch (error) {
     console.error(error);
     return res.status(500).json({ message: "Erro ao buscar pets" });
   }
 }
-async function getONGPets(req, res){
-  try{
+async function getONGPets(req, res) {
+  try {
     const ONGId = req.params.ONGId;
-    console.log(ONGId);
-      const pets = await Pet.findAll({
-        where: { ONGId: ONGId },
-      });
-      if (!pets) {
-        return res.status(404).json({ message: "Usuário não encontrado" });
-      }
-      console.log(pets)
-      const animais = pets.map(pet => ({
-          id: pet.id,
-          name: pet.name,
-          city: pet.city,
-          state: pet.state,
-          photos: pet.photos,
-      }));
-      return res.status(200).json(animais);
-    }catch (error) {
-      console.error(error);
-      return res.status(500).json({ message: "Erro ao buscar pets" });
+    const pets = await Pet.findAll({
+      where: { ONGId: ONGId },
+    });
+    if (!pets) {
+      return res.status(404).json({ message: "Usuário não encontrado" });
     }
+    const animais = pets.map(pet => ({
+      id: pet.id,
+      name: pet.name,
+      city: pet.city,
+      state: pet.state,
+      photos: pet.photos,
+    }));
+    return res.status(200).json(animais);
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Erro ao buscar pets" });
+  }
 }
 
 async function create(request, response) {
@@ -134,28 +131,37 @@ async function create(request, response) {
     temperament = [temperament];
   }
 
-  const uploadedPhotos = await upload.getFileUrl(request.file.key);
-  const res = await Pet
-    .create(
-      {
-        name: request.body.name,
-        birth: request.body.birth,
-        city: request.body.city,
-        state: request.body.state,
-        type: request.body.type,
-        sex: request.body.sex,
-        breed: request.body.breed,
-        size: request.body.size,
-        photos: uploadedPhotos,
-        temperament: temperament,
-        comment: request.body.comment,
-        castrated: request.body.castrated,
-        chipped: request.body.chipped,
-        adopted: request.body.adopted,
-      },
-      { where: { id: request.params.id } },
-    )
-  response.status(200).json(res);
+  try {
+    const uploadedPhotos = await upload.getFileUrl(request.file.key);
+    const res = await Pet
+      .create(
+        {
+          name: request.body.name,
+          birth: request.body.birth,
+          city: request.body.city,
+          state: request.body.state,
+          type: request.body.type,
+          sex: request.body.sex,
+          breed: request.body.breed,
+          size: request.body.size,
+          photos: uploadedPhotos,
+          temperament: temperament,
+          comment: request.body.comment,
+          castrated: request.body.castrated,
+          chipped: request.body.chipped,
+          adopted: request.body.adopted,
+          ONGId: request.body.ongId
+        },
+        { where: { id: request.params.id } },
+      )
+    if (res) {
+      response.redirect(`/ong.html?id=${request.body.ongId}`);
+    } else {
+      response.status(500).json({ error: 'Failed to create pet' });
+    }
+  } catch (error) {
+    response.status(500).json({ error: 'An error occurred while creating the pet' });
+  }
 }
 
 function deleteByPk(request, response) {
@@ -170,15 +176,12 @@ function deleteByPk(request, response) {
 }
 
 function update(request, response) {
-  console.log(request.params)
-  console.log(request.body)
   let temperament = request.body.temperament;
   if (!temperament) {
     temperament = [];
   } else if (!Array.isArray(temperament)) {
     temperament = [temperament];
   }
-  console.log(temperament)
   Pet
     .update(
       {

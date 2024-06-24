@@ -20,11 +20,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const userInput = document.querySelectorAll('.user-input');
         const userFields = document.querySelector('.user-fields');
 
-        console.log(accountType)
-        console.log(ongFields)
-        console.log(userFields)
-        
-
         if (accountType === 'ong') {
             ongFields.forEach(field => {
                 field.style.display = 'block';
@@ -59,8 +54,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(form);
         const accountType = document.getElementById('accountType').value;
 
-        console.log(formData);
-
         let url = '';
         if (accountType === 'ong') {
             formData.append('role', 'ONG');
@@ -94,10 +87,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.ok) {
                 const data = await response.json();
-                console.log(data.token)
                 localStorage.setItem('token', data.token);
                 const token_test = localStorage.getItem('token');
-                console.log(token_test);
                 window.location.href = 'home.html';
             } else {
                 console.error('Error submitting form');
