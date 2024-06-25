@@ -12,14 +12,35 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error('Erro ao buscar dados da ONG');
             }
             const ong = await response.json();
+            // Discovering if the owner of the ong is the one logged
+            // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            // Mudar para 0 no site final
+            let owner = 1;
+            token = localStorage.getItem('token')
+            if (token) {
+                const parts = token.split('.');
+                if (parts.length === 3) {
+                    const parts = token.split('.');
+                    const payload = parts[1];
+                    const decodedPayload = atob(payload);
+                    const attributes = JSON.parse(decodedPayload);
+                    const OngIdFromToken = attributes.sub;
+                    const OngEmailFromToken = attributes.email;
+                    console.log(OngEmailFromToken)
+                    if(ONGId === OngIdFromToken && OngEmailFromToken === ong.email){
+                        owner = 1;
+                    }
+                }
+            }
             const ongimage = await fetchImage(ong.photo);
             const ongSection = document.getElementById('ong-section');
-            const ongCard = await createOngCard(ong, ongimage);
+            const ongCard = await createOngCard(ong, ongimage, owner);
             ongSection.appendChild(ongCard);
 
             const petsOwnedSection = document.getElementById('pets-owned-section');
-            const petsOwnedCard = await createPetsOwnedCard(ong.id);
+            const petsOwnedCard = await createPetsOwnedCard(ong.id, owner);
             petsOwnedSection.appendChild(petsOwnedCard);
+
         } catch (error) {
             console.error('Erro ao buscar dados da ONG:', error);
         }
@@ -44,7 +65,7 @@ async function fetchImage(url) {
     }
 }
 
-async function createOngCard(ong, ongimage) {
+async function createOngCard(ong, ongimage, owner) {
     const data = new Date(ong.creationYear);
     const ano = data.getFullYear();
     const ongCard = document.createElement('div');
@@ -59,8 +80,8 @@ async function createOngCard(ong, ongimage) {
                 <!-- Nome da ONG -->
                 <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
                 <div class="font-name d-flex d-md-none justify-content-center">
-                    <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
-                    <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
+                    <button type="button" class="btn-edit ms-4 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn-remove ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
 
                 <!-- Dados -->
@@ -122,8 +143,8 @@ async function createOngCard(ong, ongimage) {
                 <div class="font-ong-name d-none d-md-flex align-items-center">
                     ${ong.ongName}
                     <div class="ps-5">
-                        <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
+                        <button type="button" class="btn-edit ms-4 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button type="button" class="btn-remove ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
                 </div>
 
@@ -409,13 +430,18 @@ async function createOngCard(ong, ongimage) {
         </div>
     </section>`;
 
-    token = localStorage.getItem('token')
     const editarForm = ongCard.querySelector('#editOngForm');
 
-    var instagramDiv = ongCard.querySelector("#instaDiv");
-    var facebookDiv = ongCard.querySelector("#faceDiv");
-    var semContatoDiv = ongCard.querySelector("#semContato")
+    let instagramDiv = ongCard.querySelector("#instaDiv");
+    let facebookDiv = ongCard.querySelector("#faceDiv");
+    let semContatoDiv = ongCard.querySelector("#semContato")
     let temContato = true
+    const botoes = ongCard.querySelectorAll(".owner");
+    botoes.forEach(botao => {
+        if(!owner){
+            botao.style.display = 'none';
+        }
+    });
 
     if (!(ong.instagram || ong.facebook)) {
         temContato = false
@@ -738,7 +764,7 @@ const citiesByState = {
     RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
 };
 
-async function createPetsOwnedCard(ONGId) {
+async function createPetsOwnedCard(ONGId, owner) {
     const petsOwnedCard = document.createElement('div');
     petsOwnedCard.innerHTML = `
         
@@ -751,7 +777,7 @@ async function createPetsOwnedCard(ONGId) {
             </div>
             <!-- Botão adicionar pet -->
             <div class="col text-end">
-                <button type="button" class="btn btn-standard-click btn-lg rounded-pill" data-bs-toggle="modal" data-bs-target="#petModal">
+                <button type="button" class="btn btn-standard-click btn-lg rounded-pill owner" data-bs-toggle="modal" data-bs-target="#petModal">
                     Adicionar um Pet
                 </button>
             </div>
@@ -785,6 +811,13 @@ async function createPetsOwnedCard(ONGId) {
 
 
     const botao = petsOwnedCard.querySelector('#petModal');
+    const botoes = petsOwnedCard.querySelector(".owner");
+    if(owner){
+        botoes.style.display = 'block';
+    }
+    else{
+        botoes.style.display = 'none';
+    }
     botao.innerHTML += addPetsButton(ONGId);
     const petsContainer = petsOwnedCard.querySelector('#GridPets');
 
