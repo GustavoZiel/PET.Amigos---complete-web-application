@@ -25,6 +25,9 @@ router.post("/signin_ongs", authController.loginONG);
  router.post("/ongs", authController.authPage("ONG"), authController.validateToken);
  router.put("/ongs/:id", authController.authPageId(["ONG"]), authController.validateToken, ongController.update);
  router.put("/users/:id", authController.authPageId(["USER"]), authController.validateToken, usuarioController.update);
+ router.delete("/users/:id", authController.authPageJustId, authController.validateToken, usuarioController.deleteById)
+ router.put("/ongs_password", authController.authPageId(["ONG"]), authController.validateToken, ongController.updatePassword);
+ router.put("/users_password", authController.authPageId(["USER"]), authController.validateToken, usuarioController.updatePassword);
  //router.post("/pets",upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.create);
  //router.put("/pets/:id",  upload.uploadFile.single('photos'), authController.authPage("ONG"), authController.validateToken, petController.update); 
 
@@ -41,8 +44,13 @@ router.put("/pets/:id", petController.update); // Update
 router.post("/users", upload.uploadFile.single('photo'), usuarioController.create); // Create
 router.get("/users", usuarioController.findAll); // Retrieve
 router.get("/users/:id", usuarioController.findById); // Retrieve
+<<<<<<< Updated upstream
 router.delete("/users/:id", usuarioController.deleteById); // Delete
+=======
+//router.delete("/users/:id", usuarioController.deleteById); // Delete
+>>>>>>> Stashed changes
 router.put("/users/:id", usuarioController.update); // Update
+
 
 // CRUD - Ongs
 router.post("/ongs", upload.uploadFile.single('photo'), ongController.create); // Create

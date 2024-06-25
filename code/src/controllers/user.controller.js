@@ -1,5 +1,6 @@
 import model from "../model/user.model.js";
 import upload from '../upload/upload_img.js';
+import bcrypt from "bcryptjs";
 
 function findAll(request, response) {
   model
@@ -93,11 +94,33 @@ function deleteById(request, response) {
     });
 }
 
+
+function updatePassword(request, response) {
+  const hashedPassword = bcrypt.hashSync(senha, bcrypt.genSaltSync());
+  Usuario
+    .update(
+      {
+        password: hashedPassword,
+      },
+      { where: { email: request.body.email } }
+    )
+    .then(() => {
+      response.status(200).send("Senha atualizada com sucesso");
+      console.log("AAAAAAAAAAAAAAAAAA");
+    })
+    .catch((e) => {
+      response.json(e).status(500);
+      console.log("BBBBBBBBBBBBBBBBBBB");
+      console.log(e);
+    });
+}
+
 export default {
   findAll,
   findById,
   create,
   deleteById,
   update,
+  updatePassword,
 };
 

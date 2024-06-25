@@ -219,6 +219,35 @@ const authPageId = (permissions) => {
     }
   };
 };
+
+const authPageJustId = () => {
+  return (request, response, next) => {
+    const userRole = request.body.role;
+    const routeId = parseInt(request.params.id);
+
+    let token = request.headers.authorization;
+    let requestId;
+
+    if (token && token.startsWith("Bearer ")) {
+      token = token.slice(7);
+      try {
+        const decoded = jwt.verify(token, secret);
+        requestId = parseInt(decoded.sub);
+      } catch (err) {
+        return response.status(401).json("Token verification failed");
+      }
+    } else {
+      return response.status(401).json("No token provided");
+    }
+
+    if (requestId === routeId) {
+      next();
+    } else {
+      return response.status(401).json("Nao autorizado " + requestId);
+    }
+  };
+};
+
 const authPage = (permissions) => {
   return (request, response, next) => {
     const userRole = request.body.role;
@@ -245,6 +274,7 @@ function validateToken(request, response, next) {
   }
 }
 
+<<<<<<< Updated upstream
 function findAllUser(request, response) {
   USER.findAll()
     .then(function (res) {
@@ -254,16 +284,9 @@ function findAllUser(request, response) {
       response.json(err).status(500);
     });
 }
+=======
+>>>>>>> Stashed changes
 
-function findAllONG(request, response) {
-  ONG.findAll()
-    .then(function (res) {
-      response.json(res).status(200);
-    })
-    .catch(function (err) {
-      response.json(err).status(500);
-    });
-}
 
 export default {
   registerONG,
@@ -271,8 +294,7 @@ export default {
   loginUser,
   loginONG,
   validateToken,
-  findAllUser,
-  findAllONG,
   authPageId,
   authPage,
+  authPageJustId,
 };
