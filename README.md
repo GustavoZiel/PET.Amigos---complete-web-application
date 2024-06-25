@@ -24,12 +24,12 @@ A aplicação não só facilita o processo de adoção, mas também promove a co
 
 ## Integrantes
 
+- Nome 1 - [email5@usp.br](mailto:email5@usp.br)
+- Nome 2 - [email6@usp.br](mailto:email6@usp.br)
+- Nome 3 - [email5@usp.br](mailto:email5@usp.br)
+- Gabriel da Costa Merlin - [gabrielcmerlin@usp.br](mailto:gabrielcmerlin@usp.br)
 - Gustavo Gabriel Ribeiro
-- Nome 2 - [email2@usp.br](mailto:email2@usp.br)
-- Nome 3 - [email3@usp.br](mailto:email3@usp.br)
-- Nome 4 - [email4@usp.br](mailto:email4@usp.br)
-- Nome 5 - [email5@usp.br](mailto:email5@usp.br)
-- Nome 6 - [email6@usp.br](mailto:email6@usp.br)
+- Nome 6 - [email2@usp.br](mailto:email2@usp.br)
 
 ## Responsáveis
 
