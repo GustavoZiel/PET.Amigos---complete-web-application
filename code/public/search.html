@@ -518,9 +518,24 @@
         });
         async function RefazerBusca() {
             try {
-
                 const cidadeInput = document.getElementById('cidade-input').value.trim();
                 const estadoInput = document.getElementById('estado-input').value.trim();
+                let userIdFromToken = 0;
+                role = localStorage.getItem('role')
+                if(role === "USER"){
+                    token = localStorage.getItem('token')
+                    if (token) {
+                        const parts = token.split('.');
+                        if (parts.length === 3) {
+                            const parts = token.split('.');
+                            const payload = parts[1];
+                            const decodedPayload = atob(payload);
+                            const attributes = JSON.parse(decodedPayload);
+                            userIdFromToken = attributes.sub;
+                            const userEmailFromToken = attributes.email;
+                        }
+                    }
+                }
                 if(cidadeInput && cidadeInput !== "")
                     pars.city = cidadeInput;
                 else
@@ -557,8 +572,7 @@
                             try {
                                 const source_img = await fetchImage(animal.photos);
                                 let isLiked = true;
-                                const email = 1;
-                                const likesResponse = await fetch(`/likes/${email}/${animal.id}`);
+                                const likesResponse = await fetch(`/likes/${userIdFromToken}/${animal.id}`);
                                 const likedPet = await likesResponse.json();
                                 if (likedPet === null) {
                                     isLiked = false;
@@ -589,44 +603,50 @@
 
                         const coracaoButtons = document.querySelectorAll('.heart-button');
                         coracaoButtons.forEach(coracaoButton => {
-                            coracaoButton.addEventListener('click', async (event) => {
-                                event.preventDefault();
-                                event.stopPropagation();
+                            if(userIdFromToken === 0){
+                                coracaoButton.style.display = 'none';
+                            }
+                            else{
 
-                                const petId = coracaoButton.dataset.petId;
-                                const coracaoImg = coracaoButton.querySelector('img');
-                                if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
-                                    try {
-                                        const response = await fetch(`/likes/1/${petId}`, { method: 'DELETE' });
-                                        if (response.ok) {
-                                            console.log(`Curtida removida para o pet com ID ${petId}`);
-                                        } else {
-                                            console.error('Erro ao remover a curtida');
+                                coracaoButton.addEventListener('click', async (event) => {
+                                    event.preventDefault();
+                                    event.stopPropagation();
+    
+                                    const petId = coracaoButton.dataset.petId;
+                                    const coracaoImg = coracaoButton.querySelector('img');
+                                    if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
+                                        try {
+                                            const response = await fetch(`/likes/${userIdFromToken}/${petId}`, { method: 'DELETE' });
+                                            if (response.ok) {
+                                                console.log(`Curtida removida para o pet com ID ${petId}`);
+                                            } else {
+                                                console.error('Erro ao remover a curtida');
+                                            }
+                                        } catch (error) {
+                                            console.error('Erro ao remover a curtida:', error);
                                         }
-                                    } catch (error) {
-                                        console.error('Erro ao remover a curtida:', error);
-                                    }
-
-                                    coracaoImg.src = './img/empty-heart.svg';
-                                } else {
-                                    try {
-                                        const response = await fetch(`/likes`, {
-                                            method: 'POST',
-                                            headers: { 'Content-Type': 'application/json' },
-                                            body: JSON.stringify({ email: 1, petId: petId })
-                                        });
-                                        if (response.ok) {
-                                            console.log(`Curtida adicionada para o pet com ID ${petId}`);
-                                        } else {
-                                            console.error('Erro ao adicionar a curtida');
+    
+                                        coracaoImg.src = './img/empty-heart.svg';
+                                    } else {
+                                        try {
+                                            const response = await fetch(`/likes`, {
+                                                method: 'POST',
+                                                headers: { 'Content-Type': 'application/json' },
+                                                body: JSON.stringify({UserId: userIdFromToken, petId: petId })
+                                            });
+                                            if (response.ok) {
+                                                console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                                            } else {
+                                                console.error('Erro ao adicionar a curtida');
+                                            }
+                                        } catch (error) {
+                                            console.error('Erro ao adicionar a curtida:', error);
                                         }
-                                    } catch (error) {
-                                        console.error('Erro ao adicionar a curtida:', error);
+    
+                                        coracaoImg.src = './img/red-heart-svgrepo-com.svg';
                                     }
-
-                                    coracaoImg.src = './img/red-heart-svgrepo-com.svg';
-                                }
-                            });
+                                });
+                            }
                         });
                     })
                     .catch(error => {

@@ -33,7 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
             if (response.ok) {
                 const data = await response.json();
+                console.log(data);
                 localStorage.setItem('token', data.token);
+                if (accountType === 'ong') {
+                    localStorage.setItem('role', "ONG");
+                } else if (accountType === 'user') {
+                    localStorage.setItem('role', "USER");
+                }
                 window.location.href = 'home.html';
             } else {
                 console.error('Error submitting form');

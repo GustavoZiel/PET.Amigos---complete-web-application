@@ -13,9 +13,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             const user = await response.json();
             // Discovering if the owner of the account is the one logged
-            // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-            // Mudar para 0 no site final
-            let owner = 1;
+            let owner = 0;
             token = localStorage.getItem('token')
             if (token) {
                 const parts = token.split('.');
@@ -27,12 +25,12 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const attributes = JSON.parse(decodedPayload);
                     const userIDFromToken = attributes.sub;
                     const userEmailFromToken = attributes.email;
-                    console.log(`userIdFromToken: ${userIDFromToken} (${typeof userIDFromToken})`);
-                    console.log(`userEmailFromToken: ${userEmailFromToken} (${typeof userEmailFromToken})`);
-                    console.log(`userIdFromPage: ${userId} (${typeof userId})`);
-                    console.log(`userEmailFromPage: ${user.email} (${typeof user.email})`);
                     if(userId == userIDFromToken && userEmailFromToken === user.email){
                         owner = 1;
+                    }
+                    role = localStorage.getItem('role')
+                    if(role === "USER"){
+                        isuser = userIDFromToken;
                     }
                 }
             }
@@ -55,7 +53,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             profileSection.appendChild(profileCard);
 
             const likedSection = document.getElementById('liked-section');
-            const likedPetsCard = await createLikedPetsCard();
+            const likedPetsCard = await createLikedPetsCard(isuser, userId);
             console.log(likedPetsCard);
             likedSection.appendChild(likedPetsCard);
         } catch (error) {
@@ -492,7 +490,7 @@ function createProfileCard(user, userimage, owner) {
     return profileCard;
 }
 
-async function createLikedPetsCard() {
+async function createLikedPetsCard(isuser, userId) {
     const likedPetsCard = document.createElement('div');
     likedPetsCard.innerHTML = `
     <div class="container-xxl mt-2">
@@ -511,8 +509,7 @@ async function createLikedPetsCard() {
     const petsContainer = likedPetsCard.querySelector('#GridPets');
 
     try {
-        const UserId = 1;
-        const response = await fetch(`/all-pets/${UserId}`);
+        const response = await fetch(`/all-pets/${userId}`);
         console.log(response)
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -523,7 +520,12 @@ async function createLikedPetsCard() {
         
         for (const animal of animals){
             const source_img = await fetchImage(animal.photos);
-            let isLiked = true;  
+            let isLiked = true;
+            const likesResponse = await fetch(`/likes/${isuser}/${animal.id}`);
+            const likedPet = await likesResponse.json();
+            if (likedPet === null) {
+                isLiked = false;
+            }  
             const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
             console.log(coracaoImgSrc);
             const card = `
@@ -546,42 +548,48 @@ async function createLikedPetsCard() {
         };
         const coracaoButtons = petsContainer.querySelectorAll('.heart-button');
         coracaoButtons.forEach(coracaoButton  => {
-            coracaoButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-                
-                const petId = coracaoButton.dataset.petId;
-                const coracaoImg = coracaoButton.querySelector('img');
-                if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
-                    fetch(`/likes/1/${petId}`, { method: 'DELETE' })
-                    .then(response => {
-                        if (response.ok) {
-                            console.log(`Curtida removida para o pet com ID ${petId}`);
-                        } else {
-                            console.error('Erro ao remover a curtida');
-                        }
-                    })
-                    .catch(error => console.error('Erro ao remover a curtida:', error));
+            if(isuser === 0){
+                coracaoButton.style.display = 'none';
+            }
+            else{
 
-                    coracaoImg.src = './img/empty-heart.svg';
-                } else {
-                    fetch(`/likes`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email: 1, petId: petId })
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            console.log(`Curtida adicionada para o pet com ID ${petId}`);
-                        } else {
-                            console.error('Erro ao adicionar a curtida');
-                        }
-                    })
-                    .catch(error => console.error('Erro ao adicionar a curtida:', error));
-
-                    coracaoImg.src = './img/red-heart-svgrepo-com.svg';
-                }
-            });
+                coracaoButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    
+                    const petId = coracaoButton.dataset.petId;
+                    const coracaoImg = coracaoButton.querySelector('img');
+                    if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
+                        fetch(`/likes/${isuser}/${petId}`, { method: 'DELETE' })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log(`Curtida removida para o pet com ID ${petId}`);
+                            } else {
+                                console.error('Erro ao remover a curtida');
+                            }
+                        })
+                        .catch(error => console.error('Erro ao remover a curtida:', error));
+    
+                        coracaoImg.src = './img/empty-heart.svg';
+                    } else {
+                        fetch(`/likes`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ UserId: isuser, petId: petId })
+                        })
+                        .then(response => {
+                            if (response.ok) {
+                                console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                            } else {
+                                console.error('Erro ao adicionar a curtida');
+                            }
+                        })
+                        .catch(error => console.error('Erro ao adicionar a curtida:', error));
+    
+                        coracaoImg.src = './img/red-heart-svgrepo-com.svg';
+                    }
+                });
+            }
         });
     } catch (error) {
         console.error('Erro ao buscar Pets', error);

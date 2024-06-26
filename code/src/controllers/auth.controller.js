@@ -116,7 +116,7 @@ async function loginUser(request, response) {
       return response.status(401).send("Usuário e senha inválidos!");
     }
 
-    const token = getToken(user.id, user.Nome_Conta);
+    const token = getToken(user.id, user.email);
     response
       .status(200)
       .json({ id: user.id, email: user.email, token });
