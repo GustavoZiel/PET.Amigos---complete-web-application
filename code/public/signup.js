@@ -96,7 +96,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 window.location.href = 'home.html';
             } else {
-                console.error('Error submitting form');
+                var myModal = new bootstrap.Modal(document.getElementById('errorsigning'), {
+                    keyboard: false
+                });
+                const text = await response.text()
+                document.getElementById('errorMessage').textContent = text;
+                myModal.show();
+                event.preventDefault();
             }
         } catch (error) {
             console.error('Error:', error);
