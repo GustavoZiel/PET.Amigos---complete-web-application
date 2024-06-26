@@ -13,9 +13,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
             const ong = await response.json();
             // Discovering if the owner of the ong is the one logged
-            // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
-            // Mudar para 0 no site final
-            let owner = 1;
+            let owner = 0;
+            let isuser = 0;
             token = localStorage.getItem('token')
             if (token) {
                 const parts = token.split('.');
@@ -24,11 +23,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const payload = parts[1];
                     const decodedPayload = atob(payload);
                     const attributes = JSON.parse(decodedPayload);
+                    console.log(attributes)
                     const OngIdFromToken = attributes.sub;
                     const OngEmailFromToken = attributes.email;
                     console.log(OngEmailFromToken)
+                    console.log(OngIdFromToken)
                     if(ONGId === OngIdFromToken && OngEmailFromToken === ong.email){
                         owner = 1;
+                    }
+                    role = localStorage.getItem('role')
+                    if(role === "USER"){
+                        isuser = OngIdFromToken;
                     }
                 }
             }
@@ -38,7 +43,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             ongSection.appendChild(ongCard);
 
             const petsOwnedSection = document.getElementById('pets-owned-section');
-            const petsOwnedCard = await createPetsOwnedCard(ong.id, owner);
+            const petsOwnedCard = await createPetsOwnedCard(ONGId, owner, isuser);
             petsOwnedSection.appendChild(petsOwnedCard);
 
         } catch (error) {
@@ -744,9 +749,9 @@ function addPetsButton(ONGId) {
 }
 
 const breedOptions = {
-    Cachorro: ["Labrador", "Pastor Alemão", "Golden Retriever", "Bulldog", "Poodle", "Beagle", "Rottweiler", "Yorkshire Terrier", "Boxer", "Dachshund", "Shih Tzu", "Chihuahua", "Pug", "Maltês", "Doberman", "Border Collie", "Schnauzer", "Dogue Alemão", "Akita", "Pastor Australiano"],
+    Cachorro: ["Sem raça definida","Labrador", "Pastor Alemão", "Golden Retriever", "Bulldog", "Poodle", "Beagle", "Rottweiler", "Yorkshire Terrier", "Boxer", "Dachshund", "Shih Tzu", "Chihuahua", "Pug", "Maltês", "Doberman", "Border Collie", "Schnauzer", "Dogue Alemão", "Akita", "Pastor Australiano"],
     Gato: ["Siamês", "Persa", "Maine Coon", "Bengal", "Ragdoll", "British Shorthair", "Sphynx", "Scottish Fold", "American Shorthair", "Siberiano", "Devon Rex", "Oriental Shorthair"],
-    Roedor: ["Hamster", "Porquinho-da-Índia", "Gerbil", "Camundongo", "Rato", "Furão", "Capivara", "Marmota", "Esquilo"],
+    Roedor: ["Hamster", "Porquinho-da-Índia", "Gerbil", "Camundongo", "Rato", "Furão", "Capivara", "Chinchila", "Esquilo", "Coelho"],
     Passaro: ["Canário", "Papagaio", "Pardal", "Periquito", "Calopsita", "Arara", "Cacatua", "Periquito Australiano", "Papagaio-do-congo", "Tucano", "Pombo", "Codorna"]
 };
 
@@ -764,7 +769,7 @@ const citiesByState = {
     RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
 };
 
-async function createPetsOwnedCard(ONGId, owner) {
+async function createPetsOwnedCard(ONGId, owner, isuser) {
     const petsOwnedCard = document.createElement('div');
     petsOwnedCard.innerHTML = `
         
@@ -789,20 +794,6 @@ async function createPetsOwnedCard(ONGId, owner) {
                     <div class="col d-flex">
                         <div class="d-inline-flex flex-column mt-3">
                             <div id="GridPets" class="d-flex justify-content-center flex-wrap"></div>
-                            <div class="my-3 mx-5 text-end">
-                                <a href="search.html" style="text-decoration: none">
-                                    <button type="button" class="button-pages mx-1">&lt</button>
-                                </a>
-                                <a href="search.html" style="text-decoration: none">
-                                    <button type="button" class="button-pages mx-1">1</button>
-                                </a>
-                                <a href="search.html" style="text-decoration: none">
-                                    <button type="button" class="button-pages mx-1">2</button>
-                                </a>
-                                <a href="search.html" style="text-decoration: none">
-                                    <button type="button" class="button-pages mx-1">&gt</button>
-                                </a>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -861,7 +852,6 @@ async function createPetsOwnedCard(ONGId, owner) {
     selectCityByState();
 
     try {
-        const ONGId = 1;
         const response = await fetch(`/ONG-pets/${ONGId}`);
         if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -872,7 +862,13 @@ async function createPetsOwnedCard(ONGId, owner) {
         for (const animal of animals) {
             const source_img = await fetchImage(animal.photos);
             let isLiked = true;
+            const likesResponse = await fetch(`/likes/${isuser}/${animal.id}`);
+            const likedPet = await likesResponse.json();
+            if (likedPet === null) {
+                isLiked = false;
+            }
             const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
+            
             const card = `
                 <a href="pet.html?id=${animal.id}" style="text-decoration: none">
                     <div class="card rounded-5 m-3 img-size">
@@ -891,44 +887,49 @@ async function createPetsOwnedCard(ONGId, owner) {
             `;
             petsContainer.innerHTML += card;
         };
-        const coracaoButtons = document.querySelectorAll('.heart-button');
+        const coracaoButtons = petsContainer.querySelectorAll('.heart-button');
         coracaoButtons.forEach(coracaoButton => {
-            coracaoButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
+            if(isuser === 0){
+                coracaoButton.style.display = 'none';
+            }
+            else{
+                coracaoButton.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    event.stopPropagation();
 
-                const petId = coracaoButton.dataset.petId;
-                const coracaoImg = coracaoButton.querySelector('img');
-                if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
-                    fetch(`/likes/1/${petId}`, { method: 'DELETE' })
-                        .then(response => {
-                            if (response.ok) {
-                                console.log(`Curtida removida para o pet com ID ${petId}`);
-                            } else {
-                                console.error('Erro ao remover a curtida');
-                            }
+                    const petId = coracaoButton.dataset.petId;
+                    const coracaoImg = coracaoButton.querySelector('img');
+                    if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
+                        fetch(`/likes/${isuser}}/${petId}`, { method: 'DELETE' })
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log(`Curtida removida para o pet com ID ${petId}`);
+                                } else {
+                                    console.error('Erro ao remover a curtida');
+                                }
+                            })
+                            .catch(error => console.error('Erro ao remover a curtida:', error));
+
+                        coracaoImg.src = './img/empty-heart.svg';
+                    } else {
+                        fetch(`/likes`, {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({ UserId: isuser, petId: petId })
                         })
-                        .catch(error => console.error('Erro ao remover a curtida:', error));
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                                } else {
+                                    console.error('Erro ao adicionar a curtida');
+                                }
+                            })
+                            .catch(error => console.error('Erro ao adicionar a curtida:', error));
 
-                    coracaoImg.src = './img/empty-heart.svg';
-                } else {
-                    fetch(`/likes`, {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ email: 1, petId: petId })
-                    })
-                        .then(response => {
-                            if (response.ok) {
-                                console.log(`Curtida adicionada para o pet com ID ${petId}`);
-                            } else {
-                                console.error('Erro ao adicionar a curtida');
-                            }
-                        })
-                        .catch(error => console.error('Erro ao adicionar a curtida:', error));
-
-                    coracaoImg.src = './img/red-heart-svgrepo-com.svg';
-                }
-            });
+                        coracaoImg.src = './img/red-heart-svgrepo-com.svg';
+                        }
+                });
+        }
         });
     } catch (error) {
         console.error('Erro ao buscar Pets', error);

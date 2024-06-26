@@ -33,7 +33,7 @@ async function create(request, response) {
     const res = await UsuarioPet
     .create(
     {
-        UserId: 1,
+        UserId: request.body.UserId,
         petId: request.body.petId
     },
     { where: { id: request.params.id } },
@@ -56,7 +56,7 @@ function update(request, response) {
     UsuarioPet
     .update(
     {
-        UserId: 1,
+        UserId: request.body.UserId,
         petId: request.body.petId
     },
     { where: { id: request.params.id } },

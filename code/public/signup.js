@@ -89,6 +89,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
                 localStorage.setItem('token', data.token);
                 const token_test = localStorage.getItem('token');
+                if (accountType === 'ong') {
+                    localStorage.setItem('role', "ONG");
+                } else if (accountType === 'user') {
+                    localStorage.setItem('role', "USER");
+                }
                 window.location.href = 'home.html';
             } else {
                 console.error('Error submitting form');
