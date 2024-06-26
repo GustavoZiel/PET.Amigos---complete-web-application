@@ -20,7 +20,8 @@ router.post("/signup_ongs", upload.uploadFile.single('photo'), authController.re
 router.post("/signin_users", authController.loginUser);
 router.post("/signin_ongs", authController.loginONG);
 
-// //so pode criar ongs, usuarios e pets se tiver logado. pets so se for ong -> middlewere
+// rotas protegidas 
+//cria
  router.post("/users", authController.authPage("USER"), authController.validateToken);
  router.post("/ongs", authController.authPage("ONG"), authController.validateToken);
  router.put("/ongs/:id", authController.authPageId(["ONG"]), authController.validateToken, ongController.update);
