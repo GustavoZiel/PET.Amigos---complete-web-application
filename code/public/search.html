@@ -346,7 +346,8 @@
                                 const container = document.getElementById('Sugestoes');
                                 const containerMobile = document.getElementById('SugestoesMobile');
 
-                                for (const animal of animals) {
+                                for (let i = 0; i < animals.length; i++) {
+                                    const animal = animals[i];
                                     try {
                                         const source_img = await fetchImage(animal.photos);
                                         let isLiked = true;
@@ -361,40 +362,46 @@
                                         }
                                         const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
                                         console.log(coracaoImgSrc);
+
                                         const card = `
-                                                <a href="pet.html?id=${animal.id}" style="text-decoration: none">
-                                                    <div class="card rounded-5 m-3 img-size">
-                                                        <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
-                                                        <div class="card-body purpleBgColor rounded-bottom-5 border-card">
-                                                            <h5 class="card-title font_name_white">${animal.name}</h5>
-                                                            <p class="card-text font_infos_white">${animal.city}, ${animal.state}</p>
-                                                            <span class="coracao">
-                                                                <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button ${invisivel}" data-pet-id="${animal.id}">
-                                                                    <img src="${coracaoImgSrc}" alt="" class="img-fluid">
-                                                                </button>
-                                                            </span>
-                                                        </div>
+                                            <a href="pet.html?id=${animal.id}" style="text-decoration: none">
+                                                <div class="card rounded-5 m-3 img-size">
+                                                    <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
+                                                    <div class="card-body purpleBgColor rounded-bottom-5 border-card">
+                                                        <h5 class="card-title font_name_white">${animal.name}</h5>
+                                                        <p class="card-text font_infos_white">${animal.city}, ${animal.state}</p>
+                                                        <span class="coracao">
+                                                            <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button ${invisivel}" data-pet-id="${animal.id}">
+                                                                <img src="${coracaoImgSrc}" alt="" class="img-fluid">
+                                                            </button>
+                                                        </span>
                                                     </div>
-                                                </a>
-                                            `;
+                                                </div>
+                                            </a>
+                                        `;
+
+                                        const isActive = i === 0 ? 'active' : '';
                                         const cardMobile = `
                                             <a href="pet.html?id=${animal.id}" style="text-decoration: none">
-                                                <div class="carousel-item active">
-                                                    <div class="card rounded-5 m-3 img-size">
-                                                        <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
-                                                        <div class="card-body purpleBgColor rounded-bottom-5 border-card">
-                                                            <h5 class="card-title font_name_white">${animal.name}</h5>
-                                                            <p class="card-text font_infos_white">${animal.city}, ${animal.state}</p>
-                                                            <span class="coracao">
-                                                                <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button ${invisivel}" data-pet-id="${animal.id}">
-                                                                    <img src="${coracaoImgSrc}" alt="" class="img-fluid">
-                                                                </button>
-                                                            </span>
+                                                <div class="carousel-item ${isActive}">
+                                                    <div class="d-flex justify-content-center">
+                                                        <div class="card rounded-5 m-3 img-size" style="margin: auto;">
+                                                            <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
+                                                            <div class="card-body purpleBgColor rounded-bottom-5 border-card">
+                                                                <h5 class="card-title font_name_white">${animal.name}</h5>
+                                                                <p class="card-text font_infos_white">${animal.city}, ${animal.state}</p>
+                                                                <span class="coracao">
+                                                                    <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button ${invisivel}" data-pet-id="${animal.id}">
+                                                                        <img src="${coracaoImgSrc}" alt="" class="img-fluid">
+                                                                    </button>
+                                                                </span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </a>
                                         `;
+
                                         container.innerHTML += card;
                                         containerMobile.innerHTML += cardMobile;
                                     } catch (error) {
@@ -608,20 +615,20 @@
                                 const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
                                 console.log(coracaoImgSrc);
                                 const card = `
-                                        <a href="pet.html?id=${animal.id}" style="text-decoration: none">
-                                            <div class="card rounded-5 m-3 img-size">
-                                                <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
-                                                <div class="card-body rounded-bottom-5 border-card">
-                                                    <h5 class="card-title font_name_black">${animal.name}</h5>
-                                                    <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
-                                                    <span class="coracao">
-                                                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button ${invisivel}" data-pet-id="${animal.id}">
-                                                            <img src="${coracaoImgSrc}" alt="" class="img-fluid">
-                                                        </button>
-                                                    </span>
-                                                </div>
+                                    <a href="pet.html?id=${animal.id}" style="text-decoration: none">
+                                        <div class="card rounded-5 m-3 img-size">
+                                            <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
+                                            <div class="card-body rounded-bottom-5 border-card">
+                                                <h5 class="card-title font_name_black">${animal.name}</h5>
+                                                <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
+                                                <span class="coracao">
+                                                    <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button ${invisivel}" data-pet-id="${animal.id}">
+                                                        <img src="${coracaoImgSrc}" alt="" class="img-fluid">
+                                                    </button>
+                                                </span>
                                             </div>
-                                        </a>
+                                        </div>
+                                    </a>
                                     `;
                                 container.innerHTML += card;
                             } catch (error) {
