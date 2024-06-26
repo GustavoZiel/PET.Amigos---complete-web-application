@@ -42,6 +42,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 window.location.href = 'home.html';
             } else {
+                var myModal = new bootstrap.Modal(document.getElementById('errorsigning'), {
+                    keyboard: false
+                });
+                const text = await response.text()
+                document.getElementById('errorMessage').textContent = text;
+                myModal.show();
+                event.preventDefault();
                 console.error('Error submitting form');
             }
         } catch (error) {
