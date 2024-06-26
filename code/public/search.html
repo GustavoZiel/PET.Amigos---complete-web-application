@@ -335,7 +335,7 @@
                             const userEmailFromToken = attributes.email;
                         }
                         let pars = {
-                            user_id: 3
+                            user_id: userIdFromToken
                         }
                         axios.get('http://localhost:3000/pets/recomendations', { params: pars })
                             .then(async (response) => {
