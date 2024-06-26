@@ -28,6 +28,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 const data = await response.json();
                 console.log(data.token);
                 localStorage.setItem('token', data.token);
+                if (accountType === 'ong') {
+                    localStorage.setItem('role', "ONG");
+                } else if (accountType === 'user') {
+                    localStorage.setItem('role', "USER");
+                }
+
                 const token_test = localStorage.getItem('token');
                 console.log(token_test);
                 window.location.href = 'home.html';

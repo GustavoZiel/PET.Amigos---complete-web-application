@@ -157,7 +157,7 @@ async function loginUser(request, response) {
       return response.status(401).send("Usuário e senha inválidos!");
     }
 
-    const token = getToken(user.id, user.Nome_Conta);
+    const token = getToken(user.id, user.email);
     response
       .status(200)
       .json({ id: user.id, accountName: user.accountName, token });
@@ -222,7 +222,6 @@ const authPageId = (permissions) => {
 
 const authPageJustId = () => {
   return (request, response, next) => {
-    const userRole = request.body.role;
     const routeId = parseInt(request.params.id);
 
     let token = request.headers.authorization;
@@ -273,19 +272,6 @@ function validateToken(request, response, next) {
     response.status(401).send({ message: "Unauthorized" });
   }
 }
-
-<<<<<<< Updated upstream
-function findAllUser(request, response) {
-  USER.findAll()
-    .then(function (res) {
-      response.json(res).status(200);
-    })
-    .catch(function (err) {
-      response.json(err).status(500);
-    });
-}
-=======
->>>>>>> Stashed changes
 
 
 export default {
