@@ -84,7 +84,8 @@ async function getRecomendations(req, res) {
         type: user.preferences,
         city: user.city,
         state: user.state
-      }
+      },
+      limit: 4
     };
     // Buscar os pets com base nos parâmetros
     const pets = await Pet.findAll(searchParams);
