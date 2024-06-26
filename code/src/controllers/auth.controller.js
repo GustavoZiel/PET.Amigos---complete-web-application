@@ -21,6 +21,10 @@ async function registerONG(request, response) {
     if (!nome || !senha) {
       return response.status(400).send("Informe usuário e senha!");
     }
+    const existingUser = await Usuario.findOne({ where: {email: nome } });
+    if (existingUser) {
+      return response.status(400).send("Parceiro já cadastrado!");
+    }
     const existingONG = await ONG.findOne({ where: { email: nome } });
     if (existingONG) {
       return response.status(400).send("Parceiro já cadastrado!");
@@ -71,6 +75,10 @@ async function registerUser(request, response) {
     }
     const existingUser = await Usuario.findOne({ where: {email: nome } });
     if (existingUser) {
+      return response.status(400).send("Parceiro já cadastrado!");
+    }
+    const existingONG = await ONG.findOne({ where: {email: nome } });
+    if (existingONG) {
       return response.status(400).send("Parceiro já cadastrado!");
     }
     const hashedPassword = bcrypt.hashSync(senha, bcrypt.genSaltSync());

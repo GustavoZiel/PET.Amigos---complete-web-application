@@ -468,9 +468,9 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
                     <div class="d-flex flex-column align-items-center">
                         <img src="${ongImageUrl}" alt="${ong.name}" class="mb-2 img-fluid rounded-5 border-purple imgPerfil-standard-size">
                         <button type="button" class="bg-light border-purple textPurple rounded-pill px-4 container-fluid text-nowrap">Saiba mais!</button>
-                        <p class="textOngNumber">${ong.phoneNumber}</p>
                     </div>
                 </a>
+                <p class="textOngNumber">${ong.phoneNumber}</p>
             </div>
         </div>
 
