@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const OngEmailFromToken = attributes.email;
                     console.log(OngEmailFromToken)
                     console.log(OngIdFromToken)
-                    if(ONGId === OngIdFromToken && OngEmailFromToken === ong.email){
+                    if(ONGId == OngIdFromToken && OngEmailFromToken === ong.email){
                         owner = 1;
                     }
                     role = localStorage.getItem('role')

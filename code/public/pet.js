@@ -19,6 +19,8 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Like logic
             let isLiked = true;
             role = localStorage.getItem('role')
+            let userIdFromToken = 0;
+            let isuser = 0;
             if(role === "USER"){
                 token = localStorage.getItem('token')
                 if (token) {
@@ -28,8 +30,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                         const payload = parts[1];
                         const decodedPayload = atob(payload);
                         const attributes = JSON.parse(decodedPayload);
-                        console.log("aaaaaaaaa")
-                        console.log(attributes)
                         userIdFromToken = attributes.sub;
                     }
                 }
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const OngIdFromToken = attributes.sub;
                     const OngEmailFromToken = attributes.email;
                     console.log(OngEmailFromToken)
-                    if(ong.id === OngIdFromToken && OngEmailFromToken === ong.email){
+                    if(ong.id == OngIdFromToken && OngEmailFromToken === ong.email){
                         owner = 1;
                     }
                     role = localStorage.getItem('role')
@@ -145,7 +145,7 @@ const citiesByState = {
     RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
 };
 
-function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl) {
+function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
     let [ano, mes] = calculateAge(pet.birth)
     const petCard = document.createElement('div');
     const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
