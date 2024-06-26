@@ -69,6 +69,33 @@ async function searchBy(req, res) {
     res.status(500).json({ error: 'Failed to search for pets' });
   }
 }
+
+async function getRecomendations(req, res) {
+  try {
+    const { user_id } = req.query;
+
+    const user = await Usuario.findOne({
+      where: { id: user_id },
+      attributes: ['city', 'state', 'preferences'] 
+    });
+
+    const searchParams = {
+      where: {
+        type: user.preferences,
+        city: user.city,
+        state: user.state
+      }
+    };
+    // Buscar os pets com base nos parâmetros
+    const pets = await Pet.findAll(searchParams);
+
+    res.status(200).json(pets);
+  } catch (err) {
+    console.error('Error searching for pets:', err);
+    res.status(500).json({ error: 'Failed to search for pets' });
+  }
+}
+
 async function getLikedPets(req, res) {
   try {
     const UserId = req.params.UserId;
@@ -218,4 +245,5 @@ export default {
   update,
   getONGPets,
   getLikedPets,
+  getRecomendations 
 };

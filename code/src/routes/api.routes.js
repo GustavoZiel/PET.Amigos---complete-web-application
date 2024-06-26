@@ -31,6 +31,7 @@ router.post("/signin_ongs", authController.loginONG);
 // CRUD - Pets
 router.post("/pets", upload.uploadFile.single('photos'), petController.create); // Create
 router.get("/pets", petController.findAll); // Retrieve
+router.get("/pets/recomendations", petController.getRecomendations);
 router.get("/pets/search", petController.searchBy);
 router.get("/pets/:id", petController.findById); // Retrieve
 router.delete("/pets/:id", petController.deleteByPk); // Delete
