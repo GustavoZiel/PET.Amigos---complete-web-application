@@ -12,9 +12,46 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error('Erro ao buscar dados do usuário');
             }
             const user = await response.json();
+            // Discovering if the owner of the account is the one logged
+            // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            // Mudar para 0 no site final
+            let owner = 1;
+            token = localStorage.getItem('token')
+            if (token) {
+                const parts = token.split('.');
+                console.log("entrei")
+                if (parts.length === 3) {
+                    const parts = token.split('.');
+                    const payload = parts[1];
+                    const decodedPayload = atob(payload);
+                    const attributes = JSON.parse(decodedPayload);
+                    const userIDFromToken = attributes.sub;
+                    const userEmailFromToken = attributes.email;
+                    console.log(`userIdFromToken: ${userIDFromToken} (${typeof userIDFromToken})`);
+                    console.log(`userEmailFromToken: ${userEmailFromToken} (${typeof userEmailFromToken})`);
+                    console.log(`userIdFromPage: ${userId} (${typeof userId})`);
+                    console.log(`userEmailFromPage: ${user.email} (${typeof user.email})`);
+                    if(userId == userIDFromToken && userEmailFromToken === user.email){
+                        owner = 1;
+                    }
+                }
+            }
             const userimage = await fetchImage(user.photo);
             const profileSection = document.getElementById('profile-section');
-            const profileCard = createProfileCard(user, userimage);
+            const profileCard = createProfileCard(user, userimage, owner);
+            const botaoremove = profileCard.querySelectorAll(".btn-remove");
+            const botaoedit = profileCard.querySelectorAll(".btn-edit");
+            botaoremove.forEach(botao => {
+                if(!owner){
+                    botao.style.display = 'none';
+                }
+            });
+            botaoedit.forEach(botao => {
+                if(!owner){
+                    botao.style.display = 'none';
+                }
+            });
+            
             profileSection.appendChild(profileCard);
 
             const likedSection = document.getElementById('liked-section');
@@ -53,7 +90,7 @@ function calculateAge(birthDate) {
     }
     return age;
 }
-function createProfileCard(user, userimage) {
+function createProfileCard(user, userimage, owner) {
     const idade = calculateAge(user.birthDate)
     const profileCard = document.createElement('div');
     profileCard.innerHTML = `

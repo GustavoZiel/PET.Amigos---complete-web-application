@@ -31,13 +31,45 @@ document.addEventListener('DOMContentLoaded', async () => {
                 throw new Error('Erro ao buscar dados do pet');
             }
             const ong = await responseOng.json();
-            console.log(ong)
             const ongImageUrl = await fetchImage(ong.photo);
-            console.log(ongImageUrl)
+
+            // Discovering if the owner of the ong that owns the animal is the one logged
+            // AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+            // Mudar para 0 no site final
+            let owner = 1;
+            token = localStorage.getItem('token')
+            if (token) {
+                const parts = token.split('.');
+                if (parts.length === 3) {
+                    const parts = token.split('.');
+                    const payload = parts[1];
+                    const decodedPayload = atob(payload);
+                    const attributes = JSON.parse(decodedPayload);
+                    const OngIdFromToken = attributes.sub;
+                    const OngEmailFromToken = attributes.email;
+                    console.log(OngEmailFromToken)
+                    if(ong.id === OngIdFromToken && OngEmailFromToken === ong.email){
+                        owner = 1;
+                    }
+                }
+            }
+
 
             // Creating Pet card
             const petsSection = document.getElementById('pets-section');
             const petCard = createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl);
+            const botaoremove = petCard.querySelectorAll(".btn-remove");
+            const botaoedit = petCard.querySelectorAll(".btn-edit");
+            botaoremove.forEach(botao => {
+                if(!owner){
+                    botao.style.display = 'none';
+                }
+            });
+            botaoedit.forEach(botao => {
+                if(!owner){
+                    botao.style.display = 'none';
+                }
+            });
             petsSection.appendChild(petCard);
             
         } catch (error) {
