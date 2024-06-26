@@ -574,8 +574,12 @@
                                 let isLiked = true;
                                 const likesResponse = await fetch(`/likes/${userIdFromToken}/${animal.id}`);
                                 const likedPet = await likesResponse.json();
+                                let invisivel = ""
                                 if (likedPet === null) {
                                     isLiked = false;
+                                }
+                                if(userIdFromToken === 0){
+                                    invisivel = "d-none"
                                 }
                                 const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
                                 console.log(coracaoImgSrc);
@@ -587,7 +591,7 @@
                                                     <h5 class="card-title font_name_black">${animal.name}</h5>
                                                     <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
                                                     <span class="coracao">
-                                                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button" data-pet-id="${animal.id}">
+                                                        <button id="toggleHeart" type="button" class="btn btn-link p-0 m-0 heart-button ${invisivel}" data-pet-id="${animal.id}">
                                                             <img src="${coracaoImgSrc}" alt="" class="img-fluid">
                                                         </button>
                                                     </span>
@@ -603,10 +607,7 @@
 
                         const coracaoButtons = document.querySelectorAll('.heart-button');
                         coracaoButtons.forEach(coracaoButton => {
-                            if(userIdFromToken === 0){
-                                coracaoButton.style.display = 'none';
-                            }
-                            else{
+                            if(userIdFromToken !== 0){
 
                                 coracaoButton.addEventListener('click', async (event) => {
                                     event.preventDefault();
