@@ -132,250 +132,257 @@ async function createOngCard(ong, ongimage, owner) {
                 </div>
             </div>            
 
-            <!-- Foto -->
-            <div class="col-12 col-md-6 justify-content-center d-flex mb-4">
-                <img src="${ongimage}" alt="${ong.ongName}" class="h-100 rounded-4 img-border imgPerfil-standard-size">
-            </div>
-
-            <!-- Informações (Desktop) -->
-            <div class="col-5 mb-md-5">
-                <!-- Nome da ONG -->
-                <div class="font-ong-name d-none d-md-flex align-items-center">
-                    ${ong.ongName}
-                    <div class="ps-5">
-                        <button type="button" class="btn-edit ms-4 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
-                        <button type="button" class="btn-remove ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
-                    </div>
+            <div class="d-flex justify-content-center">
+                <div class="col-2">
+                </div>
+                <!-- Foto -->
+                <div class="m-4">
+                    <img src="${ongimage}" alt="${ong.ongName}" class="h-100 rounded-4 img-border imgPerfil-standard-size">
                 </div>
 
-                <!-- Modal - Editar ONG -->
-                <div class="modal fade" id="editOngModal" tabindex="-1" aria-labelledby="editOngModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editOngModalLabel">Editar ONG</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form enctype="multipart/form-data" id="editOngForm">
+                <!-- Informações (Desktop) -->
+                <div class="m-4">
+                    <!-- Nome da ONG -->
+                    <div class="font-ong-name d-none d-md-flex align-items-center">
+                        ${ong.ongName}
+                        <div class="ps-5">
+                            <button type="button" class="btn-edit ms-4 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button type="button" class="btn-remove ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Modal - Editar ONG -->
+                    <div class="modal fade" id="editOngModal" tabindex="-1" aria-labelledby="editOngModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="editOngModalLabel">Editar ONG</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form enctype="multipart/form-data" id="editOngForm">
 
 
-                                    <div class="form-group">
-                                        <label for="email">E-mail</label>
-                                        <input type="text" id="email" name="email" class="form-control" value="${ong.email}" required>
-                                    </div>
+                                        <div class="form-group">
+                                            <label for="email">E-mail</label>
+                                            <input type="text" id="email" name="email" class="form-control" value="${ong.email}" required>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                        <label for="ongName">Nome da ONG</label>
-                                        <input type="text" id="ongName" name="ongName" class="form-control ong-input" value="${ong.ongName}" required>
-                                    </div>
+                                        <div class="form-group pt-3">
+                                            <label for="ongName">Nome da ONG</label>
+                                            <input type="text" id="ongName" name="ongName" class="form-control ong-input" value="${ong.ongName}" required>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                        <label for="creationYear" class="form-label">Ano de fundação</label>
-                                        <input type="date" id="creationYear" class="form-control" name="creationYear" value="${ong.creationYear.substring(0, 10)}" required>
-                                    </div>
+                                        <div class="form-group pt-3">
+                                            <label for="creationYear" class="form-label">Ano de fundação</label>
+                                            <input type="date" id="creationYear" class="form-control" name="creationYear" value="${ong.creationYear.substring(0, 10)}" required>
+                                        </div>
 
-                                    <div class="form-group pt-3">
-                                        <label for="CNPJ">CNPJ</label>
-                                        <input type="text" id="CNPJ" name="CNPJ" class="form-control" value="${ong.CNPJ}">
-                                    </div>
+                                        <div class="form-group pt-3">
+                                            <label for="CNPJ">CNPJ</label>
+                                            <input type="text" id="CNPJ" name="CNPJ" class="form-control" value="${ong.CNPJ}">
+                                        </div>
 
-                                    <div class="row pt-3 align-items-end">
-                                        <span>Animais sob proteção: </span>
+                                        <div class="row pt-3 align-items-end">
+                                            <span>Animais sob proteção: </span>
 
-                                        <div class="col-auto pt-2">
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox1" name="pets" value="Cachorros" ${ong.pets.includes('Cachorros') ? 'checked' : ''}>
-                                                <label class="form-check-label" for="petsCheckbox1">Cachorros</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox2" name="pets" value="Gatos" ${ong.pets.includes('Gatos') ? 'checked' : ''}>
-                                                <label class="form-check-label" for="petsCheckbox2">Gatos</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox3" name="pets" value="Roedores" ${ong.pets.includes('Roedores') ? 'checked' : ''}>
-                                                <label class="form-check-label" for="petsCheckbox3">Roedores</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox4" name="pets" value="Pássaros" ${ong.pets.includes('Pássaros') ? 'checked' : ''}>
-                                                <label class="form-check-label" for="petsCheckbox4">Pássaros</label>
-                                            </div>
-                                            <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="checkbox" id="petsCheckbox5" name="pets" value="Outros" ${ong.pets.includes('Outros') ? 'checked' : ''}>
-                                                <label class="form-check-label" for="petsCheckbox5">Outros</label>
+                                            <div class="col-auto pt-2">
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox1" name="pets" value="Cachorros" ${ong.pets.includes('Cachorros') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="petsCheckbox1">Cachorros</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox2" name="pets" value="Gatos" ${ong.pets.includes('Gatos') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="petsCheckbox2">Gatos</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox3" name="pets" value="Roedores" ${ong.pets.includes('Roedores') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="petsCheckbox3">Roedores</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox4" name="pets" value="Pássaros" ${ong.pets.includes('Pássaros') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="petsCheckbox4">Pássaros</label>
+                                                </div>
+                                                <div class="form-check form-check-inline">
+                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox5" name="pets" value="Outros" ${ong.pets.includes('Outros') ? 'checked' : ''}>
+                                                    <label class="form-check-label" for="petsCheckbox5">Outros</label>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
 
-                                    <div class="form-group pt-3">
-                                        <label for="address">Endereço</label>
-                                        <input type="text" id="address" name="address" class="form-control ong-input" value="${ong.address}" required>
-                                    </div>
-
-                                    <div class="form-group pt-3">
-                                        <label for="city">Cidade</label>
-                                        <input type="text" id="city" name="city" class="form-control" value="${ong.city}" required>
-                                    </div>
-
-                                    <div class="form-group pt-3">
-                                        <label for="state">Estado</label>
-                                        <input type="text" id="state" name="state" class="form-control" value="${ong.state}" required>
-                                    </div>
-                                
-                                    <div class="form-group pt-3">
-                                        <label for="about">Descrição</label>
-                                        <input type="text" id="about" name="about" class="form-control" value="${ong.about}" required>
-                                    </div>
-                                
-                                    <div class="form-group pt-3">
-                                        <label for="phoneNumber">Número de telefone</label>
-                                        <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" value="${ong.phoneNumber}" required>
-                                    </div>
-
-                                    <div class="form-group pt-3">
-                                        <label for="website">Site</label>
-                                        <input type="text" id="website" name="website" value="${ong.website}" class="form-control">
-                                    </div>
-                                
-                                    <div class="form-group pt-3">
-                                        <label for="instagram">Instagram</label>
-                                        <input type="text" id="instagram" name="instagram" class="form-control" value="${ong.instagram}">
-                                    </div>
-                                
-                                    <div class="form-group pt-3">
-                                        <label for="facebook">Facebook</label>
-                                        <input type="text" id="facebook" name="facebook" class="form-control" value="${ong.facebook}">
-                                    </div>
-                                
-                                    <div class="form-group pt-3">
-                                        <label for="whatsapp">WhatsApp</label>
-                                        <input type="text" id="whatsapp" name="whatsapp" class="form-control" value="${ong.whatsapp}">
-                                    </div>
-
-                                    <div class="form-group pt-3">
-                                        <label for="pix">Pix</label>
-                                        <input type="text" id="pix" name="pix" class="form-control" value="${ong.pix}">
-                                    </div>
-
-                                    <div class="form-group pt-3">
-                                        <label for="contribute">Mensagem para incentivar doações</label>
-                                        <input type="text" id="contribute" name="contribute" class="form-control" value="${ong.contribute}">
-                                    </div>
-
-                                    <div class="row pt-3">
-                                        <div class="d-flex justify-content-end">
-                                            <button class="btn btn-standard-click" type="submit" data-bs-dismiss="modal">Editar</button>
+                                        <div class="form-group pt-3">
+                                            <label for="address">Endereço</label>
+                                            <input type="text" id="address" name="address" class="form-control ong-input" value="${ong.address}" required>
                                         </div>
-                                    </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="city">Cidade</label>
+                                            <input type="text" id="city" name="city" class="form-control" value="${ong.city}" required>
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="state">Estado</label>
+                                            <input type="text" id="state" name="state" class="form-control" value="${ong.state}" required>
+                                        </div>
+                                    
+                                        <div class="form-group pt-3">
+                                            <label for="about">Descrição</label>
+                                            <input type="text" id="about" name="about" class="form-control" value="${ong.about}" required>
+                                        </div>
+                                    
+                                        <div class="form-group pt-3">
+                                            <label for="phoneNumber">Número de telefone</label>
+                                            <input type="text" id="phoneNumber" name="phoneNumber" class="form-control" value="${ong.phoneNumber}" required>
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="website">Site</label>
+                                            <input type="text" id="website" name="website" value="${ong.website}" class="form-control">
+                                        </div>
+                                    
+                                        <div class="form-group pt-3">
+                                            <label for="instagram">Instagram</label>
+                                            <input type="text" id="instagram" name="instagram" class="form-control" value="${ong.instagram}">
+                                        </div>
+                                    
+                                        <div class="form-group pt-3">
+                                            <label for="facebook">Facebook</label>
+                                            <input type="text" id="facebook" name="facebook" class="form-control" value="${ong.facebook}">
+                                        </div>
+                                    
+                                        <div class="form-group pt-3">
+                                            <label for="whatsapp">WhatsApp</label>
+                                            <input type="text" id="whatsapp" name="whatsapp" class="form-control" value="${ong.whatsapp}">
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="pix">Pix</label>
+                                            <input type="text" id="pix" name="pix" class="form-control" value="${ong.pix}">
+                                        </div>
+
+                                        <div class="form-group pt-3">
+                                            <label for="contribute">Mensagem para incentivar doações</label>
+                                            <input type="text" id="contribute" name="contribute" class="form-control" value="${ong.contribute}">
+                                        </div>
+
+                                        <div class="row pt-3">
+                                            <div class="d-flex justify-content-end">
+                                                <button class="btn btn-standard-click" type="submit" data-bs-dismiss="modal">Editar</button>
+                                            </div>
+                                        </div>
 
 
-                                </form>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Modal - Editar ONG (Pop-up sucesso ao editar) -->
-                <div class="modal fade" id="popUpCorretoEdit" tabindex="-1" aria-labelledby="popUpCorretoEditLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="popUpCorretoEditLabel">Sucesso</h5>
-                                <button id="redirectButtonEdit" type="button" class="btn-close" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Perfil da ONG editado com sucesso!
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Modal - Editar ONG (Pop-up erro ao editar) -->
-                <div class="modal fade" id="popUpErroEdit" tabindex="-1" aria-labelledby="popUpErroEditLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="popUpErroEdit">Erro</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Falha ao editar o perfil da ONG. Tente novamente mais tarde!
+                    <!-- Modal - Editar ONG (Pop-up sucesso ao editar) -->
+                    <div class="modal fade" id="popUpCorretoEdit" tabindex="-1" aria-labelledby="popUpCorretoEditLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="popUpCorretoEditLabel">Sucesso</h5>
+                                    <button id="redirectButtonEdit" type="button" class="btn-close" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Perfil da ONG editado com sucesso!
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Modal - Remover ONG (Pop-up inicial) -->
-                <div class="modal fade" id="removeOng" tabindex="-1" aria-labelledby="removeOngLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="removeOngLabel">Deseja remover sua conta?</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                Caso apague a conta, todos seus dados serão perdidos.
-
-                                <br>
-                                <br>
-                                <br>
-                                
-                                <div class="d-flex justify-content-center"><button id="confirmDeletion" type="button" class="btn-confirm-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng">SIM, DESEJO APAGAR</button></div>
+                    <!-- Modal - Editar ONG (Pop-up erro ao editar) -->
+                    <div class="modal fade" id="popUpErroEdit" tabindex="-1" aria-labelledby="popUpErroEditLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="popUpErroEdit">Erro</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Falha ao editar o perfil da ONG. Tente novamente mais tarde!
+                                </div>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Modal - Remover ONG (Pop-up inicial) -->
+                    <div class="modal fade" id="removeOng" tabindex="-1" aria-labelledby="removeOngLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="removeOngLabel">Deseja remover sua conta?</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    Caso apague a conta, todos seus dados serão perdidos.
+
+                                    <br>
+                                    <br>
+                                    <br>
+                                    
+                                    <div class="d-flex justify-content-center"><button id="confirmDeletion" type="button" class="btn-confirm-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeOng">SIM, DESEJO APAGAR</button></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Dados -->
+                    <div class="d-none d-md-flex pt-2 justify-content-start">
+                        <!-- Localização -->
+                        <div class="me-3">
+                            <div class="font-type-info">LOCALIZAÇÃO</div>
+                            <div class="font-info">${ong.city}, ${ong.state}</div>
+                        </div>
+
+                        <!-- Desde -->
+                        <div class="mx-3">
+                            <div class="font-type-info">DESDE</div>
+                            <div class="font-info">${ano}</div>
+                        </div>
+
+                        <!-- Animais -->
+                        <div class="ms-3">
+                            <div class="font-type-info">ANIMAIS</div>
+                            <div class="font-info">${ong.pets}</div>
+                        </div>
+                    </div>
+
+                    <!-- Sobre -->
+                    <div class="d-none d-md-block py-3">
+                        <div class="font-type-info">SOBRE</div>
+                        <div class="font-info">${ong.about}</div>
+                    </div>
+
+                    <!-- Contato -->
+                    <div class="font-contact d-none d-md-block">
+                        <div class="font-type-info">CONTATO</div>
+
+                        <div class="d-flex justify-content-start pt-1 align-items-center">
+                            <!-- Instagram -->
+                            <a id="instaDiv" href="https://www.instagram.com/${ong.instagram}/" target="_blank" class="btn btn-standard-click rounded-pill me-2">
+                                <i class="fa-brands fa-instagram"></i>
+                                Instagram
+                            </a>
+
+                            <!-- Facebook -->
+                            <a id="faceDiv" href="https://www.facebook.com/${ong.facebook}/about" target="_blank" class="btn btn-standard-click rounded-pill me-2">
+                                <i class="fa-brands fa-facebook-f"></i>
+                                Facebook
+                            </a>
+
+                            <!-- Sem contato -->
+                            <div id="semContato" class="font-info">ONG sem redes sociais :(</div>
+                        </div>
+                        <button class="btn btn-contribua rounded-pill mt-3" data-bs-toggle="modal" data-bs-target="#ongContribuir">CONTRIBUA!</button>
+                    </div>
                 </div>
-
-                <!-- Dados -->
-                <div class="d-none d-md-flex pt-2 justify-content-start">
-                    <!-- Localização -->
-                    <div class="me-3">
-                        <div class="font-type-info">LOCALIZAÇÃO</div>
-                        <div class="font-info">${ong.city}, ${ong.state}</div>
-                    </div>
-
-                    <!-- Desde -->
-                    <div class="mx-3">
-                        <div class="font-type-info">DESDE</div>
-                        <div class="font-info">${ano}</div>
-                    </div>
-
-                    <!-- Animais -->
-                    <div class="ms-3">
-                        <div class="font-type-info">ANIMAIS</div>
-                        <div class="font-info">${ong.pets}</div>
-                    </div>
-                </div>
-
-                <!-- Sobre -->
-                <div class="d-none d-md-block py-3">
-                    <div class="font-type-info">SOBRE</div>
-                    <div class="font-info">${ong.about}</div>
-                </div>
-
-                <!-- Contato -->
-                <div class="font-contact d-none d-md-block">
-                    <div class="font-type-info">CONTATO</div>
-
-                    <div class="d-flex justify-content-start pt-1 align-items-center">
-                        <!-- Instagram -->
-                        <a id="instaDiv" href="https://www.instagram.com/${ong.instagram}/" class="btn btn-standard-click rounded-pill me-2">
-                            <i class="fa-brands fa-instagram"></i>
-                            Instagram
-                        </a>
-
-                        <!-- Facebook -->
-                        <a id="faceDiv" href="https://www.facebook.com/${ong.facebook}/about" class="btn btn-standard-click rounded-pill me-2">
-                            <i class="fa-brands fa-facebook-f"></i>
-                            Facebook
-                        </a>
-
-                        <!-- Sem contato -->
-                        <div id="semContato" class="font-info">ONG sem redes sociais :(</div>
-                    </div>
-                    <button class="btn btn-contribua rounded-pill mt-3" data-bs-toggle="modal" data-bs-target="#ongContribuir">CONTRIBUA!</button>
+                <div class="col-2">
                 </div>
             </div>
+
 
             <!-- Modal - Contribua -->
             <div class="modal fade" id="ongContribuir" tabindex="-1" aria-labelledby="ongContribuirLabel" aria-hidden="true">
@@ -770,42 +777,25 @@ async function createPetsOwnedCard(ONGId, owner) {
         
     <!-- Animais da ONG -->
     <div class="container-xxl mt-4">
-        <!-- Título -->
-        <div class="row align-items-center">
+        <div class="row">
             <div class="col ong-pets-title">
                 Animais esperando por um lar!
             </div>
-            <!-- Botão adicionar pet -->
-            <div class="col text-end">
-                <button type="button" class="btn btn-standard-click btn-lg rounded-pill owner" data-bs-toggle="modal" data-bs-target="#petModal">
+            <div class="col">
+                <button type="button" class="ms-auto btn btn-standard-click btn-lg rounded-pill owner" data-bs-toggle="modal" data-bs-target="#petModal">
                     Adicionar um Pet
                 </button>
             </div>
         </div>
         <div class="modal fade" id="petModal" tabindex="-1" aria-labelledby="petModalLabel" aria-hidden="true">
         </div>
-        <!-- Controle de páginas -->
-            <div class="row d-flex">
-                    <div class="col d-flex">
-                        <div class="d-inline-flex flex-column mt-3">
-                            <div id="GridPets" class="d-flex justify-content-center flex-wrap"></div>
-                            <div class="my-3 mx-5 text-end">
-                                <a href="search.html" style="text-decoration: none">
-                                    <button type="button" class="button-pages mx-1">&lt</button>
-                                </a>
-                                <a href="search.html" style="text-decoration: none">
-                                    <button type="button" class="button-pages mx-1">1</button>
-                                </a>
-                                <a href="search.html" style="text-decoration: none">
-                                    <button type="button" class="button-pages mx-1">2</button>
-                                </a>
-                                <a href="search.html" style="text-decoration: none">
-                                    <button type="button" class="button-pages mx-1">&gt</button>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
+        <div class="row d-flex">
+            <div class="col d-flex">
+                <div class="d-inline-flex flex-column mt-3">
+                    <div id="GridPets" class="d-flex flex-wrap"></div>
                 </div>
+            </div>
+        </div>
     </div>
     `;
 

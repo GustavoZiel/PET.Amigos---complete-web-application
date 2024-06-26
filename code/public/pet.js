@@ -394,7 +394,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl) {
 
         <div class="col-lg-9 row">
             <div class="d-none d-lg-block">
-                <h1 class="ps-5 poppins-semibold textPurple">
+                <h1 class="ps-4 poppins-semibold textPurple">
                     ${pet.name}
                     <i class="fa-solid fa-${pet.sex === 'macho' ? 'mars' : 'venus'} textPurple"></i>
                     <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editPetModal"><i class="fa-regular fa-pen-to-square"></i></button>
@@ -482,6 +482,21 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl) {
                     </div>
                     <div class="modal-body">
                         Falha ao apagar o perfil do PET. Tente novamente !
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="popUpCorretoEdit" tabindex="-1" aria-labelledby="popUpCorretoEditLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="popUpCorretoEditLabel">Sucesso</h5>
+                        <button id="redirectButtonEdit" type="button" class="btn-close" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        Perfil de Pet atualizado com sucesso!
                     </div>
                 </div>
             </div>
@@ -617,7 +632,24 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl) {
             .then(response => {
                 if (response.ok) {
                     console.log(`Perfil do PET com ID ${pet.id} atualizado`); // Adjusted to use the correct ID
-                    window.location.href = `pet.html?id=${pet.id}`;
+                    const editPetModalElement = document.querySelector('#editPetModal');
+                    const popUpEdit = bootstrap.Modal.getInstance(editPetModalElement);
+                    if (popUpEdit) {
+                        popUpEdit.hide();
+                    }
+    
+                    const popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
+
+                    console.log(popUp)
+                    popUp.toggle()
+                    popUp.show()
+    
+                    const botaoRedirect = document.querySelector('#redirectButtonEdit')
+                    console.log(botaoRedirect)
+    
+                    botaoRedirect.addEventListener('click', () => {
+                        window.location.href = "pet.html?id=" + pet.id;
+                    })
                 } else {
                     console.error('Erro ao atualizar perfil do PET.');
                     const editPetModalElement = document.querySelector('#editPetModal');
