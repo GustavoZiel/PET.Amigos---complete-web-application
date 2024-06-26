@@ -95,6 +95,15 @@
     border-width: 1px;
 }
 
+.btn-logout {
+    background: none;
+    border: none;
+}
+
+.btn-logout:hover {
+    color: #3A0CA3;
+}
+
 .btn-edit {
     background: none;
     border: none;

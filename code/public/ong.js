@@ -28,7 +28,10 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const OngEmailFromToken = attributes.email;
                     console.log(OngEmailFromToken)
                     console.log(OngIdFromToken)
+                    console.log(ONGId)
+                    console.log(ong.email)
                     if(ONGId == OngIdFromToken && OngEmailFromToken === ong.email){
+                        console.log("awdw")
                         owner = 1;
                     }
                     role = localStorage.getItem('role')
@@ -85,7 +88,8 @@ async function createOngCard(ong, ongimage, owner) {
                 <!-- Nome da ONG -->
                 <div class="font-ong-name d-flex d-md-none justify-content-center">${ong.ongName}</div>
                 <div class="font-name d-flex d-md-none justify-content-center">
-                    <button type="button" class="btn-edit ms-4 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
+                    <button type="button" class="btn-logout ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#logoutOng"><i class="fa fa-power-off"></i></button>
+                    <button type="button" class="btn-edit ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
                     <button type="button" class="btn-remove ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
                 </div>
 
@@ -151,7 +155,8 @@ async function createOngCard(ong, ongimage, owner) {
                     <div class="font-ong-name d-none d-md-flex align-items-center">
                         ${ong.ongName}
                         <div class="ps-5">
-                            <button type="button" class="btn-edit ms-4 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
+                            <button type="button" class="btn-logout ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#logoutOng"><i class="fa fa-power-off"></i></button>
+                            <button type="button" class="btn-edit ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#editOngModal"><i class="fa-regular fa-pen-to-square"></i></button>
                             <button type="button" class="btn-remove ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#removeOng"><i class="fa-solid fa-trash-can"></i></button>
                         </div>
                     </div>
@@ -441,7 +446,7 @@ async function createOngCard(ong, ongimage, owner) {
 
         </div>
     </section>`;
-
+    
     const editarForm = ongCard.querySelector('#editOngForm');
 
     let instagramDiv = ongCard.querySelector("#instaDiv");
@@ -514,6 +519,16 @@ async function createOngCard(ong, ongimage, owner) {
     const deleteButton = ongCard.querySelector('#confirmDeletion')
 
     const ongId = getParameterByName('id');
+
+    const logout = ongCard.querySelectorAll('.btn-logout')
+    logout.forEach(log => {
+            log.addEventListener('click', function() {
+                localStorage.removeItem('token');
+                localStorage.removeItem('role');
+                window.location.href = 'home.html';
+            });
+        }
+    )
     deleteButton.addEventListener('click', async () => {
         let isSucesso = 1;
 

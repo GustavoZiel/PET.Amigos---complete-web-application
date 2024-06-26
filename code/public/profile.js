@@ -39,6 +39,15 @@ document.addEventListener('DOMContentLoaded', async () => {
             const profileCard = createProfileCard(user, userimage, owner);
             const botaoremove = profileCard.querySelectorAll(".btn-remove");
             const botaoedit = profileCard.querySelectorAll(".btn-edit");
+            const logout = profileCard.querySelectorAll('.btn-logout')
+            logout.forEach(log => {
+                    log.addEventListener('click', function() {
+                        localStorage.removeItem('token');
+                        localStorage.removeItem('role');
+                        window.location.href = 'home.html';
+                    });
+                }
+            )
             botaoremove.forEach(botao => {
                 if(!owner){
                     botao.style.display = 'none';
@@ -100,7 +109,8 @@ function createProfileCard(user, userimage, owner) {
                     <!-- Nome do Usuário -->
                     <div class="font-name d-flex d-md-none justify-content-center">${user.userName}</div>
                     <div class="font-name d-flex d-md-none zjustify-content-center">
-                        <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
+                        <button type="button" class="btn-logout ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#logoutOng"><i class="fa fa-power-off"></i></button>
+                        <button type="button" class="btn-edit ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar"><i class="fa-regular fa-pen-to-square"></i></button>
                         <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeUser"><i class="fa-solid fa-trash-can"></i></button>
                     </div>
 
@@ -154,7 +164,8 @@ function createProfileCard(user, userimage, owner) {
                         <div class="font-ong-name d-none d-md-flex align-items-center">
                             ${user.userName}
                             <div class="ps-5">
-                                <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="fa-regular fa-pen-to-square"></i></button>
+                                <button type="button" class="btn-logout ms-2 text-nowrap owner" data-bs-toggle="modal" data-bs-target="#logoutOng"><i class="fa fa-power-off"></i></button>
+                                <button type="button" class="btn-edit ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#editUserModal"><i class="fa-regular fa-pen-to-square"></i></button>
                                 <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removeUser"><i class="fa-solid fa-trash-can"></i></button>
                             </div>
                         </div>
