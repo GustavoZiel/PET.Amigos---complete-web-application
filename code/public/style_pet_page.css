@@ -21,6 +21,9 @@
   background: none;
   border: none;
 }
+.textPurple{
+  color:#3a0ca3;
+}
 
 .btn-logout:hover {
   color: #3A0CA3;
