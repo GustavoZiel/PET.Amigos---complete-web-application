@@ -225,12 +225,6 @@ async function createOngCard(ong, ongimage, owner) {
                                         </div>
 
                                         <div class=" pt-3">
-                                            <label for="cidade" class="form-label">Cidade</label>
-                                            <select class="form-select" id="citySelect" name="city">
-                                            <option value="São Carlos">São Carlos</option>
-                                            </select>
-                                        </div>
-                                        <div class=" pt-3">
                                             <label for="estado" class="form-label">Estado</label>
                                             <select class="form-select" id="stateSelect" name="state" required>
                                                 <option value="AC" ${ong.state === 'AC' ? 'selected' : ''}>Acre</option>
@@ -260,6 +254,12 @@ async function createOngCard(ong, ongimage, owner) {
                                                 <option value="SP" ${ong.state === 'SP' ? 'selected' : ''}>São Paulo</option>
                                                 <option value="SE" ${ong.state === 'SE' ? 'selected' : ''}>Sergipe</option>
                                                 <option value="TO" ${ong.state === 'TO' ? 'selected' : ''}>Tocantins</option>
+                                            </select>
+                                        </div>
+                                        <div class=" pt-3">
+                                            <label for="cidade" class="form-label">Cidade</label>
+                                            <select class="form-select" id="citySelect" name="city">
+                                            <option value="São Carlos">São Carlos</option>
                                             </select>
                                         </div>
                                     
