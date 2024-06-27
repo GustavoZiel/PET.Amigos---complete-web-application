@@ -1,4 +1,4 @@
-## Links úteis (Tirar isso aqui depois)
+<!-- ## Links úteis (Tirar isso aqui depois)
 
 - [Pasta no Drive](https://drive.google.com/drive/folders/1oEhYCcNuu0_TfsNUXb35vzY4aYvZH-lx?usp=drive_link)
 - [Quadro no Trello](https://trello.com/b/Jy282Tri/projeto-desenvolvimento-web)
@@ -8,9 +8,51 @@
 - [Planejamento da Disciplina EngSof - versão atualizada](https://docs.google.com/spreadsheets/d/14gF6XqsYz6a20eCrm2Es33_6zG26AHoD4vR-v8Dz8GE/edit#gid=1036714948)
 - [Atividades do Projeto de EngSof](https://docs.google.com/spreadsheets/d/1dRVxodQT8VO-5FTN785RePfneY-A9nYlamd3xnK9eUA/edit#gid=1975033013)
 
-<hr>
+<hr> -->
 
-# Site para adoção de Animais
+# PET.Amigos - Adoção de Animais
+
+## Índice
+
+- [PET.Amigos - Adoção de Animais](#petamigos---adoção-de-animais)
+  - [Índice](#índice)
+  - [Sobre o Projeto](#sobre-o-projeto)
+  - [Integrantes](#integrantes)
+  - [Responsáveis](#responsáveis)
+    - [SSC0130 - Engenharia de Software (2024)](#ssc0130---engenharia-de-software-2024)
+    - [SCC0219 - Introdução ao Desenvolvimento Web (2024)](#scc0219---introdução-ao-desenvolvimento-web-2024)
+  - [Cliente](#cliente)
+    - [Identificação do Cliente](#identificação-do-cliente)
+    - [Reuniões e Comunicação](#reuniões-e-comunicação)
+    - [Feedback e Validação](#feedback-e-validação)
+  - [Metodologia Utilizada](#metodologia-utilizada)
+    - [Sprints](#sprints)
+  - [Ferramentas Utilizadas](#ferramentas-utilizadas)
+    - [Engenharia de Software](#engenharia-de-software)
+    - [Desenvolvimento Web](#desenvolvimento-web)
+  - [Forma de Utilização](#forma-de-utilização)
+    - [Requisitos](#requisitos)
+    - [Instalação](#instalação)
+  - [Overview das Funcionalidades do Sistema](#overview-das-funcionalidades-do-sistema)
+  - [Documentação Estendida](#documentação-estendida)
+  - [Screenshots da Aplicação](#screenshots-da-aplicação)
+    - [Home](#home)
+    - [Login / Register](#login--register)
+    - [Search](#search)
+      - [Não Logado](#não-logado)
+      - [Logado como Usuário](#logado-como-usuário)
+    - [ONG](#ong)
+      - [Não logado](#não-logado-1)
+      - [Logado](#logado)
+      - [Editar Perfil](#editar-perfil)
+      - [Adicionar Pet](#adicionar-pet)
+    - [User](#user)
+      - [Editar Perfil](#editar-perfil-1)
+    - [Pet](#pet)
+      - [Visão Usuário](#visão-usuário)
+      - [Visão ONG Protetora](#visão-ong-protetora)
+      - [Editar Pet](#editar-pet)
+  - [Conclusões e Aprendizados](#conclusões-e-aprendizados)
 
 ## Sobre o Projeto
 
@@ -24,16 +66,18 @@ A aplicação não só facilita o processo de adoção, mas também promove a co
 
 ## Integrantes
 
-- Nome 1 - [email5@usp.br](mailto:email5@usp.br)
-- Nome 2 - [email6@usp.br](mailto:email6@usp.br)
-- Nome 3 - [email5@usp.br](mailto:email5@usp.br)
+> Universidade de São Paulo (USP) - Instituto de Ciências Matemáticas e de Computação (ICMC)
+> Ciências da Computação - 1º Semestre de 2024
+
+- Artur De Vlieger Lima - [email5@usp.br](mailto:vligmart@usp.br)
+- Catarina Moreira Lima - [catarina.lima@usp.br](mailto:catarina.lima@usp.br)
+- Enzo Nunes Sedenho - [enzosedenho@usp.br](mailto:enzosedenho@usp.br)
 - Gabriel da Costa Merlin - [gabrielcmerlin@usp.br](mailto:gabrielcmerlin@usp.br)
-- Gustavo Gabriel Ribeiro
-- Nome 6 - [email2@usp.br](mailto:email2@usp.br)
+- Gustavo Gabriel Ribeiro - [gugagribeiro@usp.br](mailto:gugagribeiro@usp@usp.br)
+- Pedro Augusto Monteiro Delgado - [email2@usp.br](mailto:pedro.delgado@usp.br)
 
 ## Responsáveis
 
-> Universidade de São Paulo (USP) - Instituto de Ciências Matemáticas e de Computação (ICMC)
 
 ### SSC0130 - Engenharia de Software (2024)
 
@@ -48,11 +92,11 @@ A aplicação não só facilita o processo de adoção, mas também promove a co
 
 ### Identificação do Cliente
 
-<!-- TODO - TUKA preencher -->
-- **Nome do Cliente**: [Nome do Cliente]
-- **Organização**: [Nome da Organização]
-- **Contato**: [cliente@empresa.com](mailto:cliente@empresa.com)
-- **Telefone**: [(XX) XXXX-XXXX](tel:+55XX-XXXX-XXXX)
+- **Nome da Cliente**: Tuka Nyko
+- **Contatos**:
+  - **Email**: [acaochegodatuka@gmail.com](mailto:acaochegodatuka@gmail.com)
+  - **Instagram**: [Acãochego Da Tuka](https://www.instagram.com/acaochegodatuka?igsh=MXR5am1wZ2QwZ3Nhbg==)
+  - **Facebook**: [Acãochego Da Tuka](https://www.facebook.com/acaochegodatuka/)
 
 ### Reuniões e Comunicação
 
@@ -74,12 +118,12 @@ Adotamos o método ágil Scrum para gerenciar o desenvolvimento do projeto. O tr
 
 ### Sprints
 
-<!-- TODO - Melhorar os sprints conforme o que foi seguido -->
-- **Sprint 1**: Planejamento e levantamento de requisitos
-- **Sprint 2**: Design do sistema e arquitetura
-- **Sprint 3**: Desenvolvimento do MVP
-- **Sprint 4**: Testes e validações
-- **Sprint 5**: Implementação de melhorias e ajustes finais
+- **Sprint 1**: Planejamento, organização do ambiente de desenvolvimento e levantamento de requisitos
+- **Sprint 2**: Design do sistema e elaboração dos protótipos de baixa, média e alta fidelidade
+- **Sprint 3**: Desenvolvimento do Front-end do MVP, e coleta de feedbacks com a cliente
+- **Sprint 4**: Aprimoramento do MVP, desenvolvimento Back-end
+- **Sprint 5**: Integração do projeto e realease da versão estável
+- **Sprint 6**: Ajustes finais e apresentação à cliente
 
 ## Ferramentas Utilizadas
 
@@ -132,10 +176,6 @@ Adotamos o método ágil Scrum para gerenciar o desenvolvimento do projeto. O tr
     # A senha associada ao nome de usuário especificado em PGUSER.
     PGPASSWORD='password_user'
 
-    <!-- TODO - Remover isso aqui (não é usado para nada) -->
-    # Um identificador único para o endpoint do banco de dados. Este pode ser usado para diversas configurações e integrações.
-    ENDPOINT_ID='ep-lingering-field-a5yav51y'
-
     # A chave de acesso para o serviço de armazenamento de fotos remoto (Minio).
     ACCESS_KEY ='acess_key'
 
@@ -183,6 +223,9 @@ A aplicação será iniciada e poderá ser acessada acessando o endereço `http:
 - Perfil da ONG
   - As ONGs podem gerenciar suas informações e os animais que estão sob sua responsabilidade, incluindo a atualização de dados dos pets e informações de contato da ONG.
 
+- Curtir Pets
+  - Permite que os usuários curtam os perfis de pets que estão interessados, salvando esses pets em uma lista dentro de seus perfis para possível visualização posterior
+
 - Processo de Adoção
   - Facilita a comunicação entre usuários interessados e ONGs para iniciar o processo de adoção de um animal.
 
@@ -195,20 +238,77 @@ A aplicação será iniciada e poderá ser acessada acessando o endereço `http:
 - Autenticação
   - Garante que somente usuários registrados possam acessar certas funcionalidades, utilizando login e senha para verificação.
 
-Para mais detalhes, acesse a documentação estendida referente aos requisitos e funcionalidades de nosso projeto: [Requisitos e Funcionalidades](https://github.com/GustavoZiel/Projeto-Desenvolvimento-Web/tree/main/docs/requisitos).
+## Documentação Estendida
 
-## Documentação estendida
+Diversos documentos foram desenvolvidos para o alinhamento com as necessidades da Engenharia de Software ao longo do projeto. Acesse abaixo para mais detalhes:
 
-Diversos documentos foram criados para alinhar precisamente com as necessidades da Engenharia de Software ao longo do projeto. Acesse abaixo para mais detalhes:
+- [Plano de Projeto](https://github.com/GustavoZiel/Projeto-Desenvolvimento-Web/tree/main/docs/planodeprojeto): Detalhes sobre o planejamento e execução do projeto.
+- [Requisitos](https://github.com/GustavoZiel/Projeto-Desenvolvimento-Web/tree/main/docs/requisitos): Especificações funcionais e não funcionais do sistema.
+- [Protótipos](https://github.com/GustavoZiel/Projeto-Desenvolvimento-Web/tree/main/docs/prototipos): Design visual e interativo inicial do sistema.
+- [Modelagem](https://github.com/GustavoZiel/Projeto-Desenvolvimento-Web/tree/main/docs/modelagem): Diagramas e modelos que representam a estrutura do sistema.
+- [Casos de Uso](https://github.com/GustavoZiel/Projeto-Desenvolvimento-Web/tree/main/docs/casosdeuso): Descrição detalhada de como os usuários interagem com o sistema.
+- [Casos de Teste](https://github.com/GustavoZiel/Projeto-Desenvolvimento-Web/tree/main/docs/casosdeteste): Conjunto de cenários e procedimentos para testar o sistema.
 
-<!-- TODO - Comentar algum dos documentos com screenshots -->
-- [Documentação Completa](https://github.com/usuario/repo/docs)
-- [Planilha de Atividades](https://docs.google.com/spreadsheets/d/1dRVxodQT8VO-5FTN785RePfneY-A9nYlamd3xnK9eUA/edit#gid=1975033013)
-- [Manual do Usuário](https://github.com/usuario/repo/manual)
+## Screenshots da Aplicação
 
-## Screenshots da aplicação
+### Home
 
-<!-- TODO -->
+![alt text](./attachments/image.png)
+
+### Login / Register
+
+![alt text](./attachments/image-1.png)
+![alt text](./attachments/image-2.png)
+
+### Search
+
+#### Não Logado
+
+![alt text](./attachments/image-3.png)
+
+#### Logado como Usuário
+
+![alt text](./attachments/image-10.png)
+
+### ONG
+
+#### Não logado
+
+![alt text](./attachments/image-4.png)
+
+#### Logado
+
+![alt text](./attachments/image-7.png)
+
+#### Editar Perfil
+
+![alt text](./attachments/image-9.png)
+
+#### Adicionar Pet
+
+![alt text](./attachments/image-8.png)
+
+### User
+
+![alt text](./attachments/image-6.png)
+
+#### Editar Perfil
+
+![alt text](./attachments/image-11.png)
+
+### Pet
+
+#### Visão Usuário
+
+![alt text](./attachments/image-5.png)
+
+#### Visão ONG Protetora
+
+![alt text](./attachments/image-12.png)
+
+#### Editar Pet
+
+![alt text](./attachments/image-13.png)
 
 ## Conclusões e Aprendizados
 
