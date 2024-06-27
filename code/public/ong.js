@@ -226,7 +226,8 @@ async function createOngCard(ong, ongimage, owner) {
 
                                         <div class=" pt-3">
                                             <label for="cidade" class="form-label">Cidade</label>
-                                            <select class="form-select" id="citySelect" name="city" required>
+                                            <select class="form-select" id="citySelect" name="city">
+                                            <option value="São Carlos">São Carlos</option>
                                             </select>
                                         </div>
                                         <div class=" pt-3">
@@ -484,7 +485,7 @@ async function createOngCard(ong, ongimage, owner) {
 
         citySelect.innerHTML = '';
 
-        cities.forEach(city => {
+        cities.sort().forEach(city => {
             const option = document.createElement('option');
             option.value = city;
             option.textContent = city;
@@ -680,26 +681,42 @@ function addPetsButton(ONGId) {
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="cidade" class="form-label">Cidade</label>
-                                        <select class="form-select" id="citySelect" name="city" required>
+                                        <select class="form-select" id="citySelect" name="city">
                                         </select>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="estado" class="form-label">Estado</label>
-                                        <select class="form-select" id="stateSelect" name="state" required>
-                                            <option value="SP">São Paulo</option>
-                                            <option value="RJ">Rio de Janeiro</option>
-                                            <option value="MG">Minas Gerais</option>
-                                            <option value="ES">Espírito Santo</option>
-                                            <option value="DF">Distrito Federal</option>
-                                            <option value="GO">Goiás</option>
-                                            <option value="MT">Mato Grosso</option>
-                                            <option value="MS">Mato Grosso do Sul</option>
-                                            <option value="PR">Paraná</option>
-                                            <option value="SC">Santa Catarina</option>
-                                            <option value="RS">Rio Grande do Sul</option>
-                                        </select>
+                                            <select class="form-select" id="stateSelect" name="state" required>
+                                                <option value="AC">Acre</option>
+                                                <option value="AL">Alagoas</option>
+                                                <option value="AP">Amapá</option>
+                                                <option value="AM">Amazonas</option>
+                                                <option value="BA">Bahia</option>
+                                                <option value="CE">Ceará</option>
+                                                <option value="DF">Distrito Federal</option>
+                                                <option value="ES">Espírito Santo</option>
+                                                <option value="GO">Goiás</option>
+                                                <option value="MA">Maranhão</option>
+                                                <option value="MT">Mato Grosso</option>
+                                                <option value="MS">Mato Grosso do Sul</option>
+                                                <option value="MG">Minas Gerais</option>
+                                                <option value="PA">Pará</option>
+                                                <option value="PB">Paraíba</option>
+                                                <option value="PR">Paraná</option>
+                                                <option value="PE">Pernambuco</option>
+                                                <option value="PI">Piauí</option>
+                                                <option value="RJ">Rio de Janeiro</option>
+                                                <option value="RN">Rio Grande do Norte</option>
+                                                <option value="RS">Rio Grande do Sul</option>
+                                                <option value="RO">Rondônia</option>
+                                                <option value="RR">Roraima</option>
+                                                <option value="SC">Santa Catarina</option>
+                                                <option value="SP">São Paulo</option>
+                                                <option value="SE">Sergipe</option>
+                                                <option value="TO">Tocantins</option>
+                                            </select>
                                     </div>
                                 </div>
                             </div>
@@ -847,7 +864,6 @@ function addPetsButton(ONGId) {
                 </div>
             </div>`
 
-
     return botaoadd;
 }
 
@@ -897,6 +913,37 @@ async function createPetsOwnedCard(ONGId, owner, isuser) {
         botoes.style.display = 'none';
     }
     botao.innerHTML += addPetsButton(ONGId);
+
+    const statesSelect = petsOwnedCard.querySelector('#stateSelect');
+    const citySelect = petsOwnedCard.querySelector('#citySelect');
+
+    statesSelect.addEventListener('change', selectCityByState);
+    async function selectCityByState() {
+        const selectedState = statesSelect.value;
+        const cities = await fetchCitiesByState(selectedState);
+
+        citySelect.innerHTML = '';
+
+        cities.sort().forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        });
+    }
+    async function fetchCitiesByState(state) {
+        try {
+            const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/distritos`);
+            const data = await response.json();
+            return data.map(distrito => distrito.nome);
+        } catch (error) {
+            console.error('Erro ao buscar cidades:', error);
+            return [];
+        }
+    }
+
+    selectCityByState();
+
     const petsContainer = petsOwnedCard.querySelector('#GridPets');
 
     const speciesSelect = petsOwnedCard.querySelector('#specie');
@@ -909,7 +956,7 @@ async function createPetsOwnedCard(ONGId, owner, isuser) {
 
         breedSelect.innerHTML = '';
 
-        breeds.forEach(breed => {
+        breeds.sort().forEach(breed => {
             const option = document.createElement('option');
             option.value = breed;
             option.textContent = breed;

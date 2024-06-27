@@ -77,30 +77,33 @@
   background-color: #3a0ca3;
 }
 
-.textPurple {
+.btn-adotar {
   color: #3a0ca3;
-}
-
-.border-adotar {
   border: 0.15em solid #3A0CA3;
-}
-
-.text-adotar {
   font-size: 3vh;
-  color: #3A0CA3;
-}
-
-.text-adotar:hover {
-  font-size: 3vh;
-  color: white;
-}
-
-.bg-adotar {
   background-color: white;
+  border-radius: 50px; /* Presumindo que essa classe exista */
+  margin-top: 1rem; /* Presumindo que essa classe exista */
+  white-space: nowrap; /* Presumindo que essa classe exista */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
-.bg-adotar:hover {
+.btn-adotar:hover {
+  color: white;
   background-color: #3a0ca3;
+}
+
+.btn-adotado {
+  color: white;
+  border: 0.15em solid #3A0CA3;
+  font-size: 3vh;
+  background-color: #3a0ca3;
+  border-radius: 50px; /* Presumindo que essa classe exista */
+  margin-top: 1rem; /* Presumindo que essa classe exista */
+  white-space: nowrap; /* Presumindo que essa classe exista */
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
 }
 
 .textOngNumber {

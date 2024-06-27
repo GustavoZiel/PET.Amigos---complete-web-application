@@ -136,7 +136,7 @@ async function selectCityByState() {
 
     citySelect.innerHTML = '';
 
-    cities.forEach(city => {
+    cities.sort().forEach(city => {
         const option = document.createElement('option');
         option.value = city;
         option.textContent = city;
