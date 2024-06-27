@@ -71,7 +71,7 @@ A aplicação não só facilita o processo de adoção, mas também promove a co
 
 - Artur De Vlieger Lima - [email5@usp.br](mailto:vligmart@usp.br)
 - Catarina Moreira Lima - [catarina.lima@usp.br](mailto:catarina.lima@usp.br)
-- Enzo Nunes Sedenho - [email5@usp.br](mailto:enzosedenho@usp.br)
+- Enzo Nunes Sedenho - [enzosedenho@usp.br](mailto:enzosedenho@usp.br)
 - Gabriel da Costa Merlin - [gabrielcmerlin@usp.br](mailto:gabrielcmerlin@usp.br)
 - Gustavo Gabriel Ribeiro - [gugagribeiro@usp.br](mailto:gugagribeiro@usp@usp.br)
 - Pedro Augusto Monteiro Delgado - [email2@usp.br](mailto:pedro.delgado@usp.br)
