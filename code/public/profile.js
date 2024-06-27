@@ -600,7 +600,7 @@ async function createLikedPetsCard(isuser, userId) {
             const card = `
                 <a href="pet.html?id=${animal.id}" style="text-decoration: none">
                     <div class="card rounded-5 m-3 img-size">
-                        <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card" alt="${animal.name}">
+                        <img src="${source_img}" class="card-img-top rounded-top-5 border-img-card img-pet" alt="${animal.name}">
                         <div class="card-body rounded-bottom-5 border-card">
                             <h5 class="card-title font_name_black">${animal.name}</h5>
                             <p class="card-text font_infos_black">${animal.city}, ${animal.state}</p>
