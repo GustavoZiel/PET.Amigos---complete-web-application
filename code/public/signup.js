@@ -1,4 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
+
+    const statesSelect = document.querySelector('#stateSelect');
+    statesSelect.addEventListener('change', selectCityByState);
+    selectCityByState();
+
     // Função para validar o formulário
     function validateForm(event) {
         var password = document.getElementById("password").value;
@@ -25,7 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 field.style.display = 'block';
             });
             userInput.forEach(field => {
-                field.required = false; 
+                field.required = false;
             });
             ongInput.forEach(field => {
                 field.required = true;
@@ -36,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 field.style.display = 'none';
             });
             userInput.forEach(field => {
-                field.required = true; 
+                field.required = true;
             });
             ongInput.forEach(field => {
                 field.required = false;
@@ -111,7 +116,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Adiciona os event listeners
     document.getElementById('accountType').addEventListener('change', toggleFields);
-    document.getElementById('signupForm').addEventListener('submit', function(event) {
+    document.getElementById('signupForm').addEventListener('submit', function (event) {
         validateForm(event);
         if (!event.defaultPrevented) { // If form validation is successful
             submitForm(event);
@@ -122,39 +127,30 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleFields();
 });
 
-function selectCityByState() {
-    const stateSelect = document.getElementById('state');
-    const citySelect = document.getElementById('city');
-    const selectedState = stateSelect.value;
-    const cities = citiesByState[selectedState] || [];
+async function selectCityByState() {
+    const statesSelect = document.querySelector('#stateSelect');
+    const citySelect = document.querySelector('#citySelect');
+    
+    const selectedState = statesSelect.value;
+    const cities = await fetchCitiesByState(selectedState);
 
     citySelect.innerHTML = '';
 
-    if (cities.length > 0) {
-        cities.forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            citySelect.appendChild(option);
-        });
-    } else {
+    cities.forEach(city => {
         const option = document.createElement('option');
-        option.value = '';
-        option.textContent = 'Selecione uma Cidade';
+        option.value = city;
+        option.textContent = city;
         citySelect.appendChild(option);
-    }
+    });
 }
 
-const citiesByState = {
-    SP: ["São Carlos", "Araraquara", "São Paulo", "Guarulhos", "Campinas", "São Bernardo do Campo", "Santo André", "São José dos Campos", "Sorocaba", "Ribeirão Preto", "Santos", "Osasco"],
-    RJ: ["Rio de Janeiro", "São Gonçalo", "Duque de Caxias", "Nova Iguaçu", "Niterói", "Belford Roxo", "Campos dos Goytacazes", "São João de Meriti", "Petrópolis", "Volta Redonda"],
-    MG: ["Araxá", "Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Betim", "Montes Claros", "Ribeirão das Neves", "Uberaba", "Governador Valadares", "Ipatinga"],
-    ES: ["Serra", "Vila Velha", "Cariacica", "Vitória", "Linhares", "Colatina", "São Mateus", "Cachoeiro de Itapemirim", "Aracruz", "Guarapari"],
-    DF: ["Brasília", "Taguatinga", "Ceilândia", "Samambaia", "Planaltina", "Gama", "Santa Maria", "Recanto das Emas", "Guará", "São Sebastião"],
-    GO: ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Águas Lindas de Goiás", "Valparaíso de Goiás", "Trindade", "Formosa", "Novo Gama"],
-    MT: ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Tangará da Serra", "Sorriso", "Lucas do Rio Verde", "Primavera do Leste", "Cáceres", "Barra do Garças"],
-    MS: ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã", "Naviraí", "Nova Andradina", "Paranaíba", "Sidrolândia", "Maracaju"],
-    PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa", "Cascavel", "São José dos Pinhais", "Foz do Iguaçu", "Colombo", "Guarapuava", "Paranaguá"],
-    SC: ["Joinville", "Florianópolis", "Blumenau", "São José", "Chapecó", "Itajaí", "Criciúma", "Jaraguá do Sul", "Lages", "Palhoça"],
-    RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
-};
+async function fetchCitiesByState(state) {
+    try {
+        const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/distritos`);
+        const data = await response.json();
+        return data.map(distrito => distrito.nome);
+    } catch (error) {
+        console.error('Erro ao buscar cidades:', error);
+        return [];
+    }
+}

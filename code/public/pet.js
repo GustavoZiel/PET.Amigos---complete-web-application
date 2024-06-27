@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const pet = await responsePet.json();
             const petImageUrl = await fetchImage(pet.photos);
             console.log(petImageUrl)
-            
+
             // Like logic
             let isLiked = true;
             role = localStorage.getItem('role')
             let userIdFromToken = 0;
             let isuser = 0;
-            if(role === "USER"){
+            if (role === "USER") {
                 token = localStorage.getItem('token')
                 if (token) {
                     const parts = token.split('.');
@@ -61,11 +61,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const OngIdFromToken = attributes.sub;
                     const OngEmailFromToken = attributes.email;
                     console.log(OngEmailFromToken)
-                    if(ong.id == OngIdFromToken && OngEmailFromToken === ong.email){
+                    if (ong.id == OngIdFromToken && OngEmailFromToken === ong.email) {
                         owner = 1;
                     }
                     role = localStorage.getItem('role')
-                    if(role === "USER"){
+                    if (role === "USER") {
                         isuser = OngIdFromToken;
                     }
                 }
@@ -78,17 +78,17 @@ document.addEventListener('DOMContentLoaded', async () => {
             const botaoremove = petCard.querySelectorAll(".btn-remove");
             const botaoedit = petCard.querySelectorAll(".btn-edit");
             botaoremove.forEach(botao => {
-                if(!owner){
+                if (!owner) {
                     botao.style.display = 'none';
                 }
             });
             botaoedit.forEach(botao => {
-                if(!owner){
+                if (!owner) {
                     botao.style.display = 'none';
                 }
             });
             petsSection.appendChild(petCard);
-            
+
         } catch (error) {
             console.error('Erro ao buscar dados do pet:', error);
         }
@@ -131,20 +131,6 @@ const breedOptions = {
     Passaro: ["Canário", "Papagaio", "Pardal", "Periquito", "Calopsita", "Arara", "Cacatua", "Periquito Australiano", "Papagaio-do-congo", "Tucano", "Pombo", "Codorna"]
 };
 
-const citiesByState = {
-    SP: ["São Carlos", "Araraquara", "São Paulo", "Guarulhos", "Campinas", "São Bernardo do Campo", "Santo André", "São José dos Campos", "Sorocaba", "Ribeirão Preto", "Santos", "Osasco"],
-    RJ: ["Rio de Janeiro", "São Gonçalo", "Duque de Caxias", "Nova Iguaçu", "Niterói", "Belford Roxo", "Campos dos Goytacazes", "São João de Meriti", "Petrópolis", "Volta Redonda"],
-    MG: ["Araxá", "Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Betim", "Montes Claros", "Ribeirão das Neves", "Uberaba", "Governador Valadares", "Ipatinga"],
-    ES: ["Serra", "Vila Velha", "Cariacica", "Vitória", "Linhares", "Colatina", "São Mateus", "Cachoeiro de Itapemirim", "Aracruz", "Guarapari"],
-    DF: ["Brasília", "Taguatinga", "Ceilândia", "Samambaia", "Planaltina", "Gama", "Santa Maria", "Recanto das Emas", "Guará", "São Sebastião"],
-    GO: ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Águas Lindas de Goiás", "Valparaíso de Goiás", "Trindade", "Formosa", "Novo Gama"],
-    MT: ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Tangará da Serra", "Sorriso", "Lucas do Rio Verde", "Primavera do Leste", "Cáceres", "Barra do Garças"],
-    MS: ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã", "Naviraí", "Nova Andradina", "Paranaíba", "Sidrolândia", "Maracaju"],
-    PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa", "Cascavel", "São José dos Pinhais", "Foz do Iguaçu", "Colombo", "Guarapuava", "Paranaguá"],
-    SC: ["Joinville", "Florianópolis", "Blumenau", "São José", "Chapecó", "Itajaí", "Criciúma", "Jaraguá do Sul", "Lages", "Palhoça"],
-    RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
-};
-
 function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
     let [ano, mes] = calculateAge(pet.birth)
     const petCard = document.createElement('div');
@@ -178,7 +164,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
                             <img id="coracaoImg" src="${coracaoImgSrc}" alt="" class="img-fluid ">
                         </button>
                     </span>
-                    <button type="button" class="container-fluid bg-adotar border-adotar textPurple text-adotar poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR!</button>
+                    ${pet.adopted === true ? '<button type="button" class="container-fluid btn btn-danger rounded-pill mt-3 text-nowrap" disabled>ADOTADO !</button>' : '<button class="container-fluid bg-adotar border-adotar textPurple text-adotar poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR !</button>'}
                 </div>
             </div>
         </div>
@@ -236,19 +222,35 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="estado" class="form-label">Estado</label>
-                                        <select class="form-select" id="stateSelect" name="state" required>
-                                            <option value="SP" ${pet.state === 'SP' ? 'selected' : ''}>São Paulo</option>
-                                            <option value="RJ" ${pet.state === 'RJ' ? 'selected' : ''}>Rio de Janeiro</option>
-                                            <option value="MG" ${pet.state === 'MG' ? 'selected' : ''}>Minas Gerais</option>
-                                            <option value="ES" ${pet.state === 'ES' ? 'selected' : ''}>Espírito Santo</option>
-                                            <option value="DF" ${pet.state === 'DF' ? 'selected' : ''}>Distrito Federal</option>
-                                            <option value="GO" ${pet.state === 'GO' ? 'selected' : ''}>Goiás</option>
-                                            <option value="MT" ${pet.state === 'MT' ? 'selected' : ''}>Mato Grosso</option>
-                                            <option value="MS" ${pet.state === 'MS' ? 'selected' : ''}>Mato Grosso do Sul</option>
-                                            <option value="PR" ${pet.state === 'PR' ? 'selected' : ''}>Paraná</option>
-                                            <option value="SC" ${pet.state === 'SC' ? 'selected' : ''}>Santa Catarina</option>
-                                            <option value="RS" ${pet.state === 'RS' ? 'selected' : ''}>Rio Grande do Sul</option>
-                                        </select>
+                                            <select class="form-select" id="stateSelect" name="state" required>
+                                                <option value="AC" ${pet.state === 'AC' ? 'selected' : ''}>Acre</option>
+                                                <option value="AL" ${pet.state === 'AL' ? 'selected' : ''}>Alagoas</option>
+                                                <option value="AP" ${pet.state === 'AP' ? 'selected' : ''}>Amapá</option>
+                                                <option value="AM" ${pet.state === 'AM' ? 'selected' : ''}>Amazonas</option>
+                                                <option value="BA" ${pet.state === 'BA' ? 'selected' : ''}>Bahia</option>
+                                                <option value="CE" ${pet.state === 'CE' ? 'selected' : ''}>Ceará</option>
+                                                <option value="DF" ${pet.state === 'DF' ? 'selected' : ''}>Distrito Federal</option>
+                                                <option value="ES" ${pet.state === 'ES' ? 'selected' : ''}>Espírito Santo</option>
+                                                <option value="GO" ${pet.state === 'GO' ? 'selected' : ''}>Goiás</option>
+                                                <option value="MA" ${pet.state === 'MA' ? 'selected' : ''}>Maranhão</option>
+                                                <option value="MT" ${pet.state === 'MT' ? 'selected' : ''}>Mato Grosso</option>
+                                                <option value="MS" ${pet.state === 'MS' ? 'selected' : ''}>Mato Grosso do Sul</option>
+                                                <option value="MG" ${pet.state === 'MG' ? 'selected' : ''}>Minas Gerais</option>
+                                                <option value="PA" ${pet.state === 'PA' ? 'selected' : ''}>Pará</option>
+                                                <option value="PB" ${pet.state === 'PB' ? 'selected' : ''}>Paraíba</option>
+                                                <option value="PR" ${pet.state === 'PR' ? 'selected' : ''}>Paraná</option>
+                                                <option value="PE" ${pet.state === 'PE' ? 'selected' : ''}>Pernambuco</option>
+                                                <option value="PI" ${pet.state === 'PI' ? 'selected' : ''}>Piauí</option>
+                                                <option value="RJ" ${pet.state === 'RJ' ? 'selected' : ''}>Rio de Janeiro</option>
+                                                <option value="RN" ${pet.state === 'RN' ? 'selected' : ''}>Rio Grande do Norte</option>
+                                                <option value="RS" ${pet.state === 'RS' ? 'selected' : ''}>Rio Grande do Sul</option>
+                                                <option value="RO" ${pet.state === 'RO' ? 'selected' : ''}>Rondônia</option>
+                                                <option value="RR" ${pet.state === 'RR' ? 'selected' : ''}>Roraima</option>
+                                                <option value="SC" ${pet.state === 'SC' ? 'selected' : ''}>Santa Catarina</option>
+                                                <option value="SP" ${pet.state === 'SP' ? 'selected' : ''}>São Paulo</option>
+                                                <option value="SE" ${pet.state === 'SE' ? 'selected' : ''}>Sergipe</option>
+                                                <option value="TO" ${pet.state === 'TO' ? 'selected' : ''}>Tocantins</option>
+                                            </select>
                                     </div>
                                 </div>
                             </div>
@@ -560,9 +562,9 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
     const citySelect = petCard.querySelector('#citySelect');
 
     statesSelect.addEventListener('change', selectCityByState);
-    function selectCityByState() {
-        const selectedStates = statesSelect.value;
-        const cities = citiesByState[selectedStates] || [];
+    async function selectCityByState() {
+        const selectedState = statesSelect.value;
+        const cities = await fetchCitiesByState(selectedState);
 
         citySelect.innerHTML = '';
 
@@ -577,21 +579,32 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
         });
     }
 
+    async function fetchCitiesByState(state) {
+        try {
+            const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/distritos`);
+            const data = await response.json();
+            return data.map(distrito => distrito.nome);
+        } catch (error) {
+            console.error('Erro ao buscar cidades:', error);
+            return [];
+        }
+    }
+
     selectCityByState();
     selectBreedBySpecie();
 
     const coracaoImg = petCard.querySelector('#coracaoImg');
     const CoracaoButton = petCard.querySelector('#toggleHeart');
-    if(isuser === 0){
+    if (isuser === 0) {
         CoracaoButton.style.display = 'none';
     }
-    else{
+    else {
         coracaoImg.addEventListener('click', () => {
             const petId = CoracaoButton.dataset.petId;
-    
+
             if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
                 coracaoImg.src = './img/empty-heart.svg';
-    
+
                 fetch(`/likes/${isuser}/${petId}`, { method: 'DELETE' })
                     .then(response => {
                         if (response.ok) {
@@ -615,7 +628,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
                         }
                     })
                     .catch(error => console.error('Erro ao adicionar a curtida:', error));
-    
+
                 coracaoImg.src = './img/red-heart-svgrepo-com.svg';
             }
         });
@@ -658,16 +671,16 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
                     if (popUpEdit) {
                         popUpEdit.hide();
                     }
-    
+
                     const popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
 
                     console.log(popUp)
                     popUp.toggle()
                     popUp.show()
-    
+
                     const botaoRedirect = document.querySelector('#redirectButtonEdit')
                     console.log(botaoRedirect)
-    
+
                     botaoRedirect.addEventListener('click', () => {
                         window.location.href = "pet.html?id=" + pet.id;
                     })

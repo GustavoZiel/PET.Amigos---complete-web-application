@@ -30,12 +30,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                     console.log(OngIdFromToken)
                     console.log(ONGId)
                     console.log(ong.email)
-                    if(ONGId == OngIdFromToken && OngEmailFromToken === ong.email){
-                        console.log("awdw")
+                    if (ONGId == OngIdFromToken && OngEmailFromToken === ong.email) {
                         owner = 1;
                     }
                     role = localStorage.getItem('role')
-                    if(role === "USER"){
+                    if (role === "USER") {
                         isuser = OngIdFromToken;
                     }
                 }
@@ -110,7 +109,7 @@ async function createOngCard(ong, ongimage, owner) {
                     <!-- Animais -->
                     <div class="d-md-none pb-sm-0">
                         <div class="font-type-info">ANIMAIS</div>
-                        <div class="font-info">${ong.pets}</div>
+                        <div id="pets" class="font-info"></div>
                     </div>
                 </div>
 
@@ -198,11 +197,11 @@ async function createOngCard(ong, ongimage, owner) {
 
                                             <div class="col-auto pt-2">
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox1" name="pets" value="Cachorro" ${ong.pets.includes('Cachorros') ? 'checked' : ''}>
+                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox1" name="pets" value="Cachorro" ${ong.pets.includes('Cachorro') ? 'checked' : ''}>
                                                     <label class="form-check-label" for="petsCheckbox1">Cachorros</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox2" name="pets" value="Gato" ${ong.pets.includes('Gatos') ? 'checked' : ''}>
+                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox2" name="pets" value="Gato" ${ong.pets.includes('Gato') ? 'checked' : ''}>
                                                     <label class="form-check-label" for="petsCheckbox2">Gatos</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
@@ -225,14 +224,42 @@ async function createOngCard(ong, ongimage, owner) {
                                             <input type="text" id="address" name="address" class="form-control ong-input" value="${ong.address}" required>
                                         </div>
 
-                                        <div class="form-group pt-3">
-                                            <label for="city">Cidade</label>
-                                            <input type="text" id="city" name="city" class="form-control" value="${ong.city}" required>
+                                        <div class=" pt-3">
+                                            <label for="cidade" class="form-label">Cidade</label>
+                                            <select class="form-select" id="citySelect" name="city" required>
+                                            </select>
                                         </div>
-
-                                        <div class="form-group pt-3">
-                                            <label for="state">Estado</label>
-                                            <input type="text" id="state" name="state" class="form-control" value="${ong.state}" required>
+                                        <div class=" pt-3">
+                                            <label for="estado" class="form-label">Estado</label>
+                                            <select class="form-select" id="stateSelect" name="state" required>
+                                                <option value="AC" ${ong.state === 'AC' ? 'selected' : ''}>Acre</option>
+                                                <option value="AL" ${ong.state === 'AL' ? 'selected' : ''}>Alagoas</option>
+                                                <option value="AP" ${ong.state === 'AP' ? 'selected' : ''}>Amapá</option>
+                                                <option value="AM" ${ong.state === 'AM' ? 'selected' : ''}>Amazonas</option>
+                                                <option value="BA" ${ong.state === 'BA' ? 'selected' : ''}>Bahia</option>
+                                                <option value="CE" ${ong.state === 'CE' ? 'selected' : ''}>Ceará</option>
+                                                <option value="DF" ${ong.state === 'DF' ? 'selected' : ''}>Distrito Federal</option>
+                                                <option value="ES" ${ong.state === 'ES' ? 'selected' : ''}>Espírito Santo</option>
+                                                <option value="GO" ${ong.state === 'GO' ? 'selected' : ''}>Goiás</option>
+                                                <option value="MA" ${ong.state === 'MA' ? 'selected' : ''}>Maranhão</option>
+                                                <option value="MT" ${ong.state === 'MT' ? 'selected' : ''}>Mato Grosso</option>
+                                                <option value="MS" ${ong.state === 'MS' ? 'selected' : ''}>Mato Grosso do Sul</option>
+                                                <option value="MG" ${ong.state === 'MG' ? 'selected' : ''}>Minas Gerais</option>
+                                                <option value="PA" ${ong.state === 'PA' ? 'selected' : ''}>Pará</option>
+                                                <option value="PB" ${ong.state === 'PB' ? 'selected' : ''}>Paraíba</option>
+                                                <option value="PR" ${ong.state === 'PR' ? 'selected' : ''}>Paraná</option>
+                                                <option value="PE" ${ong.state === 'PE' ? 'selected' : ''}>Pernambuco</option>
+                                                <option value="PI" ${ong.state === 'PI' ? 'selected' : ''}>Piauí</option>
+                                                <option value="RJ" ${ong.state === 'RJ' ? 'selected' : ''}>Rio de Janeiro</option>
+                                                <option value="RN" ${ong.state === 'RN' ? 'selected' : ''}>Rio Grande do Norte</option>
+                                                <option value="RS" ${ong.state === 'RS' ? 'selected' : ''}>Rio Grande do Sul</option>
+                                                <option value="RO" ${ong.state === 'RO' ? 'selected' : ''}>Rondônia</option>
+                                                <option value="RR" ${ong.state === 'RR' ? 'selected' : ''}>Roraima</option>
+                                                <option value="SC" ${ong.state === 'SC' ? 'selected' : ''}>Santa Catarina</option>
+                                                <option value="SP" ${ong.state === 'SP' ? 'selected' : ''}>São Paulo</option>
+                                                <option value="SE" ${ong.state === 'SE' ? 'selected' : ''}>Sergipe</option>
+                                                <option value="TO" ${ong.state === 'TO' ? 'selected' : ''}>Tocantins</option>
+                                            </select>
                                         </div>
                                     
                                         <div class="form-group pt-3">
@@ -356,7 +383,7 @@ async function createOngCard(ong, ongimage, owner) {
                         <!-- Animais -->
                         <div class="ms-3">
                             <div class="font-type-info">ANIMAIS</div>
-                            <div class="font-info">${ong.pets}</div>
+                            <div id="pets" class="font-info"></div>
                         </div>
                     </div>
 
@@ -446,7 +473,48 @@ async function createOngCard(ong, ongimage, owner) {
 
         </div>
     </section>`;
-    
+
+    const statesSelect = ongCard.querySelector('#stateSelect');
+    const citySelect = ongCard.querySelector('#citySelect');
+
+    statesSelect.addEventListener('change', selectCityByState);
+    async function selectCityByState() {
+        const selectedState = statesSelect.value;
+        const cities = await fetchCitiesByState(selectedState);
+
+        citySelect.innerHTML = '';
+
+        cities.forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            if (city == ong.city) {
+                option.selected = true;
+            }
+            citySelect.appendChild(option);
+        });
+    }
+    async function fetchCitiesByState(state) {
+        try {
+            const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/distritos`);
+            const data = await response.json();
+            return data.map(distrito => distrito.nome);
+        } catch (error) {
+            console.error('Erro ao buscar cidades:', error);
+            return [];
+        }
+    }
+
+
+    selectCityByState();
+
+    const petsElements = ongCard.querySelectorAll("#pets");
+    const pets = `${ong.pets}`;
+    const formattedPets = pets.split(',').join(', ');
+    petsElements.forEach(petsElement => {
+        petsElement.textContent = formattedPets;
+    });
+
     const editarForm = ongCard.querySelector('#editOngForm');
 
     let instagramDiv = ongCard.querySelector("#instaDiv");
@@ -455,7 +523,7 @@ async function createOngCard(ong, ongimage, owner) {
     let temContato = true
     const botoes = ongCard.querySelectorAll(".owner");
     botoes.forEach(botao => {
-        if(!owner){
+        if (!owner) {
             botao.style.display = 'none';
         }
     });
@@ -478,10 +546,20 @@ async function createOngCard(ong, ongimage, owner) {
 
         const formData = new FormData(editarForm); // Correctly pass the form element, not the event
 
-        // Convert FormData to JSON object
+        ong.pets.forEach((pet, index) => {
+            formData.append('pets[]', pet);
+        });
+
         const data = {};
         formData.forEach((value, key) => {
-            data[key] = value;
+            if (data[key] !== undefined) {
+                if (!Array.isArray(data[key])) {
+                    data[key] = [data[key]];
+                }
+                data[key].push(value);
+            } else {
+                data[key] = value;
+            }
         });
 
         data['role'] = 'ONG'
@@ -522,12 +600,12 @@ async function createOngCard(ong, ongimage, owner) {
 
     const logout = ongCard.querySelectorAll('.btn-logout')
     logout.forEach(log => {
-            log.addEventListener('click', function() {
-                localStorage.removeItem('token');
-                localStorage.removeItem('role');
-                window.location.href = 'home.html';
-            });
-        }
+        log.addEventListener('click', function () {
+            localStorage.removeItem('token');
+            localStorage.removeItem('role');
+            window.location.href = 'home.html';
+        });
+    }
     )
     deleteButton.addEventListener('click', async () => {
         let isSucesso = 1;
@@ -771,25 +849,12 @@ function addPetsButton(ONGId) {
 }
 
 const breedOptions = {
-    Cachorro: ["Sem raça definida","Labrador", "Pastor Alemão", "Golden Retriever", "Bulldog", "Poodle", "Beagle", "Rottweiler", "Yorkshire Terrier", "Boxer", "Dachshund", "Shih Tzu", "Chihuahua", "Pug", "Maltês", "Doberman", "Border Collie", "Schnauzer", "Dogue Alemão", "Akita", "Pastor Australiano"],
+    Cachorro: ["Sem raça definida", "Labrador", "Pastor Alemão", "Golden Retriever", "Bulldog", "Poodle", "Beagle", "Rottweiler", "Yorkshire Terrier", "Boxer", "Dachshund", "Shih Tzu", "Chihuahua", "Pug", "Maltês", "Doberman", "Border Collie", "Schnauzer", "Dogue Alemão", "Akita", "Pastor Australiano"],
     Gato: ["Siamês", "Persa", "Maine Coon", "Bengal", "Ragdoll", "British Shorthair", "Sphynx", "Scottish Fold", "American Shorthair", "Siberiano", "Devon Rex", "Oriental Shorthair"],
     Roedor: ["Hamster", "Porquinho-da-Índia", "Gerbil", "Camundongo", "Rato", "Furão", "Capivara", "Chinchila", "Esquilo", "Coelho"],
     Passaro: ["Canário", "Papagaio", "Pardal", "Periquito", "Calopsita", "Arara", "Cacatua", "Periquito Australiano", "Papagaio-do-congo", "Tucano", "Pombo", "Codorna"]
 };
 
-const citiesByState = {
-    SP: ["São Carlos", "Araraquara", "São Paulo", "Guarulhos", "Campinas", "São Bernardo do Campo", "Santo André", "São José dos Campos", "Sorocaba", "Ribeirão Preto", "Santos", "Osasco"],
-    RJ: ["Rio de Janeiro", "São Gonçalo", "Duque de Caxias", "Nova Iguaçu", "Niterói", "Belford Roxo", "Campos dos Goytacazes", "São João de Meriti", "Petrópolis", "Volta Redonda"],
-    MG: ["Araxá", "Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Betim", "Montes Claros", "Ribeirão das Neves", "Uberaba", "Governador Valadares", "Ipatinga"],
-    ES: ["Serra", "Vila Velha", "Cariacica", "Vitória", "Linhares", "Colatina", "São Mateus", "Cachoeiro de Itapemirim", "Aracruz", "Guarapari"],
-    DF: ["Brasília", "Taguatinga", "Ceilândia", "Samambaia", "Planaltina", "Gama", "Santa Maria", "Recanto das Emas", "Guará", "São Sebastião"],
-    GO: ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Águas Lindas de Goiás", "Valparaíso de Goiás", "Trindade", "Formosa", "Novo Gama"],
-    MT: ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Tangará da Serra", "Sorriso", "Lucas do Rio Verde", "Primavera do Leste", "Cáceres", "Barra do Garças"],
-    MS: ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã", "Naviraí", "Nova Andradina", "Paranaíba", "Sidrolândia", "Maracaju"],
-    PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa", "Cascavel", "São José dos Pinhais", "Foz do Iguaçu", "Colombo", "Guarapuava", "Paranaguá"],
-    SC: ["Joinville", "Florianópolis", "Blumenau", "São José", "Chapecó", "Itajaí", "Criciúma", "Jaraguá do Sul", "Lages", "Palhoça"],
-    RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
-};
 
 async function createPetsOwnedCard(ONGId, owner, isuser) {
     const petsOwnedCard = document.createElement('div');
@@ -822,10 +887,10 @@ async function createPetsOwnedCard(ONGId, owner, isuser) {
 
     const botao = petsOwnedCard.querySelector('#petModal');
     const botoes = petsOwnedCard.querySelector(".owner");
-    if(owner){
+    if (owner) {
         botoes.style.display = 'block';
     }
-    else{
+    else {
         botoes.style.display = 'none';
     }
     botao.innerHTML += addPetsButton(ONGId);
@@ -849,26 +914,7 @@ async function createPetsOwnedCard(ONGId, owner, isuser) {
         });
     }
 
-    const statesSelect = petsOwnedCard.querySelector('#stateSelect');
-    const citySelect = petsOwnedCard.querySelector('#citySelect');
-
-    statesSelect.addEventListener('change', selectCityByState);
-    function selectCityByState() {
-        const selectedStates = statesSelect.value;
-        const cities = citiesByState[selectedStates] || [];
-
-        citySelect.innerHTML = '';
-
-        cities.forEach(city => {
-            const option = document.createElement('option');
-            option.value = city;
-            option.textContent = city;
-            citySelect.appendChild(option);
-        });
-    }
-
     selectBreedBySpecie();
-    selectCityByState();
 
     try {
         const response = await fetch(`/ONG-pets/${ONGId}`);
@@ -887,7 +933,7 @@ async function createPetsOwnedCard(ONGId, owner, isuser) {
                 isLiked = false;
             }
             const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
-            
+
             const card = `
                 <a href="pet.html?id=${animal.id}" style="text-decoration: none">
                     <div class="card rounded-5 m-3 img-size">
@@ -908,10 +954,10 @@ async function createPetsOwnedCard(ONGId, owner, isuser) {
         };
         const coracaoButtons = petsContainer.querySelectorAll('.heart-button');
         coracaoButtons.forEach(coracaoButton => {
-            if(isuser === 0){
+            if (isuser === 0) {
                 coracaoButton.style.display = 'none';
             }
-            else{
+            else {
                 coracaoButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     event.stopPropagation();
@@ -946,9 +992,9 @@ async function createPetsOwnedCard(ONGId, owner, isuser) {
                             .catch(error => console.error('Erro ao adicionar a curtida:', error));
 
                         coracaoImg.src = './img/red-heart-svgrepo-com.svg';
-                        }
+                    }
                 });
-        }
+            }
         });
     } catch (error) {
         console.error('Erro ao buscar Pets', error);

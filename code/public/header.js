@@ -61,8 +61,8 @@ document.addEventListener("DOMContentLoaded", function () {
                                     </g>
                                 </svg>
                             </div>
-                            <div class="font-nav-link d-none d-xs-none d-sm-flex">
-                                Meu perfil
+                            <div id="perfilText" class="font-nav-link d-none d-xs-none d-sm-flex">
+                                Login
                             </div>
                         </div>
                     </a>
@@ -79,7 +79,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const headerElement = headerContainer.querySelector('header');
         const linkperfil = headerElement.querySelector('.perfil')
-        linkperfil.href = `signup.html`
+        const perfilText = headerElement.querySelector('#perfilText')
+
+        linkperfil.href = "login.html"
+        
         token = localStorage.getItem('token')
         if (token) {
             const parts = token.split('.');
@@ -94,6 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 console.log(OngEmailFromToken)
                 console.log(OngIdFromToken)
                 role = localStorage.getItem('role')
+                perfilText.textContent = "Meu Perfil"
                 if(role === "USER"){
                     linkperfil.href = `profile.html?id=${OngIdFromToken}`;
                 }

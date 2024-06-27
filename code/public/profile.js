@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
             token = localStorage.getItem('token')
             if (token) {
                 const parts = token.split('.');
-                console.log("entrei")
                 if (parts.length === 3) {
                     const parts = token.split('.');
                     const payload = parts[1];
@@ -25,11 +24,11 @@ document.addEventListener('DOMContentLoaded', async () => {
                     const attributes = JSON.parse(decodedPayload);
                     const userIDFromToken = attributes.sub;
                     const userEmailFromToken = attributes.email;
-                    if(userId == userIDFromToken && userEmailFromToken === user.email){
+                    if (userId == userIDFromToken && userEmailFromToken === user.email) {
                         owner = 1;
                     }
                     role = localStorage.getItem('role')
-                    if(role === "USER"){
+                    if (role === "USER") {
                         isuser = userIDFromToken;
                     }
                 }
@@ -41,29 +40,28 @@ document.addEventListener('DOMContentLoaded', async () => {
             const botaoedit = profileCard.querySelectorAll(".btn-edit");
             const logout = profileCard.querySelectorAll('.btn-logout')
             logout.forEach(log => {
-                    log.addEventListener('click', function() {
-                        localStorage.removeItem('token');
-                        localStorage.removeItem('role');
-                        window.location.href = 'home.html';
-                    });
-                }
+                log.addEventListener('click', function () {
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('role');
+                    window.location.href = 'home.html';
+                });
+            }
             )
             botaoremove.forEach(botao => {
-                if(!owner){
+                if (!owner) {
                     botao.style.display = 'none';
                 }
             });
             botaoedit.forEach(botao => {
-                if(!owner){
+                if (!owner) {
                     botao.style.display = 'none';
                 }
             });
-            
+
             profileSection.appendChild(profileCard);
 
             const likedSection = document.getElementById('liked-section');
             const likedPetsCard = await createLikedPetsCard(isuser, userId);
-            console.log(likedPetsCard);
             likedSection.appendChild(likedPetsCard);
         } catch (error) {
             console.error('Erro ao buscar dados do usuário:', error);
@@ -132,8 +130,7 @@ function createProfileCard(user, userimage, owner) {
                         <!-- Animais -->
                         <div class="d-md-none pb-2 pe-5 pb-sm-0">
                             <div class="font-type-info">ANIMAIS PREFERIDOS</div>
-                            <div class="font-info">
-                            </div>
+                            <div id="preferences" class="font-info"></div>
                         </div>
 
                         <!-- Moradia -->
@@ -194,18 +191,18 @@ function createProfileCard(user, userimage, owner) {
 
                                             <div class="form-group pt-3">
                                                 <label for="birthDate">Data de nascimento</label>
-                                                <input type="date" id="birthDate" name="birthDate" class="form-control user-input" value="${user.birthDate.substring(0,10)}" required>
+                                                <input type="date" id="birthDate" name="birthDate" class="form-control user-input" value="${user.birthDate.substring(0, 10)}" required>
                                             </div>
                                             <div class="row pt-3 align-items-end">
                                                 <span>Pets preferidos: </span>
 
                                                 <div class="col-auto pt-2">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="preferences" value="Cachorros" ${user.preferences.includes('Cachorros') ? 'checked' : ''}>
+                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="preferences" value="Cachorros" ${user.preferences.includes('Cachorro') ? 'checked' : ''}>
                                                         <label class="form-check-label" for="inlineCheckbox1">Cachorros</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="preferences" value="Gatos" ${user.preferences.includes('Gatos') ? 'checked' : ''}>
+                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="preferences" value="Gatos" ${user.preferences.includes('Gato') ? 'checked' : ''}>
                                                         <label class="form-check-label" for="inlineCheckbox2">Gatos</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
@@ -227,32 +224,60 @@ function createProfileCard(user, userimage, owner) {
 
                                                 <div class="col-auto pt-2">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="moradiaCheckbox1" name="home" value="Casa" ${user.home.includes('Casa') ? 'checked' : ''}>
-                                                        <label class="form-check-label" for="moradiaCheckbox1">Casa</label>
+                                                        <input class="form-check-input" type="radio" id="moradiaRadio1" name="home" value="Casa" ${user.home.includes('Casa') ? 'checked' : ''}>
+                                                        <label class="form-check-label" for="moradiaRadio1">Casa</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="moradiaCheckbox2" name="home" value="Apartamento espaçoso" ${user.home.includes('Apartamento espaçoso') ? 'checked' : ''}>
-                                                        <label class="form-check-label" for="moradiaCheckbox2">Apartamento espaçoso</label>
+                                                        <input class="form-check-input" type="radio" id="moradiaRadio2" name="home" value="Apartamento espaçoso" ${user.home.includes('Apartamento espaçoso') ? 'checked' : ''}>
+                                                        <label class="form-check-label" for="moradiaRadio2">Apartamento espaçoso</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="moradiaCheckbox3" name="home" value="Kitnet" ${user.home.includes('Kitnet') ? 'checked' : ''}>
-                                                        <label class="form-check-label" for="moradiaCheckbox3">Kitnet</label>
+                                                        <input class="form-check-input" type="radio" id="moradiaRadio3" name="home" value="Kitnet" ${user.home.includes('Kitnet') ? 'checked' : ''}>
+                                                        <label class="form-check-label" for="moradiaRadio3">Kitnet</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="moradiaCheckbox4" name="home" value="Sítio" ${user.home.includes('Sítio') ? 'checked' : ''}>
-                                                        <label class="form-check-label" for="moradiaCheckbox4">Sítio</label>
+                                                        <input class="form-check-input" type="radio" id="moradiaRadio4" name="home" value="Sítio" ${user.home.includes('Sítio') ? 'checked' : ''}>
+                                                        <label class="form-check-label" for="moradiaRadio4">Sítio</label>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group pt-3">
-                                                <label for="city">Cidade</label>
-                                                <input type="text" id="city" name="city" class="form-control" value="${user.city}" required>
+                                            <div class=" pt-3">
+                                                <label for="cidade" class="form-label">Cidade</label>
+                                                <select class="form-select" id="citySelect" name="city" required>
+                                                </select>
                                             </div>
-
-                                            <div class="form-group pt-3">
-                                                <label for="state">Estado</label>
-                                                <input type="text" id="state" name="state" class="form-control" value="${user.state}" required>
+                                            <div class=" pt-3">
+                                                <label for="estado" class="form-label">Estado</label>
+                                                <select class="form-select" id="stateSelect" name="state" required>
+                                                    <option value="AC" ${user.state === 'AC' ? 'selected' : ''}>Acre</option>
+                                                    <option value="AL" ${user.state === 'AL' ? 'selected' : ''}>Alagoas</option>
+                                                    <option value="AP" ${user.state === 'AP' ? 'selected' : ''}>Amapá</option>
+                                                    <option value="AM" ${user.state === 'AM' ? 'selected' : ''}>Amazonas</option>
+                                                    <option value="BA" ${user.state === 'BA' ? 'selected' : ''}>Bahia</option>
+                                                    <option value="CE" ${user.state === 'CE' ? 'selected' : ''}>Ceará</option>
+                                                    <option value="DF" ${user.state === 'DF' ? 'selected' : ''}>Distrito Federal</option>
+                                                    <option value="ES" ${user.state === 'ES' ? 'selected' : ''}>Espírito Santo</option>
+                                                    <option value="GO" ${user.state === 'GO' ? 'selected' : ''}>Goiás</option>
+                                                    <option value="MA" ${user.state === 'MA' ? 'selected' : ''}>Maranhão</option>
+                                                    <option value="MT" ${user.state === 'MT' ? 'selected' : ''}>Mato Grosso</option>
+                                                    <option value="MS" ${user.state === 'MS' ? 'selected' : ''}>Mato Grosso do Sul</option>
+                                                    <option value="MG" ${user.state === 'MG' ? 'selected' : ''}>Minas Gerais</option>
+                                                    <option value="PA" ${user.state === 'PA' ? 'selected' : ''}>Pará</option>
+                                                    <option value="PB" ${user.state === 'PB' ? 'selected' : ''}>Paraíba</option>
+                                                    <option value="PR" ${user.state === 'PR' ? 'selected' : ''}>Paraná</option>
+                                                    <option value="PE" ${user.state === 'PE' ? 'selected' : ''}>Pernambuco</option>
+                                                    <option value="PI" ${user.state === 'PI' ? 'selected' : ''}>Piauí</option>
+                                                    <option value="RJ" ${user.state === 'RJ' ? 'selected' : ''}>Rio de Janeiro</option>
+                                                    <option value="RN" ${user.state === 'RN' ? 'selected' : ''}>Rio Grande do Norte</option>
+                                                    <option value="RS" ${user.state === 'RS' ? 'selected' : ''}>Rio Grande do Sul</option>
+                                                    <option value="RO" ${user.state === 'RO' ? 'selected' : ''}>Rondônia</option>
+                                                    <option value="RR" ${user.state === 'RR' ? 'selected' : ''}>Roraima</option>
+                                                    <option value="SC" ${user.state === 'SC' ? 'selected' : ''}>Santa Catarina</option>
+                                                    <option value="SP" ${user.state === 'SP' ? 'selected' : ''}>São Paulo</option>
+                                                    <option value="SE" ${user.state === 'SE' ? 'selected' : ''}>Sergipe</option>
+                                                    <option value="TO" ${user.state === 'TO' ? 'selected' : ''}>Tocantins</option>
+                                                </select>
                                             </div>
                                                                                     
                                             <div class="form-group pt-3">
@@ -398,10 +423,46 @@ function createProfileCard(user, userimage, owner) {
         </section>
     `;
 
-    const preferencesElement = profileCard.querySelector("#preferences");
+    const statesSelect = profileCard.querySelector('#stateSelect');
+    const citySelect = profileCard.querySelector('#citySelect');
+
+    statesSelect.addEventListener('change', selectCityByState);
+    async function selectCityByState() {
+        const selectedState = statesSelect.value;
+        const cities = await fetchCitiesByState(selectedState);
+
+        citySelect.innerHTML = '';
+
+        cities.forEach(city => {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            if (city == user.city) {
+                option.selected = true;
+            }
+            citySelect.appendChild(option);
+        });
+    }
+
+    async function fetchCitiesByState(state) {
+        try {
+            const response = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${state}/distritos`);
+            const data = await response.json();
+            return data.map(distrito => distrito.nome);
+        } catch (error) {
+            console.error('Erro ao buscar cidades:', error);
+            return [];
+        }
+    }
+
+    selectCityByState();
+
+    const preferencesElements = profileCard.querySelectorAll("#preferences");
     const preferences = `${user.preferences}`;
     const formattedPreferences = preferences.split(',').join(', ');
-    preferencesElement.textContent = formattedPreferences;
+    preferencesElements.forEach(preferencesElement => {
+        preferencesElement.textContent = formattedPreferences;
+    });
 
     token = localStorage.getItem('token')
     const editarForm = profileCard.querySelector('#editUserForm');
@@ -410,7 +471,6 @@ function createProfileCard(user, userimage, owner) {
         event.preventDefault(); // Prevent the default form submission behavior
 
         const formData = new FormData(editarForm); // Correctly pass the form element, not the event
-        console.log(formData); // Debugging: Log the JSON object
 
         user.preferences.forEach((preference, index) => {
             formData.append('preferences[]', preference);
@@ -437,48 +497,46 @@ function createProfileCard(user, userimage, owner) {
             },
             body: JSON.stringify(data)
         })
-        .then(response => {
-            if (response.ok) {
-                console.log("Perfil de Usuário com ID " + user.id + " atualizado"); // Adjusted to use the correct ID
+            .then(response => {
+                if (response.ok) {
+                    console.log("Perfil de Usuário com ID " + user.id + " atualizado"); // Adjusted to use the correct ID
 
-                const popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
+                    const popUp = new bootstrap.Modal(document.querySelector('#popUpCorretoEdit'))
 
-                console.log(popUp)
-                popUp.toggle()
-                popUp.show()
+                    popUp.toggle()
+                    popUp.show()
 
-                const botaoRedirect = document.querySelector('#redirectButtonEdit')
-                console.log(botaoRedirect)
+                    const botaoRedirect = document.querySelector('#redirectButtonEdit')
 
-                botaoRedirect.addEventListener('click', () => {
-                    window.location.href = "profile.html?id=" + user.id;
-                })
-            } else {
-                console.error('Erro ao atualizar perfil de Usuário.');
+                    botaoRedirect.addEventListener('click', () => {
+                        window.location.href = "profile.html?id=" + user.id;
+                    })
+                } else {
+                    console.error('Erro ao atualizar perfil de Usuário.');
 
-                const popUp = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
-                popUp.toggle()
-                popUp.show()
-            }
-        })
+                    const popUp = new bootstrap.Modal(document.querySelector('#popUpErroEdit'))
+                    popUp.toggle()
+                    popUp.show()
+                }
+            })
     });
 
     const deleteButton = profileCard.querySelector('#confirmDeletion')
-    
+
     const profileId = getParameterByName('id');
     deleteButton.addEventListener('click', async () => {
         let isSucesso = -1;
 
         await fetch(`/users/${profileId}`, { method: 'DELETE' })
-        .then(response => {
-            if (response.ok) {
-                console.log(`Perfil de usuário com ID ${profileId} removido`);
-                isSucesso = 1
-            } else {
-                console.error('Erro ao remover conta do usuário.');
-                isSucesso = 0
-            }
-        })
+            .then(response => {
+                if (response.ok) {
+                    console.log(`Perfil de usuário com ID ${profileId} removido`);
+                    isSucesso = 1
+                } else {
+                    console.error('Erro ao remover conta do usuário.');
+                    isSucesso = 0
+                }
+            })
 
         if (isSucesso === 1) {
             var popUp = new bootstrap.Modal(document.querySelector('#popUpCorreto'))
@@ -486,7 +544,6 @@ function createProfileCard(user, userimage, owner) {
             popUp.show()
 
             const botaoRedirect = document.querySelector('#redirectButton')
-            console.log(botaoRedirect)
 
             botaoRedirect.addEventListener('click', () => {
                 window.location.href = 'home.html';
@@ -521,24 +578,21 @@ async function createLikedPetsCard(isuser, userId) {
 
     try {
         const response = await fetch(`/all-pets/${userId}`);
-        console.log(response)
         if (!response.ok) {
             throw new Error('Network response was not ok');
         }
         const data = await response.json();
         animals = Array.isArray(data) ? data : [data];
-        console.log(animals);
-        
-        for (const animal of animals){
+
+        for (const animal of animals) {
             const source_img = await fetchImage(animal.photos);
             let isLiked = true;
             const likesResponse = await fetch(`/likes/${isuser}/${animal.id}`);
             const likedPet = await likesResponse.json();
             if (likedPet === null) {
                 isLiked = false;
-            }  
+            }
             const coracaoImgSrc = isLiked ? './img/red-heart-svgrepo-com.svg' : './img/empty-heart.svg';
-            console.log(coracaoImgSrc);
             const card = `
                 <a href="pet.html?id=${animal.id}" style="text-decoration: none">
                     <div class="card rounded-5 m-3 img-size">
@@ -558,29 +612,29 @@ async function createLikedPetsCard(isuser, userId) {
             petsContainer.innerHTML += card;
         };
         const coracaoButtons = petsContainer.querySelectorAll('.heart-button');
-        coracaoButtons.forEach(coracaoButton  => {
-            if(isuser === 0){
+        coracaoButtons.forEach(coracaoButton => {
+            if (isuser === 0) {
                 coracaoButton.style.display = 'none';
             }
-            else{
+            else {
 
                 coracaoButton.addEventListener('click', (event) => {
                     event.preventDefault();
                     event.stopPropagation();
-                    
+
                     const petId = coracaoButton.dataset.petId;
                     const coracaoImg = coracaoButton.querySelector('img');
                     if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
                         fetch(`/likes/${isuser}/${petId}`, { method: 'DELETE' })
-                        .then(response => {
-                            if (response.ok) {
-                                console.log(`Curtida removida para o pet com ID ${petId}`);
-                            } else {
-                                console.error('Erro ao remover a curtida');
-                            }
-                        })
-                        .catch(error => console.error('Erro ao remover a curtida:', error));
-    
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log(`Curtida removida para o pet com ID ${petId}`);
+                                } else {
+                                    console.error('Erro ao remover a curtida');
+                                }
+                            })
+                            .catch(error => console.error('Erro ao remover a curtida:', error));
+
                         coracaoImg.src = './img/empty-heart.svg';
                     } else {
                         fetch(`/likes`, {
@@ -588,15 +642,15 @@ async function createLikedPetsCard(isuser, userId) {
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify({ UserId: isuser, petId: petId })
                         })
-                        .then(response => {
-                            if (response.ok) {
-                                console.log(`Curtida adicionada para o pet com ID ${petId}`);
-                            } else {
-                                console.error('Erro ao adicionar a curtida');
-                            }
-                        })
-                        .catch(error => console.error('Erro ao adicionar a curtida:', error));
-    
+                            .then(response => {
+                                if (response.ok) {
+                                    console.log(`Curtida adicionada para o pet com ID ${petId}`);
+                                } else {
+                                    console.error('Erro ao adicionar a curtida');
+                                }
+                            })
+                            .catch(error => console.error('Erro ao adicionar a curtida:', error));
+
                         coracaoImg.src = './img/red-heart-svgrepo-com.svg';
                     }
                 });
@@ -607,3 +661,17 @@ async function createLikedPetsCard(isuser, userId) {
     }
     return likedPetsCard;
 }
+
+const citiesByState = {
+    SP: ["São Carlos", "Araraquara", "São Paulo", "Guarulhos", "Campinas", "São Bernardo do Campo", "Santo André", "São José dos Campos", "Sorocaba", "Ribeirão Preto", "Santos", "Osasco"],
+    RJ: ["Rio de Janeiro", "São Gonçalo", "Duque de Caxias", "Nova Iguaçu", "Niterói", "Belford Roxo", "Campos dos Goytacazes", "São João de Meriti", "Petrópolis", "Volta Redonda"],
+    MG: ["Araxá", "Belo Horizonte", "Uberlândia", "Contagem", "Juiz de Fora", "Betim", "Montes Claros", "Ribeirão das Neves", "Uberaba", "Governador Valadares", "Ipatinga"],
+    ES: ["Serra", "Vila Velha", "Cariacica", "Vitória", "Linhares", "Colatina", "São Mateus", "Cachoeiro de Itapemirim", "Aracruz", "Guarapari"],
+    DF: ["Brasília", "Taguatinga", "Ceilândia", "Samambaia", "Planaltina", "Gama", "Santa Maria", "Recanto das Emas", "Guará", "São Sebastião"],
+    GO: ["Goiânia", "Aparecida de Goiânia", "Anápolis", "Rio Verde", "Luziânia", "Águas Lindas de Goiás", "Valparaíso de Goiás", "Trindade", "Formosa", "Novo Gama"],
+    MT: ["Cuiabá", "Várzea Grande", "Rondonópolis", "Sinop", "Tangará da Serra", "Sorriso", "Lucas do Rio Verde", "Primavera do Leste", "Cáceres", "Barra do Garças"],
+    MS: ["Campo Grande", "Dourados", "Três Lagoas", "Corumbá", "Ponta Porã", "Naviraí", "Nova Andradina", "Paranaíba", "Sidrolândia", "Maracaju"],
+    PR: ["Curitiba", "Londrina", "Maringá", "Ponta Grossa", "Cascavel", "São José dos Pinhais", "Foz do Iguaçu", "Colombo", "Guarapuava", "Paranaguá"],
+    SC: ["Joinville", "Florianópolis", "Blumenau", "São José", "Chapecó", "Itajaí", "Criciúma", "Jaraguá do Sul", "Lages", "Palhoça"],
+    RS: ["Porto Alegre", "Caxias do Sul", "Pelotas", "Canoas", "Santa Maria", "Gravataí", "Viamão", "Novo Hamburgo", "São Leopoldo", "Rio Grande"]
+};
