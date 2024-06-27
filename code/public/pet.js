@@ -164,7 +164,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
                             <img id="coracaoImg" src="${coracaoImgSrc}" alt="" class="img-fluid ">
                         </button>
                     </span>
-                    ${pet.adopted === true ? '<button type="button" class="container-fluid btn btn-danger rounded-pill mt-3 text-nowrap" disabled>ADOTADO !</button>' : '<button class="container-fluid bg-adotar border-adotar textPurple text-adotar poppins-semibold rounded-pill mt-3 text-nowrap" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR !</button>'}
+                    ${pet.adopted === true ? '<button type="button" class="container-fluid btn-adotado rounded-pill mt-3">ADOTADO !</button>' : '<button class="container-fluid btn-adotar rounded-pill mt-3" data-bs-toggle="modal" data-bs-target="#petAdotar">QUERO ADOTAR !</button>'}
                 </div>
             </div>
         </div>
@@ -547,7 +547,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
 
         breedSelect.innerHTML = '';
 
-        breeds.forEach(breed => {
+        breeds.sort().forEach(breed => {
             const option = document.createElement('option');
             option.value = breed;
             option.textContent = breed;
@@ -568,7 +568,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
 
         citySelect.innerHTML = '';
 
-        cities.forEach(city => {
+        cities.sort().forEach(city => {
             const option = document.createElement('option');
             option.value = city;
             option.textContent = city;
