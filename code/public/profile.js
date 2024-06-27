@@ -531,6 +531,10 @@ function createProfileCard(user, userimage, owner) {
             .then(response => {
                 if (response.ok) {
                     console.log(`Perfil de usuário com ID ${profileId} removido`);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('role');
+                    window.location.href = "home.html"
+
                     isSucesso = 1
                 } else {
                     console.error('Erro ao remover conta do usuário.');

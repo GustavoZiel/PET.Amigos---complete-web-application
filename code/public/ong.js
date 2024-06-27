@@ -620,6 +620,9 @@ async function createOngCard(ong, ongimage, owner) {
             .then(response => {
                 if (response.ok) {
                     console.log(`Perfil da ONG com ID ${ongId} removido`);
+                    localStorage.removeItem('token');
+                    localStorage.removeItem('role');
+                    window.location.href = "home.html"
                     isSucesso = 1
                 } else {
                     console.error('Erro ao remover conta da ONG.');
