@@ -66,6 +66,9 @@ A aplicação não só facilita o processo de adoção, mas também promove a co
 
 ## Integrantes
 
+> Universidade de São Paulo (USP) - Instituto de Ciências Matemáticas e de Computação (ICMC)
+> Ciências da Computação - 1º Semestre de 2024
+
 - Nome 1 - [email5@usp.br](mailto:email5@usp.br)
 - Nome 2 - [email6@usp.br](mailto:email6@usp.br)
 - Nome 3 - [email5@usp.br](mailto:email5@usp.br)
@@ -75,7 +78,6 @@ A aplicação não só facilita o processo de adoção, mas também promove a co
 
 ## Responsáveis
 
-> Universidade de São Paulo (USP) - Instituto de Ciências Matemáticas e de Computação (ICMC)
 
 ### SSC0130 - Engenharia de Software (2024)
 
@@ -90,7 +92,7 @@ A aplicação não só facilita o processo de adoção, mas também promove a co
 
 ### Identificação do Cliente
 
-- **Nome da Cliente**: Tuka
+- **Nome da Cliente**: Tuka Nyko
 - **Contatos**:
   - **Email**: [acaochegodatuka@gmail.com](mailto:acaochegodatuka@gmail.com)
   - **Instagram**: [Acãochego Da Tuka](https://www.instagram.com/acaochegodatuka?igsh=MXR5am1wZ2QwZ3Nhbg==)
