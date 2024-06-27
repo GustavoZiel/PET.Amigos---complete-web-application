@@ -205,7 +205,7 @@ async function createOngCard(ong, ongimage, owner) {
                                                     <label class="form-check-label" for="petsCheckbox2">Gatos</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox3" name="pets" value="Roedores" ${ong.pets.includes('Roedores') ? 'checked' : ''}>
+                                                    <input class="form-check-input" type="checkbox" id="petsCheckbox3" name="pets" value="Roedor" ${ong.pets.includes('Roedor') ? 'checked' : ''}>
                                                     <label class="form-check-label" for="petsCheckbox3">Roedores</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">

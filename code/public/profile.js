@@ -92,7 +92,7 @@ function calculateAge(birthDate) {
     const m = today.getMonth() - birth.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
         age--;
-    }
+        }
     return age;
 }
 function createProfileCard(user, userimage, owner) {
@@ -198,15 +198,15 @@ function createProfileCard(user, userimage, owner) {
 
                                                 <div class="col-auto pt-2">
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="preferences" value="Cachorros" ${user.preferences.includes('Cachorro') ? 'checked' : ''}>
+                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name="preferences" value="Cachorro" ${user.preferences.includes('Cachorro') ? 'checked' : ''}>
                                                         <label class="form-check-label" for="inlineCheckbox1">Cachorros</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="preferences" value="Gatos" ${user.preferences.includes('Gato') ? 'checked' : ''}>
+                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name="preferences" value="Gato" ${user.preferences.includes('Gato') ? 'checked' : ''}>
                                                         <label class="form-check-label" for="inlineCheckbox2">Gatos</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="preferences" value="Roedores" ${user.preferences.includes('Roedores') ? 'checked' : ''}>
+                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="preferences" value="Roedor" ${user.preferences.includes('Roedor') ? 'checked' : ''}>
                                                         <label class="form-check-label" for="inlineCheckbox3">Roedores</label>
                                                     </div>
                                                     <div class="form-check form-check-inline">
