@@ -27,7 +27,7 @@ ONG.init({
 }, { sequelize: sequelize, timestamps: false });
 
 
-ONG.hasMany(Pet);
+ONG.hasMany(Pet, { onDelete: 'CASCADE' });
 Pet.belongsTo(ONG);
 
 export default ONG;

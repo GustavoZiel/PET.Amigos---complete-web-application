@@ -38,7 +38,7 @@
 <body>
     <main class="container-fluid">
         <div class="row">
-            <div class="col d-none d-md-block lilacBgColor">
+            <div class="col d-none lilacBgColor recom">
                 <div class="container text-start">
                     <h1 class="py-3 font_h1_search">Opções para você!</h1>
                     <div id="Sugestoes" class="d-flex justify-content-center flex-wrap">
@@ -305,9 +305,12 @@
     <script>
         async function RecomendarPets() {
             try {
+                const recomendacoes = document.querySelector('.recom')
                 let userIdFromToken = 0;
+
                 role = localStorage.getItem('role')
                 if (role === "USER") {
+                    recomendacoes.classList.add('d-md-block');
                     token = localStorage.getItem('token')
                     if (token) {
                         const parts = token.split('.');
@@ -394,8 +397,10 @@
                                     }
                                 }
                                 const coracaoButtons = document.querySelectorAll('.heart-button');
+                                
                                 coracaoButtons.forEach(coracaoButton => {
                                     if (userIdFromToken !== 0) {
+                                        recomendacoes.style.display = 'none'
 
                                         coracaoButton.addEventListener('click', async (event) => {
                                             event.preventDefault();
