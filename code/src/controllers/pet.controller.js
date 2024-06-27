@@ -1,6 +1,6 @@
 import Pet from "../model/pet.model.js";
 import upload from '../upload/upload_img.js';
-import { Op } from 'sequelize';
+import { Op, where } from 'sequelize';
 import { Usuario } from "../model/user.model.js";
 
 function findAll(request, response) {
@@ -81,12 +81,15 @@ async function getRecomendations(req, res) {
 
     const searchParams = {
       where: {
-        type: user.preferences,
         city: user.city,
-        state: user.state
+        state: user.state,
+        adopted: false
       },
       limit: 4
     };
+    if (user.preferences)
+      searchParams.where.type = user.preferences;
+        
     // Buscar os pets com base nos parâmetros
     const pets = await Pet.findAll(searchParams);
 
