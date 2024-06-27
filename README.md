@@ -70,7 +70,7 @@ A aplicação não só facilita o processo de adoção, mas também promove a co
 > Ciências da Computação - 1º Semestre de 2024
 
 - Nome 1 - [email5@usp.br](mailto:email5@usp.br)
-- Nome 2 - [email6@usp.br](mailto:email6@usp.br)
+- Catarina Moreira Lima - [catarina.lima@usp.br](mailto:catarina.lima@usp.br)
 - Nome 3 - [email5@usp.br](mailto:email5@usp.br)
 - Gabriel da Costa Merlin - [gabrielcmerlin@usp.br](mailto:gabrielcmerlin@usp.br)
 - Gustavo Gabriel Ribeiro - [gugagribeiro@usp.br](mailto:gugagribeiro@usp@usp.br)
