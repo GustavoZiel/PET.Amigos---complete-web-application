@@ -151,7 +151,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
             <div class="d-lg-none">
                 <h1 class="poppins-semibold textPurple">
                     ${pet.name}
-                    <i class="fa-solid fa-${pet.sex === 'macho' ? 'mars' : 'venus'} textPurple"></i>
+                    <i class="fa-solid fa-${pet.sex === 'Macho' ? 'mars' : 'venus'} textPurple"></i>
                     <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editPetModal"><i class="fa-regular fa-pen-to-square"></i></button>
                     <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removePet"><i class="fa-solid fa-trash-can"></i></button>
                 </h1>
@@ -415,7 +415,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
             <div class="d-none d-lg-block">
                 <h1 class="ps-4 poppins-semibold textPurple">
                     ${pet.name}
-                    <i class="fa-solid fa-${pet.sex === 'macho' ? 'mars' : 'venus'} textPurple"></i>
+                    <i class="fa-solid fa-${pet.sex === 'Macho' ? 'mars' : 'venus'} textPurple"></i>
                     <button type="button" class="btn-edit ms-4 text-nowrap" data-bs-toggle="modal" data-bs-target="#editPetModal"><i class="fa-regular fa-pen-to-square"></i></button>
                     <button type="button" class="btn-remove ms-2 text-nowrap" data-bs-toggle="modal" data-bs-target="#removePet"><i class="fa-solid fa-trash-can"></i></button>
                 </h1>
