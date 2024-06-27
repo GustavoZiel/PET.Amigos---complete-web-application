@@ -207,6 +207,12 @@ footer {
   width: 18em;
 }
 
+.img-size img{
+  object-fit: cover;
+  width: 17.9em;
+  height: 18em;
+}
+
 .btn-filter {
   font-size: x-large;
   color: #3A0CA3;
