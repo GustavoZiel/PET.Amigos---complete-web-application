@@ -396,52 +396,6 @@
                                         console.error(`Erro ao processar animal com ID ${animal.id}`, error);
                                     }
                                 }
-                                const coracaoButtons = document.querySelectorAll('.heart-button');
-                                
-                                coracaoButtons.forEach(coracaoButton => {
-                                    if (userIdFromToken !== 0) {
-                                        recomendacoes.style.display = 'none'
-
-                                        coracaoButton.addEventListener('click', async (event) => {
-                                            event.preventDefault();
-                                            event.stopPropagation();
-
-                                            const petId = coracaoButton.dataset.petId;
-                                            const coracaoImg = coracaoButton.querySelector('img');
-                                            if (coracaoImg.src.includes('red-heart-svgrepo-com')) {
-                                                try {
-                                                    const response = await fetch(`/likes/${userIdFromToken}/${petId}`, { method: 'DELETE' });
-                                                    if (response.ok) {
-                                                        console.log(`Curtida removida para o pet com ID ${petId}`);
-                                                    } else {
-                                                        console.error('Erro ao remover a curtida');
-                                                    }
-                                                } catch (error) {
-                                                    console.error('Erro ao remover a curtida:', error);
-                                                }
-
-                                                coracaoImg.src = './img/empty-heart.svg';
-                                            } else {
-                                                try {
-                                                    const response = await fetch(`/likes`, {
-                                                        method: 'POST',
-                                                        headers: { 'Content-Type': 'application/json' },
-                                                        body: JSON.stringify({ UserId: userIdFromToken, petId: petId })
-                                                    });
-                                                    if (response.ok) {
-                                                        console.log(`Curtida adicionada para o pet com ID ${petId}`);
-                                                    } else {
-                                                        console.error('Erro ao adicionar a curtida');
-                                                    }
-                                                } catch (error) {
-                                                    console.error('Erro ao adicionar a curtida:', error);
-                                                }
-
-                                                coracaoImg.src = './img/red-heart-svgrepo-com.svg';
-                                            }
-                                        });
-                                    }
-                                });
                             })
                             .catch(error => {
                                 console.error(error);

@@ -115,13 +115,19 @@ async function fetchImage(url) {
 function calculateAge(birthDate) {
     const today = new Date();
     const birth = new Date(birthDate);
-    let age = today.getFullYear() - birth.getFullYear();
-    const m = today.getMonth() - birth.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
-        age--;
+    let ageYears = today.getFullYear() - birth.getFullYear();
+    let ageMonths = today.getMonth() - birth.getMonth();
+
+    if (today.getDate() < birth.getDate()) {
+        ageMonths--;
     }
 
-    return [age, 12 + m];
+    if (ageMonths < 0) {
+        ageMonths += 12;
+        ageYears--;
+    }
+
+    return [ageYears, ageMonths];
 }
 
 const breedOptions = {
@@ -139,11 +145,17 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
 
     let idade;
     if (ano === 0) {
-        idade = mes + ' meses'
+        idade = mes + ' '
     } else if (idade === 1) {
-        idade = ano + ' ano e ' + mes + ' meses'
+        idade = ano + ' ano e ' + mes
     } else {
-        idade = ano + ' anos e ' + mes + ' meses'
+        idade = ano + ' anos e ' + mes
+    }
+    if(mes < 2){
+        idade += 'mês'
+    }
+    else{
+        idade += 'meses'
     }
 
     petCard.innerHTML = `
