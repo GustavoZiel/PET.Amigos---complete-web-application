@@ -484,7 +484,7 @@ function createPetCard(pet, petImageUrl, isLiked, ong, ongImageUrl, isuser) {
                         <button type="button" class="bg-light border-purple textPurple rounded-pill px-4 container-fluid text-nowrap">Saiba mais!</button>
                     </div>
                 </a>
-                <p class="textOngNumber">${ong.phoneNumber}</p>
+                <p class="textOngNumber poppins-medium">${ong.phoneNumber}</p>
             </div>
         </div>
 
