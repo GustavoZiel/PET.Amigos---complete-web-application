@@ -122,8 +122,9 @@ Adotamos o método ágil Scrum para gerenciar o desenvolvimento do projeto. O tr
 - **Sprint 2**: Design do sistema e elaboração dos protótipos de baixa, média e alta fidelidade
 - **Sprint 3**: Desenvolvimento do Front-end do MVP, e coleta de feedbacks com a cliente
 - **Sprint 4**: Aprimoramento do MVP, desenvolvimento Back-end
-- **Sprint 5**: Integração do projeto e realease da versão estável
-- **Sprint 6**: Ajustes finais e apresentação à cliente
+- **Sprint 5**: Implementação de novas funcionalidades, incorporação Neon e MiniO
+- **Sprint 6**: Integração Front-end e Back-end, release da versão estável
+- **Sprint 7**: Ajustes finais e apresentação à cliente
 
 ## Ferramentas Utilizadas
 
